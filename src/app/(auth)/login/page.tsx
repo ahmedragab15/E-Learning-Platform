@@ -1,7 +1,7 @@
 import Image from "next/image";
 import LoginForm from "./LoginForm";
-import loginImage from "../../../public/images/login_images.png";
-import logo2 from "../../../public/images/Logo2.png";
+import loginImage from "../../../../public/images/login_images.png";
+import logo2 from "../../../../public/images/Logo2.png";
 
 const Login = () => {
   return (

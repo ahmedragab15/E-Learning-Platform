@@ -1,7 +1,7 @@
 import Image from "next/image";
 import RegisterForm from "./RegisterForm";
-import signImage from "../../../public/images/sign_images.png";
-import logo2 from "../../../public/images/Logo2.png";
+import signImage from "../../../../public/images/sign_images.png";
+import logo2 from "../../../../public/images/Logo2.png";
 
 const Register = () => {
   return (
