@@ -1,15 +1,15 @@
 import Image from "next/image";
 import React from "react";
-import logo from "../../public/images/Logo.png";
+import logo from "../../../public/images/Logo.png";
 import { Facebook, Twitter, Instagram } from "lucide-react";
 import Link from "next/link";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
 
 const Footer = () => {
   return (
     <footer className="bg-[#D7E3FB] min-h-96 px-16 py-8 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-7 gap-8 items-center justify-center">
-      <div className="space-y-8 lg:col-span-2">
+      <div className="space-y-8 xl:col-span-2">
         <div className="space-y-2 ">
           <Image src={logo} alt="logo" width={100} height={100} />
           <p>Online learning platform anytime and anywhere</p>
