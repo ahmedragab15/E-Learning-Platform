@@ -1,14 +1,12 @@
 import Image from "next/image";
 import { Award, Headset, House } from "lucide-react";
 import { images } from "@/components/shared/Images";
+import Heading from "@/components/shared/Heading";
 
 const WhyUs = () => {
   return (
     <>
-      <div className="space-y-2">
-        <h2 className="text-3xl font-semibold max-w-70 leading-8">Why do you need to study with us?</h2>
-        <p className="text-gray-600 max-w-68 leading-tight">Find out their experiences and reasons for joining us</p>
-      </div>
+      <Heading title="Why do you need to study with us?" description="Find out their experiences and reasons for joining us" />
       <div className="flex flex-col md:flex-row justify-evenly items-center gap-4 mt-8">
         <div className="hidden md:block">
           <Image src={images.whyUsImage} alt="hero image" className="md:w-[400px] max-w-full" width={200} height={200} />

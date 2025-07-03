@@ -1,4 +1,6 @@
-import { Hero, CoursesCategory, RecomendationCourses, WhyUs, Reviews, AllNews, HomeBanner } from "@/components/index";
+import { Hero, CoursesCategories, Courses, WhyUs, Reviews, AllNews, HomeBanner } from "@/components/index";
+import ArrowNavigation from "@/components/shared/ArrowNavigation";
+import Heading from "@/components/shared/Heading";
 
 const VisitorHome = () => {
   return (
@@ -11,13 +13,20 @@ const VisitorHome = () => {
 
       <section className="bg-white px-6 md:px-16 py-10">
         <div className="container mx-auto space-y-6 my-6">
-          <CoursesCategory />
+          <CoursesCategories heading={<Heading title="Courses Category" cta={<ArrowNavigation />} />} />
         </div>
       </section>
 
       <section className=" px-6 md:px-16 py-10">
         <div className="container mx-auto space-y-6 my-6">
-          <RecomendationCourses />
+          <Courses
+            heading={
+              <Heading
+                title="Recomendation Courses"
+                description="You can find recomendation courses from all course categories and quickly learn more"
+              />
+            }
+          />
         </div>
       </section>
 

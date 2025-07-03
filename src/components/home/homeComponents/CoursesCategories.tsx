@@ -1,12 +1,34 @@
+import { BriefcaseMedical, ChartPie, CodeXml, Palette } from "lucide-react";
+import CategoryCard from "./CategoryCard";
 import CourseCard from "./CourseCard";
 import ArrowNavigation from "@/components/shared/ArrowNavigation";
 
-const courses: ICourse[] = [
+const categories: ICategory[] = [
+  { id: 1, title: "Business", icon: <ChartPie /> },
+  { id: 2, title: "Design", icon: <Palette /> },
+  { id: 3, title: "Progamming", icon: <CodeXml /> },
+  { id: 4, title: "Health", icon: <BriefcaseMedical /> },
+  { id: 5, title: "Health", icon: <BriefcaseMedical /> },
+];
+
+const selectedCategory: ICourse[] = [
   {
     id: 1,
     title: "Product Manager",
     image:
       "https://images.unsplash.com/photo-1664575602276-acd073f104c1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    category: "Business",
+    duration: "3 Months (20 Hours/Week)",
+    price: "89",
+    ratingCount: "3.5",
+    ratingTotal: "239",
+    badgeBg: "bg-blue-500",
+  },
+  {
+    id: 8,
+    title: "Business Manager",
+    image:
+      "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     category: "Business",
     duration: "3 Months (20 Hours/Week)",
     price: "89",
@@ -52,21 +74,32 @@ const courses: ICourse[] = [
   },
 ];
 
-const RecomendationCourses = () => {
+const CoursesCategories = ({ heading }: { heading: React.ReactNode }) => {
+  const user = true;
+  const selectedCat = "Business";
   return (
     <>
-      <div className="space-y-2">
-        <h2 className="text-3xl font-semibold">Recomendation Courses</h2>
-        <p className="text-gray-600 max-w-96 leading-tight">You can find recomendation courses from all course categories and quickly learn more</p>
-      </div>
-      <div className="flex justify-evenly flex-wrap gap-6 my-6">
-        {courses.map((course) => (
-          <CourseCard key={course.id} course={course} />
+      {heading}
+      <div className="flex justify-evenly flex-wrap gap-6">
+        {categories.map((category) => (
+          <CategoryCard key={category.id} category={category} />
         ))}
       </div>
-      <ArrowNavigation />
+
+      {user && (
+        <>
+          <div className="flex justify-evenly flex-wrap gap-6 my-6">
+            {selectedCategory
+              .filter((course) => course.category === selectedCat)
+              .map((course) => (
+                <CourseCard key={course.id} course={course} />
+              ))}
+          </div>
+          <ArrowNavigation />
+        </>
+      )}
     </>
   );
 };
 
-export default RecomendationCourses;
+export default CoursesCategories;

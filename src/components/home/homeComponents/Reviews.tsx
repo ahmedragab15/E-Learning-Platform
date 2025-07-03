@@ -1,6 +1,7 @@
 import React from "react";
 import ReviewCard from "./ReviewCard";
 import ArrowNavigation from "@/components/shared/ArrowNavigation";
+import Heading from "@/components/shared/Heading";
 
 const reviews: IReview[] = [
   {
@@ -38,10 +39,7 @@ const reviews: IReview[] = [
 const Reviews = () => {
   return (
     <>
-      <div className="space-y-2">
-        <h2 className="text-3xl font-semibold max-w-96">What our students say</h2>
-        <p className="text-gray-600 max-w-96 leading-tight">Find out what experiences and what they have to say about the course with us</p>
-      </div>
+      <Heading title="What our students say" description="Find out what experiences and what they have to say about the course with us" />
       <div className="space-y-4">
         <div className="flex justify-evenly flex-wrap gap-6">
           {reviews.map((review) => (

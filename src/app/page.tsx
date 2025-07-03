@@ -1,9 +1,10 @@
-import { VisitorHome } from "@/components/index";
+import { UserHome, VisitorHome } from "@/components/index";
 
 const Home = () => {
+  const user = false;
   return (
     <>
-      <VisitorHome />
+      {user ? <UserHome /> : <VisitorHome />}
     </>
   );
 };
