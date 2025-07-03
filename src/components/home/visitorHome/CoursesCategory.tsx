@@ -1,5 +1,6 @@
-import { BriefcaseMedical, ChartPie, CodeXml, MoveLeft, MoveRight, Palette } from "lucide-react";
+import { BriefcaseMedical, ChartPie, CodeXml, Palette } from "lucide-react";
 import CategoryCard from "./CategoryCard";
+import ArrowNavigation from "@/components/shared/ArrowNavigation";
 
 const categories: ICategory[] = [
   { id: 1, title: "Business", icon: <ChartPie /> },
@@ -14,10 +15,7 @@ const CoursesCategory = () => {
     <>
       <div className="flex justify-between items-center">
         <h2 className="text-3xl font-semibold">Courses Category</h2>
-        <div className="flex gap-4">
-          <MoveLeft />
-          <MoveRight />
-        </div>
+        <ArrowNavigation />
       </div>
       <div className="flex justify-evenly flex-wrap gap-6">
         {categories.map((category) => (

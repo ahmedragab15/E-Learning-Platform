@@ -1,5 +1,5 @@
-import { MoveLeft, MoveRight } from "lucide-react";
 import CourseCard from "./CourseCard";
+import ArrowNavigation from "@/components/shared/ArrowNavigation";
 
 const courses: ICourse[] = [
   {
@@ -55,17 +55,16 @@ const courses: ICourse[] = [
 const RecomendationCourses = () => {
   return (
     <>
-      <h2 className="text-3xl font-semibold">Recomendation Courses</h2>
-      <p className="text-gray-600 max-w-96 leading-tight">You can find recomendation courses from all course categories and quickly learn more</p>
-      <div className="flex justify-evenly flex-wrap gap-6">
+      <div className="space-y-2">
+        <h2 className="text-3xl font-semibold">Recomendation Courses</h2>
+        <p className="text-gray-600 max-w-96 leading-tight">You can find recomendation courses from all course categories and quickly learn more</p>
+      </div>
+      <div className="flex justify-evenly flex-wrap gap-6 my-4">
         {courses.map((course) => (
           <CourseCard key={course.id} course={course} />
         ))}
       </div>
-      <div className="flex gap-4 justify-center">
-        <MoveLeft />
-        <MoveRight />
-      </div>
+      <ArrowNavigation />
     </>
   );
 };

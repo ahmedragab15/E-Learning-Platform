@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React from "react";
-import { Badge } from "../ui/badge";
+import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 type CourseCardProps = {
   course: ICourse;
 };
