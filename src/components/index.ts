@@ -1,0 +1,12 @@
+export { default as VisitorHome } from "./home/visitorHome/VisitorHome";
+export { default as Hero } from "./home/visitorHome/Hero";
+export { default as CoursesCategory } from "./home/visitorHome/CoursesCategory";
+export { default as CategoryCard } from "./home/visitorHome/CategoryCard";
+export { default as RecomendationCourses } from "./home/visitorHome/RecomendationCourses";
+export { default as CourseCard } from "./home/visitorHome/CourseCard";
+export { default as WhyUs } from "./home/visitorHome/WhyUs";
+export { default as Reviews } from "./home/visitorHome/Reviews";
+export { default as ReviewCard } from "./home/visitorHome/ReviewCard";
+export { default as AllNews } from "./home/visitorHome/AllNews";
+export { default as NewsCard } from "./home/visitorHome/NewsCard";
+export { default as HomeBanner } from "./home/visitorHome/HomeBanner";

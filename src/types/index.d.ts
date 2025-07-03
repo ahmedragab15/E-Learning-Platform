@@ -24,3 +24,14 @@ declare interface IReview {
   rating: string;
   review: string;
 }
+
+declare interface INews {
+  id: number;
+  title: string;
+  image: string;
+  category: string;
+  description: string;
+  reads: string;
+  publishDate: string;
+  badgeBg: string;
+}

@@ -1,5 +1,4 @@
-import VisitorHome from "@/components/home/visitorHome/VisitorHome";
-import React from "react";
+import { VisitorHome } from "@/components/index";
 
 const Home = () => {
   return (

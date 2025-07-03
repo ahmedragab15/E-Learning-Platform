@@ -1,67 +1,62 @@
-import CourseCard from "./CourseCard";
+import NewsCard from "./NewsCard";
 import ArrowNavigation from "@/components/shared/ArrowNavigation";
 
-const courses: ICourse[] = [
+const news: INews[] = [
   {
     id: 1,
-    title: "Product Manager",
+    title: "How is business during a pandemic?",
     image:
       "https://images.unsplash.com/photo-1664575602276-acd073f104c1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     category: "Business",
-    duration: "3 Months (20 Hours/Week)",
-    price: "89",
-    ratingCount: "3.5",
-    ratingTotal: "239",
+    description: "How do businesses survive during a pandemic in order to remain stable and efficient",
+    reads: "300",
+    publishDate: "16 May, 2023",
     badgeBg: "bg-blue-500",
   },
   {
     id: 2,
-    title: "UIUX Design",
+    title: "You must know about Artificial Intelligence",
     image:
       "https://plus.unsplash.com/premium_photo-1661770132071-026114fffb61?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "Design",
-    duration: "3 Months (20 Hours/Week)",
-    price: "89",
-    ratingCount: "4.5",
-    ratingTotal: "239",
+    category: "Technology",
+    description: "The development of industrial technology that is getting faster is currently a trend regarding artificial intelligence",
+    reads: "400",
+    publishDate: "16 May, 2023",
     badgeBg: "bg-orange-500",
   },
   {
     id: 3,
-    title: "Next Framework",
+    title: "How is business during a pandemic?",
     image:
       "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     category: "Progamming",
-    duration: "3 Months (20 Hours/Week)",
-    price: "89",
-    ratingCount: "4.5",
-    ratingTotal: "239",
+    description: "How do businesses survive during a pandemic in order to remain stable and efficient",
+    reads: "150",
+    publishDate: "16 May, 2023",
     badgeBg: "bg-purple-500",
   },
   {
     id: 4,
-    title: "Cloud Computing",
+    title: "The Importance of Design Thinking",
     image:
       "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "Technology",
-    duration: "3 Months (20 Hours/Week)",
-    price: "89",
-    ratingCount: "4.5",
-    ratingTotal: "239",
+    category: "Design",
+    description: "Now the design thinking method is not only used for a designer but can be used by business people",
+    reads: "350",
+    publishDate: "16 May, 2023",
     badgeBg: "bg-green-500",
   },
 ];
 
-const RecomendationCourses = () => {
+const AllNews = () => {
   return (
     <>
       <div className="space-y-2">
-        <h2 className="text-3xl font-semibold">Recomendation Courses</h2>
-        <p className="text-gray-600 max-w-96 leading-tight">You can find recomendation courses from all course categories and quickly learn more</p>
+        <h2 className="text-3xl font-semibold">News for you</h2>
       </div>
       <div className="flex justify-evenly flex-wrap gap-6 my-6">
-        {courses.map((course) => (
-          <CourseCard key={course.id} course={course} />
+        {news.map((n) => (
+          <NewsCard key={n.id} News={n} />
         ))}
       </div>
       <ArrowNavigation />
@@ -69,4 +64,4 @@ const RecomendationCourses = () => {
   );
 };
 
-export default RecomendationCourses;
+export default AllNews;
