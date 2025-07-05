@@ -1,7 +1,4 @@
-import { Courses } from '@/components'
-import Heading from '@/components/shared/Heading'
-import { SelectMenu } from '@/components/shared/SelectMenu';
-import React from 'react'
+import { Courses, SelectMenu, Heading } from "@/components";
 
 const categories = ['Business', 'Design', 'Programming', 'Health'];
 

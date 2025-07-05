@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 interface IProps {
@@ -7,7 +5,7 @@ interface IProps {
   options:  string [];
 }
 
-export function SelectMenu({ label , options = [] }: IProps) {
+const SelectMenu =({ label , options = [] }: IProps)=> {
   return (
     <Select>
       <SelectTrigger className="w-[180px]">
@@ -26,3 +24,4 @@ export function SelectMenu({ label , options = [] }: IProps) {
     </Select>
   );
 }
+export default SelectMenu;

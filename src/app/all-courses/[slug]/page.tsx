@@ -1,83 +1,14 @@
-import { Reviews } from "@/components";
-import InstructorCard from "@/components/InstructorCard";
-import LessonsAccordion from "@/components/LessonsAccordion";
-import RatingProgress from "@/components/RatingProgress";
+import { Reviews, InstructorCard, LessonsAccordion, RatingProgress, Heading } from "@/components";
 import { ButtonArrowNavigation } from "@/components/shared/ArrowNavigation";
-import Heading from "@/components/shared/Heading";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { courses } from "@/dummyData";
+import { courseDetails, courses, lessons } from "@/dummyData";
 import { Captions, CircleDollarSign, Star } from "lucide-react";
 import Image from "next/image";
 
 const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
   const chossen = courses.find((course) => course.slug === slug);
-
-  const courseDetails: ICourseDetails = {
-    detailDescription:
-      "UI design on a product aims to enhance the appearance of the product. While the UX design is designed to provide a pleasant experience when using the product. The focus of UI design is the beauty of the appearance, while the focus of UX design is the satisfaction of using the product.",
-    whatYouWillLearn: [
-      {
-        title: "User Research",
-        description:
-          "someone who works to find information from target users (users) about their behavior and needs which is then analyzed to produce a design that fits the user's needs. in this section you will learn about:",
-        list: ["Empathize", "Problem solving method", "Usability Testing"],
-      },
-      {
-        title: "Wireframe",
-        description:
-          "a framework that serves to make the layout of a website to suit the client's wishes before entering the design or coding process.",
-        list: ["Lo Fidelity", "Hight Fidelity"],
-      },
-      {
-        title: "Figma Basic",
-        description: "A tool for a UIUX Designer to do their job",
-        list: ["Get to know the tools", "Try out tools"],
-      },
-    ],
-    courseRating: {
-      average: 4.7,
-      totalReviews: 100,
-      breakdown: [
-        { stars: 5, count: 80 },
-        { stars: 4, count: 15 },
-        { stars: 3, count: 5 },
-        { stars: 2, count: 2 },
-        { stars: 1, count: 1 },
-      ],
-    },
-  };
-
-  const lessons: Ilessons[] = [
-    {
-      topic: { title: "User Research", duration: "3 Hours, 30 Minutes" },
-      lesson: [
-        { title: "Lesson 1", duration: "20 min" },
-        { title: "Lesson 2", duration: "30 min" },
-        { title: "Lesson 3", duration: "30 min" },
-        { title: "Lesson 4", duration: "30 min" },
-      ],
-    },
-    {
-      topic: { title: "Wireframe", duration: "3 Hours, 30 Minutes" },
-      lesson: [
-        { title: "Lesson 5", duration: "20 min" },
-        { title: "Lesson 6", duration: "30 min" },
-        { title: "Lesson 7", duration: "30 min" },
-        { title: "Lesson 8", duration: "30 min" },
-      ],
-    },
-    {
-      topic: { title: "Figma Basic", duration: "3 Hours, 30 Minutes" },
-      lesson: [
-        { title: "Lesson 9", duration: "20 min" },
-        { title: "Lesson 10", duration: "30 min" },
-        { title: "Lesson 11", duration: "30 min" },
-        { title: "Lesson 12", duration: "30 min" },
-      ],
-    },
-  ];
 
   return (
     <>
@@ -94,7 +25,7 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
             <p className="text-sm md:text-lg text-gray-600 max-w-full">{chossen?.description}</p>
             <div className="space-x-6">
               <Button>Join Now</Button>
-              <Button variant="outline" className="text-primary border-primary bg-transparent">
+              <Button variant="outline" className="text-primary border-primary bg-transparent hover:text-white hover:bg-primary">
                 Add to Cart
               </Button>
             </div>
@@ -139,7 +70,6 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
           </div>
         </div>
       </section>
-
       <section className="bg-white px-6 md:px-16 py-10">
         <div className="container mx-auto space-y-6 my-6 ">
           <div className="flex flex-col justify-evenly gap-4">
@@ -173,7 +103,6 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
           </div>
         </div>
       </section>
-
       <section className=" px-6 md:px-16 py-10">
         <div className="container mx-auto space-y-6 my-6 ">
           <h2 className="text-3xl font-semibold max-w-96 leading-8">List of Lessons</h2>
@@ -206,10 +135,7 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
       </section>
       <section className="px-6 md:px-16 py-10">
         <div className="container mx-auto space-y-6 my-6">
-          <Reviews
-            heading={<Heading title="Best reviews" />}
-            navigation={<ButtonArrowNavigation />}
-          />
+          <Reviews heading={<Heading title="Best reviews" />} navigation={<ButtonArrowNavigation />} />
         </div>
       </section>
     </>

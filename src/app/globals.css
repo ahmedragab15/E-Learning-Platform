@@ -121,8 +121,12 @@
   }
 }
 
-.banner-image {
+.home-banner-image {
   background: url(../../public//images/home_banner.png) no-repeat center / cover;
+}
+
+.about-banner-image {
+  background: url(../../public//images/about-page/banner.png) no-repeat center / cover;
 }
 
 .userHome-Hero-image {

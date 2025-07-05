@@ -160,3 +160,74 @@ export const categories: ICategory[] = [
 
 export const selectedCat = "Business";
 
+export const courseDetails: ICourseDetails = {
+  detailDescription:
+    "UI design on a product aims to enhance the appearance of the product. While the UX design is designed to provide a pleasant experience when using the product. The focus of UI design is the beauty of the appearance, while the focus of UX design is the satisfaction of using the product.",
+  whatYouWillLearn: [
+    {
+      title: "User Research",
+      description:
+        "someone who works to find information from target users (users) about their behavior and needs which is then analyzed to produce a design that fits the user's needs. in this section you will learn about:",
+      list: ["Empathize", "Problem solving method", "Usability Testing"],
+    },
+    {
+      title: "Wireframe",
+      description:
+        "a framework that serves to make the layout of a website to suit the client's wishes before entering the design or coding process.",
+      list: ["Lo Fidelity", "Hight Fidelity"],
+    },
+    {
+      title: "Figma Basic",
+      description: "A tool for a UIUX Designer to do their job",
+      list: ["Get to know the tools", "Try out tools"],
+    },
+  ],
+  courseRating: {
+    average: 4.7,
+    totalReviews: 100,
+    breakdown: [
+      { stars: 5, count: 80 },
+      { stars: 4, count: 15 },
+      { stars: 3, count: 5 },
+      { stars: 2, count: 2 },
+      { stars: 1, count: 1 },
+    ],
+  },
+};
+
+export const lessons: Ilessons[] = [
+  {
+    topic: { title: "User Research", duration: "3 Hours, 30 Minutes" },
+    lesson: [
+      { title: "Lesson 1", duration: "20 min" },
+      { title: "Lesson 2", duration: "30 min" },
+      { title: "Lesson 3", duration: "30 min" },
+      { title: "Lesson 4", duration: "30 min" },
+    ],
+  },
+  {
+    topic: { title: "Wireframe", duration: "3 Hours, 30 Minutes" },
+    lesson: [
+      { title: "Lesson 5", duration: "20 min" },
+      { title: "Lesson 6", duration: "30 min" },
+      { title: "Lesson 7", duration: "30 min" },
+      { title: "Lesson 8", duration: "30 min" },
+    ],
+  },
+  {
+    topic: { title: "Figma Basic", duration: "3 Hours, 30 Minutes" },
+    lesson: [
+      { title: "Lesson 9", duration: "20 min" },
+      { title: "Lesson 10", duration: "30 min" },
+      { title: "Lesson 11", duration: "30 min" },
+      { title: "Lesson 12", duration: "30 min" },
+    ],
+  },
+];
+
+export const achievements: IAchievements = {
+  courses: 549,
+  mentor: 120,
+  courseEnroll: 498,
+  activeUsers: 1200,
+};

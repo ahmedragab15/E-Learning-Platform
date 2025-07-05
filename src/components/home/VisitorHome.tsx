@@ -1,4 +1,4 @@
-import { HeroVisitor, CoursesCategories, Courses, WhyUs, Reviews, AllNews, HomeBanner } from "@/components/index";
+import { HeroVisitor, CoursesCategories, Courses, WhyUs, Reviews, AllNews, Banner } from "@/components/index";
 import {ArrowNavigation} from "@/components/shared/ArrowNavigation";
 import Heading from "@/components/shared/Heading";
 
@@ -56,7 +56,11 @@ const VisitorHome = () => {
 
       <section className="bg-white px-6 md:px-16 py-10">
         <div className="container mx-auto space-y-6">
-          <HomeBanner />
+          <Banner
+            image="home-banner-image"
+            title="Prove it right now"
+            description="What are you waiting for? let's join us and get new knowledge and prove it now"
+          />
         </div>
       </section>
     </>

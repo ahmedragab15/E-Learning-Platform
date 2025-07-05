@@ -72,3 +72,10 @@ declare interface INews {
   publishDate: string;
   badgeBg: string;
 }
+
+declare interface IAchievements {
+  courses: number;
+  mentor: number;
+  courseEnroll: number;
+  activeUsers: number;
+}
