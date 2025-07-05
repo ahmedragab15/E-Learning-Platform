@@ -1,6 +1,6 @@
 import { BriefcaseMedical, ChartPie, CodeXml, Palette } from "lucide-react";
 
-export const isUser = true;
+export const isUser = false;
 
 export const news: INews[] = [
   {
@@ -159,3 +159,4 @@ export const categories: ICategory[] = [
 ];
 
 export const selectedCat = "Business";
+

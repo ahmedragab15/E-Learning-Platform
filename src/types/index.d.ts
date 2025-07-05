@@ -11,12 +11,38 @@ declare interface ICategory {
   icon: React.ReactNode;
 }
 
+interface IwhatYouWillLearn {
+  title: string;
+  description: string;
+  list: string[];
+}
+
+declare interface ICourseDetails {
+  detailDescription: string;
+  whatYouWillLearn: IwhatYouWillLearn[];
+  courseRating: {
+    average: number;
+    totalReviews: number;
+    breakdown: { stars: number; count: number }[];
+  };
+}
+
+interface ILesson {
+  title: string;
+  duration: string;
+}
+
+declare interface Ilessons {
+  topic: ILesson;
+  lesson: ILesson[];
+}
+
 declare interface ICourse {
   id: number;
   image: string;
   title: string;
   description: string;
-  slug:string;
+  slug: string;
   category: string;
   duration: string;
   instructor: string;

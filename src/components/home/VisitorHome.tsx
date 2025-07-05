@@ -39,7 +39,12 @@ const VisitorHome = () => {
 
       <section className="px-6 md:px-16 py-10">
         <div className="container mx-auto space-y-6 my-6">
-          <Reviews />
+          <Reviews
+            heading={
+              <Heading title="What our students say" description="Find out what experiences and what they have to say about the course with us" />
+            }
+            navigation={<ArrowNavigation />}
+          />
         </div>
       </section>
 
