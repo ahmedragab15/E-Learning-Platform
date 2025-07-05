@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { images } from '@/components/shared/Images';
+import { images } from "@/components/shared/Images";
 
-const Hero = () => {
+const HeroVisitor = () => {
   return (
     <>
       <div className="flex flex-col gap-6">
@@ -25,6 +25,6 @@ const Hero = () => {
       </div>
     </>
   );
-}
+};
 
-export default Hero
+export default HeroVisitor;

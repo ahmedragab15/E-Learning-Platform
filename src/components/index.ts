@@ -1,6 +1,6 @@
 export { default as VisitorHome } from "./home/VisitorHome";
 export { default as UserHome } from "./home/UserHome";
-export { default as Hero } from "./home/homeComponents/Hero";
+export { default as HeroVisitor } from "./home/homeComponents/HeroVisitor";
 export { default as CoursesCategories } from "./home/homeComponents/CoursesCategories";
 export { default as CategoryCard } from "./home/homeComponents/CategoryCard";
 export { default as Courses } from "./home/homeComponents/Courses";

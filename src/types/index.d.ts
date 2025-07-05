@@ -1,3 +1,10 @@
+declare interface ActiveLinkProps {
+  href: string;
+  children: React.ReactNode;
+  className?: string;
+  activeClassName?: string;
+}
+
 declare interface ICategory {
   id: number;
   title: string;
@@ -8,8 +15,12 @@ declare interface ICourse {
   id: number;
   image: string;
   title: string;
+  description: string;
+  slug:string;
   category: string;
   duration: string;
+  instructor: string;
+  translation: string;
   price: string;
   ratingCount: string;
   ratingTotal: string;

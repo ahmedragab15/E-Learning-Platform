@@ -124,3 +124,7 @@
 .banner-image {
   background: url(../../public//images/home_banner.png) no-repeat center / cover;
 }
+
+.userHome-Hero-image {
+  background: url(../../public//images/user_hero_image.png) no-repeat center / cover;
+}

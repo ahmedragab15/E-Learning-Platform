@@ -15,9 +15,9 @@ const Footer = () => {
           <p>Online learning platform anytime and anywhere</p>
         </div>
         <div className="flex gap-4 lg:gap-12">
-          <Facebook />
-          <Twitter />
-          <Instagram />
+          <Facebook className="rounded-full p-2 bg-primary text-white hover:text-primary hover:bg-white/80 cursor-pointer" size={40} />
+          <Twitter className="rounded-full p-2 bg-primary text-white hover:text-primary hover:bg-white/80 cursor-pointer" size={40} />
+          <Instagram className="rounded-full p-2 bg-primary text-white hover:text-primary hover:bg-white/80 cursor-pointer" size={40} />
         </div>
       </div>
       <div className="space-y-6">

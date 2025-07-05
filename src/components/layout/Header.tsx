@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Input } from "../ui/input";
 import { Bell, Menu, Search, ShoppingCart, UserRound } from "lucide-react";
 import { Button } from "../ui/button";
+import ActiveLink from "../shared/ActiveLink";
 
 const Header = () => {
   return (
@@ -17,42 +18,46 @@ const Header = () => {
       <nav className="hidden md:block">
         <ul className="flex items-center gap-6 px-6">
           <li className="relative">
-            <Link
-              href="#"
-              className="font-medium duration-200 hover:after:absolute after:-bottom-3 after:left-1/2 after:w-2 after:h-2 after:bg-primary after:rounded-full hover:text-primary active:text-primary"
+            <ActiveLink
+              href="/"
+              className="font-medium duration-200 hover:text-primary"
+              activeClassName="text-primary after:absolute after:-bottom-3 after:left-1/2 after:w-2 after:h-2 after:bg-primary after:rounded-full"
             >
               Home
-            </Link>
+            </ActiveLink>
           </li>
           <li className="relative">
-            <Link
-              href="#"
-              className="font-medium duration-200 hover:after:absolute after:-bottom-3 after:left-1/2 after:w-2 after:h-2 after:bg-primary after:rounded-full hover:text-primary active:text-primary"
+            <ActiveLink
+              href="/courses-category"
+              className="font-medium duration-200 hover:text-primary"
+              activeClassName="text-primary after:absolute after:-bottom-3 after:left-1/2 after:w-2 after:h-2 after:bg-primary after:rounded-full"
             >
               Category
-            </Link>
+            </ActiveLink>
           </li>
           <li className="relative">
-            <Link
-              href="#"
-              className="font-medium duration-200 hover:after:absolute after:-bottom-3 after:left-1/2 after:w-2 after:h-2 after:bg-primary after:rounded-full hover:text-primary active:text-primary"
+            <ActiveLink
+              href="/all-courses"
+              className="font-medium duration-200 hover:text-primary"
+              activeClassName="text-primary after:absolute after:-bottom-3 after:left-1/2 after:w-2 after:h-2 after:bg-primary after:rounded-full"
             >
               Courses
-            </Link>
+            </ActiveLink>
           </li>
           <li className="relative">
-            <Link
+            <ActiveLink
               href="#"
-              className="font-medium duration-200 hover:after:absolute after:-bottom-3 after:left-1/2 after:w-2 after:h-2 after:bg-primary after:rounded-full hover:text-primary active:text-primary"
+              className="font-medium duration-200 hover:text-primary"
+              activeClassName="text-primary after:absolute after:-bottom-3 after:left-1/2 after:w-2 after:h-2 after:bg-primary after:rounded-full"
             >
               Tech With Us
-            </Link>
+            </ActiveLink>
           </li>
         </ul>
       </nav>
       <div className="flex items-center relative lg:border-1 border-gray-300 rounded-2xl lg:flex-1 ml-auto">
         <Input placeholder="Search Courses..." className="hidden lg:block placeholder:text-gray-400 placeholder:font-medium" />
-        <Button size={"icon"} variant={"outline"} className="hidden md:block absolute right-0 border-0 bg-white lg:bg-transparent">
+        <Button size={"icon"} variant={"outline"} className="hidden md:block absolute right-0 border-0 bg-white lg:bg-transparent shadow-none">
           <Search className="text-primary" />
         </Button>
       </div>

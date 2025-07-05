@@ -1,12 +1,8 @@
 import { UserHome, VisitorHome } from "@/components/index";
+import { isUser } from "@/dummyData";
 
 const Home = () => {
-  const user = false;
-  return (
-    <>
-      {user ? <UserHome /> : <VisitorHome />}
-    </>
-  );
+  return <>{isUser ? <UserHome /> : <VisitorHome />}</>;
 };
 
 export default Home;
