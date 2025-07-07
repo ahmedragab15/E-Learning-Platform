@@ -76,16 +76,17 @@ const Footer = () => {
           <h3 className="font-medium">Subscribe Me</h3>
           <div className="flex flex-col md:flex-row items-center max-w-xs gap-y-4">
             <Input placeholder="Enter Email Address" className=" bg-white placeholder:text-gray-400 placeholder:font-medium" />
-            <Button fullwidth>Subscribe</Button>
+            <Button className="w-full md:w-fit">Subscribe</Button>
           </div>
         </div>
       </div>
       <div>
-        <p className="text-center py-4">
-          Made By{" "}
+        <p className="text-center p-4">
+          Made By
           <a href="https://ahmedragab.netlify.app" target="_blank" className="font-semibold">
-            Ahmed Ragab
-          </a>{" "}
+            {" "}
+            Ahmed Ragab{" "}
+          </a>
           © 2025 All Rights Reserved
         </p>
       </div>

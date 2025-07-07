@@ -1,6 +1,7 @@
 export { default as VisitorHome } from "@/components/home/VisitorHome";
 export { default as UserHome } from "@/components/home/UserHome";
 export { default as HeroVisitor } from "@/components/home/homeComponents/HeroVisitor";
+export { default as HeroUser } from "@/components/home/homeComponents/HeroUser";
 export { default as WhyUs } from "@/components/home/homeComponents/WhyUs";
 export { default as AllNews } from "@/components/home/homeComponents/AllNews";
 export { default as NewsCard } from "@/components/home/homeComponents/NewsCard";
@@ -18,3 +19,4 @@ export { default as LessonsAccordion } from "@/components/LessonsAccordion";
 export { default as RatingProgress } from "@/components/RatingProgress";
 export { default as Heading } from "@/components/shared/Heading";
 export { default as SelectMenu } from "@/components/shared/SelectMenu";
+export { default as Container } from "@/components/shared/Container";

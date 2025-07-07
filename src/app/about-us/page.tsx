@@ -1,4 +1,4 @@
-import { Banner } from "@/components";
+import { Banner, Container } from "@/components";
 import { images } from "@/components/shared/Images";
 import { Button } from "@/components/ui/button";
 import { achievements } from "@/dummyData";
@@ -8,8 +8,8 @@ import Image from "next/image";
 const AboutUs = () => {
   return (
     <>
-      <section className="bg-white px-6 md:px-16 py-10">
-        <div className="container mx-auto space-y-6 my-6 flex flex-col-reverse md:flex-row justify-evenly gap-4">
+      <Container background="bg-white">
+        <div className="flex flex-col-reverse md:flex-row justify-evenly md:gap-4">
           <div className="content flex flex-col justify-around gap-4">
             <div className="space-y-4">
               <h2 className="text-3xl font-semibold">Our Vision</h2>
@@ -31,9 +31,10 @@ const AboutUs = () => {
             </div>
           </div>
         </div>
-      </section>
-      <section className=" px-6 md:px-16 py-10">
-        <div className="container mx-auto space-y-6 my-6 flex flex-col md:flex-row justify-evenly gap-4">
+      </Container>
+
+      <Container>
+        <div className=" flex flex-col md:flex-row justify-evenly gap-4">
           <div>
             <div className="grid grid-cols-3 grid-rows-2 gap-4">
               <Image src={images.aboutImage4} alt="about image" width={570} height={200} className="col-span-3 max-w-full rounded-md " />
@@ -55,26 +56,26 @@ const AboutUs = () => {
             </Button>
           </div>
         </div>
-      </section>
-      <section className="bg-white px-6 md:px-16 py-10">
-        <div className="container mx-auto space-y-4 my-6 flex flex-col items-center">
+      </Container>
+
+      <Container background="bg-white">
+        <div className="flex flex-col items-center gap-2">
           <h2 className="text-3xl font-semibold">Our Achievements</h2>
-          <p className=" text-gray-600 font-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <div className="flex justify-evenly gap-8">
+          <p className="text-sm md:text-base text-gray-600 font-medium text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <div className="flex flex-col md:flex-row justify-evenly gap-4 md:gap-14">
             {Object.entries(achievements).map(([key, value], index) => (
               <div className="flex flex-col items-center gap-2" key={index}>
-                <h3 className="text-5xl font-semibold">{value}+</h3>
+                <h3 className="text-4xl md:text-5xl font-semibold">{value}+</h3>
                 <h3 className="text-gray-600 font-medium">{camelCaseToLabel(key)}</h3>
               </div>
             ))}
           </div>
         </div>
-      </section>
-      <section className=" px-6 md:px-16 py-10">
-        <div className="container mx-auto space-y-6">
-          <Banner image="about-banner-image" title="Let's Join Us" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
-        </div>
-      </section>
+      </Container>
+
+      <Container background="bg-white">
+        <Banner image="about-banner-image" title="Let's Join Us" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
+      </Container>
     </>
   );
 };
