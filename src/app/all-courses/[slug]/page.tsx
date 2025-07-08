@@ -26,7 +26,7 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
             <p className="text-sm md:text-lg text-gray-600 max-w-full">{chossen?.description}</p>
             <div className="space-x-6">
               <Button>Join Now</Button>
-              <Button variant="outline" className="text-primary border-primary bg-transparent hover:text-white hover:bg-primary">
+              <Button variant="outline">
                 Add to Cart
               </Button>
             </div>

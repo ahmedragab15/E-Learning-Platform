@@ -19,7 +19,7 @@ const AboutUs = () => {
                 ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
               </p>
             </div>
-            <Button variant={"outline"} className="border-primary w-fit text-primary bg-transparent hover:text-white hover:bg-primary">
+            <Button variant={"outline"} className="w-fit">
               Learn More
             </Button>
           </div>
@@ -51,7 +51,7 @@ const AboutUs = () => {
                 ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
               </p>
             </div>
-            <Button variant={"outline"} className="border-primary w-fit text-primary bg-transparent hover:text-white hover:bg-primary">
+            <Button variant={"outline"} className="w-fit">
               Learn More
             </Button>
           </div>

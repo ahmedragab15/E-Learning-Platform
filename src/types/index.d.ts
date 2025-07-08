@@ -104,3 +104,20 @@ interface ISocial{
   url: string;
   icon: React.ReactNode;
 }
+
+declare interface IUser {
+  name: string;
+  email: string;
+  avatar: string;
+  allCourses: IProgressCourse[];
+}
+
+declare interface IProgressCourse {
+  id: number;
+  image: string;
+  title: string;
+  slug: string;
+  category: string;
+  allLessons: number;
+  finishedLessons: number;
+}

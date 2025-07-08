@@ -56,14 +56,16 @@ const Header = () => {
       </nav>
       <div className="flex items-center relative lg:border-1 border-gray-300 rounded-2xl lg:flex-1 ml-auto">
         <Input placeholder="Search Courses..." className="hidden lg:block placeholder:text-gray-400 placeholder:font-medium" />
-        <Button size={"icon"} variant={"outline"} className="hidden md:block absolute right-0 border-0 bg-white lg:bg-transparent shadow-none">
+        <Button size={"icon"} variant={"outline"} className="hidden md:block absolute right-0 border-0 hover:bg-transparent bg-white lg:bg-transparent shadow-none">
           <Search className="text-primary" />
         </Button>
       </div>
       <div className="flex items-center gap-1 md:gap-4">
         <ShoppingCart className="text-primary  p-1 hover:bg-primary hover:text-white rounded-full" size={30} />
         <Bell className="text-primary hover:bg-primary  p-1 hover:text-white rounded-full" size={30} />
-        <UserRound className="text-primary hover:bg-primary  p-1 hover:text-white rounded-full" size={30} />
+        <Link href={"/account"}>
+          <UserRound className="text-primary hover:bg-primary  p-1 hover:text-white rounded-full" size={30} />
+        </Link>
       </div>
       <Menu className="md:hidden text-primary hover:bg-primary  p-1 hover:text-white rounded-full" size={30} />
     </header>

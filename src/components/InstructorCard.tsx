@@ -24,7 +24,7 @@ const InstructorCard = ({ instructor }: InstructorCardProps) => {
             <p className="text-gray-700 text-sm ">{instructor.headline}</p>
           </div>
         </div>
-        <Button variant={"outline"} className="border-primary text-primary hover:text-white hover:bg-primary">
+        <Button variant={"outline"}>
           <Link href={`/instructors/${instructor.slug}`}>View Profile</Link>
         </Button>
       </div>

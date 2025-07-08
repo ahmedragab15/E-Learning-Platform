@@ -20,10 +20,10 @@ export const ArrowNavigation = () => {
 export const ChevronNavigation = () => {
   return (
     <div className="flex gap-4 justify-center">
-      <Button size={"icon"} variant={"outline"} className="border-primary text-primary hover:text-white hover:bg-primary" asChild>
+      <Button size={"icon"} variant={"outline"} asChild>
         <ChevronLeft />
       </Button>
-      <Button size={"icon"} variant={"outline"} className="border-primary text-primary hover:text-white hover:bg-primary" asChild>
+      <Button size={"icon"} variant={"outline"} asChild>
         <ChevronRight />
       </Button>
     </div>

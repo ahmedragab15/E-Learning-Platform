@@ -15,7 +15,7 @@ const HeroVisitor = () => {
         </p>
         <div className="space-x-4">
           <Button className=" md:text-lg md:p-6">Get Started</Button>
-          <Button variant="outline" className=" md:text-lg md:p-6 border-gray-300">
+          <Button variant="outline" className="md:text-lg md:p-6">
             Join Now
           </Button>
         </div>

@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 const ActiveLink = ({ href, children, className, activeClassName = "active" }: ActiveLinkProps) => {
   const pathname = usePathname();
-  const isActive = pathname === href || pathname.startsWith(`${href}/`);
+  const isActive = pathname === href;
 
   return (
     <Link href={href} className={cn(className, isActive && activeClassName)}>
