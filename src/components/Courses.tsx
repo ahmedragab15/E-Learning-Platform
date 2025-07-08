@@ -1,7 +1,6 @@
-import { courses } from "@/dummyData";
 import CourseCard from "./CourseCard";
 
-const Courses = ({ heading, navigation = "" }: { heading: React.ReactNode; navigation?: React.ReactNode }) => {
+const Courses = ({ heading, navigation = "", courses }: { heading: React.ReactNode; navigation?: React.ReactNode; courses: ICourse[] }) => {
   return (
     <>
       {heading}

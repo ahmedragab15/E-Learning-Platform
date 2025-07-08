@@ -1,14 +1,15 @@
 import { Reviews, InstructorCard, LessonsAccordion, RatingProgress, Heading } from "@/components";
-import { ButtonArrowNavigation } from "@/components/shared/ArrowNavigation";
+import { ChevronNavigation } from "@/components/shared/ArrowNavigation";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { courseDetails, courses, lessons } from "@/dummyData";
+import { courseDetails, allCourses, lessons } from "@/dummyData";
 import { Captions, CircleDollarSign, Star } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
-  const chossen = courses.find((course) => course.slug === slug);
+  const chossen = allCourses.find((course) => course.slug === slug);
 
   return (
     <>
@@ -47,7 +48,9 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
               </div>
               <div className="space-y-2">
                 <h3 className="text-md text-gray-600 font-medium">Instructor</h3>
-                <h4 className="text-sm font-semibold text-primary underline">{chossen?.instructor}</h4>
+                <h4 className="text-sm font-semibold text-primary underline">
+                  <Link href={`/instructors/${chossen?.instructorSlug}`}>{chossen?.instructor}</Link>
+                </h4>
               </div>
               <div className="space-y-2">
                 <h3 className="text-md text-gray-600 font-medium">Translation Video</h3>
@@ -129,13 +132,13 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
           </div>
           <div className="flex-1">
             <h2 className="text-3xl font-semibold">Instructor</h2>
-            <InstructorCard />
+            <InstructorCard instructor={courseDetails.instructor} />
           </div>
         </div>
       </section>
       <section className="px-6 md:px-16 py-10">
         <div className="container mx-auto space-y-6 my-6">
-          <Reviews heading={<Heading title="Best reviews" />} navigation={<ButtonArrowNavigation />} />
+          <Reviews heading={<Heading title="Best reviews" />} navigation={<ChevronNavigation />} />
         </div>
       </section>
     </>

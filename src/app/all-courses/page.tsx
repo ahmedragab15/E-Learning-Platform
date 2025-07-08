@@ -1,17 +1,32 @@
-import { Courses, SelectMenu, Heading } from "@/components";
-
-const categories = ['Business', 'Design', 'Programming', 'Health'];
+"use client";
+import { Courses, SelectMenu, Heading, Container } from "@/components";
+import { allCourses, categories } from "@/dummyData";
+import { useState } from "react";
 
 const AllCourses = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
   return (
     <>
-      <section className=" px-6 md:px-16 py-10">
-        <div className="container mx-auto space-y-6 my-6">
-          <Courses heading={<Heading title="All Courses" cta={<SelectMenu label='Select a Category' options={categories} />} />} />
-        </div>
-      </section>
+      <Container>
+        <Courses
+          heading={
+            <Heading
+              title="All Courses"
+              cta={
+                <SelectMenu
+                  label="Select a Category"
+                  options={["All", ...categories.map((category) => category.title)]}
+                  selected={selectedCategory}
+                  setSelected={setSelectedCategory}
+                />
+              }
+            />
+          }
+          courses={selectedCategory === "All" ? allCourses : allCourses.filter((course) => course.category === selectedCategory)}
+        />
+      </Container>
     </>
   );
-}
+};
 
-export default AllCourses
+export default AllCourses;

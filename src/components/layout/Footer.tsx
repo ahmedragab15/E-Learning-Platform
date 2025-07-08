@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import logo from "../../../public/images/Logo.png";
+import { images } from "../shared/Images";
 import { Facebook, Twitter, Instagram } from "lucide-react";
 import Link from "next/link";
 import { Input } from "../ui/input";
@@ -12,7 +12,7 @@ const Footer = () => {
       <div className="px-16 min-h-96 py-8 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-7 gap-8 items-center justify-center">
         <div className="space-y-8 xl:col-span-2">
           <div className="space-y-2 ">
-            <Image src={logo} alt="logo" width={100} height={100} />
+            <Image src={images.logo} alt="logo" width={100} height={100} />
             <p>Online learning platform anytime and anywhere</p>
           </div>
           <div className="flex gap-4 lg:gap-12">

@@ -49,7 +49,7 @@ export const news: INews[] = [
   },
 ];
 
-export const courses: ICourse[] = [
+export const allCourses: ICourse[] = [
   {
     id: 1,
     title: "Product Manager",
@@ -59,6 +59,7 @@ export const courses: ICourse[] = [
       "https://images.unsplash.com/photo-1664575602276-acd073f104c1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     category: "Business",
     instructor: "Robert Anderson",
+    instructorSlug: "robert-anderson",
     translation: "English",
     duration: "3 Months (20 Hours/Week)",
     price: "89",
@@ -76,6 +77,7 @@ export const courses: ICourse[] = [
       "https://plus.unsplash.com/premium_photo-1661770132071-026114fffb61?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     category: "Design",
     instructor: "Robert Anderson",
+    instructorSlug: "robert-anderson",
     translation: "English",
     duration: "3 Months (20 Hours/Week)",
     price: "89",
@@ -90,8 +92,9 @@ export const courses: ICourse[] = [
     slug: "next-framework",
     image:
       "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "Progamming",
+    category: "Programming",
     instructor: "Robert Anderson",
+    instructorSlug: "robert-anderson",
     translation: "English",
     duration: "3 Months (20 Hours/Week)",
     price: "89",
@@ -108,6 +111,7 @@ export const courses: ICourse[] = [
       "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     category: "Technology",
     instructor: "Robert Anderson",
+    instructorSlug: "robert-anderson",
     translation: "English",
     duration: "3 Months (20 Hours/Week)",
     price: "89",
@@ -153,9 +157,9 @@ export const reviews: IReview[] = [
 export const categories: ICategory[] = [
   { id: 1, title: "Business", icon: <ChartPie /> },
   { id: 2, title: "Design", icon: <Palette /> },
-  { id: 3, title: "Progamming", icon: <CodeXml /> },
+  { id: 3, title: "Programming", icon: <CodeXml /> },
   { id: 4, title: "Health", icon: <BriefcaseMedical /> },
-  { id: 5, title: "Health", icon: <BriefcaseMedical /> },
+  { id: 5, title: "Technology", icon: <BriefcaseMedical /> },
 ];
 
 export const selectedCat = "Business";
@@ -163,6 +167,15 @@ export const selectedCat = "Business";
 export const courseDetails: ICourseDetails = {
   detailDescription:
     "UI design on a product aims to enhance the appearance of the product. While the UX design is designed to provide a pleasant experience when using the product. The focus of UI design is the beauty of the appearance, while the focus of UX design is the satisfaction of using the product.",
+  instructor: {
+    avatar:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    name: "Robert Anderson",
+    slug: "robert-anderson",
+    headline: "Senior UIUX Designer at Microsoft",
+    summary:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti.",
+  },
   whatYouWillLearn: [
     {
       title: "User Research",
@@ -231,3 +244,43 @@ export const achievements: IAchievements = {
   courseEnroll: 498,
   activeUsers: 1200,
 };
+
+export const instructorInfo: IInstructorInfo = {
+  avatar:
+    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  name: "Robert Anderson",
+  slug: "robert-anderson",
+  headline: "Senior UIUX Designer at Microsoft",
+  summary:
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti.",
+};
+
+export const instructors: IInstructorInfo[] = [
+  {
+    avatar:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    name: "Robert Anderson",
+    slug: "robert-anderson",
+    headline: "Senior UIUX Designer at Microsoft",
+    summary:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti.",
+  },
+  {
+    avatar:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    name: "John Doe",
+    slug: "john-doe",
+    headline: "Senior UIUX Designer at Microsoft",
+    summary:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti.",
+  },
+  {
+    avatar:
+      "https://plus.unsplash.com/premium_photo-1690407617542-2f210cf20d7e?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    name: "Emily Smith",
+    slug: "emily-smith",
+    headline: "Senior UIUX Designer at Microsoft",
+    summary:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti.",
+  },
+];

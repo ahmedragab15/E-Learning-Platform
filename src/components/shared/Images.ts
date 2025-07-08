@@ -1,4 +1,4 @@
-import HeroImage from "../../../public/images/hero_image.png"
+import HeroImage from "../../../public/images/hero_image.png";
 import whyUsImage from "../../../public/images/why_us.png";
 import homeBanner from "../../../public/images/home_banner.png";
 import contactImage from "../../../public/images/contact.png";
@@ -9,6 +9,10 @@ import aboutImage4 from "../../../public/images/about-page/4.png";
 import aboutImage5 from "../../../public/images/about-page/5.png";
 import aboutImage6 from "../../../public/images/about-page/6.png";
 import aboutbanner from "../../../public/images/about-page/banner.png";
+import logo from "../../../public/images/Logo.png";
+import logo2 from "../../../public/images/Logo2.png";
+import signImage from "../../../public/images/sign_images.png";
+import loginImage from "../../../public/images/login_images.png";
 
 export const images = {
   HeroImage,
@@ -21,5 +25,9 @@ export const images = {
   aboutImage4,
   aboutImage5,
   aboutImage6,
-  aboutbanner
+  aboutbanner,
+  logo,
+  logo2,
+  signImage,
+  loginImage,
 };

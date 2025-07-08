@@ -1,5 +1,5 @@
 import { Courses, CoursesCategories } from "@/components";
-import { ButtonArrowNavigation } from "@/components/shared/ArrowNavigation";
+import { ChevronNavigation } from "@/components/shared/ArrowNavigation";
 import Heading from "@/components/shared/Heading";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -22,13 +22,13 @@ const CoursesCategory = () => {
                 }
               />
             }
-            navigation={<ButtonArrowNavigation />}
+            navigation={<ChevronNavigation />}
           />
         </div>
       </section>
       <section className="px-6 md:px-16 py-10">
         <div className="container mx-auto space-y-6 my-6">
-          <Courses heading={<Heading title="You can also study other categories" />} navigation={<ButtonArrowNavigation />} />
+          <Courses heading={<Heading title="You can also study other categories" />} navigation={<ChevronNavigation />} />
         </div>
       </section>
     </>

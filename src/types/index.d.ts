@@ -19,6 +19,7 @@ interface IwhatYouWillLearn {
 
 declare interface ICourseDetails {
   detailDescription: string;
+  instructor: IInstructorInfo;
   whatYouWillLearn: IwhatYouWillLearn[];
   courseRating: {
     average: number;
@@ -46,6 +47,7 @@ declare interface ICourse {
   category: string;
   duration: string;
   instructor: string;
+  instructorSlug: string;
   translation: string;
   price: string;
   ratingCount: string;
@@ -78,4 +80,12 @@ declare interface IAchievements {
   mentor: number;
   courseEnroll: number;
   activeUsers: number;
+}
+
+declare interface IInstructorInfo{
+  name: string;
+  avatar: string;
+  slug: string;
+  headline: string;
+  summary: string;
 }

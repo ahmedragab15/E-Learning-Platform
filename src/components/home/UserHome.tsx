@@ -1,7 +1,8 @@
 import { CoursesCategories, Courses, Heading, HeroUser, Container } from "@/components/index";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ButtonArrowNavigation } from "../shared/ArrowNavigation";
+import { ChevronNavigation } from "../shared/ArrowNavigation";
+import { allCourses } from "@/dummyData";
 
 const UserHome = () => {
   return (
@@ -22,28 +23,30 @@ const UserHome = () => {
               }
             />
           }
-          navigation={<ButtonArrowNavigation />}
+          navigation={<ChevronNavigation />}
         />
       </Container>
 
       <Container>
         <Courses
+          courses={allCourses}
           heading={
             <Heading
               title="Recomendation Courses"
               description="You can find recomendation courses from all course categories and quickly learn more"
             />
           }
-          navigation={<ButtonArrowNavigation />}
+          navigation={<ChevronNavigation />}
         />
       </Container>
 
       <Container background="bg-white">
         <Courses
+          courses={allCourses}
           heading={
             <Heading title="Popular Course" description="You can find recomendation courses from all course categories and quickly learn more" />
           }
-          navigation={<ButtonArrowNavigation />}
+          navigation={<ChevronNavigation />}
         />
       </Container>
     </>

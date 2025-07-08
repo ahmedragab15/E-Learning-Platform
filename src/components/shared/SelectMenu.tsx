@@ -2,12 +2,14 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrig
 
 interface IProps {
   label: string;
-  options:  string [];
+  options: string[];
+  selected: string;
+  setSelected: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const SelectMenu =({ label , options = [] }: IProps)=> {
+const SelectMenu = ({ label, options = [], selected, setSelected }: IProps) => {
   return (
-    <Select>
+    <Select value={selected} onValueChange={setSelected}>
       <SelectTrigger className="w-[180px]">
         <SelectValue placeholder={`${label}`} />
       </SelectTrigger>
@@ -15,7 +17,7 @@ const SelectMenu =({ label , options = [] }: IProps)=> {
         <SelectGroup>
           <SelectLabel>{label}</SelectLabel>
           {options.map((option) => (
-            <SelectItem key={option} value={option}>
+            <SelectItem key={option} value={option} onClick={() => setSelected(option)}>
               {option[0].toUpperCase() + option.slice(1)}
             </SelectItem>
           ))}
@@ -23,5 +25,5 @@ const SelectMenu =({ label , options = [] }: IProps)=> {
       </SelectContent>
     </Select>
   );
-}
+};
 export default SelectMenu;

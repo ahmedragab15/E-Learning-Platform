@@ -1,18 +1,17 @@
 import Image from "next/image";
-import React from "react";
-import logo from "../../../public/images/Logo.png";
 import Link from "next/link";
 import { Input } from "../ui/input";
 import { Bell, Menu, Search, ShoppingCart, UserRound } from "lucide-react";
 import { Button } from "../ui/button";
 import ActiveLink from "../shared/ActiveLink";
+import { images } from "../shared/Images";
 
 const Header = () => {
   return (
     <header className="flex items-center justify-between lg:justify-evenly lg:gap-8 py-4 px-4 lg:px-10 bg-white border shadow rounded-4xl my-8 max-w-10/12 xl:max-w-8/12 mx-auto">
       <div>
         <Link href="/" className="cursor-pointer">
-          <Image src={logo} alt="logo" width={100} height={100} />
+          <Image src={images.logo} alt="logo" width={100} height={100} />
         </Link>
       </div>
       <nav className="hidden md:block">
