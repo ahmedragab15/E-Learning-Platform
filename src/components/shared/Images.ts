@@ -13,6 +13,7 @@ import logo from "../../../public/images/Logo.png";
 import logo2 from "../../../public/images/Logo2.png";
 import signImage from "../../../public/images/sign_images.png";
 import loginImage from "../../../public/images/login_images.png";
+import instractorCover from "../../../public/images/Intstructor-Cover.png";
 
 export const images = {
   HeroImage,
@@ -30,4 +31,5 @@ export const images = {
   logo2,
   signImage,
   loginImage,
+  instractorCover,
 };

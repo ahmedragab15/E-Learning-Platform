@@ -82,10 +82,25 @@ declare interface IAchievements {
   activeUsers: number;
 }
 
-declare interface IInstructorInfo{
+declare interface IInstructorInfo {
   name: string;
   avatar: string;
   slug: string;
   headline: string;
   summary: string;
+  bio: string;
+  totalStudents: string;
+  totalReviews: string;
+  totalCourses: ICourse[];
+  social: {
+    website: ISocial;
+    facebook: ISocial;
+    twitter: ISocial;
+    linkedin: ISocial;
+    youtube: ISocial;
+  };
+}
+interface ISocial{
+  url: string;
+  icon: React.ReactNode;
 }

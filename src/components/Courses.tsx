@@ -1,6 +1,6 @@
 import CourseCard from "./CourseCard";
 
-const Courses = ({ heading, navigation = "", courses }: { heading: React.ReactNode; navigation?: React.ReactNode; courses: ICourse[] }) => {
+const Courses = ({ heading, navigation, courses }: { heading: React.ReactNode; navigation?: React.ReactNode; courses: ICourse[] }) => {
   return (
     <>
       {heading}
@@ -9,7 +9,7 @@ const Courses = ({ heading, navigation = "", courses }: { heading: React.ReactNo
           <CourseCard key={course.id} course={course} />
         ))}
       </div>
-      {navigation}
+      {navigation && navigation}
     </>
   );
 };

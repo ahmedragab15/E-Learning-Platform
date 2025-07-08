@@ -1,4 +1,4 @@
-import { BriefcaseMedical, ChartPie, CodeXml, Palette } from "lucide-react";
+import { BriefcaseMedical, ChartPie, CodeXml, Facebook, Link, Linkedin, Palette, Twitter, Youtube } from "lucide-react";
 
 export const isUser = true;
 
@@ -162,8 +162,6 @@ export const categories: ICategory[] = [
   { id: 5, title: "Technology", icon: <BriefcaseMedical /> },
 ];
 
-export const selectedCat = "Business";
-
 export const courseDetails: ICourseDetails = {
   detailDescription:
     "UI design on a product aims to enhance the appearance of the product. While the UX design is designed to provide a pleasant experience when using the product. The focus of UI design is the beauty of the appearance, while the focus of UX design is the satisfaction of using the product.",
@@ -253,6 +251,87 @@ export const instructorInfo: IInstructorInfo = {
   headline: "Senior UIUX Designer at Microsoft",
   summary:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti.",
+  bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti.",
+  totalStudents: "1,200",
+  totalReviews: "7400",
+  totalCourses: [
+    {
+      id: 1,
+      title: "Product Manager",
+      description: "Learn how to become a product manager and how to create a product that is successful.",
+      slug: "product-manager",
+      image:
+        "https://images.unsplash.com/photo-1664575602276-acd073f104c1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      category: "Business",
+      instructor: "Robert Anderson",
+      instructorSlug: "robert-anderson",
+      translation: "English",
+      duration: "3 Months (20 Hours/Week)",
+      price: "89",
+      ratingCount: "3.5",
+      ratingTotal: "239",
+      badgeBg: "bg-blue-500",
+    },
+    {
+      id: 2,
+      title: "UI/UX Design",
+      description:
+        "UIUX design aims to enhance the appearance of the product and also provide an attractive experience for users. many companies need a UIUX Designer. What are you waiting for, let's join us and study the material now",
+      slug: "ui-ux-design",
+      image:
+        "https://plus.unsplash.com/premium_photo-1661770132071-026114fffb61?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      category: "Design",
+      instructor: "Robert Anderson",
+      instructorSlug: "robert-anderson",
+      translation: "English",
+      duration: "3 Months (20 Hours/Week)",
+      price: "89",
+      ratingCount: "4.5",
+      ratingTotal: "239",
+      badgeBg: "bg-orange-500",
+    },
+    {
+      id: 3,
+      title: "Next Framework",
+      description: "Learn how to become a product manager and how to create a product that is successful.",
+      slug: "next-framework",
+      image:
+        "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      category: "Programming",
+      instructor: "Robert Anderson",
+      instructorSlug: "robert-anderson",
+      translation: "English",
+      duration: "3 Months (20 Hours/Week)",
+      price: "89",
+      ratingCount: "4.5",
+      ratingTotal: "239",
+      badgeBg: "bg-purple-500",
+    },
+    {
+      id: 4,
+      title: "Cloud Computing",
+      description: "Learn how to become a product manager and how to create a product that is successful.",
+      slug: "cloud-computing",
+      image:
+        "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      category: "Technology",
+      instructor: "Robert Anderson",
+      instructorSlug: "robert-anderson",
+      translation: "English",
+      duration: "3 Months (20 Hours/Week)",
+      price: "89",
+      ratingCount: "4.5",
+      ratingTotal: "239",
+      badgeBg: "bg-green-500",
+    },
+  ],
+  social: {
+    website: "https://www.instagram.com/",
+    facebook: "https://www.facebook.com/",
+    twitter: "https://twitter.com/",
+    linkedin: "https://www.linkedin.com/",
+    youtube: "https://www.youtube.com/",
+  },
 };
 
 export const instructors: IInstructorInfo[] = [
@@ -264,6 +343,102 @@ export const instructors: IInstructorInfo[] = [
     headline: "Senior UIUX Designer at Microsoft",
     summary:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti.",
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti.",
+    totalStudents: "1200",
+    totalReviews: "7400",
+    totalCourses: [
+      {
+        id: 1,
+        title: "Product Manager",
+        description: "Learn how to become a product manager and how to create a product that is successful.",
+        slug: "product-manager",
+        image:
+          "https://images.unsplash.com/photo-1664575602276-acd073f104c1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        category: "Business",
+        instructor: "Robert Anderson",
+        instructorSlug: "robert-anderson",
+        translation: "English",
+        duration: "3 Months (20 Hours/Week)",
+        price: "89",
+        ratingCount: "3.5",
+        ratingTotal: "239",
+        badgeBg: "bg-blue-500",
+      },
+      {
+        id: 2,
+        title: "UI/UX Design",
+        description:
+          "UIUX design aims to enhance the appearance of the product and also provide an attractive experience for users. many companies need a UIUX Designer. What are you waiting for, let's join us and study the material now",
+        slug: "ui-ux-design",
+        image:
+          "https://plus.unsplash.com/premium_photo-1661770132071-026114fffb61?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        category: "Design",
+        instructor: "Robert Anderson",
+        instructorSlug: "robert-anderson",
+        translation: "English",
+        duration: "3 Months (20 Hours/Week)",
+        price: "89",
+        ratingCount: "4.5",
+        ratingTotal: "239",
+        badgeBg: "bg-orange-500",
+      },
+      {
+        id: 3,
+        title: "Next Framework",
+        description: "Learn how to become a product manager and how to create a product that is successful.",
+        slug: "next-framework",
+        image:
+          "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        category: "Programming",
+        instructor: "Robert Anderson",
+        instructorSlug: "robert-anderson",
+        translation: "English",
+        duration: "3 Months (20 Hours/Week)",
+        price: "89",
+        ratingCount: "4.5",
+        ratingTotal: "239",
+        badgeBg: "bg-purple-500",
+      },
+      {
+        id: 4,
+        title: "Cloud Computing",
+        description: "Learn how to become a product manager and how to create a product that is successful.",
+        slug: "cloud-computing",
+        image:
+          "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        category: "Technology",
+        instructor: "Robert Anderson",
+        instructorSlug: "robert-anderson",
+        translation: "English",
+        duration: "3 Months (20 Hours/Week)",
+        price: "89",
+        ratingCount: "4.5",
+        ratingTotal: "239",
+        badgeBg: "bg-green-500",
+      },
+    ],
+    social: {
+      website: {
+        url: "https://www.instagram.com/",
+        icon: <Link />,
+      },
+      facebook: {
+        url: "https://www.facebook.com/",
+        icon: <Facebook />,
+      },
+      twitter: {
+        url: "https://twitter.com/",
+        icon: <Twitter />,
+      },
+      linkedin: {
+        url: "https://www.linkedin.com/",
+        icon: <Linkedin />,
+      },
+      youtube: {
+        url: "https://www.youtube.com/",
+        icon: <Youtube />,
+      },
+    },
   },
   {
     avatar:
@@ -273,6 +448,102 @@ export const instructors: IInstructorInfo[] = [
     headline: "Senior UIUX Designer at Microsoft",
     summary:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti.",
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti.",
+    totalStudents: "1200",
+    totalReviews: "7400",
+    totalCourses: [
+      {
+        id: 1,
+        title: "Product Manager",
+        description: "Learn how to become a product manager and how to create a product that is successful.",
+        slug: "product-manager",
+        image:
+          "https://images.unsplash.com/photo-1664575602276-acd073f104c1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        category: "Business",
+        instructor: "Robert Anderson",
+        instructorSlug: "robert-anderson",
+        translation: "English",
+        duration: "3 Months (20 Hours/Week)",
+        price: "89",
+        ratingCount: "3.5",
+        ratingTotal: "239",
+        badgeBg: "bg-blue-500",
+      },
+      {
+        id: 2,
+        title: "UI/UX Design",
+        description:
+          "UIUX design aims to enhance the appearance of the product and also provide an attractive experience for users. many companies need a UIUX Designer. What are you waiting for, let's join us and study the material now",
+        slug: "ui-ux-design",
+        image:
+          "https://plus.unsplash.com/premium_photo-1661770132071-026114fffb61?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        category: "Design",
+        instructor: "Robert Anderson",
+        instructorSlug: "robert-anderson",
+        translation: "English",
+        duration: "3 Months (20 Hours/Week)",
+        price: "89",
+        ratingCount: "4.5",
+        ratingTotal: "239",
+        badgeBg: "bg-orange-500",
+      },
+      {
+        id: 3,
+        title: "Next Framework",
+        description: "Learn how to become a product manager and how to create a product that is successful.",
+        slug: "next-framework",
+        image:
+          "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        category: "Programming",
+        instructor: "Robert Anderson",
+        instructorSlug: "robert-anderson",
+        translation: "English",
+        duration: "3 Months (20 Hours/Week)",
+        price: "89",
+        ratingCount: "4.5",
+        ratingTotal: "239",
+        badgeBg: "bg-purple-500",
+      },
+      {
+        id: 4,
+        title: "Cloud Computing",
+        description: "Learn how to become a product manager and how to create a product that is successful.",
+        slug: "cloud-computing",
+        image:
+          "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        category: "Technology",
+        instructor: "Robert Anderson",
+        instructorSlug: "robert-anderson",
+        translation: "English",
+        duration: "3 Months (20 Hours/Week)",
+        price: "89",
+        ratingCount: "4.5",
+        ratingTotal: "239",
+        badgeBg: "bg-green-500",
+      },
+    ],
+    social: {
+      website: {
+        url: "https://www.instagram.com/",
+        icon: <Link />,
+      },
+      facebook: {
+        url: "https://www.facebook.com/",
+        icon: <Facebook />,
+      },
+      twitter: {
+        url: "https://twitter.com/",
+        icon: <Twitter />,
+      },
+      linkedin: {
+        url: "https://www.linkedin.com/",
+        icon: <Linkedin />,
+      },
+      youtube: {
+        url: "https://www.youtube.com/",
+        icon: <Youtube />,
+      },
+    },
   },
   {
     avatar:
@@ -282,5 +553,101 @@ export const instructors: IInstructorInfo[] = [
     headline: "Senior UIUX Designer at Microsoft",
     summary:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti.",
+    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam facilisis euismod tellus etiam potenti.",
+    totalStudents: "1200",
+    totalReviews: "7400",
+    totalCourses: [
+      {
+        id: 1,
+        title: "Product Manager",
+        description: "Learn how to become a product manager and how to create a product that is successful.",
+        slug: "product-manager",
+        image:
+          "https://images.unsplash.com/photo-1664575602276-acd073f104c1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        category: "Business",
+        instructor: "Robert Anderson",
+        instructorSlug: "robert-anderson",
+        translation: "English",
+        duration: "3 Months (20 Hours/Week)",
+        price: "89",
+        ratingCount: "3.5",
+        ratingTotal: "239",
+        badgeBg: "bg-blue-500",
+      },
+      {
+        id: 2,
+        title: "UI/UX Design",
+        description:
+          "UIUX design aims to enhance the appearance of the product and also provide an attractive experience for users. many companies need a UIUX Designer. What are you waiting for, let's join us and study the material now",
+        slug: "ui-ux-design",
+        image:
+          "https://plus.unsplash.com/premium_photo-1661770132071-026114fffb61?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        category: "Design",
+        instructor: "Robert Anderson",
+        instructorSlug: "robert-anderson",
+        translation: "English",
+        duration: "3 Months (20 Hours/Week)",
+        price: "89",
+        ratingCount: "4.5",
+        ratingTotal: "239",
+        badgeBg: "bg-orange-500",
+      },
+      {
+        id: 3,
+        title: "Next Framework",
+        description: "Learn how to become a product manager and how to create a product that is successful.",
+        slug: "next-framework",
+        image:
+          "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        category: "Programming",
+        instructor: "Robert Anderson",
+        instructorSlug: "robert-anderson",
+        translation: "English",
+        duration: "3 Months (20 Hours/Week)",
+        price: "89",
+        ratingCount: "4.5",
+        ratingTotal: "239",
+        badgeBg: "bg-purple-500",
+      },
+      {
+        id: 4,
+        title: "Cloud Computing",
+        description: "Learn how to become a product manager and how to create a product that is successful.",
+        slug: "cloud-computing",
+        image:
+          "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        category: "Technology",
+        instructor: "Robert Anderson",
+        instructorSlug: "robert-anderson",
+        translation: "English",
+        duration: "3 Months (20 Hours/Week)",
+        price: "89",
+        ratingCount: "4.5",
+        ratingTotal: "239",
+        badgeBg: "bg-green-500",
+      },
+    ],
+    social: {
+      website: {
+        url: "https://www.instagram.com/",
+        icon: <Link />,
+      },
+      facebook: {
+        url: "https://www.facebook.com/",
+        icon: <Facebook />,
+      },
+      twitter: {
+        url: "https://twitter.com/",
+        icon: <Twitter />,
+      },
+      linkedin: {
+        url: "https://www.linkedin.com/",
+        icon: <Linkedin />,
+      },
+      youtube: {
+        url: "https://www.youtube.com/",
+        icon: <Youtube />,
+      },
+    },
   },
 ];
