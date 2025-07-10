@@ -26,16 +26,14 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
             <p className="text-sm md:text-lg text-gray-600 max-w-full">{chossen?.description}</p>
             <div className="space-x-6">
               <Button>Join Now</Button>
-              <Button variant="outline">
-                Add to Cart
-              </Button>
+              <Button variant="outline">Add to Cart</Button>
             </div>
             <div className="flex justify-between lg:items-center flex-col lg:flex-row gap-4">
               <div className="space-y-2">
                 <h3 className="text-md text-gray-600 font-medium">Rating Class</h3>
                 <div className="flex items-center gap-0.5">
                   {Array.from({ length: Number(Math.ceil(Number(chossen?.ratingCount))) }).map((_, index) => (
-                    <Star key={index} fill="#fbbf24" size={18} className="text-transparent " />
+                    <Star key={index} fill="#dd7621" size={18} className="text-transparent " />
                   ))}
                   {Array.from({ length: 5 - Number(Math.ceil(Number(chossen?.ratingCount))) }).map((_, index) => (
                     <Star key={index} fill="#bababa" size={18} className="text-transparent " />
@@ -121,7 +119,7 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
               <div key={index} className="flex items-center gap-4">
                 <div className="flex items-center gap-1 flex-1">
                   {Array.from({ length: Number(Math.ceil(Number(item.stars))) }).map((_, index) => (
-                    <Star key={index} fill="#fbbf24" size={18} className="text-transparent " />
+                    <Star key={index} fill="#dd7621" size={18} className="text-transparent " />
                   ))}
                 </div>
                 <div className="flex-1 justify-items-center">

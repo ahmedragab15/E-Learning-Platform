@@ -19,7 +19,7 @@ const CourseCard = ({ course }: CourseCardProps) => {
           <p className="text-gray-600 text-xs">{course.duration}</p>
           <div className="flex items-center gap-0.5">
             {Array.from({ length: Number(Math.ceil(Number(course.ratingCount))) }).map((_, index) => (
-              <Star key={index} fill="#fbbf24" size={18} className="text-transparent " />
+              <Star key={index} fill="#dd7621" size={18} className="text-transparent " />
             ))}
             {Array.from({ length: 5 - Number(Math.ceil(Number(course.ratingCount))) }).map((_, index) => (
               <Star key={index} fill="#bababa" size={18} className="text-transparent " />

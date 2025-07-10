@@ -1,5 +1,6 @@
 import { HeroVisitor, CoursesCategories, Courses, WhyUs, Reviews, AllNews, Banner, Heading, Container } from "@/components/index";
 import { ArrowNavigation } from "@/components/shared/ArrowNavigation";
+import { allCourses } from "@/dummyData";
 
 const VisitorHome = () => {
   return (
@@ -16,6 +17,7 @@ const VisitorHome = () => {
 
       <Container>
         <Courses
+          courses={allCourses}
           heading={
             <Heading
               title="Recomendation Courses"

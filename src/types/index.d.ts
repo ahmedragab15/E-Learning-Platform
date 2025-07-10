@@ -46,6 +46,7 @@ declare interface ICourse {
   slug: string;
   category: string;
   duration: string;
+  lectures:number;
   instructor: string;
   instructorSlug: string;
   translation: string;

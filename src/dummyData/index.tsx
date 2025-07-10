@@ -62,6 +62,7 @@ export const allCourses: ICourse[] = [
     instructorSlug: "robert-anderson",
     translation: "English",
     duration: "3 Months (20 Hours/Week)",
+    lectures: 100,
     price: "89",
     ratingCount: "3.5",
     ratingTotal: "239",
@@ -80,6 +81,7 @@ export const allCourses: ICourse[] = [
     instructorSlug: "robert-anderson",
     translation: "English",
     duration: "3 Months (20 Hours/Week)",
+    lectures: 100,
     price: "89",
     ratingCount: "4.5",
     ratingTotal: "239",
@@ -97,6 +99,7 @@ export const allCourses: ICourse[] = [
     instructorSlug: "robert-anderson",
     translation: "English",
     duration: "3 Months (20 Hours/Week)",
+    lectures: 100,
     price: "89",
     ratingCount: "4.5",
     ratingTotal: "239",
@@ -114,6 +117,7 @@ export const allCourses: ICourse[] = [
     instructorSlug: "robert-anderson",
     translation: "English",
     duration: "3 Months (20 Hours/Week)",
+    lectures: 100,
     price: "89",
     ratingCount: "4.5",
     ratingTotal: "239",
@@ -189,6 +193,8 @@ export const courseDetails: ICourseDetails = {
         instructorSlug: "robert-anderson",
         translation: "English",
         duration: "3 Months (20 Hours/Week)",
+        lectures: 100,
+
         price: "89",
         ratingCount: "3.5",
         ratingTotal: "239",
@@ -207,6 +213,8 @@ export const courseDetails: ICourseDetails = {
         instructorSlug: "robert-anderson",
         translation: "English",
         duration: "3 Months (20 Hours/Week)",
+        lectures: 100,
+
         price: "89",
         ratingCount: "4.5",
         ratingTotal: "239",
@@ -224,6 +232,8 @@ export const courseDetails: ICourseDetails = {
         instructorSlug: "robert-anderson",
         translation: "English",
         duration: "3 Months (20 Hours/Week)",
+        lectures: 100,
+
         price: "89",
         ratingCount: "4.5",
         ratingTotal: "239",
@@ -241,6 +251,8 @@ export const courseDetails: ICourseDetails = {
         instructorSlug: "robert-anderson",
         translation: "English",
         duration: "3 Months (20 Hours/Week)",
+        lectures: 100,
+
         price: "89",
         ratingCount: "4.5",
         ratingTotal: "239",
@@ -363,6 +375,8 @@ export const instructorInfo: IInstructorInfo = {
       instructorSlug: "robert-anderson",
       translation: "English",
       duration: "3 Months (20 Hours/Week)",
+      lectures: 100,
+
       price: "89",
       ratingCount: "3.5",
       ratingTotal: "239",
@@ -381,6 +395,8 @@ export const instructorInfo: IInstructorInfo = {
       instructorSlug: "robert-anderson",
       translation: "English",
       duration: "3 Months (20 Hours/Week)",
+      lectures: 100,
+
       price: "89",
       ratingCount: "4.5",
       ratingTotal: "239",
@@ -398,6 +414,8 @@ export const instructorInfo: IInstructorInfo = {
       instructorSlug: "robert-anderson",
       translation: "English",
       duration: "3 Months (20 Hours/Week)",
+      lectures: 100,
+
       price: "89",
       ratingCount: "4.5",
       ratingTotal: "239",
@@ -415,6 +433,8 @@ export const instructorInfo: IInstructorInfo = {
       instructorSlug: "robert-anderson",
       translation: "English",
       duration: "3 Months (20 Hours/Week)",
+      lectures: 100,
+
       price: "89",
       ratingCount: "4.5",
       ratingTotal: "239",
@@ -470,6 +490,8 @@ export const instructors: IInstructorInfo[] = [
         instructorSlug: "robert-anderson",
         translation: "English",
         duration: "3 Months (20 Hours/Week)",
+        lectures: 100,
+
         price: "89",
         ratingCount: "3.5",
         ratingTotal: "239",
@@ -488,6 +510,8 @@ export const instructors: IInstructorInfo[] = [
         instructorSlug: "robert-anderson",
         translation: "English",
         duration: "3 Months (20 Hours/Week)",
+        lectures: 100,
+
         price: "89",
         ratingCount: "4.5",
         ratingTotal: "239",
@@ -505,6 +529,8 @@ export const instructors: IInstructorInfo[] = [
         instructorSlug: "robert-anderson",
         translation: "English",
         duration: "3 Months (20 Hours/Week)",
+        lectures: 100,
+
         price: "89",
         ratingCount: "4.5",
         ratingTotal: "239",
@@ -522,6 +548,8 @@ export const instructors: IInstructorInfo[] = [
         instructorSlug: "robert-anderson",
         translation: "English",
         duration: "3 Months (20 Hours/Week)",
+        lectures: 100,
+
         price: "89",
         ratingCount: "4.5",
         ratingTotal: "239",
@@ -575,6 +603,8 @@ export const instructors: IInstructorInfo[] = [
         instructorSlug: "robert-anderson",
         translation: "English",
         duration: "3 Months (20 Hours/Week)",
+        lectures: 100,
+
         price: "89",
         ratingCount: "3.5",
         ratingTotal: "239",
@@ -593,6 +623,8 @@ export const instructors: IInstructorInfo[] = [
         instructorSlug: "robert-anderson",
         translation: "English",
         duration: "3 Months (20 Hours/Week)",
+        lectures: 100,
+
         price: "89",
         ratingCount: "4.5",
         ratingTotal: "239",
@@ -610,6 +642,8 @@ export const instructors: IInstructorInfo[] = [
         instructorSlug: "robert-anderson",
         translation: "English",
         duration: "3 Months (20 Hours/Week)",
+        lectures: 100,
+
         price: "89",
         ratingCount: "4.5",
         ratingTotal: "239",
@@ -627,6 +661,8 @@ export const instructors: IInstructorInfo[] = [
         instructorSlug: "robert-anderson",
         translation: "English",
         duration: "3 Months (20 Hours/Week)",
+        lectures: 100,
+
         price: "89",
         ratingCount: "4.5",
         ratingTotal: "239",
@@ -680,6 +716,8 @@ export const instructors: IInstructorInfo[] = [
         instructorSlug: "robert-anderson",
         translation: "English",
         duration: "3 Months (20 Hours/Week)",
+        lectures: 100,
+
         price: "89",
         ratingCount: "3.5",
         ratingTotal: "239",
@@ -698,6 +736,8 @@ export const instructors: IInstructorInfo[] = [
         instructorSlug: "robert-anderson",
         translation: "English",
         duration: "3 Months (20 Hours/Week)",
+        lectures: 100,
+
         price: "89",
         ratingCount: "4.5",
         ratingTotal: "239",
@@ -715,6 +755,8 @@ export const instructors: IInstructorInfo[] = [
         instructorSlug: "robert-anderson",
         translation: "English",
         duration: "3 Months (20 Hours/Week)",
+        lectures: 100,
+
         price: "89",
         ratingCount: "4.5",
         ratingTotal: "239",
@@ -732,6 +774,8 @@ export const instructors: IInstructorInfo[] = [
         instructorSlug: "robert-anderson",
         translation: "English",
         duration: "3 Months (20 Hours/Week)",
+        lectures: 100,
+
         price: "89",
         ratingCount: "4.5",
         ratingTotal: "239",
@@ -813,4 +857,6 @@ export const progressCourse: IProgressCourse[] = [
     allLessons: 10,
     finishedLessons: 7,
   },
-]
+];
+
+export const VAT_RATE: number = 0.1;

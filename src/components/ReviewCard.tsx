@@ -24,7 +24,7 @@ const ReviewCard = ({ review }: ReviewCardProps) => {
       <p className="text-gray-500 text-sm leading-5">{review.review}</p>
       <div className="flex items-center gap-0.5">
         {Array.from({ length: Number(Math.ceil(Number(review.rating))) }).map((_, index) => (
-          <Star key={index} fill="#fbbf24" size={18} className="text-transparent " />
+          <Star key={index} fill="#dd7621" size={18} className="text-transparent " />
         ))}
         {Array.from({ length: 5 - Number(Math.ceil(Number(review.rating))) }).map((_, index) => (
           <Star key={index} fill="#bababa" size={18} className="text-transparent " />
