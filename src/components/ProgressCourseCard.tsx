@@ -25,7 +25,7 @@ const ProgressCourseCard = ({ course }: CourseCardProps) => {
               {course.finishedLessons}/{course.allLessons} Lessons
             </span>
           </div>
-          <Button variant={"outline"} asChild>
+          <Button variant={"outline"}>
             <Link href={`/all-courses/${course.slug}?id=${course.id}`}>Continue</Link>
           </Button>
         </div>

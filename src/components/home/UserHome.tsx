@@ -17,7 +17,7 @@ const UserHome = () => {
             <Heading
               title="Courses Category"
               cta={
-                <Button variant="link" asChild>
+                <Button variant="link" >
                   <Link href="/">See All</Link>
                 </Button>
               }
