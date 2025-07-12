@@ -15,7 +15,6 @@ const page = () => {
       <Container>
         <h1 className="text-2xl font-bold sm:text-4xl text-center">Shopping Cart</h1>
         <div className="flex flex-col items-center lg:flex-row justify-evenly gap-12">
-            
           <div className="flex-1 lg:flex-2/3">
             <h3 className="text-2xl font-medium text-gray-900 border-b border-gray-200 pb-2">{allCourses.length} Courses in Cart</h3>
             <ul className="space-y-4">
@@ -33,18 +32,15 @@ const page = () => {
                   <dt>Subtotal</dt>
                   <dd>${TotalAmount().toFixed(2)}</dd>
                 </div>
-
                 <div className="flex justify-between">
                   <dt>VAT</dt>
                   <dd>${VatAmount().toFixed(2)}</dd>
                 </div>
-
                 <div className="flex justify-between !text-base font-medium">
                   <dt>Total</dt>
                   <dd>${(VatAmount() + TotalAmount()).toFixed(2)}</dd>
                 </div>
               </dl>
-
               <div className="flex justify-end">
                 <Button>
                   <Link href="/checkout">Checkout</Link>
@@ -54,17 +50,9 @@ const page = () => {
           </div>
         </div>
       </Container>
+
       <Container background="bg-white">
-        <Courses
-          courses={allCourses}
-          heading={
-            <Heading
-              title="You might also like
-"
-            />
-          }
-          navigation={<ChevronNavigation />}
-        />
+        <Courses courses={allCourses} heading={<Heading title="You might also like" />} navigation={<ChevronNavigation />} />
       </Container>
     </>
   );

@@ -1,19 +1,20 @@
-import HeroImage from "../../../public/images/hero_image.png";
-import whyUsImage from "../../../public/images/why_us.png";
-import homeBanner from "../../../public/images/home_banner.png";
-import contactImage from "../../../public/images/contact.png";
-import aboutImage1 from "../../../public/images/about-page/1.png";
-import aboutImage2 from "../../../public/images/about-page/2.png";
-import aboutImage3 from "../../../public/images/about-page/3.png";
-import aboutImage4 from "../../../public/images/about-page/4.png";
-import aboutImage5 from "../../../public/images/about-page/5.png";
-import aboutImage6 from "../../../public/images/about-page/6.png";
-import aboutbanner from "../../../public/images/about-page/banner.png";
-import logo from "../../../public/images/Logo.png";
-import logo2 from "../../../public/images/Logo2.png";
-import signImage from "../../../public/images/sign_images.png";
-import loginImage from "../../../public/images/login_images.png";
-import instractorCover from "../../../public/images/Intstructor-Cover.png";
+import HeroImage from "../../../public/images/hero_image.webp";
+import whyUsImage from "../../../public/images/why_us.webp";
+import homeBanner from "../../../public/images/home_banner.webp";
+import contactImage from "../../../public/images/contact.webp";
+import aboutImage1 from "../../../public/images/about-page/1.webp";
+import aboutImage2 from "../../../public/images/about-page/2.webp";
+import aboutImage3 from "../../../public/images/about-page/3.webp";
+import aboutImage4 from "../../../public/images/about-page/4.webp";
+import aboutImage5 from "../../../public/images/about-page/5.webp";
+import aboutImage6 from "../../../public/images/about-page/6.webp";
+import aboutbanner from "../../../public/images/about-page/banner.webp";
+import logo from "../../../public/images/Logo.webp";
+import logo2 from "../../../public/images/Logo2.webp";
+import signImage from "../../../public/images/sign_images.webp";
+import loginImage from "../../../public/images/login_images.webp";
+import instractorCover from "../../../public/images/Intstructor-Cover.webp";
+import notFoundImg from "../../../public/images/not_found.webp";
 
 export const images = {
   HeroImage,
@@ -32,4 +33,5 @@ export const images = {
   signImage,
   loginImage,
   instractorCover,
+  notFoundImg,
 };
