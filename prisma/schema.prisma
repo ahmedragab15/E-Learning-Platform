@@ -23,6 +23,7 @@ model User {
 model Category {
   id        Int      @id @default(autoincrement())
   title     String
+  slug      String   @unique
   iconName  String?
   courses   Course[]
   news      News[]
