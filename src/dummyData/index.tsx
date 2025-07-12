@@ -1,4 +1,4 @@
-import { BriefcaseMedical, ChartPie, CodeXml, Facebook, Link, Linkedin, Palette, Twitter, Youtube } from "lucide-react";
+import { BriefcaseMedical, ChartPie, CodeXml, Cpu, Facebook, Link, Linkedin, Palette, Twitter, Youtube } from "lucide-react";
 
 export const isUser = false;
 
@@ -163,7 +163,7 @@ export const categories: ICategory[] = [
   { id: 2, title: "Design", icon: <Palette /> },
   { id: 3, title: "Programming", icon: <CodeXml /> },
   { id: 4, title: "Health", icon: <BriefcaseMedical /> },
-  { id: 5, title: "Technology", icon: <BriefcaseMedical /> },
+  { id: 5, title: "Technology", icon: <Cpu /> },
 ];
 
 export const courseDetails: ICourseDetails = {
