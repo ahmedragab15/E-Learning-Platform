@@ -1,0 +1,178 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int          @id @default(autoincrement())
+  name        String
+  email       String       @unique
+  avatarUrl   String?
+  isAdmin     Boolean      @default(false)
+  enrollments Enrollment[]
+  reviews     Review[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Category {
+  id        Int      @id @default(autoincrement())
+  title     String
+  iconName  String?
+  courses   Course[]
+  news      News[]
+  createdAt DateTime @default(now())
+}
+
+model Instructor {
+  id            Int      @id @default(autoincrement())
+  name          String
+  slug          String   @unique
+  avatarUrl     String?
+  headline      String?
+  summary       String?
+  bio           String?
+  totalStudents Int      @default(0)
+  totalReviews  Int      @default(0)
+  websiteUrl    String?
+  facebookUrl   String?
+  twitterUrl    String?
+  linkedinUrl   String?
+  youtubeUrl    String?
+  courses       Course[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Course {
+  id                Int              @id @default(autoincrement())
+  title             String
+  slug              String           @unique
+  description       String?
+  imageUrl          String?
+  category          Category         @relation(fields: [categoryId], references: [id])
+  categoryId        Int
+  instructor        Instructor       @relation(fields: [instructorId], references: [id])
+  instructorId      Int
+  translation       String?
+  duration          String?
+  lectures          Int?
+  price             Float?
+  ratingCount       Float?           @default(0.0)
+  ratingTotal       Int?             @default(0)
+  badgeBg           String?
+  detailDescription String?
+  learnings         CourseLearning[]
+  lessons           Lesson[]
+  enrollments       Enrollment[]
+  reviews           Review[]
+  courseRating      CourseRating?
+  news              News[]
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+}
+
+model News {
+  id          Int      @id @default(autoincrement())
+  title       String
+  imageUrl    String?
+  category    Category @relation(fields: [categoryId], references: [id])
+  categoryId  Int
+  description String?
+  reads       Int      @default(0)
+  publishDate String?
+  badgeBg     String?
+  course      Course?  @relation(fields: [courseId], references: [id])
+  courseId    Int?
+  createdAt   DateTime @default(now())
+}
+
+model Review {
+  id         Int      @id @default(autoincrement())
+  user       User     @relation(fields: [userId], references: [id])
+  userId     Int
+  course     Course   @relation(fields: [courseId], references: [id])
+  courseId   Int
+  rating     Float
+  review     String?
+  university String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model CourseLearning {
+  id          Int            @id @default(autoincrement())
+  course      Course         @relation(fields: [courseId], references: [id])
+  courseId    Int
+  title       String
+  description String?
+  items       LearningItem[]
+  createdAt   DateTime       @default(now())
+}
+
+model LearningItem {
+  id         Int            @id @default(autoincrement())
+  learning   CourseLearning @relation(fields: [learningId], references: [id])
+  learningId Int
+  item       String
+  createdAt  DateTime       @default(now())
+}
+
+model Lesson {
+  id        Int            @id @default(autoincrement())
+  course    Course         @relation(fields: [courseId], references: [id])
+  courseId  Int
+  topic     String
+  duration  String?
+  details   LessonDetail[]
+  createdAt DateTime       @default(now())
+}
+
+model LessonDetail {
+  id        Int      @id @default(autoincrement())
+  lesson    Lesson   @relation(fields: [lessonId], references: [id])
+  lessonId  Int
+  title     String
+  duration  String?
+  createdAt DateTime @default(now())
+}
+
+model Achievement {
+  id           Int      @id @default(autoincrement())
+  courses      Int      @default(0)
+  mentor       Int      @default(0)
+  courseEnroll Int      @default(0)
+  activeUsers  Int      @default(0)
+  updatedAt    DateTime @updatedAt
+}
+
+model Enrollment {
+  id              Int      @id @default(autoincrement())
+  user            User     @relation(fields: [userId], references: [id])
+  userId          Int
+  course          Course   @relation(fields: [courseId], references: [id])
+  courseId        Int
+  progress        Int      @default(0)
+  finishedLessons Int      @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model CourseRating {
+  id           Int      @id @default(autoincrement())
+  course       Course   @relation(fields: [courseId], references: [id])
+  courseId     Int      @unique
+  average      Float    @default(0.0)
+  totalReviews Int      @default(0)
+  stars5       Int      @default(0) @map("stars_5")
+  stars4       Int      @default(0) @map("stars_4")
+  stars3       Int      @default(0) @map("stars_3")
+  stars2       Int      @default(0) @map("stars_2")
+  stars1       Int      @default(0) @map("stars_1")
+  updatedAt    DateTime @updatedAt
+}
