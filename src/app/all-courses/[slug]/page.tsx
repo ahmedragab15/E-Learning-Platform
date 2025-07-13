@@ -1,4 +1,4 @@
-import { getCourses } from "@/actions/courseActions";
+import { getCoursesAction } from "@/actions/courseActions";
 import { Reviews, InstructorCard, LessonsAccordion, RatingProgress, Heading } from "@/components";
 import { ChevronNavigation } from "@/components/shared/ArrowNavigation";
 import { Badge } from "@/components/ui/badge";
@@ -10,7 +10,7 @@ import Link from "next/link";
 
 const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
-  const allCourses = await getCourses();
+  const allCourses = await getCoursesAction();
   const chossen = allCourses.find((course) => course.slug === slug);
 
   return (
@@ -70,6 +70,7 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
           </div>
           <div className="flex-1 md:justify-items-end justify-items-center">
             <Image src={chossen?.imageUrl as string} alt="course image" width={400} height={400} className="rounded-md" />
+           
           </div>
         </div>
       </section>

@@ -12,6 +12,7 @@ model User {
   id          Int          @id @default(autoincrement())
   name        String
   email       String       @unique
+  university  String?
   avatarUrl   String?
   isAdmin     Boolean      @default(false)
   enrollments Enrollment[]
@@ -64,16 +65,15 @@ model Course {
   duration          String
   lectures          Int
   price             Float
-  ratingCount       Float           @default(0.0)
-  ratingTotal       Int             @default(0)
+  ratingCount       Float            @default(0.0)
+  ratingTotal       Int              @default(0)
   badgeBg           String
   detailDescription String
   learnings         CourseLearning[]
-  lessons           Lesson[]
+  Chapters          Chapter[]
   enrollments       Enrollment[]
   reviews           Review[]
   courseRating      CourseRating?
-  news              News[]
   createdAt         DateTime         @default(now())
   updatedAt         DateTime         @updatedAt
 }
@@ -88,22 +88,19 @@ model News {
   description String
   reads       Int      @default(0)
   badgeBg     String?
-  course      Course?  @relation(fields: [courseId], references: [id])
-  courseId    Int
   createdAt   DateTime @default(now())
 }
 
 model Review {
-  id         Int      @id @default(autoincrement())
-  user       User     @relation(fields: [userId], references: [id])
-  userId     Int
-  course     Course   @relation(fields: [courseId], references: [id])
-  courseId   Int
-  rating     Float
-  review     String
-  university String
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  course    Course   @relation(fields: [courseId], references: [id])
+  courseId  Int
+  rating    Float
+  review    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model CourseLearning {
@@ -124,20 +121,20 @@ model LearningItem {
   createdAt  DateTime       @default(now())
 }
 
-model Lesson {
-  id        Int            @id @default(autoincrement())
-  course    Course         @relation(fields: [courseId], references: [id])
+model Chapter {
+  id        Int      @id @default(autoincrement())
+  course    Course   @relation(fields: [courseId], references: [id])
   courseId  Int
   topic     String
   duration  String
-  details   LessonDetail[]
-  createdAt DateTime       @default(now())
+  details   Lesson[]
+  createdAt DateTime @default(now())
 }
 
-model LessonDetail {
+model Lesson {
   id        Int      @id @default(autoincrement())
-  lesson    Lesson   @relation(fields: [lessonId], references: [id])
-  lessonId  Int
+  chapter   Chapter  @relation(fields: [chapterId], references: [id])
+  chapterId Int
   title     String
   duration  String
   createdAt DateTime @default(now())

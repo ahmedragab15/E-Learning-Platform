@@ -1,13 +1,16 @@
-import { getCourses } from "@/actions/courseActions";
+export const dynamic = "force-dynamic";
+import { getCoursesAction } from "@/actions/courseActions";
 import { Courses, CoursesCategories } from "@/components";
 import { ChevronNavigation } from "@/components/shared/ArrowNavigation";
 import Heading from "@/components/shared/Heading";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import React from "react";
 
-const CoursesCategory = async() => {
-  const allCourses = await getCourses()
+interface Props {
+  searchParams: { category?: string };
+}
+const CoursesCategory = async ({ searchParams }: Props) => {
+  const allCourses = await getCoursesAction();
   return (
     <>
       <section className="bg-white px-6 md:px-16 py-10">
@@ -19,18 +22,23 @@ const CoursesCategory = async() => {
                 title="Courses Category"
                 cta={
                   <Button variant="link">
-                    <Link href="/">See All</Link>
+                    <Link href="/all-courses">See All</Link>
                   </Button>
                 }
               />
             }
             navigation={<ChevronNavigation />}
+            searchParams={searchParams}
           />
         </div>
       </section>
       <section className="px-6 md:px-16 py-10">
         <div className="container mx-auto space-y-6 my-6">
-          <Courses heading={<Heading title="You can also study other categories" />} navigation={<ChevronNavigation />} courses={allCourses.slice(0, 4)} />
+          <Courses
+            heading={<Heading title="You can also study other categories" />}
+            navigation={<ChevronNavigation />}
+            courses={allCourses.slice(0, 4)}
+          />
         </div>
       </section>
     </>

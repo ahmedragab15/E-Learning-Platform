@@ -2,10 +2,10 @@ import { CoursesCategories, Courses, Heading, HeroUser, Container } from "@/comp
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ChevronNavigation } from "../shared/ArrowNavigation";
-import { getCourses } from "@/actions/courseActions";
+import { getCoursesAction } from "@/actions/courseActions";
 
-const UserHome = async() => {
-  const allCourses = await getCourses();
+const UserHome = async () => {
+  const allCourses = await getCoursesAction();
   return (
     <>
       <section className="userHome-Hero-image relative max-w-full h-[731px] px-6 md:px-16 pb-8 ">
@@ -13,7 +13,7 @@ const UserHome = async() => {
       </section>
 
       <Container background="bg-white">
-        <CoursesCategories 
+        <CoursesCategories
           heading={
             <Heading
               title="Courses Category"

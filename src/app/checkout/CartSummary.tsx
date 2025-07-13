@@ -1,10 +1,10 @@
-import React from 'react'
-import CartItem from '../cart/CartItem';
-import { getCourses } from '@/actions/courseActions';
+import React from "react";
+import CartItem from "../cart/CartItem";
+import { getCoursesAction } from "@/actions/courseActions";
 
-const CartSummary = async() => {
-    const allCourses = await getCourses();
-  
+const CartSummary = async () => {
+  const allCourses = await getCoursesAction();
+
   return (
     <div
       className="relative w-screen max-w-sm border border-gray-600 bg-gray-100 px-4 py-8 sm:px-6 lg:px-8"
@@ -35,6 +35,6 @@ const CartSummary = async() => {
       </div>
     </div>
   );
-}
+};
 
-export default CartSummary
+export default CartSummary;

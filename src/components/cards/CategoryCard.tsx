@@ -1,7 +1,8 @@
+"use client";
 import { cn } from "@/lib/utils";
-import React from "react";
 import { Prisma } from "@/generated/prisma/client";
-import { IconsMap } from "./icon";
+import { IconsMap } from "../shared/Icons";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 type CategoryCardProps = {
   category: Prisma.CategoryGetPayload<{ include: { courses: true } }>;
@@ -10,6 +11,20 @@ type CategoryCardProps = {
 
 const CategoryCard = ({ category, selectedCategory }: CategoryCardProps) => {
   const IconComponent = IconsMap[category.iconName as keyof typeof IconsMap];
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+
+  const handleClick = () => {
+    if (pathname !== "/courses-category") {
+      router.push(`/courses-category?category=${category.title}`);
+    } else {
+      const params = new URLSearchParams(searchParams.toString());
+      params.set("category", category.title);
+      router.push(`?${params.toString()}`);
+    }
+  };
+
   return (
     <div
       className={cn(
@@ -17,6 +32,7 @@ const CategoryCard = ({ category, selectedCategory }: CategoryCardProps) => {
           selectedCategory === category.title ? "bg-primary" : ""
         }`
       )}
+      onClick={handleClick}
     >
       <span
         className={cn(

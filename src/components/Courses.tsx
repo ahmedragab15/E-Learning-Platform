@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
-import CourseCard from "./CourseCard";
-import ProgressCourseCard from "./ProgressCourseCard";
+import CourseCard from "./cards/CourseCard";
+import ProgressCourseCard from "./cards/ProgressCourseCard";
 import { Prisma } from "@/generated/prisma/client";
 
 type CourseWithCategory = Prisma.CourseGetPayload<{

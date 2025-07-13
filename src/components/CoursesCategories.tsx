@@ -1,8 +1,8 @@
-import { getCategories, getCourses } from "@/actions/courseActions";
-import CategoryCard from "./CategoryCard";
-import CourseCard from "./CourseCard";
+import { getCategoriesAction, getCoursesAction } from "@/actions/courseActions";
+import CategoryCard from "./cards/CategoryCard";
+import CourseCard from "./cards/CourseCard";
 import { ArrowNavigation } from "@/components/shared/ArrowNavigation";
-import {  isUser } from "@/dummyData";
+import { headers } from "next/headers";
 
 interface Props {
   searchParams?: { category?: string };
@@ -11,9 +11,12 @@ interface Props {
 }
 
 const CoursesCategories = async ({ heading, navigation = <ArrowNavigation />, searchParams }: Props) => {
-    const categories = await getCategories();
-    const allCourses = await getCourses();
-    const selectedCategory = searchParams?.category || categories[0].title; 
+  const categories = await getCategoriesAction();
+  const allCourses = await getCoursesAction();
+
+  const headersList = headers();
+  const pathname = (await headersList).get("x-pathname");
+  const selectedCategory = pathname === "/courses-category" ? searchParams?.category || categories[0].title : "All";
 
   return (
     <>
@@ -24,7 +27,7 @@ const CoursesCategories = async ({ heading, navigation = <ArrowNavigation />, se
         ))}
       </div>
 
-      {isUser && (
+      {pathname === "/courses-category" && (
         <>
           <div className="flex justify-evenly flex-wrap gap-6 my-6">
             {allCourses

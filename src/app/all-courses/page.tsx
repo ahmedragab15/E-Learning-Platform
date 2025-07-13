@@ -1,4 +1,4 @@
-import { getCourses } from "@/actions/courseActions";
+import { getCoursesAction } from "@/actions/courseActions";
 import { Courses, Heading, Container } from "@/components";
 import CoursesFilter from "./CoursesFilter";
 
@@ -6,8 +6,8 @@ interface Props {
   searchParams: { category?: string };
 }
 const AllCourses = async ({ searchParams }: Props) => {
-  const allCourses = await getCourses();
-  const selectedCategory = searchParams.category || "All"; 
+  const allCourses = await getCoursesAction();
+  const selectedCategory = searchParams.category || "All";
 
   const filteredCourses = selectedCategory === "All" ? allCourses : allCourses.filter((course) => course.category.title === selectedCategory);
 

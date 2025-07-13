@@ -1,10 +1,10 @@
-import { getCourses } from "@/actions/courseActions";
+import { getCoursesAction } from "@/actions/courseActions";
 import { HeroVisitor, CoursesCategories, Courses, WhyUs, Reviews, AllNews, Banner, Heading, Container } from "@/components/index";
 import { ArrowNavigation } from "@/components/shared/ArrowNavigation";
 
-const VisitorHome = async() => {
-    const allCourses = await getCourses();
-  
+const VisitorHome = async () => {
+  const allCourses = await getCoursesAction();
+
   return (
     <>
       <Container>

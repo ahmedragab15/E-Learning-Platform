@@ -2,8 +2,14 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Star } from "lucide-react";
 import Image from "next/image";
 import React from "react";
+import { Prisma } from "@/generated/prisma/client";
+
+type ReviewWithUser = Prisma.ReviewGetPayload<{
+  include: { user: true };
+}>;
+
 type ReviewCardProps = {
-  review: IReview;
+  review: ReviewWithUser;
 };
 
 const ReviewCard = ({ review }: ReviewCardProps) => {
@@ -11,14 +17,14 @@ const ReviewCard = ({ review }: ReviewCardProps) => {
     <div className="flex flex-col bg-white w-96 p-6 gap-4 rounded-md shadow hover:shadow-xl duration-200">
       <div className="flex items-center gap-4">
         <Avatar>
-          <AvatarImage src={review.avatar} alt="user avatar" />
+          <AvatarImage src={review.user.avatarUrl as string} alt="user avatar" />
           <AvatarFallback>
-            <Image src={review.avatar} alt="user avatar" width={400} height={400} className="rounded-full" />
+            <Image src={review.user.avatarUrl as string} alt="user avatar" width={400} height={400} className="rounded-full" />
           </AvatarFallback>
         </Avatar>
         <div>
-          <h3 className="font-medium">{review.name}</h3>
-          <p className="text-gray-700 text-sm">{review.university}</p>
+          <h3 className="font-medium">{review.user.name}</h3>
+          <p className="text-gray-700 text-sm">{review.user.university}</p>
         </div>
       </div>
       <p className="text-gray-500 text-sm leading-5">{review.review}</p>

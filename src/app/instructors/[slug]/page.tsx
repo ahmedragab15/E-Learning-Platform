@@ -1,6 +1,6 @@
 import { Container, Courses, Heading } from "@/components";
 import { images } from "@/components/shared/Images";
-import SocialCard from "@/components/SocialCard";
+import SocialCard from "@/components/cards/SocialCard";
 import { instructors } from "@/dummyData";
 import Image from "next/image";
 import React from "react";

@@ -9,6 +9,7 @@ async function main() {
       name: faker.person.fullName(),
       email: faker.internet.email(),
       avatarUrl: faker.image.avatar(),
+      university: faker.company.name(),
     })),
     skipDuplicates: true,
   });
@@ -62,14 +63,15 @@ async function main() {
         slug: await generateSlug("Course", title),
         description: faker.lorem.sentences(3),
         detailDescription: faker.lorem.paragraphs(5),
-        imageUrl: faker.image.urlLoremFlickr({ category: "nature" }),
+        imageUrl:
+          "https://images.unsplash.com/photo-1664575602276-acd073f104c1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         categoryId: faker.helpers.arrayElement(categoryIds),
         instructorId: faker.helpers.arrayElement(instructorIds),
         duration: "3 Months",
         lectures: faker.number.int({ min: 50, max: 200 }),
         translation: "English",
         badgeBg: `bg-${faker.color.human()}-500`,
-        ratingCount: faker.number.float({ min: 1, max: 5, multipleOf: 0.1 }),
+        ratingCount: faker.number.float({ min: 3, max: 5, multipleOf: 0.1 }),
         ratingTotal: faker.number.int({ min: 30, max: 300 }),
       };
     })
@@ -88,12 +90,12 @@ async function main() {
       return {
         title,
         slug: await generateSlug("Course", title),
-        imageUrl: faker.image.urlLoremFlickr({ category: "nature" }),
+        imageUrl:
+          "https://images.unsplash.com/photo-1664575602276-acd073f104c1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         categoryId: faker.helpers.arrayElement(categoryIds),
         description: faker.lorem.sentences(3),
         reads: faker.number.int({ min: 50, max: 200 }),
         badgeBg: `bg-${faker.color.human()}-500`,
-        courseId: faker.helpers.arrayElement(courseIds),
       };
     })
   );
@@ -106,9 +108,8 @@ async function main() {
     data: Array.from({ length: 10 }, () => ({
       userId: faker.helpers.arrayElement(userIds),
       courseId: faker.helpers.arrayElement(courseIds),
-      rating: faker.number.float({ min: 1, max: 5, multipleOf: 0.1 }),
+      rating: faker.number.float({ min: 3, max: 5, multipleOf: 0.1 }),
       review: faker.lorem.sentences(4),
-      university: faker.company.name(),
     })),
     skipDuplicates: true,
   });
@@ -131,8 +132,7 @@ async function main() {
     })),
     skipDuplicates: true,
   });
-
-  await prisma.lesson.createMany({
+  await prisma.chapter.createMany({
     data: Array.from({ length: 20 }, () => ({
       courseId: faker.helpers.arrayElement(courseIds),
       topic: faker.lorem.words(3),
@@ -141,16 +141,18 @@ async function main() {
     skipDuplicates: true,
   });
 
-  const lessonIds = (await prisma.lesson.findMany()).map((c) => c.id);
+  const chapterIds = (await prisma.chapter.findMany()).map((c) => c.id);
 
-  await prisma.lessonDetail.createMany({
+  await prisma.lesson.createMany({
     data: Array.from({ length: 20 }, () => ({
-      lessonId: faker.helpers.arrayElement(lessonIds),
+      chapterId: faker.helpers.arrayElement(chapterIds),
       title: faker.lorem.words(3),
       duration: faker.number.int({ min: 1, max: 20 }) + " mins",
     })),
     skipDuplicates: true,
   });
+
+
 
   await prisma.achievement.createMany({
     data: Array.from({ length: 20 }, () => ({

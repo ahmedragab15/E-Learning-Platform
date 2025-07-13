@@ -1,11 +1,11 @@
 "use server";
 import prisma from "@/lib/db";
 
-export async function getAllUsers() {
+export async function getAllUsersAction() {
   return await prisma.user.findMany();
 }
 
-export async function getUser(id: number) {
+export async function getUserAction(id: number) {
   return await prisma.user.findUnique({
     where: { id },
   });
