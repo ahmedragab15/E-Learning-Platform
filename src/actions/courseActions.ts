@@ -4,7 +4,22 @@ import { Prisma } from "@/generated/prisma";
 import { generateSlug } from "@/lib/slugify";
 
 export async function getCourses() {
-  return await prisma.course.findMany();
+  return await prisma.course.findMany({
+    include: {
+      category: true,
+      instructor: true,
+      reviews: true,
+      lessons: true,
+    },
+  });
+}
+
+export async function getCategories() {
+  return await prisma.category.findMany({
+    include: {
+      courses: true,
+    },
+  });
 }
 
 export async function createPost(data: Prisma.CourseCreateInput) {

@@ -1,8 +1,10 @@
 import React from 'react'
 import CartItem from '../cart/CartItem';
-import { allCourses } from '@/dummyData';
+import { getCourses } from '@/actions/courseActions';
 
-const CartSummary = () => {
+const CartSummary = async() => {
+    const allCourses = await getCourses();
+  
   return (
     <div
       className="relative w-screen max-w-sm border border-gray-600 bg-gray-100 px-4 py-8 sm:px-6 lg:px-8"

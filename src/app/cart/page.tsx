@@ -1,14 +1,17 @@
 import { Button } from "@/components/ui/button";
-import { allCourses, VAT_RATE } from "@/dummyData";
+import {  VAT_RATE } from "@/dummyData";
 import CartItem from "./CartItem";
 import Link from "next/link";
 import { Courses } from "@/components";
 import { ChevronNavigation } from "@/components/shared/ArrowNavigation";
 import { Container, Heading } from "@/components/index";
+import { getCourses } from "@/actions/courseActions";
 
-const page = () => {
-  const TotalAmount = () => allCourses.reduce((total, course) => total + +course.price, 0);
+const page = async() => {
+  const allCourses = await getCourses();
+  const TotalAmount = () => allCourses.reduce((total, course) => total + course.price , 0);
   const VatAmount = () => VAT_RATE * TotalAmount();
+  
 
   return (
     <>

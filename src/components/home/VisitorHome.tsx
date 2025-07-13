@@ -1,8 +1,10 @@
+import { getCourses } from "@/actions/courseActions";
 import { HeroVisitor, CoursesCategories, Courses, WhyUs, Reviews, AllNews, Banner, Heading, Container } from "@/components/index";
 import { ArrowNavigation } from "@/components/shared/ArrowNavigation";
-import { allCourses } from "@/dummyData";
 
-const VisitorHome = () => {
+const VisitorHome = async() => {
+    const allCourses = await getCourses();
+  
   return (
     <>
       <Container>
@@ -17,7 +19,7 @@ const VisitorHome = () => {
 
       <Container>
         <Courses
-          courses={allCourses}
+          courses={allCourses.slice(0, 4)}
           heading={
             <Heading
               title="Recomendation Courses"

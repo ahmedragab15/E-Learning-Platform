@@ -1,29 +1,20 @@
-"use client";
-import { Courses, SelectMenu, Heading, Container } from "@/components";
-import { allCourses, categories } from "@/dummyData";
-import { useState } from "react";
+import { getCourses } from "@/actions/courseActions";
+import { Courses, Heading, Container } from "@/components";
+import CoursesFilter from "./CoursesFilter";
 
-const AllCourses = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+interface Props {
+  searchParams: { category?: string };
+}
+const AllCourses = async ({ searchParams }: Props) => {
+  const allCourses = await getCourses();
+  const selectedCategory = searchParams.category || "All"; 
+
+  const filteredCourses = selectedCategory === "All" ? allCourses : allCourses.filter((course) => course.category.title === selectedCategory);
+
   return (
     <>
       <Container>
-        <Courses
-          heading={
-            <Heading
-              title="All Courses"
-              cta={
-                <SelectMenu
-                  label="Select a Category"
-                  options={["All", ...categories.map((category) => category.title)]}
-                  selected={selectedCategory}
-                  setSelected={setSelectedCategory}
-                />
-              }
-            />
-          }
-          courses={selectedCategory === "All" ? allCourses : allCourses.filter((course) => course.category === selectedCategory)}
-        />
+        <Courses heading={<Heading title="All Courses" cta={<CoursesFilter selected={selectedCategory} />} />} courses={filteredCourses} />
       </Container>
     </>
   );

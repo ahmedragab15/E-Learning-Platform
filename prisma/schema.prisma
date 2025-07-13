@@ -54,20 +54,20 @@ model Course {
   id                Int              @id @default(autoincrement())
   title             String
   slug              String           @unique
-  description       String?
-  imageUrl          String?
+  description       String
+  imageUrl          String
   category          Category         @relation(fields: [categoryId], references: [id])
   categoryId        Int
   instructor        Instructor       @relation(fields: [instructorId], references: [id])
   instructorId      Int
-  translation       String?
-  duration          String?
-  lectures          Int?
-  price             Float?
-  ratingCount       Float?           @default(0.0)
-  ratingTotal       Int?             @default(0)
-  badgeBg           String?
-  detailDescription String?
+  translation       String
+  duration          String
+  lectures          Int
+  price             Float
+  ratingCount       Float           @default(0.0)
+  ratingTotal       Int             @default(0)
+  badgeBg           String
+  detailDescription String
   learnings         CourseLearning[]
   lessons           Lesson[]
   enrollments       Enrollment[]
@@ -82,15 +82,14 @@ model News {
   id          Int      @id @default(autoincrement())
   title       String
   slug        String   @unique
-  imageUrl    String?
+  imageUrl    String
   category    Category @relation(fields: [categoryId], references: [id])
   categoryId  Int
-  description String?
+  description String
   reads       Int      @default(0)
-  publishDate String?
   badgeBg     String?
   course      Course?  @relation(fields: [courseId], references: [id])
-  courseId    Int?
+  courseId    Int
   createdAt   DateTime @default(now())
 }
 
@@ -101,8 +100,8 @@ model Review {
   course     Course   @relation(fields: [courseId], references: [id])
   courseId   Int
   rating     Float
-  review     String?
-  university String?
+  review     String
+  university String
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 }
@@ -112,7 +111,7 @@ model CourseLearning {
   course      Course         @relation(fields: [courseId], references: [id])
   courseId    Int
   title       String
-  description String?
+  description String
   items       LearningItem[]
   createdAt   DateTime       @default(now())
 }
@@ -130,7 +129,7 @@ model Lesson {
   course    Course         @relation(fields: [courseId], references: [id])
   courseId  Int
   topic     String
-  duration  String?
+  duration  String
   details   LessonDetail[]
   createdAt DateTime       @default(now())
 }
@@ -140,7 +139,7 @@ model LessonDetail {
   lesson    Lesson   @relation(fields: [lessonId], references: [id])
   lessonId  Int
   title     String
-  duration  String?
+  duration  String
   createdAt DateTime @default(now())
 }
 

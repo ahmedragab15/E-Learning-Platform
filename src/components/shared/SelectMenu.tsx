@@ -4,7 +4,7 @@ interface IProps {
   label: string;
   options: string[];
   selected: string;
-  setSelected: React.Dispatch<React.SetStateAction<string>>;
+  setSelected: (value: string) => void;
 }
 
 const SelectMenu = ({ label, options = [], selected, setSelected }: IProps) => {

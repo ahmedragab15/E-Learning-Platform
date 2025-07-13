@@ -4,18 +4,24 @@ import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { Prisma } from "@/generated/prisma/client";
+
+type CourseWithCategory = Prisma.CourseGetPayload<{
+  include: { category: true };
+}>;
+
 type CourseCardProps = {
-  course: ICourse;
+  course: CourseWithCategory;
 };
 
 const CourseCard = ({ course }: CourseCardProps) => {
   return (
-    <Link href={`/all-courses/${course.slug}?id=${course.id}`}>
+    <Link href={`/all-courses/${course.slug}?id=${course.slug}`}>
       <div className="flex flex-col bg-slate-100 w-64 pb-6 gap-4 rounded-md shadow hover:shadow-xl duration-200">
-        <Image src={course.image} alt="course image" width={400} height={400} className="rounded-md" />
+        <Image src={course?.imageUrl} alt="course image" width={400} height={400} className="rounded-md object-cover max-w-full" />
         <div className="space-y-2 px-4">
-          <Badge className={` text-white ${course.badgeBg}`}>{course.category}</Badge>
-          <h3 className="font-medium">{course.title}</h3>
+          <Badge className={` text-white bg-blue-500`}>{`${course.category.title}`}</Badge>
+          <h3 className="font-medium line-clamp-1">{course.title}</h3>
           <p className="text-gray-600 text-xs">{course.duration}</p>
           <div className="flex items-center gap-0.5">
             {Array.from({ length: Number(Math.ceil(Number(course.ratingCount))) }).map((_, index) => (

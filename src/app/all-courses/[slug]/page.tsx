@@ -1,14 +1,16 @@
+import { getCourses } from "@/actions/courseActions";
 import { Reviews, InstructorCard, LessonsAccordion, RatingProgress, Heading } from "@/components";
 import { ChevronNavigation } from "@/components/shared/ArrowNavigation";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { courseDetails, allCourses, lessons } from "@/dummyData";
+import { courseDetails, lessons } from "@/dummyData";
 import { Captions, CircleDollarSign, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
+  const allCourses = await getCourses();
   const chossen = allCourses.find((course) => course.slug === slug);
 
   return (
@@ -19,7 +21,7 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
             <span>
               <Badge variant="outline" className="text-base md:text-md text-primary relative border-0">
                 <span className="h-2 w-2 rounded-full bg-primary"></span>
-                {chossen?.category}
+                {chossen?.category.title}
               </Badge>
             </span>
             <h1 className="text-3xl md:text-5xl font-semibold">{chossen?.title}</h1>
@@ -47,7 +49,7 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
               <div className="space-y-2">
                 <h3 className="text-md text-gray-600 font-medium">Instructor</h3>
                 <h4 className="text-sm font-semibold text-primary underline">
-                  <Link href={`/instructors/${chossen?.instructorSlug}`}>{chossen?.instructor}</Link>
+                  <Link href={`/instructors/${chossen?.instructor.slug}`}>{chossen?.instructor.name}</Link>
                 </h4>
               </div>
               <div className="space-y-2">
@@ -67,7 +69,7 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
             </div>
           </div>
           <div className="flex-1 md:justify-items-end justify-items-center">
-            <Image src={chossen?.image || ""} alt="course image" width={400} height={400} className="rounded-md" />
+            <Image src={chossen?.imageUrl as string} alt="course image" width={400} height={400} className="rounded-md" />
           </div>
         </div>
       </section>

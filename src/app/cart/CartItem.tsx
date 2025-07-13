@@ -1,12 +1,20 @@
 import { Dot, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import { Prisma } from "@/generated/prisma/client";
 
-const CartItem = ({ course }: { course: ICourse }) => {
+type CourseWithCategory = Prisma.CourseGetPayload<{
+  include: { category: true };
+}>;
+
+type CourseCardProps = {
+  course: CourseWithCategory;
+};
+
+const CartItem = ({ course }: CourseCardProps) => {
   return (
     <li className="bg-white flex max-w-full gap-4 border-b-2 border-gray-200 p-4 shadow-md hover:shadow-lg duration-200 rounded-lg" key={course.id}>
-      <Image src={course.image} alt={course.title} width={200} height={200} className="size-16 rounded-sm object-cover" />
+      <Image src={course.imageUrl as string} alt={course.title} width={200} height={200} className="size-16 rounded-sm object-cover" />
       <div>
         <h3 className="text-lg font-semibold text-gray-900">{course.title}</h3>
         <div className="mt-0.5 space-y-px text-gray-600">

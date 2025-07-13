@@ -2,9 +2,10 @@ import { CoursesCategories, Courses, Heading, HeroUser, Container } from "@/comp
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ChevronNavigation } from "../shared/ArrowNavigation";
-import { allCourses } from "@/dummyData";
+import { getCourses } from "@/actions/courseActions";
 
-const UserHome = () => {
+const UserHome = async() => {
+  const allCourses = await getCourses();
   return (
     <>
       <section className="userHome-Hero-image relative max-w-full h-[731px] px-6 md:px-16 pb-8 ">
@@ -12,12 +13,12 @@ const UserHome = () => {
       </section>
 
       <Container background="bg-white">
-        <CoursesCategories
+        <CoursesCategories 
           heading={
             <Heading
               title="Courses Category"
               cta={
-                <Button variant="link" >
+                <Button variant="link">
                   <Link href="/">See All</Link>
                 </Button>
               }
@@ -29,7 +30,7 @@ const UserHome = () => {
 
       <Container>
         <Courses
-          courses={allCourses}
+          courses={allCourses.slice(0, 4)}
           heading={
             <Heading
               title="Recomendation Courses"
@@ -42,7 +43,7 @@ const UserHome = () => {
 
       <Container background="bg-white">
         <Courses
-          courses={allCourses}
+          courses={allCourses.slice(0, 4)}
           heading={
             <Heading title="Popular Course" description="You can find recomendation courses from all course categories and quickly learn more" />
           }
