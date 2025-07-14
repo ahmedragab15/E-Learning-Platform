@@ -17,7 +17,6 @@ const AllCourses = async ({ searchParams }: Props) => {
         <Courses
           heading={<Heading title={`${selectedCategory} Courses`} cta={<CoursesFilter selected={selectedCategory} />} />}
           courses={filteredCourses}
-          swiper={false}
         />
       </Container>
     </>

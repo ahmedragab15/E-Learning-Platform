@@ -1,9 +1,13 @@
 import { getCoursesAction } from "@/actions/courseActions";
 import { HeroVisitor, CoursesCategories, Courses, WhyUs, Reviews, AllNews, Banner, Heading, Container } from "@/components/index";
 import { ArrowNavigation } from "@/components/shared/ArrowNavigation";
+import { getAllReviewsAction } from "@/actions/reviewsActions";
+import { getAllNewsAction } from "@/actions/newsActions";
 
 const VisitorHome = async () => {
   const allCourses = await getCoursesAction();
+  const reviews = await getAllReviewsAction();
+  const news = await getAllNewsAction();
 
   return (
     <>
@@ -36,15 +40,24 @@ const VisitorHome = async () => {
 
       <Container>
         <Reviews
+          reviews={reviews.slice(0, 8)}
           heading={
             <Heading title="What our students say" description="Find out what experiences and what they have to say about the course with us" />
           }
-          navigation={<ArrowNavigation />}
+          navigation={<ArrowNavigation id="reviews" />}
+          swiper
+          id="reviews"
         />
       </Container>
 
       <Container background="bg-white">
-        <AllNews />
+        <AllNews
+          news={news.slice(0, 8)}
+          heading={<Heading title="News for you" />}
+          navigation={<ArrowNavigation id="news" />}
+          swiper
+          id="news"
+        />
       </Container>
 
       <Container background="bg-white">

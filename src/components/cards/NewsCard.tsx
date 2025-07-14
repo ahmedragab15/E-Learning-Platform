@@ -14,7 +14,7 @@ type NewsCardProps = {
 
 const NewsCard = ({ News }: NewsCardProps) => {
   return (
-    <div className="flex flex-col bg-slate-100 w-80 pb-4 gap-4 rounded-md shadow hover:shadow-xl duration-200">
+    <div className="flex flex-col bg-slate-100 pb-4 gap-4 rounded-md shadow hover:shadow-xl duration-200">
       <Image src={News.imageUrl} alt="news image" width={400} height={400} className="rounded-md" />
       <div className="space-y-2 px-4">
         <Badge className={` text-white bg-emerald-500`}>{News.category.title}</Badge>

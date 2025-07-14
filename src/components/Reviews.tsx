@@ -1,19 +1,45 @@
+"use client";
 import React from "react";
 import ReviewCard from "./cards/ReviewCard";
-import { getAllReviewsAction } from "@/actions/reviewsActions";
+import SwiperSlider from "@/swiper/SwiperSlider";
+import { SwiperSlide } from "swiper/react";
+import { Prisma } from "@/generated/prisma/client";
 
-const Reviews = async({ heading, navigation = "" }: { heading: React.ReactNode; navigation?: React.ReactNode }) => {
-  const reviews = await getAllReviewsAction()
+type ReviewsWithUser = Prisma.ReviewGetPayload<{
+  include: { user: true; course: true };
+}>;
+
+interface IProps {
+  heading: React.ReactNode;
+  navigation?: React.ReactNode;
+  reviews: ReviewsWithUser[];
+  swiper?: boolean;
+  id?: string;
+}
+
+const Reviews = ({ reviews, heading, navigation = "", swiper = false, id = "" }: IProps) => {
   return (
     <>
       {heading}
       <div className="space-y-4">
         <div className="flex justify-evenly flex-wrap gap-6">
-          {reviews.slice(0, 3).map((review) => (
-            <ReviewCard key={review.id} review={review} />
-          ))}
+          {reviews.length > 0 ? (
+            swiper || reviews.length > 5 ? (
+              <SwiperSlider id={id}>
+                {reviews.map((review) => (
+                  <SwiperSlide key={review.id}>
+                    <ReviewCard review={review} />
+                  </SwiperSlide>
+                ))}
+              </SwiperSlider>
+            ) : (
+              reviews.map((review) => <ReviewCard key={review.id} review={review} />)
+            )
+          ) : (
+            <p className="text-center text-gray-500">No reviews yet</p>
+          )}
         </div>
-        {navigation}
+        {reviews.length > 0 &&navigation}
       </div>
     </>
   );

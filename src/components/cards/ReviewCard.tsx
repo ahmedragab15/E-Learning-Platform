@@ -5,7 +5,7 @@ import React from "react";
 import { Prisma } from "@/generated/prisma/client";
 
 type ReviewWithUser = Prisma.ReviewGetPayload<{
-  include: { user: true };
+  include: { user: true; course: true };
 }>;
 
 type ReviewCardProps = {
@@ -14,7 +14,7 @@ type ReviewCardProps = {
 
 const ReviewCard = ({ review }: ReviewCardProps) => {
   return (
-    <div className="flex flex-col bg-white w-96 p-6 gap-4 rounded-md shadow hover:shadow-xl duration-200">
+    <div className="flex flex-col bg-white max-w-96 p-6 gap-4 rounded-md shadow hover:shadow-xl duration-200">
       <div className="flex items-center gap-4">
         <Avatar>
           <AvatarImage src={review.user.avatarUrl as string} alt="user avatar" />
@@ -24,10 +24,10 @@ const ReviewCard = ({ review }: ReviewCardProps) => {
         </Avatar>
         <div>
           <h3 className="font-medium">{review.user.name}</h3>
-          <p className="text-gray-700 text-sm">{review.user.university}</p>
+          <p className="text-gray-700 text-sm line-clamp-1">{review.user.university}</p>
         </div>
       </div>
-      <p className="text-gray-500 text-sm leading-5">{review.review}</p>
+      <p className="text-gray-500 text-sm leading-5 line-clamp-4">{review.review}</p>
       <div className="flex items-center gap-0.5">
         {Array.from({ length: Number(Math.ceil(Number(review.rating))) }).map((_, index) => (
           <Star key={index} fill="#dd7621" size={18} className="text-transparent " />
