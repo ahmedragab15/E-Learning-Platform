@@ -12,14 +12,13 @@ const VisitorHome = async () => {
           <HeroVisitor />
         </div>
       </Container>
-
       <Container background="bg-white">
         <CoursesCategories heading={<Heading title="Courses Category" cta={<ArrowNavigation />} />} />
       </Container>
 
       <Container>
         <Courses
-          courses={allCourses.slice(0, 4)}
+          courses={allCourses.slice(0, 7)}
           heading={
             <Heading
               title="Recomendation Courses"
