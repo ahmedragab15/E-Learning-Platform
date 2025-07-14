@@ -1,6 +1,6 @@
 import { BriefcaseMedical, ChartPie, CodeXml, Cpu, Facebook, Link, Linkedin, Palette, Twitter, Youtube } from "lucide-react";
 
-export const isUser = false;
+export const isUser = true;
 
 export const news: INews[] = [
   {

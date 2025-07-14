@@ -1,7 +1,6 @@
 import { getCategoriesAction, getCoursesAction } from "@/actions/courseActions";
 import CategoryCard from "./cards/CategoryCard";
 import CourseCard from "./cards/CourseCard";
-import { ArrowNavigation } from "@/components/shared/ArrowNavigation";
 import { headers } from "next/headers";
 
 interface Props {
@@ -10,7 +9,7 @@ interface Props {
   navigation?: React.ReactNode;
 }
 
-const CoursesCategories = async ({ heading, navigation = <ArrowNavigation />, searchParams }: Props) => {
+const CoursesCategories = async ({ heading, navigation, searchParams }: Props) => {
   const categories = await getCategoriesAction();
   const allCourses = await getCoursesAction();
 

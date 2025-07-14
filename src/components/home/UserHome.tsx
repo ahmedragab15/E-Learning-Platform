@@ -19,7 +19,7 @@ const UserHome = async () => {
               title="Courses Category"
               cta={
                 <Button variant="link">
-                  <Link href="/">See All</Link>
+                  <Link href="/courses-category">See All</Link>
                 </Button>
               }
             />
@@ -30,24 +30,28 @@ const UserHome = async () => {
 
       <Container>
         <Courses
-          courses={allCourses.slice(0, 4)}
+          id="recomendation"
+          courses={allCourses.slice(0, 8)}
           heading={
             <Heading
               title="Recomendation Courses"
               description="You can find recomendation courses from all course categories and quickly learn more"
             />
           }
-          navigation={<ChevronNavigation />}
+          navigation={<ChevronNavigation id="recomendation" />}
+          swiper
         />
       </Container>
 
       <Container background="bg-white">
         <Courses
-          courses={allCourses.slice(0, 4)}
+          id="popular"
+          courses={allCourses.slice(10, 18)}
           heading={
             <Heading title="Popular Course" description="You can find recomendation courses from all course categories and quickly learn more" />
           }
-          navigation={<ChevronNavigation />}
+          navigation={<ChevronNavigation id="popular" />}
+          swiper
         />
       </Container>
     </>

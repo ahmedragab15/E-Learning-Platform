@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { cn } from "@/lib/utils";
 import CourseCard from "./cards/CourseCard";
 import ProgressCourseCard from "./cards/ProgressCourseCard";
@@ -16,21 +16,25 @@ type CourseCardProps = {
   courses?: CourseWithCategory[];
   progressCourses?: IProgressCourse[];
   className?: string;
+  swiper: boolean;
+  id?: string
 };
 
-const Courses = ({ heading, navigation, courses, progressCourses, className = "" }: CourseCardProps) => {
+const Courses = ({ heading, navigation, courses, progressCourses, className = "", swiper,id = "" }: CourseCardProps) => {
   return (
     <>
       {heading}
       <div className={cn(`flex justify-evenly flex-wrap gap-6 my-6 ${className}`)}>
-        {courses && (
-          <SwiperSlider>
+        {courses && swiper ? (
+          <SwiperSlider id={id} >
             {courses.map((course) => (
               <SwiperSlide key={course.slug}>
                 <CourseCard course={course} />
               </SwiperSlide>
             ))}
           </SwiperSlider>
+        ) : (
+          courses && !swiper && courses.map((course) => <CourseCard course={course} key={course.slug} />)
         )}
         {progressCourses && progressCourses.map((course) => <ProgressCourseCard key={course.id} course={course} />)}
       </div>

@@ -26,6 +26,7 @@ const VisitorHome = async () => {
             />
           }
           navigation={<ArrowNavigation />}
+          swiper
         />
       </Container>
 

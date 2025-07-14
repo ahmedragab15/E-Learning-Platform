@@ -27,7 +27,6 @@ const CoursesCategory = async ({ searchParams }: Props) => {
                 }
               />
             }
-            navigation={<ChevronNavigation />}
             searchParams={searchParams}
           />
         </div>
@@ -37,7 +36,8 @@ const CoursesCategory = async ({ searchParams }: Props) => {
           <Courses
             heading={<Heading title="You can also study other categories" />}
             navigation={<ChevronNavigation />}
-            courses={allCourses.slice(0, 4)}
+            courses={allCourses.slice(0, 9)}
+            swiper
           />
         </div>
       </section>

@@ -7,15 +7,13 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-const SwiperSlider = ({ children }: { children: React.ReactNode }) => {
-
-
+const SwiperSlider = ({ children, id }: { children: React.ReactNode; id: string }) => {
   return (
     <Swiper
       modules={[Navigation, Pagination, A11y]}
       navigation={{
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
+        nextEl: `.swiper-button-next-${id}`,
+        prevEl: `.swiper-button-prev-${id}`,
       }}
       pagination={{ clickable: true }}
       onSwiper={(swiper) => console.log(swiper)}
