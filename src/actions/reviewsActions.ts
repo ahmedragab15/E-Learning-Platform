@@ -7,6 +7,7 @@ export async function getAllReviewsAction() {
     return await prisma.review.findMany({
         include: {
             user: true,
+            course: true
         },
     });
 }

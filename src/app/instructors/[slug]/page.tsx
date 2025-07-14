@@ -1,20 +1,31 @@
 import { Container, Courses, Heading } from "@/components";
 import { images } from "@/components/shared/Images";
 import SocialCard from "@/components/cards/SocialCard";
-import { instructors } from "@/dummyData";
 import Image from "next/image";
 import React from "react";
+import { getAllInstructorsAction } from "@/actions/instructorActions";
+import { FacebookIcon, GlobeIcon, LinkedinIcon, TwitterIcon, YoutubeIcon } from "lucide-react";
 
 const InstructorDetails = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
+  const instructors = await getAllInstructorsAction();
   const chossen = instructors.find((instructor) => instructor.slug === slug);
+
+  const socials = {
+    Website: { url: chossen?.websiteUrl, icon: <GlobeIcon /> },
+    Facebook: { url: chossen?.facebookUrl, icon: <FacebookIcon /> },
+    Twitter: { url: chossen?.twitterUrl, icon: <TwitterIcon /> },
+    LinkedIn: { url: chossen?.linkedinUrl, icon: <LinkedinIcon /> },
+    YouTube: { url: chossen?.youtubeUrl, icon: <YoutubeIcon /> },
+  };
+
   return (
     <>
       <section className="bg-white">
         <Image src={images.instractorCover} alt={"instractor cover"} width={1000} height={1000} className="w-full " />
         <Container As={"div"} className="mt-[-80px] md:mt-[-120px]">
           <Image
-            src={chossen?.avatar as string}
+            src={chossen?.avatarUrl as string}
             alt={"instractor cover"}
             width={200}
             height={200}
@@ -42,13 +53,13 @@ const InstructorDetails = async ({ params }: { params: Promise<{ slug: string }>
       <Container background="bg-white my-6">
         <Heading title="You can also follow me on other platforms" className="text-xl max-w-fit" />
         <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
-          {Object.entries(chossen?.social || {}).map(([key, social], index) => (
-            <SocialCard key={index} href={social.url} icon={social.icon} title={key[0].toUpperCase() + key.slice(1)} />
+          {Object.entries(socials).map(([key, social], index) => (
+            <SocialCard key={index} href={social.url as string} icon={social.icon} title={key[0].toUpperCase() + key.slice(1)} />
           ))}
         </div>
       </Container>
       <Container background="bg-white">
-        <Courses heading={<Heading title="My Courses" className="text-2xl" />} courses={chossen?.totalCourses || []} />
+        <Courses heading={<Heading title="My Courses" className="text-2xl" />} courses={chossen?.courses} />
       </Container>
     </>
   );

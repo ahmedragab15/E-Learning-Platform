@@ -1,4 +1,6 @@
 import { getCoursesAction } from "@/actions/courseActions";
+import { getAllInstructorsAction } from "@/actions/instructorActions";
+import { getAllReviewsAction } from "@/actions/reviewsActions";
 import { Reviews, InstructorCard, LessonsAccordion, RatingProgress, Heading } from "@/components";
 import { ChevronNavigation } from "@/components/shared/ArrowNavigation";
 import { Badge } from "@/components/ui/badge";
@@ -12,6 +14,11 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
   const { slug } = await params;
   const allCourses = await getCoursesAction();
   const chossen = allCourses.find((course) => course.slug === slug);
+  const allreviews = await getAllReviewsAction();
+  const chossenReviews = allreviews.filter((review) => review.courseId === chossen?.id);
+  const instructors = await getAllInstructorsAction();
+  const chossenInstructor = instructors.find((instructor) => instructor.slug === chossen?.instructor.slug);
+  console.log(chossenInstructor);
 
   return (
     <>
@@ -70,7 +77,6 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
           </div>
           <div className="flex-1 md:justify-items-end justify-items-center">
             <Image src={chossen?.imageUrl as string} alt="course image" width={400} height={400} className="rounded-md" />
-           
           </div>
         </div>
       </section>
@@ -133,13 +139,13 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
           </div>
           <div className="flex-1">
             <h2 className="text-3xl font-semibold">Instructor</h2>
-            <InstructorCard instructor={courseDetails.instructor} />
+            {chossenInstructor && <InstructorCard instructor={chossenInstructor} />}
           </div>
         </div>
       </section>
       <section className="px-6 md:px-16 py-10">
         <div className="container mx-auto space-y-6 my-6">
-          <Reviews heading={<Heading title="Best reviews" />} navigation={<ChevronNavigation />} />
+          <Reviews heading={<Heading title="Best reviews" />} navigation={<ChevronNavigation />} reviews={chossenReviews} />
         </div>
       </section>
     </>
