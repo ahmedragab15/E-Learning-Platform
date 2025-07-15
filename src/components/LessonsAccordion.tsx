@@ -2,19 +2,14 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { ChevronDownIcon, Play } from "lucide-react";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { Prisma } from "@/generated/prisma/client";
 
-interface LessonItem {
-  title: string;
-  duration: string;
-}
-
-interface Topic {
-  topic: LessonItem;
-  lesson: LessonItem[];
-}
+type ChapterWithLessons = Prisma.ChapterGetPayload<{
+  include: { details: true; };
+}>;
 
 interface AccordionProps {
-  data: Topic[];
+  data: ChapterWithLessons[];
 }
 
 const LessonsAccordion = ({ data }: AccordionProps) => {
@@ -25,13 +20,13 @@ const LessonsAccordion = ({ data }: AccordionProps) => {
           <AccordionTrigger className="flex justify-between">
             <h3 className="flex items-center gap-1 text-lg">
               <ChevronDownIcon className="text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200" />
-              <span>{topic.topic.title}</span>
+              <span>{topic.topic}</span>
             </h3>
-            <h3 className="text-md text-gray-600">{topic.topic.duration}</h3>
+            <h3 className="text-md text-gray-600">{topic.duration}</h3>
           </AccordionTrigger>
           <AccordionContent>
             <ul className="pl-4 space-y-4">
-              {topic.lesson.map((lesson, lessonIndex) => (
+              {topic.details.map((lesson, lessonIndex) => (
                 <li key={lessonIndex}>
                   <Link href="#" className="flex justify-between">
                     <h4 className="flex items-center gap-2">

@@ -9,8 +9,17 @@ export async function getCoursesAction() {
       category: true,
       instructor: true,
       reviews: true,
-      learnings: true,
-      Chapters: true,
+      learnings: {
+        include: {
+          items: true,
+          course: true,
+        },
+      },
+      Chapters: {
+        include:{
+          details:true,
+        }
+      },
       courseRating: true,
     },
   });
@@ -25,9 +34,18 @@ export async function getCourseBySlug(slug: string) {
         include: { courses: true },
       },
       reviews: true,
-      learnings: true,
-      Chapters: true,
-      courseRating: true,
+      learnings: {
+        include: {
+          items: true,
+          course: true,
+        },
+      },
+      Chapters: {
+        include:{
+          details:true,
+        }
+      },
+      courseRating: true
     },
   });
 }
