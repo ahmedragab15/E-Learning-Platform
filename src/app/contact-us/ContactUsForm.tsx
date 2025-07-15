@@ -6,6 +6,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { contactUs, contactUsValues } from "@/schema/ContactUsSchema";
 import { Textarea } from "@/components/ui/textarea";
+import { ContactFormInputs } from "@/constants";
 
 const ContactUsForm = () => {
   const form = useForm<contactUsValues>({
@@ -22,52 +23,42 @@ const ContactUsForm = () => {
   }
 
   return (
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
+        {ContactFormInputs.map((input, index) => (
           <FormField
+            key={index}
             control={form.control}
-            name="email"
+            name={input.name}
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel>{input.label}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter your email" className="bg-white" {...field} />
+                  <Input placeholder={input.placeholder} className="bg-white" type={input.type} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          <FormField
-            control={form.control}
-            name="subject"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Subject</FormLabel>
-                <FormControl>
-                  <Input placeholder="Subject" className="bg-white" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="description"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Description</FormLabel>
-                <FormControl>
-                  <Textarea placeholder="Type your description here." className="bg-white resize-none"  {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button type="submit" fullwidth className="rounded-none">
-            Send
-          </Button>
-        </form>
-      </Form>
+        ))}
+        <FormField
+          control={form.control}
+          name="description"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Description</FormLabel>
+              <FormControl>
+                <Textarea placeholder="Type your description here." className="bg-white resize-none" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <Button type="submit" fullwidth className="rounded-none">
+          Send
+        </Button>
+      </form>
+    </Form>
   );
 };
 

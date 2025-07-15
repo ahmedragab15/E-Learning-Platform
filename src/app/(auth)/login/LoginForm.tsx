@@ -6,6 +6,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { loginSchema, loginSchemaValues } from "@/schema/loginSchema";
 import Link from "next/link";
+import { LoginFormInputs } from "@/constants";
 
 const LoginForm = () => {
   const form = useForm<loginSchemaValues>({
@@ -24,32 +25,21 @@ const LoginForm = () => {
     <div className="flex flex-col gap-4 items-center w-96 max-w-full">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input placeholder="Enter your email" className="bg-white" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Password</FormLabel>
-                <FormControl>
-                  <Input placeholder="Enter your password" type="password" className="bg-white" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          {LoginFormInputs.map((input, index) => (
+            <FormField key={index}
+              control={form.control}
+              name={input.name}
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{input.label}</FormLabel>
+                  <FormControl>
+                    <Input placeholder={input.placeholder} className="bg-white" type={input.type} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          ))}
           <Button type="submit" fullwidth className="rounded-none">
             Login
           </Button>

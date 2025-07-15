@@ -46,7 +46,7 @@ declare interface ICourse {
   slug: string;
   category: string;
   duration: string;
-  lectures:number;
+  lectures: number;
   instructor: string;
   instructorSlug: string;
   translation: string;
@@ -101,7 +101,7 @@ declare interface IInstructorInfo {
     youtube: ISocial;
   };
 }
-interface ISocial{
+interface ISocial {
   url: string;
   icon: React.ReactNode;
 }
@@ -121,4 +121,30 @@ declare interface IProgressCourse {
   category: string;
   allLessons: number;
   finishedLessons: number;
+}
+
+interface IFormInput {
+  placeholder: string;
+  type: string;
+  label: string;
+}
+
+declare interface IContactInputs extends IFormInput {
+  name: "email" | "subject";
+}
+
+declare interface ILoginInputs extends IFormInput {
+  name: "email" | "password";
+}
+
+declare interface IRegisterInputs extends IFormInput {
+  name: "fullname" | "username" | "email" | "password" | "confirmPassword";
+}
+
+declare interface IBaillingInputs extends IFormInput {
+  name: "firstName" | "lastName" | "email" | "address" | "country" | "city" | "state" | "zipCode";
+}
+
+declare interface IPaymentInputs extends IFormInput {
+  name: "cardNumber" | "expiryDate" | "cvv" | "cardName";
 }
