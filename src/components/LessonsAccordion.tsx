@@ -14,7 +14,7 @@ interface AccordionProps {
 
 const LessonsAccordion = ({ data }: AccordionProps) => {
   return (
-    <Accordion type="multiple" className="w-full">
+    <Accordion type="single" className="w-full">
       {data.map((topic, index) => (
         <AccordionItem key={index} value={`item-${index}`}>
           <AccordionTrigger className="flex justify-between">

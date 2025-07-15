@@ -3,7 +3,6 @@ import { VAT_RATE } from "@/dummyData";
 import CartItem from "./CartItem";
 import Link from "next/link";
 import { Courses } from "@/components";
-import { ChevronNavigation } from "@/components/shared/ArrowNavigation";
 import { Container, Heading } from "@/components/index";
 import { getCoursesAction } from "@/actions/courseActions";
 
@@ -19,8 +18,8 @@ const page = async () => {
         <div className="flex flex-col lg:flex-row justify-evenly gap-12">
           <div className="flex-1 lg:flex-2/3">
             <h3 className="text-2xl font-medium text-gray-900 border-b border-gray-200 pb-2">{allCourses.length} Courses in Cart</h3>
-            <ul className="space-y-4">
-              {allCourses.slice(0, 3).map((course) => (
+            <ul className="space-y-4  max-h-[500px] overflow-auto">
+              {allCourses.map((course) => (
                 <CartItem key={course.id} course={course} />
               ))}
             </ul>
@@ -54,7 +53,7 @@ const page = async () => {
       </Container>
 
       <Container background="bg-white">
-        <Courses courses={allCourses.slice(0, 4)} heading={<Heading title="You might also like" />} navigation={<ChevronNavigation />} />
+        <Courses courses={allCourses.slice(0, 4)} heading={<Heading title="You might also like" />} swiper={false} />
       </Container>
     </>
   );

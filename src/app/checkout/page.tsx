@@ -1,12 +1,24 @@
 import React from 'react'
-import CartSummary from './CartSummary'
+import PaymentForm from './PaymentForm'
+import OrderSummary from './OrderSummary'
+import { Container } from '@/components'
 
 const page = () => {
   return (
-    <div className='flex flex-col md:flex-row justify-center items-center gap-12 mx-8 my-16'>
-        <div>payment </div>
-        <CartSummary/>
-    </div>
+    <Container>
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-foreground mb-2">Checkout</h1>
+          <p className="text-muted-foreground">Complete your purchase securely</p>
+        </div>
+        <div className="grid lg:grid-cols-2 gap-8">
+          <div className="space-y-6">
+            <PaymentForm />
+          </div>
+          <div>
+            <OrderSummary />
+          </div>
+        </div>
+    </Container>
   )
 }
 
