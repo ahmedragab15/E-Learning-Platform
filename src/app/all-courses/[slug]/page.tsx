@@ -1,6 +1,6 @@
-import { getCoursesAction } from "@/actions/courseActions";
-import { getAllInstructorsAction } from "@/actions/instructorActions";
-import { getAllReviewsAction } from "@/actions/reviewsActions";
+import { getCourseBySlug } from "@/actions/courseActions";
+import { getInstructorBySlug } from "@/actions/instructorActions";
+import { getReviewsByCourseId } from "@/actions/reviewsActions";
 import { Reviews, InstructorCard, LessonsAccordion, RatingProgress, Heading } from "@/components";
 import { ChevronNavigation } from "@/components/shared/ArrowNavigation";
 import { Badge } from "@/components/ui/badge";
@@ -12,13 +12,9 @@ import Link from "next/link";
 
 const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
-  const allCourses = await getCoursesAction();
-  const chossen = allCourses.find((course) => course.slug === slug);
-  const allreviews = await getAllReviewsAction();
-  const chossenReviews = allreviews.filter((review) => review.courseId === chossen?.id);
-  const instructors = await getAllInstructorsAction();
-  const chossenInstructor = instructors.find((instructor) => instructor.slug === chossen?.instructor.slug);
-  console.log(chossenInstructor);
+  const chossenCourse = await getCourseBySlug(slug);
+  const chossenReviews = await getReviewsByCourseId(chossenCourse?.id as number);
+  const chossenInstructor = await getInstructorBySlug(chossenCourse?.instructor.slug as string);
 
   return (
     <>
@@ -28,11 +24,11 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
             <span>
               <Badge variant="outline" className="text-base md:text-md text-primary relative border-0">
                 <span className="h-2 w-2 rounded-full bg-primary"></span>
-                {chossen?.category.title}
+                {chossenCourse?.category.title}
               </Badge>
             </span>
-            <h1 className="text-3xl md:text-5xl font-semibold">{chossen?.title}</h1>
-            <p className="text-sm md:text-lg text-gray-600 max-w-full">{chossen?.description}</p>
+            <h1 className="text-3xl md:text-5xl font-semibold">{chossenCourse?.title}</h1>
+            <p className="text-sm md:text-lg text-gray-600 max-w-full">{chossenCourse?.description}</p>
             <div className="space-x-6">
               <Button>Join Now</Button>
               <Button variant="outline">Add to Cart</Button>
@@ -41,42 +37,42 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
               <div className="space-y-2">
                 <h3 className="text-md text-gray-600 font-medium">Rating Class</h3>
                 <div className="flex items-center gap-0.5">
-                  {Array.from({ length: Number(Math.ceil(Number(chossen?.ratingCount))) }).map((_, index) => (
+                  {Array.from({ length: Number(Math.ceil(Number(chossenCourse?.ratingCount))) }).map((_, index) => (
                     <Star key={index} fill="#dd7621" size={18} className="text-transparent " />
                   ))}
-                  {Array.from({ length: 5 - Number(Math.ceil(Number(chossen?.ratingCount))) }).map((_, index) => (
+                  {Array.from({ length: 5 - Number(Math.ceil(Number(chossenCourse?.ratingCount))) }).map((_, index) => (
                     <Star key={index} fill="#bababa" size={18} className="text-transparent " />
                   ))}
                   <p className=" text-xs">
-                    {chossen?.ratingCount}
-                    <span className="text-gray-600"> ({chossen?.ratingTotal})</span>
+                    {chossenCourse?.ratingCount}
+                    <span className="text-gray-600"> ({chossenCourse?.ratingTotal})</span>
                   </p>
                 </div>
               </div>
               <div className="space-y-2">
                 <h3 className="text-md text-gray-600 font-medium">Instructor</h3>
                 <h4 className="text-sm font-semibold text-primary underline">
-                  <Link href={`/instructors/${chossen?.instructor.slug}`}>{chossen?.instructor.name}</Link>
+                  <Link href={`/instructors/${chossenCourse?.instructor.slug}`}>{chossenCourse?.instructor.name}</Link>
                 </h4>
               </div>
               <div className="space-y-2">
                 <h3 className="text-md text-gray-600 font-medium">Translation Video</h3>
                 <h4 className="text-sm text-gray-600 font-semibold flex items-center gap-2">
                   <Captions className="text-gray-600" size={18} />
-                  <span>{chossen?.translation}</span>
+                  <span>{chossenCourse?.translation}</span>
                 </h4>
               </div>
               <div className="space-y-2">
                 <h3 className="text-md text-gray-600 font-medium">Price</h3>
                 <h4 className="text-sm text-primary font-semibold flex items-center gap-2">
                   <CircleDollarSign className="text-gray-600" size={18} />
-                  <span>${chossen?.price}</span>
+                  <span>${chossenCourse?.price}</span>
                 </h4>
               </div>
             </div>
           </div>
           <div className="flex-1 md:justify-items-end justify-items-center">
-            <Image src={chossen?.imageUrl as string} alt="course image" width={400} height={400} className="rounded-md" />
+            <Image src={chossenCourse?.imageUrl as string} alt="course image" width={400} height={400} className="rounded-md" />
           </div>
         </div>
       </section>

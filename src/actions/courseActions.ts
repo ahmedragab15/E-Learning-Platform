@@ -11,6 +11,23 @@ export async function getCoursesAction() {
       reviews: true,
       learnings: true,
       Chapters: true,
+      courseRating: true,
+    },
+  });
+}
+
+export async function getCourseBySlug(slug: string) {
+  return await prisma.course.findUnique({
+    where: { slug },
+    include: {
+      category: true,
+      instructor: {
+        include: { courses: true },
+      },
+      reviews: true,
+      learnings: true,
+      Chapters: true,
+      courseRating: true,
     },
   });
 }

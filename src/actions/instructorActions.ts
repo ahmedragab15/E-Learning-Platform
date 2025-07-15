@@ -15,3 +15,17 @@ export async function getAllInstructorsAction() {
     },
   });
 }
+
+export async function getInstructorBySlug(slug: string) {
+  return await prisma.instructor.findUnique({
+    where: { slug },
+    include: {
+      courses: {
+        include: {
+          category: true,
+          instructor: true,
+        },
+      },
+    },
+  });
+}
