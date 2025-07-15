@@ -17,9 +17,9 @@ const ReviewCard = ({ review }: ReviewCardProps) => {
     <div className="flex flex-col bg-white max-w-96 p-6 gap-4 rounded-md shadow hover:shadow-xl duration-200">
       <div className="flex items-center gap-4">
         <Avatar>
-          <AvatarImage src={review.user.avatarUrl as string} alt="user avatar" />
+          <AvatarImage src={review.user.avatarUrl as string || "http://dergipark.org.tr/assets/app/images/buddy_sample.png"} alt="user avatar" />
           <AvatarFallback>
-            <Image src={review.user.avatarUrl as string} alt="user avatar" width={400} height={400} className="rounded-full" />
+            <Image src={review.user.avatarUrl as string || "http://dergipark.org.tr/assets/app/images/buddy_sample.png"} alt="user avatar" width={400} height={400} className="rounded-full" />
           </AvatarFallback>
         </Avatar>
         <div>

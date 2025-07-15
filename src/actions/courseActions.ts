@@ -15,16 +15,6 @@ export async function getCoursesAction() {
   });
 }
 
-export async function getCategoriesAction() {
-  return await prisma.category.findMany({
-    include: {
-      courses: true,
-    },
-  });
-}
-
-
-
 export async function createPostAction(data: Prisma.CourseCreateInput) {
   return await prisma.course.create({
     data: {

@@ -5,6 +5,7 @@ import SwiperSlider from "@/swiper/SwiperSlider";
 import { SwiperSlide } from "swiper/react";
 import { Prisma } from "@/generated/prisma/client";
 
+
 type ReviewsWithUser = Prisma.ReviewGetPayload<{
   include: { user: true; course: true };
 }>;

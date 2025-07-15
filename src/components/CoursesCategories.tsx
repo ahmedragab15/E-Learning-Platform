@@ -1,7 +1,8 @@
-import { getCategoriesAction, getCoursesAction } from "@/actions/courseActions";
+import { getCoursesAction } from "@/actions/courseActions";
 import CategoryCard from "./cards/CategoryCard";
 import CourseCard from "./cards/CourseCard";
 import { headers } from "next/headers";
+import { getCategoriesAction } from "@/actions/categoryActions";
 
 interface Props {
   searchParams?: { category?: string };

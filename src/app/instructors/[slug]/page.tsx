@@ -25,7 +25,7 @@ const InstructorDetails = async ({ params }: { params: Promise<{ slug: string }>
         <Image src={images.instractorCover} alt={"instractor cover"} width={1000} height={1000} className="w-full " />
         <Container As={"div"} className="mt-[-80px] md:mt-[-120px]">
           <Image
-            src={chossen?.avatarUrl as string}
+            src={(chossen?.avatarUrl as string) || "http://dergipark.org.tr/assets/app/images/buddy_sample.png"}
             alt={"instractor cover"}
             width={200}
             height={200}

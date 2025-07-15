@@ -21,9 +21,9 @@ const InstructorCard = ({ instructor, className = "" }: InstructorCardProps) => 
       <div className="flex justify-between flex-col lg:flex-row gap-2">
         <div className="flex items-center gap-4">
           <Avatar>
-            <AvatarImage src={instructor.avatarUrl as string} alt="user avatar" />
+            <AvatarImage src={instructor.avatarUrl as string || "http://dergipark.org.tr/assets/app/images/buddy_sample.png"} alt="user avatar" />
             <AvatarFallback>
-              <Image src={instructor.avatarUrl as string} alt="user avatar" width={400} height={400} className="rounded-full" />
+              <Image src={instructor.avatarUrl as string || "http://dergipark.org.tr/assets/app/images/buddy_sample.png"} alt="user avatar" width={400} height={400} className="rounded-full" />
             </AvatarFallback>
           </Avatar>
           <div>

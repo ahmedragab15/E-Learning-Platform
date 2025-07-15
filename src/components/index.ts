@@ -1,14 +1,16 @@
 export { default as VisitorHome } from "@/components/home/VisitorHome";
 export { default as UserHome } from "@/components/home/UserHome";
-export { default as HeroVisitor } from "@/components/home/homeComponents/HeroVisitor";
-export { default as HeroUser } from "@/components/home/homeComponents/HeroUser";
-export { default as WhyUs } from "@/components/home/homeComponents/WhyUs";
+export { default as HeroVisitor } from "@/components/home/HeroVisitor";
+export { default as HeroUser } from "@/components/home/HeroUser";
+export { default as WhyUs } from "@/components/home/WhyUs";
 
 export { default as NewsCard } from "@/components/cards/NewsCard";
 export { default as CategoryCard } from "@/components/cards/CategoryCard";
 export { default as ReviewCard } from "@/components/cards/ReviewCard";
 export { default as CourseCard } from "@/components/cards/CourseCard";
 export { default as InstructorCard } from "@/components/cards/InstructorCard";
+export { default as ProgressCourseCard } from "@/components/cards/ProgressCourseCard";
+export { default as SocialCard } from "@/components/cards/SocialCard";
 
 
 export { default as AllNews } from "@/components/AllNews";
