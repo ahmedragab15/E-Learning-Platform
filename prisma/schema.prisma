@@ -10,8 +10,10 @@ datasource db {
 
 model User {
   id          Int          @id @default(autoincrement())
+  username    String       @db.VarChar(100) @default("abcdef")
   name        String
   email       String       @unique
+  password    String       @default("abcdef")
   university  String?
   avatarUrl   String?
   isAdmin     Boolean      @default(false)
