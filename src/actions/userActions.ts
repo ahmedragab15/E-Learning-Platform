@@ -1,7 +1,8 @@
 "use server";
 import { Prisma } from "@/generated/prisma";
 import prisma from "@/lib/db";
-import { registerSchema } from "@/schema/registerSchema";
+import { serverRegisterSchema } from "@/schema/registerSchema";
+import bcrypt from "bcrypt";
 
 export async function getAllUsersAction() {
   try {
@@ -38,22 +39,15 @@ export async function getUserAction(id: number) {
 }
 
 export async function createUserAction(data: Prisma.UserCreateInput) {
- const parsed = registerSchema.safeParse(data);
+  const parsed = serverRegisterSchema.safeParse(data);
 
- if (!parsed.success) {
-   console.error(parsed.error);
-   throw new Error("Invalid input data");
- }
-
-    return await prisma.user.create({
-      data: {
-        name: parsed.data.fullname,
-        username: parsed.data.username,
-        email: parsed.data.email,
-        // password: parsed.data.password,
-        // Hash the password before saving it to the database
-      },
-    });
+  if (!parsed.success) {
+    console.error(parsed.error);
+    throw new Error("Invalid input data");
+  }
+  return await prisma.user.create({
+    data: { ...parsed.data, password: await bcrypt.hash(parsed.data.password, 10) },
+  });
 }
 
 export async function updateUserAction(id: number, data: Prisma.UserCreateInput) {

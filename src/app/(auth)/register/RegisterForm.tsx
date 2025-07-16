@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { registerSchema, registerSchemaValues } from "@/schema/registerSchema";
 import Link from "next/link";
 import { RegisterFormInputs } from "@/constants";
+import { createUserAction } from "@/actions/userActions";
 
 const RegisterForm = () => {
   const form = useForm<registerSchemaValues>({
@@ -22,6 +23,7 @@ const RegisterForm = () => {
 
   function onSubmit(values: registerSchemaValues) {
     console.log(values);
+    createUserAction(values);
   }
 
   return (
