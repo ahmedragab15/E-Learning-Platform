@@ -23,8 +23,8 @@ const ReviewCard = ({ review }: ReviewCardProps) => {
           </AvatarFallback>
         </Avatar>
         <div>
-          <h3 className="font-medium">{review.user.name}</h3>
-          <p className="text-gray-700 text-sm line-clamp-1">{review.user.university}</p>
+          <h3 className="font-medium">{review.user.fullname}</h3>
+          <p className="text-gray-700 text-sm line-clamp-1">{review.user.university || "No University"}</p>
         </div>
       </div>
       <p className="text-gray-500 text-sm leading-5 line-clamp-4">{review.review}</p>

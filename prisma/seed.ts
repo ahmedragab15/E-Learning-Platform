@@ -6,8 +6,10 @@ const prisma = new PrismaClient();
 async function main() {
   await prisma.user.createMany({
     data: Array.from({ length: 10 }, () => ({
-      name: faker.person.fullName(),
+      fullname: faker.person.fullName(),
+      username: faker.internet.displayName(),
       email: faker.internet.email(),
+      password: faker.internet.password(),
       avatarUrl: faker.image.avatar(),
       university: faker.company.name(),
     })),
