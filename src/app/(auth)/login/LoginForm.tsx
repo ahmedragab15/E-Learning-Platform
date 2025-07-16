@@ -7,8 +7,14 @@ import { Input } from "@/components/ui/input";
 import { loginSchema, loginSchemaValues } from "@/schema/loginSchema";
 import Link from "next/link";
 import { LoginFormInputs } from "@/constants";
+import { useState } from "react";
+import { userLoginAction } from "@/actions/userActions";
+import { Bounce, toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const form = useForm<loginSchemaValues>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -17,8 +23,27 @@ const LoginForm = () => {
     },
   });
 
-  function onSubmit(values: loginSchemaValues) {
-    console.log(values);
+  async function onSubmit(values: loginSchemaValues) {
+    try {
+      setLoading(true);
+      const result = await userLoginAction(values);
+      if (!result.success) {
+        toast.error(result.message || "Something went wrong!");
+        return;
+      }
+      toast.success("Login successful", {
+        position: "top-right",
+        autoClose: 3000,
+        theme: "light",
+        transition: Bounce,
+      });
+      router.push("/");
+    } catch (error) {
+      toast.error("An unexpected error occurred");
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -26,7 +51,8 @@ const LoginForm = () => {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
           {LoginFormInputs.map((input, index) => (
-            <FormField key={index}
+            <FormField
+              key={index}
               control={form.control}
               name={input.name}
               render={({ field }) => (
@@ -40,7 +66,7 @@ const LoginForm = () => {
               )}
             />
           ))}
-          <Button type="submit" fullwidth className="rounded-none">
+          <Button type="submit" fullwidth className="rounded-none" disabled={loading}>
             Login
           </Button>
         </form>

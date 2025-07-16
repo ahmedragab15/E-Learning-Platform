@@ -8,8 +8,13 @@ import { registerSchema, registerSchemaValues } from "@/schema/registerSchema";
 import Link from "next/link";
 import { RegisterFormInputs } from "@/constants";
 import { createUserAction } from "@/actions/userActions";
+import { Bounce, toast } from "react-toastify";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const RegisterForm = () => {
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const form = useForm<registerSchemaValues>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -21,9 +26,27 @@ const RegisterForm = () => {
     },
   });
 
-  function onSubmit(values: registerSchemaValues) {
-    console.log(values);
-    createUserAction(values);
+  async function onSubmit(values: registerSchemaValues) {
+    try {
+      setLoading(true);
+      const result = await createUserAction(values);
+      if (!result.success) {
+        toast.error(result.message || "Something went wrong!");
+        return;
+      }
+      toast.success("Account created successfully, please login", {
+        position: "top-right",
+        autoClose: 3000,
+        theme: "light",
+        transition: Bounce,
+      });
+      router.push("/login");
+    } catch (error) {
+      toast.error("An unexpected error occurred");
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -46,7 +69,7 @@ const RegisterForm = () => {
               )}
             />
           ))}
-          <Button type="submit" fullwidth className="rounded-none">
+          <Button type="submit" fullwidth className="rounded-none" disabled={loading}>
             Create Account
           </Button>
         </form>

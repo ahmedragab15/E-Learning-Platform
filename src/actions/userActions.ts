@@ -1,6 +1,7 @@
 "use server";
 import { Prisma } from "@/generated/prisma";
 import prisma from "@/lib/db";
+import { loginSchema } from "@/schema/loginSchema";
 import { serverRegisterSchema } from "@/schema/registerSchema";
 import bcrypt from "bcrypt";
 
@@ -39,20 +40,67 @@ export async function getUserAction(id: number) {
 }
 
 export async function createUserAction(data: Prisma.UserCreateInput) {
-  const parsed = serverRegisterSchema.safeParse(data);
-
-  if (!parsed.success) {
-    console.error(parsed.error);
-    throw new Error("Invalid input data");
+  try {
+    // validate data
+    const parsed = serverRegisterSchema.safeParse(data);
+    if (!parsed.success) {
+      return { success: false, message: "Invalid input data", status: 400 };
+    }
+    // check if user already exists by email
+    const user = await prisma.user.findUnique({
+      where: { email: parsed.data.email },
+    });
+    if (user) {
+      return { success: false, message: "User already exists", status: 400 };
+    }
+    // create user and hash the password
+    await prisma.user.create({
+      data: { ...parsed.data, password: await bcrypt.hash(parsed.data.password, 10) },
+    });
+    return { success: true, message: "User created successfully", status: 201 };
+    // Handle errors
+  } catch (error) {
+    console.error("createUserAction error:", error);
+    return { success: false, message: "Something went wrong", status: 500 };
   }
-  return await prisma.user.create({
-    data: { ...parsed.data, password: await bcrypt.hash(parsed.data.password, 10) },
-  });
+}
+export async function userLoginAction(data: { email: string; password: string }) {
+  try {
+    // validate data
+    const parsed = loginSchema.safeParse(data);
+    if (!parsed.success) {
+      return { success: false, message: "Invalid input data", status: 400 };
+    }
+    // check if user already exists by email
+    const user = await prisma.user.findUnique({
+      where: { email: parsed.data.email },
+    });
+    if (!user) {
+      return { success: false, message: "Invalid email or password", status: 401 };
+    }
+    // check if password is correct by comparing hashed password
+    const isPasswordValid = await bcrypt.compare(parsed.data.password, user.password);
+    if (!isPasswordValid) {
+      return { success: false, message: "Invalid email or password", status: 401 };
+    }
+    // login successful
+    return { success: true, message: "Login successful", status: 200 };
+    // Handle errors
+  } catch (error) {
+    console.error("userLoginAction error:", error);
+    return { success: false, message: "Something went wrong", status: 500 };
+  }
 }
 
 export async function updateUserAction(id: number, data: Prisma.UserCreateInput) {
   return await prisma.user.update({
     where: { id },
     data: { ...data },
+  });
+}
+
+export async function deleteUserAction(id: number) {
+  return await prisma.user.delete({
+    where: { id },
   });
 }
