@@ -1,6 +1,6 @@
-import { getCourseBySlug } from "@/actions/courseActions";
-import { getInstructorBySlug } from "@/actions/instructorActions";
-import { getReviewsByCourseId } from "@/actions/reviewsActions";
+import { getCourseBySlugAction } from "@/actions/courseActions";
+import { getInstructorBySlugAction } from "@/actions/instructorActions";
+import { getReviewsByCourseIdAction } from "@/actions/reviewsActions";
 import { Reviews, InstructorCard, LessonsAccordion, RatingProgress, Heading, Container } from "@/components";
 import { ChevronNavigation } from "@/components/shared/ArrowNavigation";
 import { Badge } from "@/components/ui/badge";
@@ -8,12 +8,16 @@ import { Button } from "@/components/ui/button";
 import { Captions, CircleDollarSign, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
-  const chossenCourse = await getCourseBySlug(slug);
-  const chossenReviews = await getReviewsByCourseId(chossenCourse?.id as number);
-  const chossenInstructor = await getInstructorBySlug(chossenCourse?.instructor.slug as string);
+  const chossenCourse = await getCourseBySlugAction(slug);
+    if (!chossenCourse) {
+      notFound();
+    }
+  const chossenReviews = await getReviewsByCourseIdAction(chossenCourse?.id as number);
+  const chossenInstructor = await getInstructorBySlugAction(chossenCourse?.instructor.slug as string);
   const ratingBreakdown = [
     { stars: 5, count: chossenCourse?.courseRating?.stars5 },
     { stars: 4, count: chossenCourse?.courseRating?.stars4 },
@@ -135,16 +139,13 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
           <div className="flex-1 space-y-2">
             <h2 className="text-3xl font-semibold">Instructor</h2>
             {chossenInstructor && (
-              <InstructorCard
-                instructor={chossenInstructor}
-                className="bg-slate-100 rounded-md shadow hover:shadow-xl duration-200"
-              />
+              <InstructorCard instructor={chossenInstructor} className="bg-slate-100 rounded-md shadow hover:shadow-xl duration-200" />
             )}
           </div>
         </div>
       </Container>
       <Container>
-          <Reviews heading={<Heading title="Best reviews" />} navigation={<ChevronNavigation />} reviews={chossenReviews} />
+        <Reviews heading={<Heading title="Best reviews" />} navigation={<ChevronNavigation />} reviews={chossenReviews} />
       </Container>
     </>
   );

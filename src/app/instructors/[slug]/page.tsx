@@ -5,11 +5,15 @@ import Image from "next/image";
 import React from "react";
 import { getAllInstructorsAction } from "@/actions/instructorActions";
 import { FacebookIcon, GlobeIcon, LinkedinIcon, TwitterIcon, YoutubeIcon } from "lucide-react";
+import { notFound } from "next/navigation";
 
 const InstructorDetails = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
   const instructors = await getAllInstructorsAction();
   const chossen = instructors.find((instructor) => instructor.slug === slug);
+  if (!chossen) {
+    notFound();
+  }
 
   const socials = {
     Website: { url: chossen?.websiteUrl, icon: <GlobeIcon /> },

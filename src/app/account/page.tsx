@@ -17,7 +17,7 @@ const MyClass = () => {
             Finished
           </Button>
         </div>
-          <Courses progressCourses={user.allCourses} className="justify-center lg:justify-start" />
+            <Courses progressCourses={user.allCourses} className="justify-center lg:justify-start" />
       </div>
     </div>
   );

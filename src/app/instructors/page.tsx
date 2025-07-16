@@ -4,6 +4,7 @@ import React from "react";
 
 const AllInstructors = async () => {
   const instructors = await getAllInstructorsAction();
+  
   return (
     <Container>
       <Heading title="All Instructors" />

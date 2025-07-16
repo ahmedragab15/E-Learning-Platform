@@ -4,9 +4,14 @@ import prisma from "@/lib/db";
 // import { Prisma } from "@/generated/prisma";
 
 export async function getAllNewsAction() {
-  return await prisma.news.findMany({
-    include: {
-      category: true,
-    },
-  });
+  try {
+    return await prisma.news.findMany({
+      include: {
+        category: true,
+      },
+    });
+  } catch (error) {
+    console.error("getAllNewsAction error:", error);
+    return [];
+  }
 }

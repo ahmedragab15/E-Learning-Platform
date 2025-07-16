@@ -4,10 +4,10 @@ import { Badge } from "@/components/ui/badge";
 import { VAT_RATE } from "@/dummyData";
 import { getCoursesAction } from "@/actions/courseActions";
 
-const OrderSummary = async() => {
-    const allCourses = await getCoursesAction();
-    const TotalAmount = () => allCourses.reduce((total, course) => total + course.price, 0);
-    const VatAmount = () => VAT_RATE * TotalAmount();
+const OrderSummary = async () => {
+  const allCourses = await getCoursesAction();
+  const TotalAmount = () => allCourses.reduce((total, course) => total + course.price, 0);
+  const VatAmount = () => VAT_RATE * TotalAmount();
 
   return (
     <Card className="sticky top-8">

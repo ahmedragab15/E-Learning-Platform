@@ -51,13 +51,7 @@ const VisitorHome = async () => {
       </Container>
 
       <Container background="bg-white">
-        <AllNews
-          news={news.slice(0, 8)}
-          heading={<Heading title="News for you" />}
-          navigation={<ArrowNavigation id="news" />}
-          swiper
-          id="news"
-        />
+        <AllNews news={news.slice(0, 8)} heading={<Heading title="News for you" />} navigation={<ArrowNavigation id="news" />} swiper id="news" />
       </Container>
 
       <Container background="bg-white">
