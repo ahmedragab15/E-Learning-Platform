@@ -148,3 +148,10 @@ declare interface IBaillingInputs extends IFormInput {
 declare interface IPaymentInputs extends IFormInput {
   name: "cardNumber" | "expiryDate" | "cvv" | "cardName";
 }
+
+declare interface JwtPayload {
+  id: number;
+  fullName: string;
+  email: string;
+  isAdmin: boolean;
+}

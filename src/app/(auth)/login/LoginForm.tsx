@@ -33,11 +33,14 @@ const LoginForm = () => {
       }
       toast.success("Login successful", {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 2000,
         theme: "light",
         transition: Bounce,
       });
-      router.push("/");
+      setTimeout(() => {
+        router.push("/");
+      }, 1000);
+      console.log(result.token);
     } catch (error) {
       toast.error("An unexpected error occurred");
       console.error(error);

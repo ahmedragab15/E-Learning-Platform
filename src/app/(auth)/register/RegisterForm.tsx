@@ -36,11 +36,13 @@ const RegisterForm = () => {
       }
       toast.success("Account created successfully, please login", {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 2000,
         theme: "light",
         transition: Bounce,
       });
-      router.push("/login");
+      setTimeout(() => {
+        router.push("/login");
+      }, 1000);
     } catch (error) {
       toast.error("An unexpected error occurred");
       console.error(error);

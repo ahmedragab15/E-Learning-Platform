@@ -1,6 +1,7 @@
 "use server";
 import { Prisma } from "@/generated/prisma";
 import prisma from "@/lib/db";
+import { generateJWT } from "@/lib/generateJWT";
 import { loginSchema } from "@/schema/loginSchema";
 import { serverRegisterSchema } from "@/schema/registerSchema";
 import bcrypt from "bcrypt";
@@ -58,12 +59,13 @@ export async function createUserAction(data: Prisma.UserCreateInput) {
       data: { ...parsed.data, password: await bcrypt.hash(parsed.data.password, 10) },
     });
     return { success: true, message: "User created successfully", status: 201 };
-    // Handle errors
+    // Handle unexpected errors
   } catch (error) {
     console.error("createUserAction error:", error);
     return { success: false, message: "Something went wrong", status: 500 };
   }
 }
+
 export async function userLoginAction(data: { email: string; password: string }) {
   try {
     // validate data
@@ -71,7 +73,7 @@ export async function userLoginAction(data: { email: string; password: string })
     if (!parsed.success) {
       return { success: false, message: "Invalid input data", status: 400 };
     }
-    // check if user already exists by email
+    // check if user doesn't exists by email
     const user = await prisma.user.findUnique({
       where: { email: parsed.data.email },
     });
@@ -83,9 +85,17 @@ export async function userLoginAction(data: { email: string; password: string })
     if (!isPasswordValid) {
       return { success: false, message: "Invalid email or password", status: 401 };
     }
+    // create token
+    const jwtPayload: JwtPayload = {
+      id: user.id,
+      fullName: user.fullname,
+      email: user.email,
+      isAdmin: user.isAdmin,
+    };
+    const token = generateJWT(jwtPayload);
     // login successful
-    return { success: true, message: "Login successful", status: 200 };
-    // Handle errors
+    return { success: true, token, message: "Login successful", status: 200 };
+    // Handle unexpected errors
   } catch (error) {
     console.error("userLoginAction error:", error);
     return { success: false, message: "Something went wrong", status: 500 };
