@@ -38,9 +38,8 @@ const LoginForm = () => {
         transition: Bounce,
       });
       setTimeout(() => {
-        router.push("/");
+        router.push("/home");
       }, 1000);
-      console.log(result.token);
     } catch (error) {
       toast.error("An unexpected error occurred");
       console.error(error);
