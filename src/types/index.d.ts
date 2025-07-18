@@ -154,4 +154,7 @@ declare interface JwtPayload {
   fullName: string;
   email: string;
   isAdmin: boolean;
+  avatar: string | null;
+  iat?: number;
+  exp?: number;
 }
