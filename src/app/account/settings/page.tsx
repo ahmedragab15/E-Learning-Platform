@@ -1,14 +1,17 @@
-import React from 'react'
+import { Separator } from "@/components/ui/separator";
+import ProfileSettingsForm from "./ProfileSettingsForm";
 
-const page = () => {
+function ProfileSettings() {
   return (
-    <div className="bg-white p-6 rounded-md min-h-screen col-span-12 lg:col-span-9">
+    <div className="space-y-6">
       <div>
-        <aside></aside>
-        <div></div>
+        <h1 className="text-2xl font-bold">Setting Profile</h1>
+        <p className="text-muted-foreground mt-2">Add Information About You</p>
       </div>
+      <Separator />
+      <ProfileSettingsForm />
     </div>
   );
 }
 
-export default page
+export default ProfileSettings;
