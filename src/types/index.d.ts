@@ -3,6 +3,7 @@ declare interface ActiveLinkProps {
   children: React.ReactNode;
   className?: string;
   activeClassName?: string;
+  exact?: boolean;
 }
 
 declare interface ICategory {
@@ -149,12 +150,31 @@ declare interface IPaymentInputs extends IFormInput {
   name: "cardNumber" | "expiryDate" | "cvv" | "cardName";
 }
 
+declare interface IProfileSettingsInputs extends IFormInput {
+  name: "username" | "fullname";
+}
+
+declare interface IChangeAccountInputs extends IFormInput {
+  name: "email" | "currentPassword" | "newPassword" | "confirmNewPassword";
+}
+
+declare interface ISocialSettingsInputs extends IFormInput {
+  name: "website" | "facebook" | "github" | "linkedin";
+}
+
 declare interface JwtPayload {
   id: number;
   fullName: string;
+  username: string;
   email: string;
   isAdmin: boolean;
   avatar: string | null;
   iat?: number;
   exp?: number;
+}
+
+declare interface SettingsSidebarItems {
+  title: string;
+  href: string;
+  icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
 }

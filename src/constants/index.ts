@@ -1,3 +1,5 @@
+import { User, Settings, Share2 } from "lucide-react";
+
 export const ContactFormInputs: IContactInputs[] = [
   {
     name: "email",
@@ -108,6 +110,93 @@ export const BillingFormInputs: IBaillingInputs[] = [
     name: "zipCode",
     placeholder: "ZipCode",
     label: "ZipCode",
+    type: "text",
+  },
+];
+
+export const SettingsSidebarItems: SettingsSidebarItems[] = [
+  {
+    title: "Profile",
+    href: "/account/settings",
+    icon: User,
+  },
+  {
+    title: "Account",
+    href: "/account/settings/change-account",
+    icon: Settings,
+  },
+  {
+    title: "Social Media",
+    href: "/account/settings/social",
+    icon: Share2,
+  },
+];
+
+export const ProfileSettingsFormInputs: IProfileSettingsInputs[] = [
+  {
+    name: "username",
+    placeholder: "Change your username",
+    label: "Username",
+    type: "text",
+  },
+  {
+    name: "fullname",
+    placeholder: "Change your full name",
+    label: "Full Name",
+    type: "text",
+  },
+];
+
+export const ChangeAccountFormInputs: IChangeAccountInputs[] = [
+  {
+    name: "email",
+    placeholder: "Change your email",
+    label: "Email",
+    type: "email",
+  },
+  {
+    name: "currentPassword",
+    placeholder: "Enter your current password",
+    label: "Current Password",
+    type: "password",
+  },
+  {
+    name: "newPassword",
+    placeholder: "Enter your new password",
+    label: "New Password",
+    type: "password",
+  },
+  {
+    name: "confirmNewPassword",
+    placeholder: "Confirm your new password",
+    label: "Confirm New Password",
+    type: "password",
+  },
+];
+
+export const SocialSettingsFormInputs: ISocialSettingsInputs[] = [
+  {
+    name: "website",
+    placeholder: "Change your website",
+    label: "Website",
+    type: "text",
+  },
+  {
+    name: "facebook",
+    placeholder: "Change your facebook",
+    label: "Facebook",
+    type: "text",
+  },
+  {
+    name: "github",
+    placeholder: "Change your github",
+    label: "Github",
+    type: "text",
+  },
+  {
+    name: "linkedin",
+    placeholder: "Change your linkedin",
+    label: "Linkedin",
     type: "text",
   },
 ];

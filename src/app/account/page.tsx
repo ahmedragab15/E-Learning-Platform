@@ -5,7 +5,6 @@ import React from "react";
 
 const MyClass = () => {
   return (
-    <div className="bg-white p-6 rounded-md min-h-screen col-span-12 lg:col-span-9">
       <div className="space-y-6">
         <Heading title="My Class" description="Continue to learn with new knowledge" />
         <div className="flex gap-4">
@@ -19,7 +18,6 @@ const MyClass = () => {
         </div>
             <Courses progressCourses={user.allCourses} className="justify-center lg:justify-start" />
       </div>
-    </div>
   );
 };
 
