@@ -5,6 +5,9 @@ import { generateJWT } from "@/lib/generateJWT";
 import { loginSchema } from "@/schema/loginSchema";
 import { serverRegisterSchema } from "@/schema/registerSchema";
 import bcrypt from "bcrypt";
+import { getUserFromToken } from "@/lib/verifyJWT";
+import { cookies } from "next/headers";
+import jwt from "jsonwebtoken";
 
 export async function getAllUsersAction() {
   try {
@@ -22,6 +25,16 @@ export async function getAllUsersAction() {
 
 export async function getUserAction(id: number) {
   try {
+    // check if user is logged in
+    const token = (await cookies()).get("jwtToken")?.value;
+    if (!token) {
+      throw new Error("Unauthorized: No token provided");
+    }
+    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY as string) as JwtPayload;
+    if (decoded.id !== id && !decoded.isAdmin) {
+      throw new Error("Forbidden: You can only access your own data");
+    }
+    // get user
     const user = await prisma.user.findUnique({
       where: { id },
       include: {
@@ -33,7 +46,16 @@ export async function getUserAction(id: number) {
       console.warn(`User not found for id: ${id}`);
       return null;
     }
-    return user;
+    // return user
+    return {
+      id: user.id,
+      fullname: user.fullname,
+      email: user.email,
+      reviews: user.reviews,
+      enrollments: user.enrollments,
+      university: user.university,
+      username: user.username,
+    };
   } catch (error) {
     console.error("getUserAction error:", error);
     return null;
@@ -85,19 +107,62 @@ export async function userLoginAction(data: { email: string; password: string })
     if (!isPasswordValid) {
       return { success: false, message: "Invalid email or password", status: 401 };
     }
-    // create token
-    const jwtPayload: JwtPayload = {
+    const token = generateJWT({
       id: user.id,
       fullName: user.fullname,
+      username: user.username,
       email: user.email,
       isAdmin: user.isAdmin,
-    };
-    const token = generateJWT(jwtPayload);
+      avatar:user.avatarUrl
+    });
+
+    (await cookies()).set("jwtToken", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      path: "/",
+      maxAge: 60 * 60 * 24 * 10,
+    });
     // login successful
-    return { success: true, token, message: "Login successful", status: 200 };
+    return { success: true, message: "Login successful", status: 200 };
     // Handle unexpected errors
   } catch (error) {
     console.error("userLoginAction error:", error);
+    return { success: false, message: "Something went wrong", status: 500 };
+  }
+}
+
+export async function userLogoutAction() {
+  try {
+    (await cookies()).delete("jwtToken");
+    return { success: true, message: "Logout successful", status: 200 };
+  } catch (error) {
+    console.error("userLogoutAction error:", error);
+    return { success: false, message: "Something went wrong", status: 500 };
+  }
+}
+
+export async function deleteUserAction(id: number) {
+  try {
+    const decoded = await getUserFromToken();
+    if (!decoded) {
+      return { success: false, message: "Unauthorized", status: 401 };
+    }
+    const user = await prisma.user.findUnique({
+      where: { id },
+    });
+    if (!user) {
+      return { success: false, message: "User not found", status: 404 };
+    }
+    if (decoded.id !== id || !decoded.isAdmin) {
+      return { success: false, message: "Forbidden", status: 403 };
+    }
+    await prisma.user.delete({
+      where: { id },
+    });
+    return { success: true, message: "User deleted successfully", status: 200 };
+  } catch (error) {
+    console.error("deleteUserAction error:", error);
     return { success: false, message: "Something went wrong", status: 500 };
   }
 }
@@ -106,11 +171,5 @@ export async function updateUserAction(id: number, data: Prisma.UserCreateInput)
   return await prisma.user.update({
     where: { id },
     data: { ...data },
-  });
-}
-
-export async function deleteUserAction(id: number) {
-  return await prisma.user.delete({
-    where: { id },
   });
 }
