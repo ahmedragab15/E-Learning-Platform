@@ -1,5 +1,5 @@
-import { PrismaClient } from "../src/generated/prisma/client";
 import { generateSlug } from "@/lib/slugify";
+import { PrismaClient } from "../src/generated/prisma/client";
 import { faker } from "@faker-js/faker";
 const prisma = new PrismaClient();
 
@@ -72,7 +72,7 @@ async function main() {
         duration: "3 Months",
         lectures: faker.number.int({ min: 50, max: 200 }),
         translation: "English",
-        badgeBg: `bg-${faker.color.human()}-500`,
+        badgeBg: `bg-blue-500`,
         ratingCount: faker.number.float({ min: 3, max: 5, multipleOf: 0.1 }),
         ratingTotal: faker.number.int({ min: 30, max: 300 }),
       };
@@ -154,8 +154,6 @@ async function main() {
     skipDuplicates: true,
   });
 
-
-
   await prisma.achievement.createMany({
     data: Array.from({ length: 20 }, () => ({
       courses: 20,
@@ -189,6 +187,15 @@ async function main() {
     })),
     skipDuplicates: true,
   });
+
+    await prisma.comment.createMany({
+      data: Array.from({ length: 40 }, () => ({
+        content: faker.lorem.sentences(3),
+        userId: faker.helpers.arrayElement(userIds),
+        courseId: faker.helpers.arrayElement(courseIds),
+      })),
+      skipDuplicates: true,
+    });
 }
 
 main()

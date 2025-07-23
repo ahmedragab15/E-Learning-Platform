@@ -31,7 +31,7 @@ export async function getUserAction(id: number) {
       throw new Error("Unauthorized: No token provided");
     }
     const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY as string) as JwtPayload;
-    if (decoded.id !== id && !decoded.isAdmin) {
+    if (decoded.id !== id || decoded.role !== "ADMIN") {
       throw new Error("Forbidden: You can only access your own data");
     }
     // get user
@@ -112,7 +112,7 @@ export async function userLoginAction(data: { email: string; password: string })
       fullName: user.fullname,
       username: user.username,
       email: user.email,
-      isAdmin: user.isAdmin,
+      role: user.role,
       avatar:user.avatarUrl
     });
 
@@ -154,7 +154,7 @@ export async function deleteUserAction(id: number) {
     if (!user) {
       return { success: false, message: "User not found", status: 404 };
     }
-    if (decoded.id !== id || !decoded.isAdmin) {
+    if (decoded.id !== id || decoded.role !== "ADMIN") {
       return { success: false, message: "Forbidden", status: 403 };
     }
     await prisma.user.delete({

@@ -10,17 +10,24 @@ datasource db {
 
 model User {
   id          Int          @id @default(autoincrement())
-  username    String       @db.VarChar(10)
-  fullname    String       @db.VarChar(15)
+  username    String       @db.VarChar(20)
+  fullname    String       @db.VarChar(20)
   email       String       @unique
   password    String
   university  String?
   avatarUrl   String?
-  isAdmin     Boolean      @default(false)
+  role        Role         @default(USER)
   enrollments Enrollment[]
   reviews     Review[]
+  comments    Comment[]
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
+}
+
+enum Role {
+  USER
+  ADMIN
+  INSTRUCTOR
 }
 
 model Category {
@@ -76,6 +83,7 @@ model Course {
   enrollments       Enrollment[]
   reviews           Review[]
   courseRating      CourseRating?
+  comments          Comment[]
   createdAt         DateTime         @default(now())
   updatedAt         DateTime         @updatedAt
 }
@@ -175,4 +183,15 @@ model CourseRating {
   stars2       Int      @default(0) @map("stars_2")
   stars1       Int      @default(0) @map("stars_1")
   updatedAt    DateTime @updatedAt
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  content   String // نص التعليق
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  course    Course   @relation(fields: [courseId], references: [id])
+  courseId  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
