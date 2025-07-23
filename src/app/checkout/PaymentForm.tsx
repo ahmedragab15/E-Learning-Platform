@@ -11,11 +11,11 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { BillingFormInputs } from "@/constants";
-import { baillingInfo, baillingInfoValues } from "@/schema/BaillingInfoSchema";
+import { billingInfo, billingInfoValues } from "@/schema/BillingInfoSchema";
 const PaymentForm = () => {
   const [paymentMethod, setPaymentMethod] = useState("card");
-  const form = useForm<baillingInfoValues>({
-    resolver: zodResolver(baillingInfo),
+  const form = useForm<billingInfoValues>({
+    resolver: zodResolver(billingInfo),
     defaultValues: {
       firstName: "",
       lastName: "",
@@ -29,7 +29,7 @@ const PaymentForm = () => {
     },
   });
 
-  function onSubmit(values: baillingInfoValues) {
+  function onSubmit(values: billingInfoValues) {
     console.log(values);
   }
   return (

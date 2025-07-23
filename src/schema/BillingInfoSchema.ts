@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const baillingInfo = z.object({
+export const billingInfo = z.object({
   firstName: z.string({ message: "First name is required" }),
   lastName: z.string({ message: "Last name is required" }),
   email: z
@@ -14,4 +14,4 @@ export const baillingInfo = z.object({
   zipCode: z.string({ message: "zip code is required" }),
 });
 
-export type baillingInfoValues = z.infer<typeof baillingInfo>;
+export type billingInfoValues = z.infer<typeof billingInfo>;

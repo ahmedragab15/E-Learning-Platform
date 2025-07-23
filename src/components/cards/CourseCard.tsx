@@ -16,7 +16,7 @@ type CourseCardProps = {
 
 const CourseCard = ({ course }: CourseCardProps) => {
   return (
-    <Link href={`/all-courses/${course.slug}?id=${course.slug}`}>
+    <Link href={`/all-courses/${course.slug}`}>
       <div className="flex flex-col bg-slate-100 w-64 pb-6 gap-4 rounded-md shadow hover:shadow-xl duration-200">
         <Image src={course?.imageUrl} alt="course image" width={400} height={400} className="rounded-md object-cover max-w-full" />
         <div className="space-y-2 px-4">

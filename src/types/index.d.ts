@@ -142,7 +142,7 @@ declare interface IRegisterInputs extends IFormInput {
   name: "fullname" | "username" | "email" | "password" | "confirmPassword";
 }
 
-declare interface IBaillingInputs extends IFormInput {
+declare interface IBillingInputs extends IFormInput {
   name: "firstName" | "lastName" | "email" | "address" | "country" | "city" | "state" | "zipCode";
 }
 

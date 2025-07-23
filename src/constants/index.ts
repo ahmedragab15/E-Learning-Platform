@@ -63,7 +63,7 @@ export const RegisterFormInputs: IRegisterInputs[] = [
   },
 ];
 
-export const BillingFormInputs: IBaillingInputs[] = [
+export const BillingFormInputs: IBillingInputs[] = [
   {
     name: "firstName",
     placeholder: "John",

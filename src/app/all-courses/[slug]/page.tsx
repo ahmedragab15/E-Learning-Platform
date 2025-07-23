@@ -12,18 +12,18 @@ import { notFound } from "next/navigation";
 
 const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
-  const chossenCourse = await getCourseBySlugAction(slug);
-    if (!chossenCourse) {
-      notFound();
-    }
-  const chossenReviews = await getReviewsByCourseIdAction(chossenCourse?.id as number);
-  const chossenInstructor = await getInstructorBySlugAction(chossenCourse?.instructor.slug as string);
+  const chosenCourse = await getCourseBySlugAction(slug);
+  if (!chosenCourse) {
+    notFound();
+  }
+  const chosenReviews = await getReviewsByCourseIdAction(chosenCourse?.id as number);
+  const chosenInstructor = await getInstructorBySlugAction(chosenCourse?.instructor.slug as string);
   const ratingBreakdown = [
-    { stars: 5, count: chossenCourse?.courseRating?.stars5 },
-    { stars: 4, count: chossenCourse?.courseRating?.stars4 },
-    { stars: 3, count: chossenCourse?.courseRating?.stars3 },
-    { stars: 2, count: chossenCourse?.courseRating?.stars2 },
-    { stars: 1, count: chossenCourse?.courseRating?.stars1 },
+    { stars: 5, count: chosenCourse?.courseRating?.stars5 },
+    { stars: 4, count: chosenCourse?.courseRating?.stars4 },
+    { stars: 3, count: chosenCourse?.courseRating?.stars3 },
+    { stars: 2, count: chosenCourse?.courseRating?.stars2 },
+    { stars: 1, count: chosenCourse?.courseRating?.stars1 },
   ];
 
   return (
@@ -34,55 +34,57 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
             <span>
               <Badge variant="outline" className="text-base md:text-md text-primary relative border-0">
                 <span className="h-2 w-2 rounded-full bg-primary"></span>
-                {chossenCourse?.category.title}
+                {chosenCourse?.category.title}
               </Badge>
             </span>
-            <h1 className="text-3xl md:text-5xl font-semibold">{chossenCourse?.title}</h1>
-            <p className="text-sm md:text-lg text-gray-600 max-w-full">{chossenCourse?.description}</p>
+            <h1 className="text-3xl md:text-5xl font-semibold">{chosenCourse?.title}</h1>
+            <p className="text-sm md:text-lg text-gray-600 max-w-full">{chosenCourse?.description}</p>
             <div className="space-x-6">
-              <Button>Join Now</Button>
+              <Button>
+                <Link href={`${slug}/videos`}>Join Now</Link>
+              </Button>
               <Button variant="outline">Add to Cart</Button>
             </div>
             <div className="flex justify-between lg:items-center flex-col lg:flex-row gap-4">
               <div className="space-y-2">
                 <h3 className="text-md text-gray-600 font-medium">Rating Class</h3>
                 <div className="flex items-center gap-0.5">
-                  {Array.from({ length: Number(Math.ceil(Number(chossenCourse?.ratingCount))) }).map((_, index) => (
+                  {Array.from({ length: Number(Math.ceil(Number(chosenCourse?.ratingCount))) }).map((_, index) => (
                     <Star key={index} fill="#dd7621" size={18} className="text-transparent " />
                   ))}
-                  {Array.from({ length: 5 - Number(Math.ceil(Number(chossenCourse?.ratingCount))) }).map((_, index) => (
+                  {Array.from({ length: 5 - Number(Math.ceil(Number(chosenCourse?.ratingCount))) }).map((_, index) => (
                     <Star key={index} fill="#bababa" size={18} className="text-transparent " />
                   ))}
                   <p className=" text-xs">
-                    {chossenCourse?.ratingCount}
-                    <span className="text-gray-600"> ({chossenCourse?.ratingTotal})</span>
+                    {chosenCourse?.ratingCount}
+                    <span className="text-gray-600"> ({chosenCourse?.ratingTotal})</span>
                   </p>
                 </div>
               </div>
               <div className="space-y-2">
                 <h3 className="text-md text-gray-600 font-medium">Instructor</h3>
                 <h4 className="text-sm font-semibold text-primary underline">
-                  <Link href={`/instructors/${chossenCourse?.instructor.slug}`}>{chossenCourse?.instructor.name}</Link>
+                  <Link href={`/instructors/${chosenCourse?.instructor.slug}`}>{chosenCourse?.instructor.name}</Link>
                 </h4>
               </div>
               <div className="space-y-2">
                 <h3 className="text-md text-gray-600 font-medium">Translation Video</h3>
                 <h4 className="text-sm text-gray-600 font-semibold flex items-center gap-2">
                   <Captions className="text-gray-600" size={18} />
-                  <span>{chossenCourse?.translation}</span>
+                  <span>{chosenCourse?.translation}</span>
                 </h4>
               </div>
               <div className="space-y-2">
                 <h3 className="text-md text-gray-600 font-medium">Price</h3>
                 <h4 className="text-sm text-primary font-semibold flex items-center gap-2">
                   <CircleDollarSign className="text-gray-600" size={18} />
-                  <span>${chossenCourse?.price}</span>
+                  <span>${chosenCourse?.price}</span>
                 </h4>
               </div>
             </div>
           </div>
           <div className="flex-1 md:justify-items-end justify-items-center">
-            <Image src={chossenCourse?.imageUrl as string} alt="course image" width={400} height={400} className="rounded-md" />
+            <Image src={chosenCourse?.imageUrl as string} alt="course image" width={400} height={400} className="rounded-md" />
           </div>
         </div>
       </Container>
@@ -90,11 +92,11 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
         <div className="flex flex-col justify-evenly gap-4">
           <div className="space-y-2">
             <h2 className="text-3xl font-semibold max-w-96 leading-8">Description Course</h2>
-            <p className="text-gray-600">{chossenCourse?.description}</p>
+            <p className="text-gray-600">{chosenCourse?.description}</p>
           </div>
           <h2 className="text-3xl font-semibold leading-8">What you will learn from this course?</h2>
           <ul className="space-y-4">
-            {chossenCourse?.learnings.map((item, index) => (
+            {chosenCourse?.learnings.map((item, index) => (
               <li key={index} className="space-y-2">
                 <h3 className="text-lg font-semibold flex items-center gap-1">
                   <span className="w-4 h-4 p-3 text-white text-sm bg-primary rounded-full flex items-center justify-center">{index + 1}</span>
@@ -116,13 +118,13 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
       </Container>
       <Container>
         <h2 className="text-3xl font-semibold max-w-96 leading-8">List of Lessons</h2>
-        {chossenCourse?.Chapters && <LessonsAccordion data={chossenCourse?.Chapters} />}
+        {chosenCourse?.Chapters && <LessonsAccordion data={chosenCourse?.Chapters} />}
       </Container>
       <Container background="bg-white">
         <div className="my-6 flex flex-col md:flex-row justify-between gap-4 lg:gap-20">
           <div className="space-y-2 flex-1 ">
             <h2 className="text-3xl font-semibold">Rating Class</h2>
-            <h3 className="text-6xl font-semibold text-primary">{chossenCourse?.courseRating?.average}</h3>
+            <h3 className="text-6xl font-semibold text-primary">{chosenCourse?.courseRating?.average}</h3>
             {ratingBreakdown.map((item) => (
               <div key={item.stars} className="flex items-center gap-4">
                 <div className="flex items-center gap-1 flex-1">
@@ -131,21 +133,21 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
                   ))}
                 </div>
                 <div className="flex-1 justify-items-center">
-                  <RatingProgress count={((item.count as number) / (chossenCourse?.courseRating?.totalReviews as number)) * 100} />
+                  <RatingProgress count={((item.count as number) / (chosenCourse?.courseRating?.totalReviews as number)) * 100} />
                 </div>
               </div>
             ))}
           </div>
           <div className="flex-1 space-y-2">
             <h2 className="text-3xl font-semibold">Instructor</h2>
-            {chossenInstructor && (
-              <InstructorCard instructor={chossenInstructor} className="bg-slate-100 rounded-md shadow hover:shadow-xl duration-200" />
+            {chosenInstructor && (
+              <InstructorCard instructor={chosenInstructor} className="bg-slate-100 rounded-md shadow hover:shadow-xl duration-200" />
             )}
           </div>
         </div>
       </Container>
       <Container>
-        <Reviews heading={<Heading title="Best reviews" />} navigation={<ChevronNavigation />} reviews={chossenReviews} />
+        <Reviews heading={<Heading title="Best reviews" />} navigation={<ChevronNavigation />} reviews={chosenReviews} />
       </Container>
     </>
   );

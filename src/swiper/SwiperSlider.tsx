@@ -16,8 +16,6 @@ const SwiperSlider = ({ children, id = "" }: { children: React.ReactNode; id?: s
         prevEl: `.swiper-button-prev-${id}`,
       }}
       pagination={{ clickable: true }}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log("slide change")}
       breakpoints={{
         640: {
           slidesPerView: 2,
