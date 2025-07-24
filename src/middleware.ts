@@ -1,14 +1,33 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import jwt from "jsonwebtoken";
+import { jwtVerify } from "jose";
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
   const token = request.cookies.get("jwtToken")?.value;
+  let payload = null;
 
-  // if (path.startsWith("/api/public")) {
-  //   return NextResponse.next();
-  // }
+  try {
+    if (token) {
+      const secretKey = new TextEncoder().encode(process.env.JWT_SECRET_KEY);
+      const verified = (await jwtVerify(token, secretKey)) as { payload: JwtPayload };
+      payload = verified.payload;
+    }
+  } catch (error) {
+    console.error("Invalid JWT:", error);
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
+  // protected routes - if there's no token redirect to login
+  if (!token && path.startsWith("/account")) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
+
+  // protect admin routes
+  if (path.startsWith("/admin")) {
+    if (!token || !payload || payload?.role !== "ADMIN") {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
+  }
 
   // if there's token redirect to user homepage
   if (token && path === "/") {
@@ -20,23 +39,8 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
-  // protected routes - if there's no token redirect to login
-  if (isProtectedRoute(path)) {
-    if (!token) {
-      return NextResponse.redirect(new URL("/login", request.url));
-    }
-
-    try {
-      const secretKey = process.env.JWT_SECRET_KEY as string;
-      const decoded = jwt.verify(token, secretKey) as JwtPayload;
-      // protect admin routes
-      if (path.startsWith("/admin") && !decoded.isAdmin) {
-        return NextResponse.redirect(new URL("/", request.url));
-      }
-    } catch (error) {
-      console.error("Token verification failed:", error);
-      return NextResponse.redirect(new URL("/login", request.url));
-    }
+  if (token && (path === "/login" || path === "/register")) {
+    return NextResponse.redirect(new URL("/home", request.url));
   }
 
   // access to the pathname inside server component
@@ -45,8 +49,6 @@ export function middleware(request: NextRequest) {
   return response;
 }
 
-function isProtectedRoute(path: string): boolean {
-  //todo : add the rest of the protected routes 
-  const protectedRoutes = ["/dashboard", "/account", "/settings"];
-  return protectedRoutes.some(route => path.startsWith(route));
-}
+export const config = {
+  matcher: ["/account/:path*", "/admin/:path*", "/login", "/register", "/home", "/"],
+};
