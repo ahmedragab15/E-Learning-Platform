@@ -187,7 +187,7 @@ model CourseRating {
 
 model Comment {
   id        Int      @id @default(autoincrement())
-  content   String // نص التعليق
+  content   String
   user      User     @relation(fields: [userId], references: [id])
   userId    Int
   course    Course   @relation(fields: [courseId], references: [id])
