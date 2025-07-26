@@ -28,6 +28,10 @@ const nextConfig: NextConfig = {
         protocol: "http",
         hostname: "dergipark.org.tr",
       },
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+      },
     ],
   },
 };

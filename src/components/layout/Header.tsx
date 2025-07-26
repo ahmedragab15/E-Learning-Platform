@@ -80,7 +80,7 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
           {user ? (
             <Button onClick={handleLogout}>Logout</Button>
           ) : (
-            <ActiveLink href="/register" className="font-medium duration-200 hover:text-primary" activeClassName="text-primary">
+            <ActiveLink href="/login" className="font-medium duration-200 hover:text-primary" activeClassName="text-primary">
               Sign In
             </ActiveLink>
           )}

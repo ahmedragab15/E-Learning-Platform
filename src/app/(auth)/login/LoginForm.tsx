@@ -74,7 +74,7 @@ const LoginForm = () => {
         </form>
       </Form>
       <span className="block text-sm">Or Sign in with</span>
-      <Button variant="outline" fullwidth>
+      <Button variant="outline" fullwidth onClick={() => (window.location.href = "/api/auth/google/login")}>
         Sign in with Google
       </Button>
       <span className="text-sm">
