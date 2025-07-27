@@ -22,7 +22,14 @@ export async function getCoursesAction() {
           },
         },
         courseRating: true,
+        comments: {
+          include:{
+            course: true,
+            user: true
+          }
+        }
       },
+      
     });
   } catch (error) {
     console.error("getCoursesAction error:", error);
@@ -52,6 +59,12 @@ export async function getCourseBySlugAction(slug: string) {
           },
         },
         courseRating: true,
+        comments: {
+          include: {
+            course: true,
+            user: true,
+          },
+        },
       },
     });
     if (!course) {

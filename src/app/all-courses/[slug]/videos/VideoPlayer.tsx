@@ -18,7 +18,7 @@ export async function VideoPlayer({ slug }: { slug: string }) {
         <Image
           width={400}
           height={400}
-          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          src={chosenCourse.imageUrl}
           alt="User Research Video - Problem Solving Methods"
           className="w-full h-96 object-cover"
         />
@@ -55,7 +55,7 @@ export async function VideoPlayer({ slug }: { slug: string }) {
         <div className="flex items-center justify-between">
           <span className="text-sm text-muted-foreground">Reference</span>
           <Link href="#" className="text-sm text-primary hover:underline">
-            {`https://www.courses.com/${slug}`}
+            {`http://localhost:3000/all-courses/${slug}`}
           </Link>
         </div>
       </div>

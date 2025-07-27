@@ -15,6 +15,12 @@ export async function getAllUsersAction() {
       include: {
         reviews: true,
         enrollments: true,
+        comments: {
+          include: {
+            course: true,
+            user: true,
+          },
+        },
       },
     });
   } catch (error) {
@@ -113,7 +119,7 @@ export async function userLoginAction(data: { email: string; password: string })
       username: user.username,
       email: user.email,
       role: user.role,
-      avatar:user.avatarUrl
+      avatar: user.avatarUrl,
     });
 
     (await cookies()).set("jwtToken", token, {
