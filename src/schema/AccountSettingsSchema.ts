@@ -10,6 +10,7 @@ export const ProfileSettingsSchema = z.object({
     .min(8, { message: "Full name must be at least 8 characters" })
     .max(20, { message: "Full name must be at most 20 characters" }),
   language: z.string(),
+  role: z.enum(["USER", "INSTRUCTOR"]),
 });
 
 export type ProfileSettingsSchemaSchemaValues = z.infer<typeof ProfileSettingsSchema>;

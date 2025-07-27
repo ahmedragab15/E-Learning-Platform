@@ -19,6 +19,7 @@ const ProfileSettingsForm = () => {
       username: "",
       fullname: "",
       language: "en",
+      role: "USER",
     },
   });
 
@@ -87,6 +88,27 @@ const ProfileSettingsForm = () => {
                       <SelectItem value="es">Spanish</SelectItem>
                       <SelectItem value="fr">French</SelectItem>
                       <SelectItem value="de">German</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="role"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Role</FormLabel>
+                  <Select onValueChange={field.onChange}>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="User" defaultValue={field.value} />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="USER">User</SelectItem>
+                      <SelectItem value="INSTRUCTOR">Instructor</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />

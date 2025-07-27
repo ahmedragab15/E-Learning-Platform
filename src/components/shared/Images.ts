@@ -15,6 +15,7 @@ import signImage from "../../../public/images/sign_images.webp";
 import loginImage from "../../../public/images/login_images.webp";
 import instractorCover from "../../../public/images/Intstructor-Cover.webp";
 import notFoundImg from "../../../public/images/not_found.webp";
+import techWithUsImg from "../../../public/images/tech-with-us.webp";
 
 export const images = {
   HeroImage,
@@ -34,4 +35,5 @@ export const images = {
   loginImage,
   instractorCover,
   notFoundImg,
+  techWithUsImg,
 };
