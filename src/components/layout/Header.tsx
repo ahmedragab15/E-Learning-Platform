@@ -2,12 +2,23 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Input } from "../ui/input";
-import { Bell, Menu, Search, ShoppingCart, UserRound } from "lucide-react";
+import { Bell, Menu, Search, ShoppingCart } from "lucide-react";
 import { Button } from "../ui/button";
 import ActiveLink from "../shared/ActiveLink";
 import { images } from "../shared/Images";
 import { userLogoutAction } from "@/actions/userActions";
 import { redirect } from "next/navigation";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { navItems } from "@/constants";
 
 const Header = ({ user }: { user: JwtPayload | null }) => {
   const handleLogout = async () => {
@@ -23,33 +34,17 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
       </div>
       <nav className="hidden md:block">
         <ul className="flex items-center gap-6 px-6">
-          <li className="relative">
-            <ActiveLink
-              href={"/home"}
-              className="font-medium duration-200 hover:text-primary"
-              activeClassName="text-primary after:absolute after:-bottom-3 after:left-1/2 after:w-2 after:h-2 after:bg-primary after:rounded-full"
-            >
-              Home
-            </ActiveLink>
-          </li>
-          <li className="relative">
-            <ActiveLink
-              href="/courses-category"
-              className="font-medium duration-200 hover:text-primary"
-              activeClassName="text-primary after:absolute after:-bottom-3 after:left-1/2 after:w-2 after:h-2 after:bg-primary after:rounded-full"
-            >
-              Category
-            </ActiveLink>
-          </li>
-          <li className="relative">
-            <ActiveLink
-              href="/all-courses"
-              className="font-medium duration-200 hover:text-primary"
-              activeClassName="text-primary after:absolute after:-bottom-3 after:left-1/2 after:w-2 after:h-2 after:bg-primary after:rounded-full"
-            >
-              Courses
-            </ActiveLink>
-          </li>
+          {navItems.map((item, index) => (
+            <li className="relative" key={index}>
+              <ActiveLink
+                href={item.href}
+                className="font-medium duration-200 hover:text-primary"
+                activeClassName="text-primary after:absolute after:-bottom-3 after:left-1/2 after:w-2 after:h-2 after:bg-primary after:rounded-full"
+              >
+                {item.name}
+              </ActiveLink>
+            </li>
+          ))}
         </ul>
       </nav>
       <div className="flex items-center relative lg:border-1 border-gray-300 rounded-2xl lg:flex-1 ml-auto">
@@ -65,21 +60,38 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
       <div className="flex items-center gap-1 md:gap-4">
         <Link href={"/cart"} className="relative">
           <ShoppingCart className="text-primary p-1 hover:bg-primary hover:text-white rounded-full" size={30} />
-          <span className="absolute top-0 right-0 text-xs bg-primary text-white w-4 h-4 flex items-center justify-center rounded-full pointer-events-none">3</span>
+          <span className="absolute top-0 right-0 text-xs bg-primary text-white w-4 h-4 flex items-center justify-center rounded-full pointer-events-none">
+            3
+          </span>
         </Link>
         {user && (
           <>
             <Bell className="text-primary hover:bg-primary p-1 hover:text-white rounded-full" size={30} />
-            <Link href={"/account"} className="flex items-center text-primary hover:bg-primary py-1 px-2 hover:text-white rounded-full">
-              <UserRound size={30} />
-              <span>{user.fullName.split(" ")[0]}</span>
-            </Link>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Avatar className="h-8 w-8">
+                  <AvatarImage src={(user.avatar as string) || "http://dergipark.org.tr/assets/app/images/buddy_sample.png"} alt="Profile Image" />
+                  <AvatarFallback>user avatar</AvatarFallback>
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-46" align="center">
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <Link href="/account">Profile</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href="/account/settings">Settings</Link>
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={handleLogout}>Log out</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </>
         )}
         <h3>
-          {user ? (
-            <Button onClick={handleLogout}>Logout</Button>
-          ) : (
+          {!user && (
             <ActiveLink href="/login" className="font-medium duration-200 hover:text-primary" activeClassName="text-primary">
               Sign In
             </ActiveLink>

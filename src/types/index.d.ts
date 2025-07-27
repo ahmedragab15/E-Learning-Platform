@@ -178,3 +178,8 @@ declare interface SettingsSidebarItems {
   href: string;
   icon: ForwardRefExoticComponent<Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>>;
 }
+
+declare interface INavItems{
+  name: string;
+  href: string;
+}

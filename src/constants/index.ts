@@ -1,5 +1,24 @@
 import { User, Settings, Share2 } from "lucide-react";
 
+export const navItems: INavItems[] = [
+  {
+    name: "Home",
+    href: "/home",
+  },
+  {
+    name: "Category",
+    href: "/courses-category",
+  },
+  {
+    name: "Courses",
+    href: "/all-courses",
+  },
+  {
+    name: "Tech with us",
+    href: "/instructors",
+  },
+];
+
 export const ContactFormInputs: IContactInputs[] = [
   {
     name: "email",
