@@ -1,30 +1,31 @@
+"use client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { VAT_RATE } from "@/dummyData";
-import { getCoursesAction } from "@/actions/courseActions";
+import { useAppSelector } from "@/redux/hooks";
 
-const OrderSummary = async () => {
-  const allCourses = await getCoursesAction();
-  const TotalAmount = () => allCourses.reduce((total, course) => total + course.price, 0);
-  const VatAmount = () => VAT_RATE * TotalAmount();
+const OrderSummary =  () => {
+    const cart = useAppSelector((state) => state.cart.cart);
+  
+    const TotalAmount = () => cart.reduce((total, course) => total + course.price, 0);
+    const VatAmount = () => VAT_RATE * TotalAmount();
 
   return (
     <Card className="sticky top-8">
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           Order Summary
-          <Badge variant="secondary">{allCourses.length} items</Badge>
+          <Badge variant="secondary">{cart.length} items</Badge>
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="space-y-3 max-h-96 overflow-auto">
-          {allCourses.map((item) => (
+          {cart.map((item) => (
             <div key={item.id} className="flex justify-between items-start">
               <div className="flex-1">
                 <h4 className="font-medium text-foreground">{item.title}</h4>
                 <p className="text-sm text-muted-foreground">{item.description}</p>
-                <p className="text-sm text-muted-foreground">Qty: 1</p>
               </div>
               <span className="font-medium text-foreground">${item.price.toFixed(2)}</span>
             </div>

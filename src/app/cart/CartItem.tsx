@@ -1,17 +1,16 @@
+"use client";
 import { Dot, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Prisma } from "@/generated/prisma/client";
+import { removeFromCart } from "@/redux/features/cart/cartSlice";
+import { useAppDispatch } from "@/redux/hooks";
 
-type CourseWithCategory = Prisma.CourseGetPayload<{
-  include: { category: true };
-}>;
+const CartItem = (course: ICartItem) => {
+  const dispatch = useAppDispatch();
 
-type CourseCardProps = {
-  course: CourseWithCategory;
-};
-
-const CartItem = ({ course }: CourseCardProps) => {
+  const handleRemove = () => {
+    dispatch(removeFromCart(course.id));
+  };
   return (
     <li className="bg-white flex max-w-full gap-4 border-b-2 border-gray-200 p-4 shadow-md hover:shadow-lg duration-200 rounded-lg" key={course.id}>
       <Image src={course.imageUrl as string} alt={course.title} width={200} height={200} className="size-16 rounded-sm object-cover" />
@@ -39,9 +38,11 @@ const CartItem = ({ course }: CourseCardProps) => {
           </div>
           <div className="flex items-center flex-wrap gap-4">
             <button className="text-primary transition hover:bg-primary/10 p-1 rounded-md">
-              <Link href={`/all-courses/${course.slug}?id=${course.id}`}>View Details</Link>
+              <Link href={`/all-courses/${course.slug}`}>View Details</Link>
             </button>
-            <button className="text-red-600 transition hover:bg-red-600/10 p-1 rounded-md">Remove</button>
+            <button className="text-red-600 transition hover:bg-red-600/10 p-1 rounded-md" onClick={handleRemove}>
+              Remove
+            </button>
           </div>
         </div>
       </div>

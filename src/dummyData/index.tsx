@@ -859,4 +859,4 @@ export const progressCourse: IProgressCourse[] = [
   },
 ];
 
-export const VAT_RATE: number = 0.1;
+export const VAT_RATE: number = 0.05;
