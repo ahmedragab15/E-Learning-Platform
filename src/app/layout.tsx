@@ -6,6 +6,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { ToastContainer } from "react-toastify";
 import { getUserFromToken } from "@/lib/verifyJWT";
+import StoreProvider from "./StoreProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,16 +31,18 @@ export default async function RootLayout({
   const user = await getUserFromToken();
 
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {/* //todo : add dark mode */}
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-          <Header user={user}/>
-          <main>{children}</main>
-          <Footer />
-          <ToastContainer />
-        </ThemeProvider>
-      </body>
-    </html>
+    <StoreProvider>
+      <html lang="en" suppressHydrationWarning>
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          {/* //todo : add dark mode */}
+          <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+            <Header user={user} />
+            <main>{children}</main>
+            <Footer />
+            <ToastContainer position="bottom-left"/>
+          </ThemeProvider>
+        </body>
+      </html>
+    </StoreProvider>
   );
 }
