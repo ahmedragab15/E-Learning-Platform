@@ -22,7 +22,7 @@ import { navItems } from "@/constants";
 import { useAppSelector } from "@/redux/hooks";
 
 const Header = ({ user }: { user: JwtPayload | null }) => {
-  const cart = useAppSelector((state) => state.cart.cart);
+  const cart = useAppSelector((state) => state.cart);
   const handleLogout = async () => {
     await userLogoutAction();
     redirect("/login");

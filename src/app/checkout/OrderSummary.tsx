@@ -6,7 +6,7 @@ import { VAT_RATE } from "@/dummyData";
 import { useAppSelector } from "@/redux/hooks";
 
 const OrderSummary =  () => {
-    const cart = useAppSelector((state) => state.cart.cart);
+    const cart = useAppSelector((state) => state.cart);
   
     const TotalAmount = () => cart.reduce((total, course) => total + course.price, 0);
     const VatAmount = () => VAT_RATE * TotalAmount();

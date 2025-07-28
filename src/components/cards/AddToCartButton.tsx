@@ -14,7 +14,7 @@ type CourseCardProps = {
 };
 
 const AddToCartButton = ({ course }: CourseCardProps) => {
-  const cart = useAppSelector((state) => state.cart.cart);
+  const cart = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
 
   const handleAddToCart = () => {

@@ -31,18 +31,18 @@ export default async function RootLayout({
   const user = await getUserFromToken();
 
   return (
-    <StoreProvider>
-      <html lang="en" suppressHydrationWarning>
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <StoreProvider>
           {/* //todo : add dark mode */}
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
             <Header user={user} />
             <main>{children}</main>
             <Footer />
-            <ToastContainer position="bottom-left"/>
+            <ToastContainer position="bottom-left" />
           </ThemeProvider>
-        </body>
-      </html>
-    </StoreProvider>
+        </StoreProvider>
+      </body>
+    </html>
   );
 }
