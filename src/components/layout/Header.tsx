@@ -19,8 +19,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { navItems } from "@/constants";
+import { useAppSelector } from "@/redux/hooks";
 
 const Header = ({ user }: { user: JwtPayload | null }) => {
+  const cart = useAppSelector((state) => state.cart.cart);
   const handleLogout = async () => {
     await userLogoutAction();
     redirect("/login");
@@ -60,8 +62,8 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
       <div className="flex items-center gap-1 md:gap-4">
         <Link href={"/cart"} className="relative">
           <ShoppingCart className="text-primary p-1 hover:bg-primary hover:text-white rounded-full" size={30} />
-          <span className="absolute top-0 right-0 text-xs bg-primary text-white w-4 h-4 flex items-center justify-center rounded-full pointer-events-none">
-            3
+          <span className="absolute -top-0.5 right-0 text-xs bg-primary text-white w-4 h-4 flex items-center justify-center rounded-full pointer-events-none">
+            {cart.length}
           </span>
         </Link>
         {user && (
@@ -69,9 +71,11 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
             <Bell className="text-primary hover:bg-primary p-1 hover:text-white rounded-full" size={30} />
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Avatar className="h-8 w-8">
+                <Avatar className="h-8 w-8 cursor-pointer">
                   <AvatarImage src={(user.avatar as string) || "http://dergipark.org.tr/assets/app/images/buddy_sample.png"} alt="Profile Image" />
-                  <AvatarFallback>user avatar</AvatarFallback>
+                  <AvatarFallback className="bg-primary text-white">
+                    {user.fullName?.charAt(0) + user.fullName?.split(" ")[1].charAt(0)}
+                  </AvatarFallback>
                 </Avatar>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-46" align="center">

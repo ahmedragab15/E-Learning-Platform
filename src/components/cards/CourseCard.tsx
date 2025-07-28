@@ -2,9 +2,9 @@ import Image from "next/image";
 import React from "react";
 import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Prisma } from "@/generated/prisma/client";
+import AddToCartButton from "./AddToCartButton";
 
 type CourseWithCategory = Prisma.CourseGetPayload<{
   include: { category: true };
@@ -15,6 +15,7 @@ type CourseCardProps = {
 };
 
 const CourseCard = ({ course }: CourseCardProps) => {
+
   return (
     <div className="flex flex-col bg-slate-100 w-64 pb-6 gap-4 rounded-md shadow hover:shadow-xl duration-200">
       <Link href={`/all-courses/${course.slug}`}>
@@ -40,9 +41,7 @@ const CourseCard = ({ course }: CourseCardProps) => {
           </p>
         </div>
         <div className="flex items-center justify-between">
-          <Button>
-            Add Course
-          </Button>
+          <AddToCartButton course={course}/>
           <strong>${course.price}</strong>
         </div>
       </div>

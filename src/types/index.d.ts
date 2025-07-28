@@ -183,3 +183,16 @@ declare interface INavItems{
   name: string;
   href: string;
 }
+
+declare interface ICartItem {
+  id: number;
+  title: string;
+  description: string;
+  slug: string;
+  imageUrl: string;
+  ratingCount: number;
+  ratingTotal: number;
+  duration: string;
+  lectures: number;
+  price: number;
+}
