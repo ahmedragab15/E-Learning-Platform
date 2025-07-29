@@ -114,17 +114,18 @@ npx prisma db seed
 
 # 4. Start the dev server
 npm run dev
+```
 
-🌍 Live Demo
+## 🌍 Live Demo
 🚧 Coming Soon...
 
-📸 Screenshots
+## 📸 Screenshots
 🚧 Coming Soon...
 
-📬 Contact
+## 📬 Contact
 Feel free to connect or contribute!
 
-Ahmed Ragab
-Frontend Developer
-ragabahmed154@gmail.com
-https://ahmedragab.netlify.app/
+- Ahmed Ragab
+- Frontend Developer
+- ragabahmed154@gmail.com
+- https://ahmedragab.netlify.app/

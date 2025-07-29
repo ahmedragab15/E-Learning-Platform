@@ -174,8 +174,37 @@ export async function deleteUserAction(id: number) {
 }
 
 export async function updateUserAction(id: number, data: Prisma.UserCreateInput) {
-  return await prisma.user.update({
-    where: { id },
-    data: { ...data },
-  });
+  try {
+    const user = await prisma.user.findUnique({
+      where: { id },
+    });
+    if (!user) {
+      return { success: false, message: "User not found", status: 404 };
+    }
+    //todo : add update schema
+
+    const existEmail = await prisma.user.findUnique({
+      where: { email: data.email },
+    });
+    if (data.email === existEmail?.email) {
+      return { success: false, message: "Email already exists", status: 400 };
+    }
+
+    if (data.password) {
+      data.password = await bcrypt.hash(data.password, 10);
+    }
+    await prisma.user.update({
+      where: { id },
+      data: {
+        username: data.username,
+        email: data.email,
+        password: data.password,
+        avatarUrl: data.avatarUrl,
+      },
+    });
+    return { success: true, message: "User Updated successfully", status: 200 };
+  } catch (error) {
+    console.error("updateUserAction error:", error);
+    return { success: false, message: "Something went wrong", status: 500 };
+  }
 }
