@@ -82,14 +82,18 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuGroup>
                   <DropdownMenuItem>
-                    <Link href="/account">Profile</Link>
+                    <Link href="/account" className="w-full">
+                      Profile
+                    </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem>
-                    <Link href="/account/settings">Settings</Link>
+                    <Link href="/account/settings" className="w-full">
+                      Settings
+                    </Link>
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={handleLogout}>Log out</DropdownMenuItem>
+                <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">Log out</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </>

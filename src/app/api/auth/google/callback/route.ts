@@ -7,6 +7,7 @@ const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET!;
 const REDIRECT_URI = process.env.GOOGLE_CALLBACK_URL!;
 
 export async function GET(req: NextRequest) {
+  //+ get code
   const code = req.nextUrl.searchParams.get("code");
 
   if (!code) {
@@ -14,7 +15,7 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    //Exchange code for access token
+    //+ exchange code for access token
     const tokenRes = await fetch("https://oauth2.googleapis.com/token", {
       method: "POST",
       headers: {
@@ -36,7 +37,7 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: "Failed to get access token" }, { status: 500 });
     }
 
-    //Get user info
+    //+ get user info from google
     const userInfoRes = await fetch("https://www.googleapis.com/oauth2/v3/userinfo", {
       headers: {
         Authorization: `Bearer ${tokenData.access_token}`,
@@ -49,11 +50,12 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: "Failed to fetch user profile" }, { status: 500 });
     }
 
-    //Check if user exists
+    //+ check if user exists
     let user = await prisma.user.findUnique({
       where: { email: profile.email },
     });
 
+    //+ if user doesn't exist register it
     if (!user) {
       user = await prisma.user.create({
         data: {
@@ -69,7 +71,7 @@ export async function GET(req: NextRequest) {
       });
     }
 
-    //Generate JWT
+    //+ generate jwt
     const token = generateJWT({
       id: user.id,
       fullName: user.fullname,
@@ -79,7 +81,7 @@ export async function GET(req: NextRequest) {
       avatar: user.avatarUrl,
     });
 
-    //Redirect to frontend with token
+    //+ redirect to frontend with jwt
     const response = NextResponse.redirect(`${process.env.FRONTEND_URL || "http://localhost:3000"}/home`);
     response.cookies.set("jwtToken", token, {
       httpOnly: true,

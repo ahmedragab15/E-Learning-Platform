@@ -4,12 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { removeFromCart } from "@/redux/features/cart/cartSlice";
 import { useAppDispatch } from "@/redux/hooks";
+import { toast } from "react-toastify";
 
 const CartItem = (course: ICartItem) => {
   const dispatch = useAppDispatch();
 
   const handleRemove = () => {
     dispatch(removeFromCart(course.id));
+    toast.success("Course removed Successfully");
   };
   return (
     <li className="bg-white flex max-w-full gap-4 border-b-2 border-gray-200 p-4 shadow-md hover:shadow-lg duration-200 rounded-lg" key={course.id}>
