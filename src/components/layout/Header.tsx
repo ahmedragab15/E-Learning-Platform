@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { navItems } from "@/constants";
 import { useAppSelector } from "@/redux/hooks";
+import { cn } from "@/lib/utils";
 
 const Header = ({ user }: { user: JwtPayload | null }) => {
   const cart = useAppSelector((state) => state.cart);
@@ -26,6 +27,14 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
     await userLogoutAction();
     redirect("/login");
   };
+
+  const roleBorder =
+    {
+      USER: "border-primary",
+      ADMIN: "border-amber-500",
+      INSTRUCTOR: "border-green-500",
+    }[user?.role as string] || "border-gray-400";
+
   return (
     <header className="flex items-center justify-between lg:justify-evenly lg:gap-8 py-4 px-4 lg:px-10 bg-white border shadow rounded-4xl my-8 max-w-10/12 xl:max-w-8/12 mx-auto">
       <div>
@@ -75,10 +84,31 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
                   alt="user avatar"
                   width={200}
                   height={200}
-                  className="w-8 h-8 rounded-full object-cover mx-auto cursor-pointer"
+                  className={cn("w-9 h-9 rounded-full object-cover mx-auto cursor-pointer border-2 p-0.5", roleBorder)}
                 />
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-46" align="center">
+                {user.role === "ADMIN" ? (
+                  <DropdownMenuGroup>
+                    <DropdownMenuItem>
+                      <Link href="/admin" className="w-full">
+                        Dashboard
+                      </Link>
+                    </DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                  </DropdownMenuGroup>
+                ) : (
+                  user.role === "INSTRUCTOR" && (
+                    <DropdownMenuGroup>
+                      <DropdownMenuItem>
+                        <Link href="/instructor-dashboard" className="w-full">
+                          Dashboard
+                        </Link>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                    </DropdownMenuGroup>
+                  )
+                )}
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuGroup>
                   <DropdownMenuItem>
@@ -86,6 +116,7 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
                       Profile
                     </Link>
                   </DropdownMenuItem>
+
                   <DropdownMenuItem>
                     <Link href="/account/settings" className="w-full">
                       Settings
