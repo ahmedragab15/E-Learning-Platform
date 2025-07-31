@@ -17,7 +17,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { navItems } from "@/constants";
 import { useAppSelector } from "@/redux/hooks";
 
@@ -71,12 +70,13 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
             <Bell className="text-primary hover:bg-primary p-1 hover:text-white rounded-full" size={30} />
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Avatar className="h-8 w-8 cursor-pointer">
-                  <AvatarImage src={(user.avatar as string) || "http://dergipark.org.tr/assets/app/images/buddy_sample.png"} alt="Profile Image" />
-                  <AvatarFallback className="bg-primary text-white">
-                    {user.fullName?.charAt(0) + user.fullName?.split(" ")[1].charAt(0)}
-                  </AvatarFallback>
-                </Avatar>
+                <Image
+                  src={(user?.avatar as string) || "http://dergipark.org.tr/assets/app/images/buddy_sample.png"}
+                  alt="user avatar"
+                  width={200}
+                  height={200}
+                  className="w-8 h-8 rounded-full object-cover mx-auto cursor-pointer"
+                />
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-46" align="center">
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
@@ -93,18 +93,20 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
                   </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">Log out</DropdownMenuItem>
+                <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
+                  Log out
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </>
         )}
-        <h3>
-          {!user && (
+        {!user && (
+          <h3>
             <ActiveLink href="/login" className="font-medium duration-200 hover:text-primary" activeClassName="text-primary">
               Sign In
             </ActiveLink>
-          )}
-        </h3>
+          </h3>
+        )}
       </div>
       <Menu className="md:hidden text-primary hover:bg-primary p-1 hover:text-white rounded-full" size={30} />
     </header>
