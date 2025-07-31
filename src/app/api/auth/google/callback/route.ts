@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/db";
 import { generateJWT } from "@/lib/generateJWT";
+import crypto from "crypto";
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID!;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET!;
@@ -65,7 +66,7 @@ export async function GET(req: NextRequest) {
           googleId: profile.sub,
           provider: "google",
           username: profile.email.split("@")[0],
-          password: "",
+          password: crypto.randomBytes(16).toString("hex"),
           role: "USER",
         },
       });
@@ -82,7 +83,7 @@ export async function GET(req: NextRequest) {
     });
 
     //+ redirect to frontend with jwt
-    const response = NextResponse.redirect(`${process.env.FRONTEND_URL || "http://localhost:3000"}/home`);
+    const response = NextResponse.redirect(`${process.env.FRONTEND_URL}`);
     response.cookies.set("jwtToken", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",

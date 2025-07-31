@@ -21,6 +21,6 @@ export async function GET() {
     googleAuthUrl.searchParams.set(key, value);
   });
 
-  //+ redirect to google auth url with code
+  //+ redirect to google auth url
   return NextResponse.redirect(googleAuthUrl.toString());
 }
