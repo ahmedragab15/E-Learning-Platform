@@ -29,6 +29,13 @@ export async function middleware(request: NextRequest) {
     }
   }
 
+  // protect instructor routes
+  if (path.startsWith("/instructor-dashboard")) {
+    if (!token || !payload || !["ADMIN", "INSTRUCTOR"].includes(payload.role)) {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
+  }
+
   // if there's token redirect to user homepage
   if (token && path === "/") {
     return NextResponse.redirect(new URL("/home", request.url));
@@ -50,5 +57,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/account/:path*", "/admin/:path*", "/login", "/register", "/home", "/"],
+  matcher: ["/account/:path*", "/admin/:path*", "/login", "/register", "/home", "/", "/instructor-dashboard/:path*"],
 };
