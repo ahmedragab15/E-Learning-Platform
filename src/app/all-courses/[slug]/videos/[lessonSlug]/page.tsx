@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
-import prisma from "@/lib/db";
 import { Container } from "@/components";
 import { Sidebar } from "../Sidebar";
 import { VideoPlayer } from "../VideoPlayer";
 import { ContentArea } from "../ContentArea";
 import { getCourseBySlugAction } from "@/actions/courseActions";
+import { getLessonBySlugAction } from "@/actions/lessonActions";
 
 interface Props {
   params: {
@@ -20,29 +20,7 @@ const LessonPage = async ({ params }: Props) => {
     notFound();
   }
 
-  const lesson = await prisma.lesson.findFirst({
-    where: {
-      slug: lessonSlug,
-      chapter: {
-        course: {
-          slug: slug,
-        },
-      },
-    },
-    include: {
-      chapter: {
-        select: {
-          topic: true,
-          course: {
-            select: {
-              title: true,
-              slug: true,
-            },
-          },
-        },
-      },
-    },
-  });
+  const lesson = await getLessonBySlugAction(slug, lessonSlug);
 
   if (!lesson) {
     console.log("not found");

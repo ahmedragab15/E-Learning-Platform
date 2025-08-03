@@ -8,7 +8,7 @@ import ReactPlayer from "react-player";
 export async function VideoPlayer({ video }: { video: string }) {
   return (
     <div className="space-y-4">
-      <ReactPlayer src={`${video}`} className="react-player" controls width={900} height={500} />
+      <ReactPlayer src={`${video}`} className="react-player" controls width={950} height={500} />
       <div className="flex items-center justify-between">
         <Button variant="outline" className="flex items-center space-x-2">
           <Download className="h-4 w-4" />
