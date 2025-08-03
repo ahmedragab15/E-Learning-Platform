@@ -2,6 +2,7 @@
 import prisma from "@/lib/db";
 import { Prisma } from "@/generated/prisma";
 import { generateSlug } from "@/lib/slugify";
+import { revalidatePath } from "next/cache";
 
 export async function getCoursesAction() {
   try {
@@ -23,13 +24,12 @@ export async function getCoursesAction() {
         },
         courseRating: true,
         comments: {
-          include:{
+          include: {
             course: true,
-            user: true
-          }
-        }
+            user: true,
+          },
+        },
       },
-      
     });
   } catch (error) {
     console.error("getCoursesAction error:", error);
@@ -54,8 +54,11 @@ export async function getCourseBySlugAction(slug: string) {
           },
         },
         Chapters: {
+          orderBy: { id: "asc" },
           include: {
-            details: true,
+            details: {
+              orderBy: { id: "asc" },
+            },
           },
         },
         courseRating: true,
@@ -78,16 +81,32 @@ export async function getCourseBySlugAction(slug: string) {
   }
 }
 
-export async function createPostAction(data: Prisma.CourseCreateInput) {
+export async function createCourseAction(data: Prisma.CourseCreateInput) {
   try {
-    return await prisma.course.create({
+    const admin = await prisma.user.findFirst({
+      where: { role: "ADMIN" },
+    });
+    if (!admin) {
+      return {
+        success: false,
+        message: "Admin user not found",
+        status: 404,
+      };
+    }
+    await prisma.course.create({
       data: {
         ...data,
         slug: await generateSlug("Course", data.title),
       },
     });
+    revalidatePath("/admin/courses");
+    return {
+      success: true,
+      message: "Course created successfully",
+      status: 201,
+    };
   } catch (error) {
-    console.error("createPostAction error:", error);
+    console.error("createCourseAction error:", error);
     return null;
   }
 }

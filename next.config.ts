@@ -22,6 +22,10 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "media.licdn.com",
+      },
+      {
+        protocol: "https",
         hostname: "cdn.jsdelivr.net",
       },
       {

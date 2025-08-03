@@ -2,7 +2,6 @@ import { getCourseBySlugAction } from "@/actions/courseActions";
 import { notFound } from "next/navigation";
 import React from "react";
 import { Sidebar } from "./Sidebar";
-import { VideoPlayer } from "./VideoPlayer";
 import { ContentArea } from "./ContentArea";
 import { Container } from "@/components";
 
@@ -23,7 +22,6 @@ const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
               <p className="text-muted-foreground">{chosenCourse.description}</p>
             </div>
             <div className="space-y-4">
-              <VideoPlayer slug={slug} />
               <ContentArea slug={slug} />
             </div>
           </div>

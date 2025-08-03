@@ -1,5 +1,5 @@
 import slugify from "slugify";
-import { PrismaClient, Prisma } from "@/generated/prisma/client";
+import { PrismaClient, Prisma } from "../generated/prisma/client";
 import prisma from "./db";
 
 type ModelName = Prisma.ModelName;
