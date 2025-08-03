@@ -2,7 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Input } from "../ui/input";
-import { Bell, Menu, Search, ShoppingCart } from "lucide-react";
+import { Menu, Search, ShoppingCart, X } from "lucide-react";
 import { Button } from "../ui/button";
 import ActiveLink from "../shared/ActiveLink";
 import { images } from "../shared/Images";
@@ -20,6 +20,7 @@ import {
 import { navItems } from "@/constants";
 import { useAppSelector } from "@/redux/hooks";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 const Header = ({ user }: { user: JwtPayload | null }) => {
   const cart = useAppSelector((state) => state.cart);
@@ -35,8 +36,10 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
       INSTRUCTOR: "border-green-500",
     }[user?.role as string] || "border-gray-400";
 
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+
   return (
-    <header className="flex items-center justify-between lg:justify-evenly lg:gap-8 py-4 px-4 lg:px-10 bg-white border shadow rounded-4xl my-8 max-w-10/12 xl:max-w-8/12 mx-auto">
+    <header className="flex items-center justify-between lg:justify-evenly lg:gap-8 py-4 px-4 lg:px-10 bg-white relative border shadow rounded-4xl my-8 max-w-10/12 xl:max-w-8/12 mx-auto">
       <div>
         <Link href="/" className="cursor-pointer">
           <Image src={images.logo} alt="logo" width={100} height={100} />
@@ -57,6 +60,39 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
           ))}
         </ul>
       </nav>
+
+      <div
+        className={`mobileSidebar md:hidden fixed ${mobileSidebarOpen ? "inset-0" : "-left-96"} z-50 backdrop-blur-xs duration-300`}
+        onClick={() => setMobileSidebarOpen(false)}
+      >
+        <nav className="bg-white pl-4 pr-8 py-8 w-fit duration-200 relative h-screen shadow-lg">
+          <Button
+            size={"icon"}
+            variant={"ghost"}
+            className="relative -top-4 left-11/12 w-8 h-8 p-1 hover:bg-primary hover:text-white"
+            onClick={() => setMobileSidebarOpen(false)}
+          >
+            <X />
+          </Button>
+          <ul className="flex flex-col items-center gap-6 px-6">
+            <Link href="/" className="cursor-pointer">
+              <Image src={images.logo} alt="logo" width={100} height={100} />
+            </Link>
+            {navItems.map((item, index) => (
+              <li className="relative" key={index}>
+                <ActiveLink
+                  href={item.href}
+                  className="font-medium duration-200 hover:text-primary p-4"
+                  activeClassName="text-primary after:absolute after:bottom-2 after:right-0 after:w-2 after:h-2 after:bg-primary after:rounded-full"
+                >
+                  {item.name}
+                </ActiveLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+
       <div className="flex items-center relative lg:border-1 border-gray-300 rounded-2xl lg:flex-1 ml-auto">
         <Input placeholder="Search Courses..." className="hidden lg:block placeholder:text-gray-400 placeholder:font-medium" />
         <Button
@@ -76,7 +112,6 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
         </Link>
         {user && (
           <>
-            <Bell className="text-primary hover:bg-primary p-1 hover:text-white rounded-full" size={30} />
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Image
@@ -139,7 +174,11 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
           </h3>
         )}
       </div>
-      <Menu className="md:hidden text-primary hover:bg-primary p-1 hover:text-white rounded-full" size={30} />
+      <Menu
+        className="md:hidden text-primary hover:bg-primary p-1 hover:text-white rounded-full"
+        size={30}
+        onClick={() => setMobileSidebarOpen(true)}
+      />
     </header>
   );
 };
