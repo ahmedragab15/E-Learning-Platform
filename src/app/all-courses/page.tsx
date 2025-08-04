@@ -7,7 +7,7 @@ interface Props {
 }
 const AllCourses = async ({ searchParams }: Props) => {
   const allCourses = await getCoursesAction();
-  const selectedCategory = searchParams.category || "All";
+  const selectedCategory =  (await searchParams).category || "All";
   const filteredCourses = selectedCategory === "All" ? allCourses : allCourses.filter((course) => course.category.title === selectedCategory);
 
   return (

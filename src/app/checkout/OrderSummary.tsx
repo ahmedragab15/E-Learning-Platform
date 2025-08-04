@@ -16,7 +16,9 @@ const OrderSummary =  () => {
       <CardHeader>
         <CardTitle className="flex items-center justify-between">
           Order Summary
-          <Badge variant="secondary">{cart.length} {cart.length === 1 ? "Item" : "Items"}</Badge>
+          <Badge variant="secondary">
+            {cart?.length || 0} {cart && cart?.length === 1 ? "Item" : "Items"}
+          </Badge>
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">

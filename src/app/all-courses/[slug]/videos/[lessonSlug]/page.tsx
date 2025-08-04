@@ -7,14 +7,11 @@ import { getCourseBySlugAction } from "@/actions/courseActions";
 import { getLessonBySlugAction } from "@/actions/lessonActions";
 
 interface Props {
-  params: {
-    slug: string;
-    lessonSlug: string;
-  };
+  params: Promise<{ slug: string; lessonSlug: string }>;
 }
 
 const LessonPage = async ({ params }: Props) => {
-  const { slug, lessonSlug } = params;
+  const { slug, lessonSlug } = await params;
   const chosenCourse = await getCourseBySlugAction(slug);
   if (!chosenCourse) {
     notFound();

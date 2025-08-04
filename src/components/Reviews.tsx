@@ -24,7 +24,7 @@ const Reviews = ({ reviews, heading, navigation = "", swiper = false, id = "" }:
       {heading}
       <div className="space-y-4">
         <div className="flex justify-evenly flex-wrap gap-6">
-          {reviews.length > 0 ? (
+          {reviews && reviews.length > 0 ? (
             swiper || reviews.length > 5 ? (
               <SwiperSlider id={id}>
                 {reviews.map((review) => (
@@ -40,7 +40,7 @@ const Reviews = ({ reviews, heading, navigation = "", swiper = false, id = "" }:
             <p className="text-center text-gray-500">No reviews yet</p>
           )}
         </div>
-        {reviews.length > 0 &&navigation}
+        {reviews && reviews.length > 0 && navigation}
       </div>
     </>
   );
