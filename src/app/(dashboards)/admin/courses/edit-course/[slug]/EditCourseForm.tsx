@@ -15,7 +15,11 @@ type CourseWithCategory = Prisma.CourseGetPayload<{
   include: { category: true; instructor: true };
 }>;
 
-const AddCourseForm = ({ courses }: { courses: CourseWithCategory[] }) => {
+type CategoryWithCourses = Prisma.CategoryGetPayload<{
+  include: { courses: true };
+}>;
+
+const EditCourseForm = ({ course, categories }: { course: CourseWithCategory; categories: CategoryWithCourses[] }) => {
   const [expandedSection, setExpandedSection] = useState("userResearch");
 
   const sections = [
@@ -43,8 +47,6 @@ const AddCourseForm = ({ courses }: { courses: CourseWithCategory[] }) => {
     { title: "Usability Testing", editable: true },
   ];
 
-  const categories = [...new Set(courses.map((course) => course.category.title).map((title) => title))];
-
   return (
     <div className="min-h-screen bg-background flex">
       <div className="flex-1">
@@ -67,18 +69,23 @@ const AddCourseForm = ({ courses }: { courses: CourseWithCategory[] }) => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       <div className="space-y-2">
                         <Label htmlFor="courseName">Course Name</Label>
-                        <Input id="courseName" placeholder="UI/UX Design For Beginner" />
+                        <Input
+                          id="courseName"
+                          placeholder="UI/UX Design For Beginner"
+                          value={course.title}
+                          onChange={(e) => console.log(e.target.value)}
+                        />
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="courseCategory">Course Category</Label>
-                        <Select defaultValue="Design">
+                        <Select defaultValue={course.category.title}>
                           <SelectTrigger>
                             <SelectValue />
                           </SelectTrigger>
                           <SelectContent>
                             {categories.map((category) => (
-                              <SelectItem value={category} key={category}>
-                                {category}
+                              <SelectItem value={category.title} key={category.slug}>
+                                {category.title}
                               </SelectItem>
                             ))}
                           </SelectContent>
@@ -90,7 +97,13 @@ const AddCourseForm = ({ courses }: { courses: CourseWithCategory[] }) => {
                           <span className="inline-flex items-center px-3 text-sm text-muted-foreground bg-muted border border-r-0 border-input rounded-l-md">
                             $
                           </span>
-                          <Input id="coursePrice" placeholder="99" className="rounded-l-none" />
+                          <Input
+                            id="coursePrice"
+                            placeholder="99"
+                            className="rounded-l-none"
+                            value={course.price}
+                            onChange={(e) => console.log(e.target.value)}
+                          />
                         </div>
                       </div>
                     </div>
@@ -201,9 +214,7 @@ const AddCourseForm = ({ courses }: { courses: CourseWithCategory[] }) => {
                                 {expandedSection === section.id ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
                                 <span className="font-medium">{section.title}</span>
                               </div>
-                              <Button variant="ghost" size="sm" className="text-primary">
-                                Edit
-                              </Button>
+                              Edit
                             </CollapsibleTrigger>
                             <CollapsibleContent className="ml-6 mt-2 space-y-2">
                               {section.items.map((item, index) => (
@@ -442,4 +453,4 @@ const AddCourseForm = ({ courses }: { courses: CourseWithCategory[] }) => {
   );
 };
 
-export default AddCourseForm;
+export default EditCourseForm;

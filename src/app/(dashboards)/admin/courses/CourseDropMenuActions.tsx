@@ -39,7 +39,7 @@ const CourseDropMenuActions = ({ course }: { course: CourseWithCategory }) => {
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link href={`/admin/courses/edit-course/${course.id}`} className="flex items-center gap-2 w-full">
+          <Link href={`/admin/courses/edit-course/${course.slug}`} className="flex items-center gap-2 w-full">
             <Edit className="w-4 h-4" />
             Edit
           </Link>

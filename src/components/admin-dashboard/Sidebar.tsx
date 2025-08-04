@@ -13,8 +13,6 @@ const courseSubItems = [
 
 const instructorsSubItems = [
   { id: "all-instructors", label: "All Instructors", path: "/admin/instructors" },
-  { id: "about-instructors", label: "About Instructors", path: "/admin/instructors/about" },
-  { id: "edit-instructors", label: "Edit Instructors", path: "/admin/instructors/edit" },
 ];
 
 const studentSubItems = [{ id: "all-student", label: "All Student", path: "/admin/students", icon: Users }];

@@ -1,39 +1,9 @@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Card, CardContent } from "@/components/ui/card";
+import { getAllUsersAction } from "@/actions/userActions";
 
-const page = () => {
-  const students = [
-    {
-      username: "Afif Hanifudin",
-      phone: "+6281325450623",
-      email: "hanifudin201@gmail.com",
-      totalCourse: "4 Course",
-    },
-    {
-      username: "Afif Hanifudin",
-      phone: "+6281325450623",
-      email: "hanifudin201@gmail.com",
-      totalCourse: "4 Course",
-    },
-    {
-      username: "Afif Hanifudin",
-      phone: "+6281325450623",
-      email: "hanifudin201@gmail.com",
-      totalCourse: "4 Course",
-    },
-    {
-      username: "Afif Hanifudin",
-      phone: "+6281325450623",
-      email: "hanifudin201@gmail.com",
-      totalCourse: "4 Course",
-    },
-    {
-      username: "Afif Hanifudin",
-      phone: "+6281325450623",
-      email: "hanifudin201@gmail.com",
-      totalCourse: "4 Course",
-    },
-  ];
+const page = async() => {
+  const students = await getAllUsersAction()
 
   return (
     <div className="min-h-screen bg-background flex">
@@ -52,7 +22,7 @@ const page = () => {
                 <TableHeader>
                   <TableRow className="border-b border-border">
                     <TableHead className="text-muted-foreground font-medium p-6">Username</TableHead>
-                    <TableHead className="text-muted-foreground font-medium p-6">Phone Number</TableHead>
+                    <TableHead className="text-muted-foreground font-medium p-6">University</TableHead>
                     <TableHead className="text-muted-foreground font-medium p-6">Email</TableHead>
                     <TableHead className="text-muted-foreground font-medium p-6">Total Course</TableHead>
                   </TableRow>
@@ -61,9 +31,9 @@ const page = () => {
                   {students.map((student, index) => (
                     <TableRow key={index} className="border-b border-border hover:bg-muted/50">
                       <TableCell className="p-6 font-medium text-foreground">{student.username}</TableCell>
-                      <TableCell className="p-6 text-foreground">{student.phone}</TableCell>
+                      <TableCell className="p-6 text-foreground">{student.university}</TableCell>
                       <TableCell className="p-6 text-foreground">{student.email}</TableCell>
-                      <TableCell className="p-6 text-foreground">{student.totalCourse}</TableCell>
+                      <TableCell className="p-6 text-foreground">{student.enrollments.length}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

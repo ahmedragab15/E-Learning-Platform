@@ -1,11 +1,17 @@
-import AddCourseForm from './AddCourseForm'
+import { getCoursesAction } from "@/actions/courseActions";
+import AddCourseForm from "./AddCourseForm";
+import { notFound } from "next/navigation";
 
-const page = () => {
+const page = async () => {
+  const courses = await getCoursesAction();
+  if (!courses) {
+    notFound();
+  }
   return (
     <>
-        <AddCourseForm/>
+      <AddCourseForm courses={courses} />
     </>
-  )
-}
+  );
+};
 
-export default page
+export default page;
