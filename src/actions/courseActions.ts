@@ -8,6 +8,12 @@ export async function getCoursesAction() {
   try {
     return await prisma.course.findMany({
       include: {
+        enrollments: {
+          include: {
+            user: true,
+            course: true,
+          },
+        },
         category: true,
         instructor: true,
         reviews: true,
@@ -108,5 +114,71 @@ export async function createCourseAction(data: Prisma.CourseCreateInput) {
   } catch (error) {
     console.error("createCourseAction error:", error);
     return null;
+  }
+}
+
+export async function deleteCourseAction(id: number) {
+  try {
+    const admin = await prisma.user.findFirst({
+      where: { role: "ADMIN" },
+    });
+    if (!admin) {
+      return {
+        success: false,
+        message: "Admin user not found",
+        status: 404,
+      };
+    }
+
+    await prisma.$transaction([
+      prisma.comment.deleteMany({ where: { courseId: id } }),
+      prisma.review.deleteMany({ where: { courseId: id } }),
+      prisma.enrollment.deleteMany({ where: { courseId: id } }),
+      prisma.courseRating.deleteMany({ where: { courseId: id } }),
+      prisma.learningItem.deleteMany({
+        where: {
+          learning: {
+            courseId: id,
+          },
+        },
+      }),
+      prisma.courseLearning.deleteMany({
+        where: {
+          courseId: id,
+        },
+      }),
+      prisma.lesson.deleteMany({
+        where: {
+          chapter: {
+            courseId: id,
+          },
+        },
+      }),
+      prisma.chapter.deleteMany({
+        where: {
+          courseId: id,
+        },
+      }),
+
+      prisma.course.delete({
+        where: {
+          id,
+        },
+      }),
+    ]);
+
+    revalidatePath("/admin/courses");
+    return {
+      success: true,
+      message: "Course deleted successfully",
+      status: 200,
+    };
+  } catch (error) {
+    console.log(error);
+    return {
+      success: false,
+      message: "Something went wrong from server",
+      status: 500,
+    };
   }
 }
