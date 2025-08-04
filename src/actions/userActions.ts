@@ -208,3 +208,25 @@ export async function updateUserAction(id: number, data: Prisma.UserCreateInput)
     return { success: false, message: "Something went wrong", status: 500 };
   }
 }
+
+export async function getNewStudentsAction() {
+  const now = new Date();
+  const lastMonth = new Date();
+  lastMonth.setDate(now.getDate() - 30);
+
+  try {
+    const newStudents = await prisma.user.findMany({
+      where: {
+        role: "USER",
+        createdAt: {
+          gte: lastMonth,
+        },
+      },
+    });
+
+    return newStudents;
+  } catch (error) {
+    console.error("getNewStudentsAction error:", error);
+    return [];
+  }
+}

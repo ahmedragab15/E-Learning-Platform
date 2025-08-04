@@ -48,10 +48,14 @@ export async function getCourseBySlugAction(slug: string) {
     const course = await prisma.course.findUnique({
       where: { slug },
       include: {
-        category: true,
-        instructor: {
-          include: { courses: true },
+        enrollments: {
+          include: {
+            user: true,
+            course: true,
+          },
         },
+        category: true,
+        instructor: true,
         reviews: true,
         learnings: {
           include: {
@@ -60,11 +64,8 @@ export async function getCourseBySlugAction(slug: string) {
           },
         },
         Chapters: {
-          orderBy: { id: "asc" },
           include: {
-            details: {
-              orderBy: { id: "asc" },
-            },
+            details: true,
           },
         },
         courseRating: true,
