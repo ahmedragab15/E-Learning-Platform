@@ -201,9 +201,7 @@ const AddCourseForm = ({ courses }: { courses: CourseWithCategory[] }) => {
                                 {expandedSection === section.id ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
                                 <span className="font-medium">{section.title}</span>
                               </div>
-                              <Button variant="ghost" size="sm" className="text-primary">
-                                Edit
-                              </Button>
+                              Edit
                             </CollapsibleTrigger>
                             <CollapsibleContent className="ml-6 mt-2 space-y-2">
                               {section.items.map((item, index) => (

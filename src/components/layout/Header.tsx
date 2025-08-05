@@ -107,7 +107,7 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
         <Link href={"/cart"} className="relative">
           <ShoppingCart className="text-primary p-1 hover:bg-primary hover:text-white rounded-full" size={30} />
           <span className="absolute -top-0.5 right-0 text-xs bg-primary text-white w-4 h-4 flex items-center justify-center rounded-full pointer-events-none">
-            {cart.length}
+            {cart.length || 0}
           </span>
         </Link>
         {user && (

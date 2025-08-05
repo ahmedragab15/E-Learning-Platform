@@ -1,65 +1,7 @@
 import { getAllInstructorsAction } from "@/actions/instructorActions";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 import { Eye } from "lucide-react";
 import Link from "next/link";
-
-// const instructors = [
-//   {
-//     id: "1",
-//     photo: "/placeholder.svg",
-//     name: "Angela Saraswati",
-//     email: "angelaSaraswati@gmail.com",
-//     totalCourses: "15 Courses",
-//     totalStudents: "900 Students",
-//     income: "$7200",
-//   },
-//   {
-//     id: "2",
-//     photo: "/placeholder.svg",
-//     name: "Robert Anderson",
-//     email: "robertanderson@gmail.com",
-//     totalCourses: "10 Courses",
-//     totalStudents: "542 Students",
-//     income: "$4300",
-//   },
-//   {
-//     id: "3",
-//     photo: "/placeholder.svg",
-//     name: "Chika Miscela",
-//     email: "chikamiss@gmail.com",
-//     totalCourses: "30 Courses",
-//     totalStudents: "1200 Students",
-//     income: "$9540",
-//   },
-//   {
-//     id: "4",
-//     photo: "/placeholder.svg",
-//     name: "Angela Saraswati",
-//     email: "angelaSaraswati@gmail.com",
-//     totalCourses: "15 Courses",
-//     totalStudents: "900 Students",
-//     income: "$7200",
-//   },
-//   {
-//     id: "5",
-//     photo: "/placeholder.svg",
-//     name: "Robert Anderson",
-//     email: "robertanderson@gmail.com",
-//     totalCourses: "10 Courses",
-//     totalStudents: "542 Students",
-//     income: "$4300",
-//   },
-//   {
-//     id: "6",
-//     photo: "/placeholder.svg",
-//     name: "Chika Miscela",
-//     email: "chikamiss@gmail.com",
-//     totalCourses: "30 Courses",
-//     totalStudents: "1200 Students",
-//     income: "$9540",
-//   },
-// ];
 
 const page = async () => {
   const instructors = await getAllInstructorsAction();
@@ -103,11 +45,9 @@ const page = async () => {
                 <div>
                   <Link
                     href={`/admin/instructors/${instructor.slug}`}
-                    className="flex items-center bg-primary/10 group text-primary hover:bg-primary hover:text-white rounded-md px-2 py-1"
+                    className="flex items-center justify-center bg-primary/10 group text-primary hover:bg-primary hover:text-white rounded-md px-2 py-3"
                   >
-                    <Button variant="ghost" size="icon">
                       <Eye />
-                    </Button>
                     <span className="ml-2 text-sm text-primary cursor-pointer group-hover:text-white ">View</span>
                   </Link>
                 </div>
