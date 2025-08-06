@@ -131,7 +131,7 @@ interface IFormInput {
 }
 
 declare interface IContactInputs extends IFormInput {
-  name: "email" | "subject";
+  name: "from_email" | "subject" | "message";
 }
 
 declare interface ILoginInputs extends IFormInput {

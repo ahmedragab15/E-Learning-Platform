@@ -21,7 +21,7 @@ export const navItems: INavItems[] = [
 
 export const ContactFormInputs: IContactInputs[] = [
   {
-    name: "email",
+    name: "from_email",
     placeholder: "Email",
     label: "Email",
     type: "email",
@@ -30,6 +30,12 @@ export const ContactFormInputs: IContactInputs[] = [
     name: "subject",
     placeholder: "Subject",
     label: "Subject",
+    type: "text",
+  },
+  {
+    name: "message",
+    placeholder: "Message",
+    label: "Message",
     type: "text",
   },
 ];
