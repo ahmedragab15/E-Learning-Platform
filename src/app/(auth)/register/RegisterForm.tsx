@@ -11,6 +11,8 @@ import { createUserAction } from "@/actions/userActions";
 import { Bounce, toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Image from "next/image";
+import { images } from "@/components/shared/Images";
 
 const RegisterForm = () => {
   const [loading, setLoading] = useState(false);
@@ -76,8 +78,8 @@ const RegisterForm = () => {
           </Button>
         </form>
       </Form>
-      <span className="block text-sm">Or Sign in with</span>
       <Button variant="outline" fullwidth onClick={() => (window.location.href = "/api/auth/google/login")}>
+        <Image src={images.googleIcon} alt="google" width={20} height={20} />
         Sign in with Google
       </Button>
       <span className="text-sm">

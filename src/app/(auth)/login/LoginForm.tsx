@@ -11,6 +11,8 @@ import { useState } from "react";
 import { userLoginAction } from "@/actions/userActions";
 import { Bounce, toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import { images } from "@/components/shared/Images";
 
 const LoginForm = () => {
   const [loading, setLoading] = useState(false);
@@ -73,8 +75,8 @@ const LoginForm = () => {
           </Button>
         </form>
       </Form>
-      <span className="block text-sm">Or Sign in with</span>
       <Button variant="outline" fullwidth onClick={() => (window.location.href = "/api/auth/google/login")}>
+        <Image src={images.googleIcon} alt="google" width={20} height={20} />
         Sign in with Google
       </Button>
       <span className="text-sm">
