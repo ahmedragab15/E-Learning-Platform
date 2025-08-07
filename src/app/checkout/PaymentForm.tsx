@@ -145,7 +145,7 @@ const PaymentForm = () => {
                     </div>
                   </div>
                   <div className="space-y-4">
-                    <Button className="w-full h-12 text-lg font-semibold">
+                    <Button className="w-full h-12 text-lg font-semibold text-white">
                       <Lock className="w-4 h-4 mr-2" />
                       Complete Order
                     </Button>

@@ -17,21 +17,21 @@ const WhyUs = () => {
               <Award className="text-primary" size={18} />
               <div className="space-y-2">
                 <h3 className="text-lg font-semibold">120+ Premium Courses</h3>
-                <p className="text-gray-600 max-w-82 leading-tight">we facilitate members with many premium classes</p>
+                <p className="text-muted-foreground max-w-82 leading-tight">we facilitate members with many premium classes</p>
               </div>
             </li>
             <li className="flex items-center gap-4">
               <House className="text-primary" size={18} />
               <div className="space-y-2">
                 <h3 className="text-lg font-semibold">Study anywhere and anytime</h3>
-                <p className="text-gray-600 max-w-82 leading-tight">Join us you can learn more flexibly. Study anywhere and anytime</p>
+                <p className="text-muted-foreground max-w-82 leading-tight">Join us you can learn more flexibly. Study anywhere and anytime</p>
               </div>
             </li>
             <li className="flex items-center gap-4">
               <Headset className="text-primary" size={18} />
               <div className="space-y-2">
                 <h3 className="text-lg font-semibold">Taught by a professional mentor</h3>
-                <p className="text-gray-600 max-w-82 leading-tight">Join us you can learn with a mentor who has been proven professional</p>
+                <p className="text-muted-foreground max-w-82 leading-tight">Join us you can learn with a mentor who has been proven professional</p>
               </div>
             </li>
           </ul>

@@ -14,11 +14,14 @@ const CartItem = (course: ICartItem) => {
     toast.success("Course removed Successfully");
   };
   return (
-    <li className="bg-white flex max-w-full gap-4 border-b-2 border-gray-200 p-4 shadow-md hover:shadow-lg duration-200 rounded-lg" key={course.id}>
+    <li
+      className="bg-white dark:bg-slate-800 flex max-w-full gap-4 border-b-2 border-primary p-4 shadow-md hover:shadow-lg duration-200 rounded-lg"
+      key={course.id}
+    >
       <Image src={course.imageUrl as string} alt={course.title} width={200} height={200} className="size-16 rounded-sm object-cover" />
       <div>
-        <h3 className="text-lg font-semibold text-gray-900">{course.title}</h3>
-        <div className="mt-0.5 space-y-px text-gray-600">
+        <h3 className="text-lg font-semibold">{course.title}</h3>
+        <div className="mt-0.5 space-y-px text-muted-foreground">
           <div>
             <div className="flex items-center  flex-wrap  gap-0.5">
               <span className="text-xs text-[#dd7621] font-medium">{course.ratingCount}</span>
@@ -29,7 +32,7 @@ const CartItem = (course: ICartItem) => {
                 <Star key={index} fill="#bababa" size={15} className="text-transparent " />
               ))}
               <p className=" text-xs">
-                <span className="text-gray-600"> ({course.ratingTotal} rating)</span>
+                <span className="text-muted-foreground"> ({course.ratingTotal} rating)</span>
               </p>
             </div>
           </div>

@@ -29,7 +29,7 @@ const LessonsAccordion = ({ data }: AccordionProps) => {
               <ChevronDownIcon className="text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200" />
               <span>{topic.topic}</span>
             </h3>
-            <h3 className="text-md text-gray-600">{topic.duration}</h3>
+            <h3 className="text-md text-muted-foreground">{topic.duration}</h3>
           </AccordionTrigger>
           <AccordionContent>
             <ul className="pl-4 space-y-4">
@@ -42,11 +42,11 @@ const LessonsAccordion = ({ data }: AccordionProps) => {
                           <Button size={"icon"} className="bg-primary rounded-full w-2 h-2 p-3">
                             <Play className="w-1 h-1" fill="#fff" />
                           </Button>
-                          <span className="text-gray-700 hover:text-primary">
+                          <span className="text-muted-foreground hover:text-primary">
                             {lessonIndex + 1}. {lesson.title}
                           </span>
                         </div>
-                        <span className="text-gray-600">{lesson.duration}</span>
+                        <span className="text-muted-foreground">{lesson.duration}</span>
                       </div>
                     ) : (
                       <>
@@ -56,7 +56,7 @@ const LessonsAccordion = ({ data }: AccordionProps) => {
                             {lessonIndex + 1}. {lesson.title}
                           </ActiveLink>
                         </Label>
-                        <span className="text-gray-600">{lesson.duration}</span>
+                        <span className="text-muted-foreground">{lesson.duration}</span>
                       </>
                     )}
                   </div>

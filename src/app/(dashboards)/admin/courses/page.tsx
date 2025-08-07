@@ -19,7 +19,7 @@ const AllCourse = async () => {
                 <h1 className="text-2xl font-bold text-foreground">All Courses</h1>
                 <p className="text-muted-foreground">Manage all your courses</p>
               </div>
-              <Button>
+              <Button className="text-white">
                 <Link href="/admin/courses/add-course" className="flex items-center gap-2">
                   <Plus className="w-4 h-4" />
                   Add New Course

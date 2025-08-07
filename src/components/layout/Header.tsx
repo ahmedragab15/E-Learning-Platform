@@ -21,6 +21,8 @@ import { navItems } from "@/constants";
 import { useAppSelector } from "@/redux/hooks";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+import { useTheme } from "next-themes";
+import { ModeToggle } from "../modeToggle";
 
 const Header = ({ user }: { user: JwtPayload | null }) => {
   const cart = useAppSelector((state) => state.cart);
@@ -37,12 +39,14 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
     }[user?.role as string] || "border-gray-400";
 
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const { theme } = useTheme();
+  console.log("theme is " + theme);
 
   return (
-    <header className="flex items-center justify-between lg:justify-evenly lg:gap-8 py-4 px-4 lg:px-10 bg-white relative border shadow rounded-4xl my-8 max-w-10/12 xl:max-w-8/12 mx-auto">
+    <header className="flex items-center justify-between lg:justify-evenly lg:gap-8 py-4 px-4 lg:px-10 bg-white dark:bg-slate-800 relative border shadow rounded-4xl my-8 max-w-10/12 xl:max-w-8/12 mx-auto">
       <div>
         <Link href="/" className="cursor-pointer">
-          <Image src={images.logo} alt="logo" width={100} height={100} />
+          <Image src={theme === "dark" ? images.logoDark : images.logo} alt="logo" width={80} height={60} className="w-24 h-10 object-cover" />
         </Link>
       </div>
       <nav className="hidden md:block">
@@ -76,7 +80,7 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
           </Button>
           <ul className="flex flex-col items-center gap-6 px-6">
             <Link href="/" className="cursor-pointer">
-              <Image src={images.logo} alt="logo" width={100} height={100} />
+              <Image src={theme === "dark" ? images.logoDark : images.logo} alt="logo" width={80} height={60} className="w-24 h-10 object-cover" />
             </Link>
             {navItems.map((item, index) => (
               <li className="relative" key={index}>
@@ -110,6 +114,7 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
             {cart.length || 0}
           </span>
         </Link>
+        <ModeToggle />
         {user && (
           <>
             <DropdownMenu>

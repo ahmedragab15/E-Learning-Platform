@@ -10,7 +10,7 @@ import aboutImage5 from "../../../public/images/about-page/5.webp";
 import aboutImage6 from "../../../public/images/about-page/6.webp";
 import aboutbanner from "../../../public/images/about-page/banner.webp";
 import logo from "../../../public/images/Logo.webp";
-import logo2 from "../../../public/images/Logo2.webp";
+import logoDark from "../../../public/images/Logo-Dark.webp";
 import signImage from "../../../public/images/sign_images.webp";
 import loginImage from "../../../public/images/login_images.webp";
 import instractorCover from "../../../public/images/Intstructor-Cover.webp";
@@ -31,7 +31,7 @@ export const images = {
   aboutImage6,
   aboutbanner,
   logo,
-  logo2,
+  logoDark,
   signImage,
   loginImage,
   instractorCover,

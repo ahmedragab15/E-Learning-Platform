@@ -39,7 +39,11 @@ const AddToCartButton = ({ course }: CourseCardProps) => {
     dispatch(addToCart(courseToAdd));
     toast.success("Course added Successfully");
   };
-  return <Button onClick={handleAddToCart}>Add Course</Button>;
+  return (
+    <Button onClick={handleAddToCart} className="dark:text-white">
+      Add Course
+    </Button>
+  );
 };
 
 export default AddToCartButton;

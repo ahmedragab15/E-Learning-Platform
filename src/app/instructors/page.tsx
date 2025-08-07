@@ -12,13 +12,13 @@ const AllInstructors = async () => {
   return (
     <>
       {user?.role !== "INSTRUCTOR" && (
-        <Container background="bg-white">
+        <Container background="bg-white dark:bg-slate-800">
           <div className="flex justify-between flex-col-reverse md:flex-row items-center gap-4">
             <div className="space-y-4">
               <h1 className="text-6xl max-w-96 font-semibold">Come teach with us</h1>
               <p className="text-muted-foreground max-w-72 ">Become an instructor and change lives — including your own</p>
               {/* //todo: Instructor Form */}
-              <Button>Get Started</Button>
+              <Button className="text-white">Get Started</Button>
             </div>
             <div>
               <Image src={images.techWithUsImg} alt="instructor image" width={900} height={900} className="max-w-full w-[900px] object-cover" />

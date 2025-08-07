@@ -5,7 +5,6 @@ import SwiperSlider from "@/swiper/SwiperSlider";
 import { SwiperSlide } from "swiper/react";
 import { Prisma } from "@/generated/prisma/client";
 
-
 type ReviewsWithUser = Prisma.ReviewGetPayload<{
   include: { user: true; course: true };
 }>;
@@ -37,7 +36,7 @@ const Reviews = ({ reviews, heading, navigation = "", swiper = false, id = "" }:
               reviews.map((review) => <ReviewCard key={review.id} review={review} />)
             )
           ) : (
-            <p className="text-center text-gray-500">No reviews yet</p>
+            <p className="text-center text-muted-foreground">No reviews yet</p>
           )}
         </div>
         {reviews && reviews.length > 0 && navigation}

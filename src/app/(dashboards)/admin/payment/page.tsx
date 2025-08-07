@@ -80,7 +80,7 @@ const Payments = () => {
           </CardHeader>
           <CardContent className="flex items-center justify-between">
             <p className="text-muted-foreground">Make payment to the instructor</p>
-            <Button>Transfer Now</Button>
+            <Button className="text-white">Transfer Now</Button>
           </CardContent>
         </Card>
 
@@ -88,7 +88,7 @@ const Payments = () => {
         <div className="space-y-4">
           <h2 className="text-xl font-semibold">Recent Transfer Transaction</h2>
           <div className="border rounded-lg overflow-hidden">
-            <div className="grid grid-cols-7 gap-4 p-4 bg-muted font-medium text-sm">
+            <div className="grid grid-cols-7 gap-4 p-4 bg-card font-medium text-sm">
               <div>Photo</div>
               <div>Name Mentor</div>
               <div>Email</div>
@@ -99,7 +99,7 @@ const Payments = () => {
 
             <div className="divide-y">
               {paymentTransactions.map((transaction) => (
-                <div key={transaction.id} className="grid grid-cols-7 gap-4 p-4 items-center">
+                <div key={transaction.id} className="grid grid-cols-7 gap-4 p-4 items-center bg-card">
                   <div>
                     <Avatar className="w-8 h-8">
                       <AvatarImage src={transaction.photo} alt={transaction.name} />

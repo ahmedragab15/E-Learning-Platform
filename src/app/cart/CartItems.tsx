@@ -17,7 +17,7 @@ const CartItems = () => {
           <h1 className="text-2xl font-bold sm:text-4xl text-center">Shopping Cart</h1>
           <div className="flex flex-col lg:flex-row justify-evenly gap-12">
             <div className="flex-1 lg:flex-2/3">
-              <h3 className="text-2xl font-medium text-gray-900 border-b border-gray-200 pb-2">{cart.length || 0} Courses in Cart</h3>
+              <h3 className="text-2xl font-medium text-gray-900 pb-2">{cart.length || 0} Courses in Cart</h3>
               <ul className="space-y-4  max-h-[500px] overflow-auto">
                 {cart && cart?.length > 0 ? cart.map((course) => <CartItem key={course.id} {...course} />) : <li>No Items Added Yet</li>}
               </ul>
@@ -26,8 +26,8 @@ const CartItems = () => {
             <div className="flex-1 lg:flex-1/3">
               <h3 className="text-2xl font-semibold text-gray-900 pb-2">Order Details</h3>
               {cart && cart?.length > 0 ? (
-                <div className="space-y-8 max-w-full min-w-64 sm:min-w-md bg-white p-4 shadow-md hover:shadow-lg duration-200 rounded-lg">
-                  <dl className="space-y-4 text-lg text-gray-700 ">
+                <div className="space-y-8 max-w-full min-w-64 sm:min-w-md bg-white dark:bg-slate-800 p-4 shadow-md hover:shadow-lg duration-200 rounded-lg">
+                  <dl className="space-y-4 text-lg text-muted-foreground ">
                     <div className="flex justify-between">
                       <dt>Subtotal</dt>
                       <dd>${TotalAmount().toFixed(2)}</dd>
@@ -42,13 +42,13 @@ const CartItems = () => {
                     </div>
                   </dl>
                   <div className="flex justify-end">
-                    <Button>
+                    <Button className="text-white">
                       <Link href="/checkout">Checkout</Link>
                     </Button>
                   </div>
                 </div>
               ) : (
-                <div className="space-y-8 max-w-full min-w-64 sm:min-w-md bg-white p-4 shadow-md hover:shadow-lg duration-200 rounded-lg">
+                <div className="space-y-8 max-w-full min-w-64 sm:min-w-md bg-white dark:bg-slate-800 p-4 shadow-md hover:shadow-lg duration-200 rounded-lg">
                   No Items Added Yet
                 </div>
               )}

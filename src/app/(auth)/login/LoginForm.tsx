@@ -63,14 +63,14 @@ const LoginForm = () => {
                 <FormItem>
                   <FormLabel>{input.label}</FormLabel>
                   <FormControl>
-                    <Input placeholder={input.placeholder} className="bg-white" type={input.type} {...field} />
+                    <Input placeholder={input.placeholder} className="bg-input" type={input.type} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
           ))}
-          <Button type="submit" fullwidth className="rounded-none" disabled={loading}>
+          <Button type="submit" fullwidth className="text-white" disabled={loading}>
             Login
           </Button>
         </form>

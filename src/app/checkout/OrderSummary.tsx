@@ -49,7 +49,7 @@ const OrderSummary =  () => {
             <span>${(VatAmount() + TotalAmount()).toFixed(2)}</span>
           </div>
         </div>
-        <div className="mt-6 p-3 bg-gray-50 rounded-lg pointer-events-none">
+        <div className="mt-6 p-3 bg-gray-50 dark:bg-slate-800 rounded-lg pointer-events-none">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
               <path

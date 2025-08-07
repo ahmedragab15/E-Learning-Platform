@@ -17,25 +17,31 @@ type InstructorCardProps = {
 
 const InstructorCard = ({ instructor, className = "" }: InstructorCardProps) => {
   return (
-    <div className={cn(`flex flex-col bg-white p-6 gap-4 rounded-md ${className}`)}>
+    <div className={cn(`flex flex-col bg-white dark:bg-slate-700 p-6 gap-4 rounded-md ${className}`)}>
       <div className="flex justify-between flex-col lg:flex-row gap-2">
         <div className="flex items-center gap-4">
           <Avatar>
-            <AvatarImage src={instructor.avatarUrl as string || "http://dergipark.org.tr/assets/app/images/buddy_sample.png"} alt="user avatar" />
+            <AvatarImage src={(instructor.avatarUrl as string) || "http://dergipark.org.tr/assets/app/images/buddy_sample.png"} alt="user avatar" />
             <AvatarFallback>
-              <Image src={instructor.avatarUrl as string || "http://dergipark.org.tr/assets/app/images/buddy_sample.png"} alt="user avatar" width={400} height={400} className="rounded-full" />
+              <Image
+                src={(instructor.avatarUrl as string) || "http://dergipark.org.tr/assets/app/images/buddy_sample.png"}
+                alt="user avatar"
+                width={400}
+                height={400}
+                className="rounded-full"
+              />
             </AvatarFallback>
           </Avatar>
           <div>
             <h3 className="font-medium">{instructor.name}</h3>
-            <p className="text-gray-700 text-sm ">{instructor.headline}</p>
+            <p className="text-muted-foreground text-sm ">{instructor.headline}</p>
           </div>
         </div>
         <Button variant={"outline"}>
           <Link href={`/instructors/${instructor.slug}`}>View Profile</Link>
         </Button>
       </div>
-      <p className="text-gray-500 text-sm leading-5 max-w-full">{instructor.summary}</p>
+      <p className="text-muted-foreground text-sm leading-5 max-w-full">{instructor.summary}</p>
     </div>
   );
 };

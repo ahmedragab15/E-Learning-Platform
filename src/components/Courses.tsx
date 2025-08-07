@@ -10,11 +10,15 @@ type CourseWithCategory = Prisma.CourseGetPayload<{
   include: { category: true; instructor: true };
 }>;
 
+type Enrollments = Prisma.EnrollmentGetPayload<{
+  include: { user: true; course: { include: { category: true } } };
+}>;
+
 type CourseCardProps = {
   heading?: React.ReactNode;
   navigation?: React.ReactNode;
   courses?: CourseWithCategory[];
-  progressCourses?: IProgressCourse[];
+  progressCourses?: Enrollments[];
   className?: string;
   swiper?: boolean;
   id?: string;
@@ -25,22 +29,25 @@ const Courses = ({ heading, navigation, courses, progressCourses, className = ""
     <>
       {heading}
       <div className={cn(`flex justify-evenly flex-wrap gap-6 my-6 ${className}`)}>
-        {courses && courses.length > 0 ? (
-          courses && swiper ? (
-            <SwiperSlider id={id}>
-              {courses.map((course) => (
-                <SwiperSlide key={course.slug}>
-                  <CourseCard course={course} />
-                </SwiperSlide>
-              ))}
-            </SwiperSlider>
-          ) : (
-            courses && !swiper && courses.map((course) => <CourseCard course={course} key={course.slug} />)
-          )
+        {(courses && courses.length > 0) || (progressCourses && progressCourses.length > 0) ? (
+          <>
+            {courses && swiper ? (
+              <SwiperSlider id={id}>
+                {courses.map((course) => (
+                  <SwiperSlide key={course.slug}>
+                    <CourseCard course={course} />
+                  </SwiperSlide>
+                ))}
+              </SwiperSlider>
+            ) : (
+              courses && !swiper && courses.map((course) => <CourseCard course={course} key={course.slug} />)
+            )}
+
+            {progressCourses && progressCourses.map((course) => <ProgressCourseCard key={course.id} course={course} />)}
+          </>
         ) : (
-          <p className="text-center text-gray-500">No courses yet</p>
+          <p className="text-center text-muted-foreground">No courses yet</p>
         )}
-        {progressCourses && progressCourses.length > 0 && progressCourses.map((course) => <ProgressCourseCard key={course.id} course={course} />)}
       </div>
       {navigation && navigation}
     </>

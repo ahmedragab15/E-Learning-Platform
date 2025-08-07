@@ -12,7 +12,7 @@ const UserHome = async () => {
         <HeroUser />
       </section>
 
-      <Container background="bg-white">
+      <Container background="bg-white dark:bg-slate-800">
         <CoursesCategories
           heading={
             <Heading
@@ -30,25 +30,25 @@ const UserHome = async () => {
 
       <Container>
         <Courses
-          id="recomendation"
+          id="recommendation"
           courses={allCourses.slice(0, 8)}
           heading={
             <Heading
-              title="Recomendation Courses"
-              description="You can find recomendation courses from all course categories and quickly learn more"
+              title="Recommendation Courses"
+              description="You can find recommendation courses from all course categories and quickly learn more"
             />
           }
-          navigation={<ChevronNavigation id="recomendation" />}
+          navigation={<ChevronNavigation id="recommendation" />}
           swiper
         />
       </Container>
 
-      <Container background="bg-white">
+      <Container background="bg-white dark:bg-slate-800">
         <Courses
           id="popular"
           courses={allCourses.slice(10, 18)}
           heading={
-            <Heading title="Popular Course" description="You can find recomendation courses from all course categories and quickly learn more" />
+            <Heading title="Popular Course" description="You can find recommendation courses from all course categories and quickly learn more" />
           }
           navigation={<ChevronNavigation id="popular" />}
           swiper

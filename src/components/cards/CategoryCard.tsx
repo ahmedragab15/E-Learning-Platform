@@ -28,7 +28,7 @@ const CategoryCard = ({ category, selectedCategory }: CategoryCardProps) => {
   return (
     <div
       className={cn(
-        `flex flex-col items-center gap-8 bg-slate-100 w-54 py-6 rounded-md shadow group hover:shadow-lg hover:bg-primary duration-200 ${
+        `flex flex-col items-center gap-8 bg-slate-100 dark:bg-slate-700 w-54 py-6 rounded-md shadow group hover:shadow-lg hover:bg-primary dark:hover:bg-slate-500 duration-200 ${
           selectedCategory === category.title ? "bg-primary" : ""
         }`
       )}
@@ -43,7 +43,9 @@ const CategoryCard = ({ category, selectedCategory }: CategoryCardProps) => {
       >
         {IconComponent ? <IconComponent /> : null}
       </span>
-      <h3 className={cn(`font-medium group-hover:text-white ${selectedCategory === category.title ? "text-white" : ""}`)}>{category.title}</h3>
+      <h3 className={cn(`font-medium group-hover:text-white ${selectedCategory === category.title ? "text-white" : ""}`)}>
+        {category.title}
+      </h3>
     </div>
   );
 };

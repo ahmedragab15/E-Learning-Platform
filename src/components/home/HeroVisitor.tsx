@@ -10,11 +10,11 @@ const HeroVisitor = () => {
         <h1 className="text-3xl md:text-4xl lg:text-6xl font-semibold max-w-[700px] text-pretty">
           Learn New Skills <span className="text-primary">Anytime</span> and <span className="text-primary">Anywhere</span>
         </h1>
-        <p className="max-w-96 text-pretty text-gray-700">
+        <p className="max-w-96 text-pretty text-muted-foreground">
           Take advantage of this moment, let&apos;s join us. You will get many benefits and can study anywhere and anytime
         </p>
         <div className="space-x-4">
-          <Button className=" md:text-lg md:p-6">Get Started</Button>
+          <Button className="text-white md:text-lg md:p-6">Get Started</Button>
           <Button variant="outline" className="md:text-lg md:p-6">
             Join Now
           </Button>

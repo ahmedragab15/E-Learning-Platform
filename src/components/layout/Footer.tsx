@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import { images } from "../shared/Images";
@@ -5,14 +6,16 @@ import { Facebook, Twitter, Instagram } from "lucide-react";
 import Link from "next/link";
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
+import { useTheme } from "next-themes";
 
 const Footer = () => {
+  const { theme } = useTheme();
   return (
-    <footer className="bg-[#D7E3FB] min-h-96 ">
+    <footer className="bg-[#D7E3FB] min-h-96 dark:bg-slate-900">
       <div className="px-16 min-h-96 py-8 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-7 gap-8 items-center justify-center">
         <div className="space-y-8 xl:col-span-2">
           <div className="space-y-2 ">
-            <Image src={images.logo} alt="logo" width={100} height={100} />
+            <Image src={theme === "dark" ? images.logoDark : images.logo} alt="logo" width={80} height={60} className="w-24 h-20 object-cover" />
             <p>Online learning platform anytime and anywhere</p>
           </div>
           <div className="flex gap-4 lg:gap-12">
@@ -31,7 +34,7 @@ const Footer = () => {
               <Link href={"#"}>Design</Link>
             </li>
             <li>
-              <Link href={"#"}>Technologhy</Link>
+              <Link href={"#"}>Technology</Link>
             </li>
             <li>
               <Link href={"#"}>Languages</Link>

@@ -16,7 +16,7 @@ const VisitorHome = async () => {
           <HeroVisitor />
         </div>
       </Container>
-      <Container background="bg-white">
+      <Container background="bg-white dark:bg-slate-800">
         <CoursesCategories heading={<Heading title="Courses Category" cta={<ArrowNavigation />} />} />
       </Container>
 
@@ -25,16 +25,17 @@ const VisitorHome = async () => {
           courses={allCourses.slice(0, 7)}
           heading={
             <Heading
-              title="Recomendation Courses"
-              description="You can find recomendation courses from all course categories and quickly learn more"
+              title="Recommendation Courses"
+              description="You can find recommendation courses from all course categories and quickly learn more"
             />
           }
-          navigation={<ArrowNavigation />}
+          navigation={<ArrowNavigation id="recommendation" />}
+          id="recommendation"
           swiper
         />
       </Container>
 
-      <Container background="bg-white">
+      <Container background="bg-white dark:bg-slate-800">
         <WhyUs />
       </Container>
 
@@ -50,11 +51,11 @@ const VisitorHome = async () => {
         />
       </Container>
 
-      <Container background="bg-white">
+      <Container background="bg-white dark:bg-slate-800">
         <AllNews news={news.slice(0, 8)} heading={<Heading title="News for you" />} navigation={<ArrowNavigation id="news" />} swiper id="news" />
       </Container>
 
-      <Container background="bg-white">
+      <Container background="bg-white dark:bg-slate-800">
         <Banner
           image="home-banner-image"
           title="Prove it right now"
