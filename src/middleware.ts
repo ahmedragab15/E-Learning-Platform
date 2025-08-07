@@ -22,6 +22,13 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
+  // protected course videos - if there's no token redirect to login
+  const isCourseVideos = /^\/all-courses\/[^/]+\/videos(\/.*)?$/.test(path);
+
+  if (!token && isCourseVideos) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
+
   // protect admin routes
   if (path.startsWith("/admin")) {
     if (!token || !payload || payload?.role !== "ADMIN") {
@@ -57,5 +64,14 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/account/:path*", "/admin/:path*", "/login", "/register", "/home", "/", "/instructor-dashboard/:path*"],
+  matcher: [
+    "/account/:path*",
+    "/admin/:path*",
+    "/login",
+    "/register",
+    "/home",
+    "/",
+    "/instructor-dashboard/:path*",
+    "/all-courses/:slug/videos/:path*",
+  ],
 };
