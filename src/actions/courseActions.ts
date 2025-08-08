@@ -16,7 +16,12 @@ export async function getCoursesAction() {
         },
         category: true,
         instructor: true,
-        reviews: true,
+        reviews: {
+          include: {
+            user: true,
+            course: true,
+          }
+        },
         learnings: {
           include: {
             items: true,
