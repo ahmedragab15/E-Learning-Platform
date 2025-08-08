@@ -7,7 +7,7 @@ import { Button } from "../ui/button";
 import ActiveLink from "../shared/ActiveLink";
 import { images } from "../shared/Images";
 import { userLogoutAction } from "@/actions/userActions";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -40,10 +40,28 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
 
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
   const { theme } = useTheme();
-  console.log("theme is " + theme);
+
+  //* search for a course
+  const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter();
+  const handleCourseSearch = async () => {
+    if (!searchQuery.trim()) return;
+    try {
+      const data = await (await fetch(`/api/courses/search?title=${searchQuery}`)).json();
+      if (data.success && data.course) {
+        router.push(`/all-courses/${data.course.slug}`);
+      } else {
+        router.push(`/all-courses`);
+      }
+    } catch {
+      router.push(`/all-courses`);
+    } finally {
+      setSearchQuery("");
+    }
+  };
 
   return (
-    <header className="flex items-center justify-between lg:justify-evenly lg:gap-8 py-4 px-4 lg:px-10 bg-white dark:bg-slate-800 relative border shadow rounded-4xl my-8 max-w-10/12 xl:max-w-8/12 mx-auto">
+    <header className="flex items-center justify-between lg:justify-evenly lg:gap-8 py-4 px-4 lg:px-10 bg-white dark:bg-slate-800 relative shadow-md rounded-4xl my-8 max-w-10/12 xl:max-w-8/12 mx-auto border-0">
       <div>
         <Link href="/" className="cursor-pointer">
           <Image src={theme === "dark" ? images.logoDark : images.logo} alt="logo" width={80} height={60} className="w-24 h-10 object-cover" />
@@ -64,7 +82,6 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
           ))}
         </ul>
       </nav>
-
       <div
         className={`mobileSidebar md:hidden fixed ${mobileSidebarOpen ? "inset-0" : "-left-96"} z-50 backdrop-blur-xs duration-300`}
         onClick={() => setMobileSidebarOpen(false)}
@@ -96,15 +113,21 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
           </ul>
         </nav>
       </div>
-
-      <div className="flex items-center relative lg:border-1 border-gray-300 rounded-2xl lg:flex-1 ml-auto">
-        <Input placeholder="Search Courses..." className="hidden lg:block placeholder:text-gray-400 placeholder:font-medium" />
+      <div className="flex items-center relative lg:border-1 border-gray-300 dark:border-gray-700 rounded-2xl lg:flex-1 ml-auto">
+        <Input
+          placeholder="Search Courses..."
+          className="hidden lg:block placeholder:text-gray-400 placeholder:font-medium"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          onKeyDown={(e) => e.key === "Enter" && handleCourseSearch()}
+        />
         <Button
           size={"icon"}
           variant={"outline"}
-          className="hidden md:block absolute right-0 border-0 hover:bg-transparent bg-white lg:bg-transparent shadow-none"
+          className="hidden md:block absolute right-0 border-0 hover:bg-transparent lg:bg-transparent shadow-none"
+          onClick={handleCourseSearch}
         >
-          <Search className="text-primary" />
+          <Search className="text-primary mx-auto" />
         </Button>
       </div>
       <div className="flex items-center gap-1 md:gap-4">
