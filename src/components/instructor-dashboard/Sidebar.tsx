@@ -5,7 +5,6 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import ActiveLink from "../shared/ActiveLink";
 
 export function Sidebar() {
-
   const menuItems = [{ id: "dashboard", label: "Dashboard", icon: LayoutDashboard, path: "/instructor-dashboard" }];
 
   const courseSubItems = [
@@ -22,8 +21,6 @@ export function Sidebar() {
 
   return (
     <div className="w-64 bg-card shadow-md h-screen p-6 rounded-md">
-
-
       <nav className="px-3">
         {menuItems.map((item) => {
           const Icon = item.icon;
@@ -38,7 +35,7 @@ export function Sidebar() {
           );
         })}
 
-        <Accordion className="w-full space-y-1" type="single" collapsible >
+        <Accordion className="w-full space-y-1" type="single" collapsible>
           {/* Course Accordion */}
           <AccordionItem value="course" className="border-none">
             <AccordionTrigger

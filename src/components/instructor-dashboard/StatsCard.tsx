@@ -1,23 +1,21 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { LucideIcon } from "lucide-react";
+import { ReactNode } from "react";
 
 interface StatsCardProps {
   title: string;
   value: string | number;
-  icon: LucideIcon;
+  icon: ReactNode;
   change: string;
   trend: "up" | "down";
   className?: string;
 }
 
-export function StatsCard({ title, value, icon: Icon, change, trend, className }: StatsCardProps) {
+export function StatsCard({ title, value, icon, change, trend, className }: StatsCardProps) {
   return (
     <div className={cn("bg-card rounded-xl p-6 shadow-soft border border-border", className)}>
       <div className="flex items-start justify-between mb-4">
-        <div className="p-3 bg-muted rounded-lg">
-          <Icon className="w-6 h-6 text-muted-foreground" />
-        </div>
+        <div className="p-3 bg-muted rounded-lg">{icon && <div className="p-3 bg-secondary rounded-lg">{icon}</div>}</div>
       </div>
 
       <div className="space-y-2">

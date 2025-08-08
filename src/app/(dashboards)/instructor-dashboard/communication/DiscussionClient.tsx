@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -6,7 +7,7 @@ import { MessageCircle, Trash2 } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Send } from "lucide-react";
+import { Send, Smile } from "lucide-react";
 import { Prisma } from "@/generated/prisma";
 import { useTransition } from "react";
 import { createCommentAction, deleteCommentAction } from "@/actions/commentActions";
@@ -92,7 +93,7 @@ const DiscussionClient = ({ courses }: { courses: CourseWithCategory[] }) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {/* Course List */}
-      <div className="max-h-[600px] overflow-y-auto">
+      <div>
         <h2 className="text-lg font-semibold mb-4 text-foreground">Courses</h2>
         <div className="space-y-4">
           {courses.map((course) => (
@@ -124,64 +125,46 @@ const DiscussionClient = ({ courses }: { courses: CourseWithCategory[] }) => {
       {/* Discussion Panel */}
       <div>
         <h2 className="text-lg font-semibold mb-4 text-foreground">Discussion</h2>
-        <Card className="max-h-[600px] flex flex-col  overflow-y-auto">
+        <Card className="h-[600px] flex flex-col">
           <CardContent className="flex-1 p-4 space-y-4 overflow-y-auto">
             {selectedCourse ? (
               selectedCourse.comments.length > 0 ? (
-                <>
-                  {selectedCourse.comments.map((comment) => (
-                    <div key={comment.id}>
-                      <div className="space-y-3">
-                        <div className="flex gap-3">
-                          <Avatar className="w-10 h-10">
-                            <AvatarImage src={comment.user.avatarUrl || ""} />
-                            <AvatarFallback>
-                              {comment.user.fullname
-                                .split(" ")
-                                .map((n) => n[0])
-                                .join("")}
-                            </AvatarFallback>
-                          </Avatar>
-                          <div className="flex-1">
-                            <div className="flex justify-between">
-                              <div className="flex items-center gap-2 mb-1">
-                                <span className="font-medium text-foreground">{comment.user.fullname}</span>
-                                <span className="text-xs text-muted-foreground">{new Date(comment.createdAt).toLocaleDateString()}</span>
-                              </div>
-                              <div>
-                                {(comment.user.id === user?.id || user?.role === "ADMIN") && (
-                                  <Button
-                                    variant="ghost"
-                                    size="icon"
-                                    className="text-red-500 hover:text-red-600"
-                                    onClick={() => handleDelete(comment.id)}
-                                  >
-                                    <Trash2 className="w-4 h-4" />
-                                  </Button>
-                                )}
-                              </div>
-                            </div>
-                            <p className="text-sm text-muted-foreground mb-2">{comment.content}</p>
+                selectedCourse.comments.map((comment) => (
+                  <div key={comment.id} className="space-y-3">
+                    <div className="flex gap-3">
+                      <Avatar className="w-10 h-10">
+                        <AvatarImage src={comment.user.avatarUrl || ""} />
+                        <AvatarFallback>
+                          {comment.user.fullname
+                            .split(" ")
+                            .map((n) => n[0])
+                            .join("")}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div className="flex-1">
+                        <div className="flex justify-between">
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="font-medium text-foreground">{comment.user.fullname}</span>
+                            <span className="text-xs text-muted-foreground">{new Date(comment.createdAt).toLocaleDateString()}</span>
+                          </div>
+                          <div>
+                            {(comment.user.id === user?.id || user?.role === "ADMIN") && (
+                              <Button
+                                variant="ghost"
+                                size="icon"
+                                className="text-red-500 hover:text-red-600"
+                                onClick={() => handleDelete(comment.id)}
+                              >
+                                <Trash2 className="w-4 h-4" />
+                              </Button>
+                            )}
                           </div>
                         </div>
+                        <p className="text-sm text-muted-foreground mb-2">{comment.content}</p>
                       </div>
                     </div>
-                  ))}
-                  {/* Message Input */}
-                  <div className="p-4 border-t border-border">
-                    <div className="flex gap-2">
-                      <Input
-                        placeholder="Enter your comment"
-                        className="flex-1"
-                        value={commentText}
-                        onChange={(e) => setCommentText(e.target.value)}
-                      />
-                      <Button size="icon" onClick={handleSubmit} disabled={isSubmitting || isPending || !commentText.trim()}>
-                        <Send className="w-4 h-4" />
-                      </Button>
-                    </div>
                   </div>
-                </>
+                ))
               ) : (
                 <p className="text-muted-foreground text-sm">No comments yet.</p>
               )
@@ -189,6 +172,19 @@ const DiscussionClient = ({ courses }: { courses: CourseWithCategory[] }) => {
               <p className="text-muted-foreground text-sm">Select a course to see comments.</p>
             )}
           </CardContent>
+
+          {/* Message Input */}
+          <div className="p-4 border-t border-border">
+            <div className="flex gap-2">
+              <Input placeholder="Enter your comment" className="flex-1" value={commentText} onChange={(e) => setCommentText(e.target.value)} />
+              <Button variant="ghost" size="icon">
+                <Smile className="w-4 h-4" />
+              </Button>
+              <Button size="icon" onClick={handleSubmit} disabled={isSubmitting || isPending || !commentText.trim()}>
+                <Send className="w-4 h-4" />
+              </Button>
+            </div>
+          </div>
         </Card>
       </div>
     </div>
