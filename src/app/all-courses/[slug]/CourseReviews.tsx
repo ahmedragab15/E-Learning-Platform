@@ -21,23 +21,18 @@ const CourseReviews = ({ user, courseId }: {  user: JwtPayload; courseId: number
       const res = await createReviewAction(courseId, user.id as number, reviewText, rating);
 
       if (res?.success && res.review) {
-
-
         setReviewText("");
         setRating(0);
         toast.success("Review added successfully");
       } else {
         toast.error(res?.message || "Something went wrong");
       }
-
       setIsSubmitting(false);
     });
   };
 
   return (
     <>
-
-
       <div className="p-4 border-t border-border">
         <div className="flex gap-2">
           <Input placeholder="Enter your review" className="flex-1" value={reviewText} onChange={(e) => setReviewText(e.target.value)} />

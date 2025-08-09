@@ -1,5 +1,6 @@
 
 import { getCoursesAction } from "@/actions/courseActions";
+import ReviewsClient from "./ReviewsClient";
 
 const ReviewCourse = async () => {
   const courses = await getCoursesAction();
@@ -11,7 +12,6 @@ const ReviewCourse = async () => {
           <div className="mb-6">
             <h1 className="text-2xl font-bold text-foreground">Review Course</h1>
           </div>
-
           <ReviewsClient courses={courses} />
         </main>
       </div>

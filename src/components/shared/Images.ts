@@ -8,12 +8,11 @@ import aboutImage3 from "../../../public/images/about-page/3.webp";
 import aboutImage4 from "../../../public/images/about-page/4.webp";
 import aboutImage5 from "../../../public/images/about-page/5.webp";
 import aboutImage6 from "../../../public/images/about-page/6.webp";
-import aboutbanner from "../../../public/images/about-page/banner.webp";
 import logo from "../../../public/images/Logo.webp";
 import logoDark from "../../../public/images/Logo-Dark.webp";
 import signImage from "../../../public/images/sign_images.webp";
 import loginImage from "../../../public/images/login_images.webp";
-import instractorCover from "../../../public/images/Intstructor-Cover.webp";
+import instructorCover from "../../../public/images/instructor-Cover.webp";
 import notFoundImg from "../../../public/images/not_found.webp";
 import techWithUsImg from "../../../public/images/tech-with-us.webp";
 import googleIcon from "../../../public/google-icon-logo.svg";
@@ -29,12 +28,11 @@ export const images = {
   aboutImage4,
   aboutImage5,
   aboutImage6,
-  aboutbanner,
   logo,
   logoDark,
   signImage,
   loginImage,
-  instractorCover,
+  instructorCover,
   notFoundImg,
   techWithUsImg,
   googleIcon,

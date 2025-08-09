@@ -22,8 +22,8 @@ const NewsCard = ({ News }: NewsCardProps) => {
         <p className="text-muted-foreground text-xs line-clamp-2">{News.description}</p>
         <div className="flex items-center justify-between gap-2 mt-4">
           <div>
-            <span className="text-xs font-medium">{News.reads} Reads | </span>
-            <span className="text-xs font-medium">{News.createdAt.toISOString().split("T")[0]}</span>
+            <span className="text-[11px] font-medium">{News.reads} Reads | </span>
+            <span className="text-[11px] font-medium">{News.createdAt.toISOString().split("T")[0]}</span>
           </div>
           <Button className="text-white">Read Now</Button>
         </div>

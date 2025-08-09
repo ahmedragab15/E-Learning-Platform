@@ -30,7 +30,7 @@ export const news: INews[] = [
     title: "How is business during a pandemic?",
     image:
       "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    category: "Progamming",
+    category: "Programming",
     description: "How do businesses survive during a pandemic in order to remain stable and efficient",
     reads: "150",
     publishDate: "16 May, 2023",

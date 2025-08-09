@@ -33,15 +33,19 @@ const InstructorCard = ({ instructor, className = "" }: InstructorCardProps) => 
             </AvatarFallback>
           </Avatar>
           <div>
-            <h3 className="font-medium">{instructor.name}</h3>
-            <p className="text-muted-foreground text-sm ">{instructor.headline}</p>
+            <h3 className="font-medium line-clamp-1" title={instructor.name}>
+              {instructor.name}
+            </h3>
+            <p className="text-muted-foreground text-sm line-clamp-1" title={instructor.headline || ""}>
+              {instructor.headline}
+            </p>
           </div>
         </div>
         <Button variant={"outline"}>
           <Link href={`/instructors/${instructor.slug}`}>View Profile</Link>
         </Button>
       </div>
-      <p className="text-muted-foreground text-sm leading-5 max-w-full">{instructor.summary}</p>
+      <p className="text-muted-foreground text-sm leading-5 max-w-full line-clamp-6">{instructor.summary}</p>
     </div>
   );
 };
