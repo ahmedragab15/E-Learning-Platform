@@ -17,7 +17,6 @@ async function main() {
   // await prisma.instructor.deleteMany();
   // await prisma.category.deleteMany();
   // await prisma.user.deleteMany();
-  // await prisma.achievement.deleteMany();
     
   await prisma.user.createMany({
     data: Array.from({ length: 50 }, () => ({
@@ -164,17 +163,6 @@ async function main() {
   );
   await prisma.lesson.createMany({
     data: lesson,
-    skipDuplicates: true,
-  });
-
-
-  await prisma.achievement.createMany({
-    data: Array.from({ length: 50 }, () => ({
-      courses: 20,
-      mentor: 20,
-      courseEnroll: faker.number.int({ min: 50, max: 300 }),
-      activeUsers: 10,
-    })),
     skipDuplicates: true,
   });
   await prisma.enrollment.createMany({

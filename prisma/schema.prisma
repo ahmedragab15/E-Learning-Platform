@@ -154,15 +154,6 @@ model Lesson {
   createdAt DateTime @default(now())
 }
 
-model Achievement {
-  id           Int      @id @default(autoincrement())
-  courses      Int      @default(0)
-  mentor       Int      @default(0)
-  courseEnroll Int      @default(0)
-  activeUsers  Int      @default(0)
-  updatedAt    DateTime @updatedAt
-}
-
 model Enrollment {
   id              Int      @id @default(autoincrement())
   user            User     @relation(fields: [userId], references: [id])
