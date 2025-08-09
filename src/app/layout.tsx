@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Manrope, Alike_Angular } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/themeProvider";
 import Header from "@/components/layout/Header";
@@ -8,13 +8,19 @@ import { ToastContainer } from "react-toastify";
 import { getUserFromToken } from "@/lib/verifyJWT";
 import StoreProvider from "./StoreProvider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const alike = Alike_Angular({
+  variable: "--font-alike",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
 });
 
@@ -32,7 +38,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${inter.variable} ${alike.variable} ${manrope.variable}  antialiased`}>
         <StoreProvider>
           {/* //todo : add dark mode */}
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>

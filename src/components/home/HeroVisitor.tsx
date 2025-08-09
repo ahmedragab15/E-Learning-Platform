@@ -7,7 +7,7 @@ const HeroVisitor = () => {
   return (
     <>
       <div className="flex flex-col gap-6">
-        <h1 className="text-3xl md:text-4xl lg:text-6xl font-semibold max-w-[700px] text-pretty">
+        <h1 className="text-3xl md:text-4xl lg:text-6xl font-semibold max-w-[700px] text-pretty !font-alike">
           Learn New Skills <span className="text-primary">Anytime</span> and <span className="text-primary">Anywhere</span>
         </h1>
         <p className="max-w-96 text-pretty text-muted-foreground">
