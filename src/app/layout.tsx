@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer";
 import { ToastContainer } from "react-toastify";
 import { getUserFromToken } from "@/lib/verifyJWT";
 import StoreProvider from "./StoreProvider";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -45,7 +46,8 @@ export default async function RootLayout({
             <Header user={user} />
             <main>{children}</main>
             <Footer />
-            <ToastContainer position="bottom-left" />
+            <ToastContainer position="bottom-left" autoClose={1000} />
+            <ScrollToTop />
           </ThemeProvider>
         </StoreProvider>
       </body>
