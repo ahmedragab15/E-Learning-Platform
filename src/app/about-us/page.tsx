@@ -1,11 +1,13 @@
+import { getAchievements } from "@/actions/newsActions";
 import { Banner, Container } from "@/components";
 import { images } from "@/components/shared/Images";
 import { Button } from "@/components/ui/button";
-import { achievements } from "@/dummyData";
 import { camelCaseToLabel } from "@/lib/utils";
 import Image from "next/image";
+import Counter from "./Counter";
 
-const AboutUs = () => {
+const AboutUs = async () => {
+  const achievements = await getAchievements();
   return (
     <>
       <Container background="bg-white dark:bg-slate-800">
@@ -66,10 +68,7 @@ const AboutUs = () => {
           </p>
           <div className="flex flex-col md:flex-row justify-evenly gap-4 md:gap-14">
             {Object.entries(achievements).map(([key, value], index) => (
-              <div className="flex flex-col items-center gap-2" key={index}>
-                <h3 className="text-4xl md:text-5xl font-semibold">{value}+</h3>
-                <h3 className="text-muted-foreground font-medium">{camelCaseToLabel(key)}</h3>
-              </div>
+              <Counter key={index} target={value} label={camelCaseToLabel(key)} />
             ))}
           </div>
         </div>

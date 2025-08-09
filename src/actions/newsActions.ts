@@ -15,3 +15,19 @@ export async function getAllNewsAction() {
     return [];
   }
 }
+
+export async function getAchievements() {
+  const [coursesCount, instructorsCount, enrollsCount, activeUsersCount] = await Promise.all([
+    prisma.course.count(),
+    prisma.instructor.count(),
+    prisma.enrollment.count(),
+    prisma.user.count(),
+  ]);
+
+  return {
+    courses: coursesCount,
+    instructors: instructorsCount,
+    courseEnrolls: enrollsCount,
+    activeUsers: activeUsersCount,
+  };
+}
