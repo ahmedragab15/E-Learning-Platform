@@ -1,7 +1,7 @@
 "use client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from "recharts";
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip } from "recharts";
 
 const data = [
   { name: "01 May", value: 400 },
@@ -33,14 +33,22 @@ export const EarningsChart = () => {
             <AreaChart data={data}>
               <defs>
                 <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="hsl(var(--chart-1))" stopOpacity={0.3} />
-                  <stop offset="95%" stopColor="hsl(var(--chart-1))" stopOpacity={0} />
+                  <stop offset="5%" stopOpacity={0.3} />
+                  <stop offset="95%" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-              <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: "hsl(var(--muted-foreground))" }} />
-              <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: "hsl(var(--muted-foreground))" }} />
-              <Area type="monotone" dataKey="value" stroke="hsl(var(--chart-1))" strokeWidth={2} fillOpacity={1} fill="url(#colorValue)" />
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 12 }} />
+              <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12 }} />
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: "#57acdf",
+                  border: "1px solid #bad9f1",
+                  borderRadius: "8px",
+                  boxShadow: "var(--shadow-medium)",
+                }}
+              />
+              <Area type="monotone" dataKey="value" strokeWidth={2} fillOpacity={1} fill="#1f60e2" />
             </AreaChart>
           </ResponsiveContainer>
         </div>

@@ -36,30 +36,29 @@ export function EarningChart() {
             <AreaChart data={data}>
               <defs>
                 <linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.3} />
-                  <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0.05} />
+                  <stop offset="5%" stopOpacity={0.3} />
+                  <stop offset="95%" stopOpacity={0.05} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
-              <XAxis dataKey="date" stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} />
-              <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(value) => `${value}`} />
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="date" fontSize={12} tickLine={false} axisLine={false} />
+              <YAxis fontSize={12} tickLine={false} axisLine={false} tickFormatter={(value) => `${value}`} />
               <Tooltip
                 contentStyle={{
-                  backgroundColor: "hsl(var(--card))",
-                  border: "1px solid hsl(var(--border))",
+                  backgroundColor: "#57acdf",
+                  border: "1px solid #bad9f1",
                   borderRadius: "8px",
                   boxShadow: "var(--shadow-medium)",
                 }}
-                labelStyle={{ color: "hsl(var(--foreground))" }}
               />
               <Area
                 type="monotone"
                 dataKey="value"
-                stroke="hsl(var(--primary))"
+                stroke="#1f50b1"
                 strokeWidth={3}
-                fill="url(#colorGradient)"
-                dot={{ fill: "hsl(var(--primary))", strokeWidth: 2, r: 4 }}
-                activeDot={{ r: 6, fill: "hsl(var(--primary))" }}
+                fill="#1f60e2"
+                dot={{ fill: "#ff2056", strokeWidth: 2, r: 4 }}
+                activeDot={{ r: 6, fill: "#00bc7d" }}
               />
             </AreaChart>
           </ResponsiveContainer>
