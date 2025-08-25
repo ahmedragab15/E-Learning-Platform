@@ -58,8 +58,9 @@ export async function middleware(request: NextRequest) {
   }
 
   // access to the pathname inside server component
+  const url = new URL(request.url);
   const response = NextResponse.next();
-  response.headers.set("x-pathname", path);
+  response.headers.set("x-pathname", url.pathname);
   return response;
 }
 
@@ -73,5 +74,6 @@ export const config = {
     "/",
     "/instructor-dashboard/:path*",
     "/all-courses/:slug/videos/:path*",
+    "/courses-category/:path*",
   ],
 };

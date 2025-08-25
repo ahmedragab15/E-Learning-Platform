@@ -17,7 +17,7 @@ const VisitorHome = async () => {
         </div>
       </Container>
       <Container background="bg-white dark:bg-slate-800">
-        <CoursesCategories heading={<Heading title="Courses Category" cta={<ArrowNavigation />} />} />
+        <CoursesCategories heading={<Heading title="Courses Category" />} />
       </Container>
 
       <Container>

@@ -2,9 +2,8 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import SelectMenu from "@/components/shared/SelectMenu";
-import { categories } from "@/dummyData";
 
-export default function CoursesFilter({ selected }: { selected: string }) {
+export default function CoursesFilter({ selected, options }: { selected: string; options: string[] }) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -14,5 +13,5 @@ export default function CoursesFilter({ selected }: { selected: string }) {
     router.push(`?${params.toString()}`);
   };
 
-  return <SelectMenu label="Select a Category" options={["All", ...categories.map((c) => c.title)]} selected={selected} setSelected={handleSelect} />;
+  return <SelectMenu label="Select a Category" options={options} selected={selected} setSelected={handleSelect} />;
 }
