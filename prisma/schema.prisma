@@ -10,36 +10,30 @@ datasource db {
 
 model User {
   id          Int          @id @default(autoincrement())
-  username    String       @db.VarChar(30)
-  fullname    String       @db.VarChar(30)
   email       String       @unique
-  password    String
-  googleId    String?      @unique
-  provider    String?
-  university  String?
   avatarUrl   String?
-  role        Role         @default(USER)
-  enrollments Enrollment[]
-  reviews     Review[]
-  comments    Comment[]
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
-}
-
-enum Role {
-  USER
-  ADMIN
-  INSTRUCTOR
+  fullname    String       @db.VarChar(30)
+  password    String
+  role        Role         @default(USER)
+  university  String?
+  username    String       @db.VarChar(30)
+  googleId    String?      @unique
+  provider    String?
+  comments    Comment[]
+  enrollments Enrollment[]
+  reviews     Review[]
 }
 
 model Category {
   id        Int      @id @default(autoincrement())
   title     String
-  slug      String   @unique
   iconName  String?
+  createdAt DateTime @default(now())
+  slug      String   @unique
   courses   Course[]
   news      News[]
-  createdAt DateTime @default(now())
 }
 
 model Instructor {
@@ -57,9 +51,9 @@ model Instructor {
   twitterUrl    String?
   linkedinUrl   String?
   youtubeUrl    String?
-  courses       Course[]
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+  courses       Course[]
 }
 
 model Course {
@@ -68,9 +62,7 @@ model Course {
   slug              String           @unique
   description       String
   imageUrl          String
-  category          Category         @relation(fields: [categoryId], references: [id])
   categoryId        Int
-  instructor        Instructor       @relation(fields: [instructorId], references: [id])
   instructorId      Int
   translation       String
   duration          String
@@ -80,95 +72,96 @@ model Course {
   ratingTotal       Int              @default(0)
   badgeBg           String
   detailDescription String
-  learnings         CourseLearning[]
-  Chapters          Chapter[]
-  enrollments       Enrollment[]
-  reviews           Review[]
-  courseRating      CourseRating?
-  comments          Comment[]
   createdAt         DateTime         @default(now())
   updatedAt         DateTime         @updatedAt
+  Chapters          Chapter[]
+  comments          Comment[]
+  category          Category         @relation(fields: [categoryId], references: [id])
+  instructor        Instructor       @relation(fields: [instructorId], references: [id])
+  learnings         CourseLearning[]
+  courseRating      CourseRating?
+  enrollments       Enrollment[]
+  reviews           Review[]
 }
 
 model News {
   id          Int      @id @default(autoincrement())
   title       String
-  slug        String   @unique
   imageUrl    String
-  category    Category @relation(fields: [categoryId], references: [id])
   categoryId  Int
   description String
   reads       Int      @default(0)
   badgeBg     String?
   createdAt   DateTime @default(now())
+  slug        String   @unique
+  category    Category @relation(fields: [categoryId], references: [id])
 }
 
 model Review {
   id        Int      @id @default(autoincrement())
-  user      User     @relation(fields: [userId], references: [id])
   userId    Int
-  course    Course   @relation(fields: [courseId], references: [id])
   courseId  Int
   rating    Float
   review    String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  course    Course   @relation(fields: [courseId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
 }
 
 model CourseLearning {
   id          Int            @id @default(autoincrement())
-  course      Course         @relation(fields: [courseId], references: [id])
   courseId    Int
   title       String
   description String
-  items       LearningItem[]
   createdAt   DateTime       @default(now())
+  course      Course         @relation(fields: [courseId], references: [id])
+  items       LearningItem[]
 }
 
 model LearningItem {
   id         Int            @id @default(autoincrement())
-  learning   CourseLearning @relation(fields: [learningId], references: [id])
   learningId Int
   item       String
   createdAt  DateTime       @default(now())
+  learning   CourseLearning @relation(fields: [learningId], references: [id])
 }
 
 model Chapter {
   id        Int      @id @default(autoincrement())
-  course    Course   @relation(fields: [courseId], references: [id])
   courseId  Int
   topic     String
   duration  String
-  details   Lesson[]
   createdAt DateTime @default(now())
+  course    Course   @relation(fields: [courseId], references: [id])
+  details   Lesson[]
 }
 
 model Lesson {
   id        Int      @id @default(autoincrement())
-  chapter   Chapter  @relation(fields: [chapterId], references: [id])
+  duration  String
+  createdAt DateTime @default(now())
   chapterId Int
   title     String
   slug      String   @unique
-  duration  String
   video     String
-  createdAt DateTime @default(now())
+  chapter   Chapter  @relation(fields: [chapterId], references: [id])
 }
 
 model Enrollment {
   id              Int      @id @default(autoincrement())
-  user            User     @relation(fields: [userId], references: [id])
   userId          Int
-  course          Course   @relation(fields: [courseId], references: [id])
   courseId        Int
   progress        Int      @default(0)
   finishedLessons Int      @default(0)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
+  course          Course   @relation(fields: [courseId], references: [id])
+  user            User     @relation(fields: [userId], references: [id])
 }
 
 model CourseRating {
   id           Int      @id @default(autoincrement())
-  course       Course   @relation(fields: [courseId], references: [id])
   courseId     Int      @unique
   average      Float    @default(0.0)
   totalReviews Int      @default(0)
@@ -178,15 +171,22 @@ model CourseRating {
   stars2       Int      @default(0) @map("stars_2")
   stars1       Int      @default(0) @map("stars_1")
   updatedAt    DateTime @updatedAt
+  course       Course   @relation(fields: [courseId], references: [id])
 }
 
 model Comment {
   id        Int      @id @default(autoincrement())
   content   String
-  user      User     @relation(fields: [userId], references: [id])
   userId    Int
-  course    Course   @relation(fields: [courseId], references: [id])
   courseId  Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  course    Course   @relation(fields: [courseId], references: [id])
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+enum Role {
+  USER
+  ADMIN
+  INSTRUCTOR
 }
