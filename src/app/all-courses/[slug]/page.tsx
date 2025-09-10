@@ -9,8 +9,52 @@ import { Captions, CircleDollarSign, Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import CourseReviews from "./CourseReviews";
+import { getUserFromToken } from "@/lib/verifyJWT";
+import AddToCartButton from "@/components/shared/AddToCartButton";
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const chosenCourse = await getCourseBySlugAction(slug);
+
+  if (!chosenCourse) {
+    return {};
+  }
+
+  return {
+    title: `${chosenCourse?.title} | ${chosenCourse?.instructor.name}`,
+    description: chosenCourse?.description.slice(0, 150),
+    keywords: [chosenCourse?.title, chosenCourse?.category.title, "online course", "e-learning"],
+    openGraph: {
+      title: chosenCourse?.title,
+      description: chosenCourse?.description.slice(0, 150),
+      url: `https://yourplatform.com/courses/${chosenCourse?.slug}`,
+      images: [
+        {
+          url: chosenCourse?.imageUrl,
+          width: 800,
+          height: 600,
+        },
+      ],
+    },
+    other: {
+      "application/ld+json": JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Course",
+        name: chosenCourse?.title,
+        description: chosenCourse?.description,
+        provider: {
+          "@type": "Organization",
+          name: "Online Courses",
+          sameAs: "https://example.com",
+        },
+      }),
+    },
+  };
+}
 
 const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const user = await getUserFromToken();
   const { slug } = await params;
   const chosenCourse = await getCourseBySlugAction(slug);
   if (!chosenCourse) {
@@ -38,16 +82,16 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
               </Badge>
             </span>
             <h1 className="text-3xl md:text-5xl font-semibold">{chosenCourse?.title}</h1>
-            <p className="text-sm md:text-lg text-gray-600 max-w-full">{chosenCourse?.description}</p>
+            <p className="text-sm md:text-lg text-muted-foreground max-w-full">{chosenCourse?.description}</p>
             <div className="space-x-6">
-              <Button>
+              <Button variant={"outline"}>
                 <Link href={`${slug}/videos`}>Join Now</Link>
               </Button>
-              <Button variant="outline">Add to Cart</Button>
+              <AddToCartButton course={chosenCourse} />
             </div>
             <div className="flex justify-between lg:items-center flex-col lg:flex-row gap-4">
               <div className="space-y-2">
-                <h3 className="text-md text-gray-600 font-medium">Rating Class</h3>
+                <h3 className="text-md text-muted-foreground font-medium">Rating Class</h3>
                 <div className="flex items-center gap-0.5">
                   {Array.from({ length: Number(Math.ceil(Number(chosenCourse?.ratingCount))) }).map((_, index) => (
                     <Star key={index} fill="#dd7621" size={18} className="text-transparent " />
@@ -57,27 +101,27 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
                   ))}
                   <p className=" text-xs">
                     {chosenCourse?.ratingCount}
-                    <span className="text-gray-600"> ({chosenCourse?.ratingTotal})</span>
+                    <span className="text-muted-foreground"> ({chosenCourse?.ratingTotal})</span>
                   </p>
                 </div>
               </div>
               <div className="space-y-2">
-                <h3 className="text-md text-gray-600 font-medium">Instructor</h3>
+                <h3 className="text-md text-muted-foreground font-medium">Instructor</h3>
                 <h4 className="text-sm font-semibold text-primary underline">
                   <Link href={`/instructors/${chosenCourse?.instructor.slug}`}>{chosenCourse?.instructor.name}</Link>
                 </h4>
               </div>
               <div className="space-y-2">
-                <h3 className="text-md text-gray-600 font-medium">Translation Video</h3>
-                <h4 className="text-sm text-gray-600 font-semibold flex items-center gap-2">
-                  <Captions className="text-gray-600" size={18} />
+                <h3 className="text-md text-muted-foreground font-medium">Translation Video</h3>
+                <h4 className="text-sm text-muted-foreground font-semibold flex items-center gap-2">
+                  <Captions className="text-muted-foreground" size={18} />
                   <span>{chosenCourse?.translation}</span>
                 </h4>
               </div>
               <div className="space-y-2">
-                <h3 className="text-md text-gray-600 font-medium">Price</h3>
+                <h3 className="text-md text-muted-foreground font-medium">Price</h3>
                 <h4 className="text-sm text-primary font-semibold flex items-center gap-2">
-                  <CircleDollarSign className="text-gray-600" size={18} />
+                  <CircleDollarSign className="text-muted-foreground" size={18} />
                   <span>${chosenCourse?.price}</span>
                 </h4>
               </div>
@@ -88,11 +132,11 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
           </div>
         </div>
       </Container>
-      <Container background="bg-white">
+      <Container background="bg-white dark:bg-slate-800">
         <div className="flex flex-col justify-evenly gap-4">
           <div className="space-y-2">
             <h2 className="text-3xl font-semibold max-w-96 leading-8">Description Course</h2>
-            <p className="text-gray-600">{chosenCourse?.description}</p>
+            <p className="text-muted-foreground">{chosenCourse?.description}</p>
           </div>
           <h2 className="text-3xl font-semibold leading-8">What you will learn from this course?</h2>
           <ul className="space-y-4">
@@ -102,7 +146,7 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
                   <span className="w-4 h-4 p-3 text-white text-sm bg-primary rounded-full flex items-center justify-center">{index + 1}</span>
                   {item.title}
                 </h3>
-                <p className="text-gray-600 ml-8">{item.description}</p>
+                <p className="text-muted-foreground ml-8">{item.description}</p>
                 <ul className="space-y-2">
                   {item.items.map((t, index) => (
                     <li key={index} className=" flex items-center gap-1 font-medium ml-8">
@@ -120,7 +164,7 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
         <h2 className="text-3xl font-semibold max-w-96 leading-8">List of Lessons</h2>
         {chosenCourse?.Chapters && <LessonsAccordion data={chosenCourse?.Chapters} />}
       </Container>
-      <Container background="bg-white">
+      <Container background="bg-white dark:bg-slate-800">
         <div className="my-6 flex flex-col md:flex-row justify-between gap-4 lg:gap-20">
           <div className="space-y-2 flex-1 ">
             <h2 className="text-3xl font-semibold">Rating Class</h2>
@@ -147,7 +191,14 @@ const CourseDetails = async ({ params }: { params: Promise<{ slug: string }> }) 
         </div>
       </Container>
       <Container>
-        <Reviews heading={<Heading title="Best reviews" />} navigation={<ChevronNavigation />} reviews={chosenReviews} />
+        <Reviews
+          id="reviews"
+          heading={<Heading title="Best reviews" />}
+          navigation={<ChevronNavigation id="reviews" />}
+          reviews={chosenReviews}
+          swiper={chosenReviews.length > 5}
+        />
+        <CourseReviews courseId={chosenCourse?.id} user={user as JwtPayload} />
       </Container>
     </>
   );
