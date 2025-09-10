@@ -3,9 +3,10 @@ import { Courses, Heading, Container } from "@/components";
 import CoursesFilter from "./CoursesFilter";
 import PaginationComponent from "@/components/shared/PaginationComponent";
 
-export default async function AllCourses(Props: { searchParams: { category?: string; page?: string; search?: string } }) {
-  const selectedCategory = (await Props.searchParams).category || "All";
-  const searchQuery = (await Props.searchParams).search || "";
+export default async function AllCourses(Props: { searchParams: Promise<{ category?: string; page?: string; search?: string }> }) {
+  const searchParams = await Props.searchParams;
+  const selectedCategory = searchParams.category || "All";
+  const searchQuery = searchParams.search || "";
   const allCourses = await getCoursesAction();
   const allCategories = ["All", ...new Set(allCourses.map((course) => course.category.title))];
 
@@ -20,7 +21,7 @@ export default async function AllCourses(Props: { searchParams: { category?: str
 
   // Pagination
   const COURSES_PER_PAGE = 10;
-  const CURRENT_PAGE = Number((await Props.searchParams).page) || 1;
+  const CURRENT_PAGE = Number(searchParams.page) || 1;
   const coursesLength = filteredCourses.length;
   const pages = Math.ceil(coursesLength / COURSES_PER_PAGE);
   const start = (CURRENT_PAGE - 1) * COURSES_PER_PAGE;

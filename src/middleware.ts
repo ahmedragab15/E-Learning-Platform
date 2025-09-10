@@ -4,7 +4,7 @@ import { jwtVerify } from "jose";
 
 export async function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
-  const token = request.cookies.get("jwtToken")?.value;
+  const token = request.cookies.get("jwtToken")?.value
   let payload = null;
 
   try {

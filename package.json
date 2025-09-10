@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
+    "@gsap/react": "^2.1.2",
     "@hookform/resolvers": "^5.1.1",
     "@prisma/client": "^6.11.1",
     "@prisma/extension-accelerate": "^2.0.2",
@@ -33,6 +34,7 @@
     "bcrypt": "^6.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "gsap": "^3.13.0",
     "jose": "^6.0.12",
     "jsonwebtoken": "^9.0.2",
     "ldrs": "^1.1.7",
