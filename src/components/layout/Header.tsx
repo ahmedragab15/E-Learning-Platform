@@ -49,7 +49,7 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
     try {
       const data = await (await fetch(`/api/courses/search?title=${searchQuery}`)).json();
       if (data.success && data.course) {
-        router.push(`/all-courses/${data.course.slug}`);
+        router.push(`/all-courses?search=${searchQuery}`);
       } else {
         router.push(`/all-courses`);
       }

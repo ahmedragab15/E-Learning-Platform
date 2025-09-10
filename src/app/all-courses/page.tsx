@@ -3,11 +3,20 @@ import { Courses, Heading, Container } from "@/components";
 import CoursesFilter from "./CoursesFilter";
 import PaginationComponent from "@/components/shared/PaginationComponent";
 
-export default async function AllCourses(Props: { searchParams: { category?: string; page?: string } }) {
+export default async function AllCourses(Props: { searchParams: { category?: string; page?: string; search?: string } }) {
   const selectedCategory = (await Props.searchParams).category || "All";
+  const searchQuery = Props.searchParams.search || "";
   const allCourses = await getCoursesAction();
-  const filteredCourses = selectedCategory === "All" ? allCourses : allCourses.filter((course) => course.category.title === selectedCategory);
   const allCategories = ["All", ...new Set(allCourses.map((course) => course.category.title))];
+
+  // Filter & Search
+  let filteredCourses = allCourses;
+  if (selectedCategory !== "All") {
+    filteredCourses = filteredCourses.filter((course) => course.category.title === selectedCategory);
+  }
+  if (searchQuery) {
+    filteredCourses = filteredCourses.filter((course) => course.title.toLowerCase().includes(searchQuery.toLowerCase()));
+  }
 
   // Pagination
   const COURSES_PER_PAGE = 10;
