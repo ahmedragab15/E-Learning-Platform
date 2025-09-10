@@ -1,10 +1,9 @@
 import Image from "next/image";
-import React from "react";
 import { Badge } from "@/components/ui/badge";
 import { Star } from "lucide-react";
 import Link from "next/link";
 import { Prisma } from "@/generated/prisma/client";
-import AddToCartButton from "./AddToCartButton";
+import AddToCartButton from "../shared/AddToCartButton";
 
 type CourseWithCategory = Prisma.CourseGetPayload<{
   include: { category: true };

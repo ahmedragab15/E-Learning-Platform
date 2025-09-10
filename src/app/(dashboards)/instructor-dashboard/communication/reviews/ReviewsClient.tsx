@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 import { Star } from "lucide-react";
 import { createReviewAction, deleteReviewAction } from "@/actions/reviewsActions";
 import { Input } from "@/components/ui/input";
-import StarsRating from "@/components/StarsRating";
+import StarsRating from "@/components/shared/StarsRating";
 
 type CourseWithCategory = Prisma.CourseGetPayload<{
   include: { category: true; instructor: true; reviews: { include: { user: true } } };
@@ -190,7 +190,6 @@ const ReviewsClient = ({ courses }: { courses: CourseWithCategory[] }) => {
                     </Button>
                   </div>
                 </div>
-                
               </>
             ) : (
               <p className="text-muted-foreground text-sm">No reviews yet.</p>

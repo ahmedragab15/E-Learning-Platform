@@ -1,9 +1,8 @@
 import Image from "next/image";
-import React from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import RatingProgress from "../RatingProgress";
+import RatingProgress from "../shared/RatingProgress";
 import { Prisma } from "@/generated/prisma/client";
 
 type Enrollments = Prisma.EnrollmentGetPayload<{

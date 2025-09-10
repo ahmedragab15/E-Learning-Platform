@@ -1,15 +1,12 @@
 "use client";
-
-import React from "react";
-
 type StarsRatingProps = {
-  value: number; // selected stars (0..max)
+  value: number; 
   onChange: (value: number) => void;
-  max?: number; // default 5
-  size?: number; // px, default 20
+  max?: number; 
+  size?: number; 
   readOnly?: boolean;
   className?: string;
-  label?: string; // accessible label
+  label?: string; 
 };
 
 const StarIcon = ({ filled, size }: { filled: boolean; size: number }) => (

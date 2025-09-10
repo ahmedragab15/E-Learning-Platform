@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 import { useState, useTransition } from "react";
 import { toast } from "react-toastify";
 import { createReviewAction } from "@/actions/reviewsActions";
-import StarsRating from "@/components/StarsRating";
+import StarsRating from "@/components/shared/StarsRating";
 
-const CourseReviews = ({ user, courseId }: {  user: JwtPayload; courseId: number }) => {
+const CourseReviews = ({ user, courseId }: { user: JwtPayload; courseId: number }) => {
   const [reviewText, setReviewText] = useState("");
   const [rating, setRating] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
