@@ -16,7 +16,7 @@ const CoursesCategories = async ({ heading, navigation, searchParams }: Props) =
 
   const headersList = headers();
   const pathname = (await headersList).get("x-pathname");
-  const categoryParams = (await searchParams)?.category || categories[2].title;
+  const categoryParams = (await searchParams)?.category || categories[2]?.title;
   const selectedCategory = pathname === "/courses-category" ? categoryParams : "All";
 
   return (

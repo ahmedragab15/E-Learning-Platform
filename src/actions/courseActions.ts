@@ -3,6 +3,7 @@ import prisma from "@/lib/db";
 import { Prisma } from "@/generated/prisma";
 import { generateSlug } from "@/lib/slugify";
 import { revalidatePath } from "next/cache";
+import { getUserFromToken } from "@/lib/verifyJWT";
 
 export async function getCoursesAction(skip: number = 0, take: number = 1000) {
   try {
@@ -97,14 +98,12 @@ export async function getCourseBySlugAction(slug: string) {
 
 export async function createCourseAction(data: Prisma.CourseCreateInput) {
   try {
-    const admin = await prisma.user.findFirst({
-      where: { role: "ADMIN" },
-    });
-    if (!admin) {
+    const user = await getUserFromToken();
+    if (!user || user.role !== "ADMIN") {
       return {
         success: false,
-        message: "Admin user not found",
-        status: 404,
+        message: "Unauthorized: Only admins can create courses",
+        status: 403,
       };
     }
     await prisma.course.create({
@@ -127,14 +126,12 @@ export async function createCourseAction(data: Prisma.CourseCreateInput) {
 
 export async function deleteCourseAction(id: number) {
   try {
-    const admin = await prisma.user.findFirst({
-      where: { role: "ADMIN" },
-    });
-    if (!admin) {
+    const user = await getUserFromToken();
+    if (!user || user.role !== "ADMIN") {
       return {
         success: false,
-        message: "Admin user not found",
-        status: 404,
+        message: "Unauthorized: Only admins can Delete courses",
+        status: 403,
       };
     }
 

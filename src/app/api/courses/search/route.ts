@@ -1,6 +1,13 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/db";
 
+/**
+ * @method GET
+ * @route /api/courses/search?title=value
+ * @description Search for a course by title
+ * @access public 
+ */
+
 export async function GET(req: Request) {
     const { searchParams } = new URL(req.url);
     const title = searchParams.get("title");

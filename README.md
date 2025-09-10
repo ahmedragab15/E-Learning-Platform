@@ -16,18 +16,16 @@ A feature-rich online courses platform built with **Next.js**, **ShadCN UI**, **
   - Google OAuth
   - Role-based auth (User / Instructor / Admin)
 - **State Management:** Redux Toolkit + Redux Persist
-- **Media & Assets:** Cloudinary or ImageKit (images/videos), WebP Compression
 - **Payments:** Stripe Integration (simulated)
-- **Charts & Visualization:** Chart.js
-- **Animations & Motion:** GSAP, Lenis, Anime.js, Smooth UI
+- **Charts & Visualization:** recharts
+- **Animations & Motion:** GSAP
 - **SEO + Accessibility:** Structured metadata, semantic components, responsive design
 - **Internationalization:** i18next
-- **UX Enhancements:** Confetti 🎉, Toasts, Spinners, SEO, Fallback UIs
+- **UX Enhancements:** Confetti, Toasts, Spinners, SEO
 - **Extra UI/UX Libraries:**
   - SwiperJS (carousel for courses)
   - React Toastify
   - EmailJS (contact page)
-  - React Select Country List
 
 ---
 
@@ -44,6 +42,7 @@ A feature-rich online courses platform built with **Next.js**, **ShadCN UI**, **
 - Course categories and filtering
 - Dynamic course listings with real data from PostgreSQL
 - Course details page with video content and metadata
+- Search for Courses
 - Course reviews and comments system
 - Instructor dashboard for managing courses
 
@@ -57,7 +56,7 @@ A feature-rich online courses platform built with **Next.js**, **ShadCN UI**, **
 ### 🧠 User Experience
 - Responsive and accessible UI with **ShadCN** components
 - Reusable `Container` layout component
-- Scroll effects & parallax animations (`react-parallax-tilt`, `react-scroll-parallax`, `typed.js`, `GSAP/Lenis/Anime.js`)
+- Scroll effects & parallax animations (`GSAP`)
 - Loading states and fallback UIs (`ldr`, `spinner`, etc.)
 - Image optimization & conversion to `.webp`
 - Dynamic sliders for courses using `Swiper.js`
