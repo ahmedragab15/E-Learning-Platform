@@ -11,13 +11,12 @@ interface StatsCardProps {
   className?: string;
 }
 
-export function StatsCard({ title, value, icon, change, trend, className }: StatsCardProps) {
+const StatsCard = ({ title, value, icon, change, trend, className }: StatsCardProps)=> {
   return (
     <div className={cn("bg-card rounded-xl p-6 shadow-soft border border-border", className)}>
       <div className="flex items-start justify-between mb-4">
         <div className="p-3 bg-muted rounded-lg">{icon && <div className="p-3 bg-secondary rounded-lg">{icon}</div>}</div>
       </div>
-
       <div className="space-y-2">
         <p className="text-sm font-medium text-muted-foreground">{title}</p>
         <div className="flex items-end justify-between">
@@ -28,3 +27,5 @@ export function StatsCard({ title, value, icon, change, trend, className }: Stat
     </div>
   );
 }
+
+export default StatsCard

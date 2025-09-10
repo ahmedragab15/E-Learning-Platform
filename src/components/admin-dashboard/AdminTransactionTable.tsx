@@ -4,21 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Eye, Edit } from "lucide-react";
 
-interface Transaction {
-  id: string;
-  course: string;
-  category: string;
-  user: string;
-  date: string;
-  price: string;
-}
-
-interface TransactionTableProps {
-  transactions: Transaction[];
-  showActions?: boolean;
-}
-
-export const TransactionTable = ({ transactions, showActions = true }: TransactionTableProps) => {
+const AdminTransactionTable = ({ transactions, showActions = true }: TransactionTableProps) => {
   return (
     <div className="border rounded-lg">
       <Table>
@@ -61,3 +47,5 @@ export const TransactionTable = ({ transactions, showActions = true }: Transacti
     </div>
   );
 };
+
+export default AdminTransactionTable;

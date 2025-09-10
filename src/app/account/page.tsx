@@ -2,7 +2,6 @@ import { getEnrollmentsAction } from "@/actions/enrollmentsActions";
 import { Courses, Heading } from "@/components";
 import { Button } from "@/components/ui/button";
 import { getUserFromToken } from "@/lib/verifyJWT";
-import React from "react";
 
 const MyClass = async () => {
   const user = await getUserFromToken();

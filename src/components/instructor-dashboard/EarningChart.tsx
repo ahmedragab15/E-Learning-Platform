@@ -2,19 +2,9 @@
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { earningInstChartData } from "@/constants";
 
-const data = [
-  { date: "01 May", value: 200 },
-  { date: "04 May", value: 350 },
-  { date: "08 May", value: 450 },
-  { date: "12 May", value: 750 },
-  { date: "16 May", value: 1101 },
-  { date: "20 May", value: 800 },
-  { date: "24 May", value: 950 },
-  { date: "31 May", value: 650 },
-];
-
-export function EarningChart() {
+const EarningChart =()=> {
   return (
     <Card className="col-span-2">
       <CardHeader className="flex flex-row items-center justify-between">
@@ -33,7 +23,7 @@ export function EarningChart() {
       <CardContent>
         <div className="h-80">
           <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={data}>
+            <AreaChart data={earningInstChartData}>
               <defs>
                 <linearGradient id="colorGradient" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopOpacity={0.3} />
@@ -67,3 +57,5 @@ export function EarningChart() {
     </Card>
   );
 }
+
+export default EarningChart

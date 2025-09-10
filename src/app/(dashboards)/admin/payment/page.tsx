@@ -1,60 +1,10 @@
-import { MetricCard } from "@/components/admin-dashboard/MetricCard";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { DollarSign, Trophy, Wallet, Eye, Edit } from "lucide-react";
-
-const paymentTransactions = [
-  {
-    id: "1",
-    photo: "/placeholder.svg",
-    name: "Angela Saraswati",
-    email: "angelaSaraswati@gmail.com",
-    amount: "$200",
-    status: "Success",
-  },
-  {
-    id: "2",
-    photo: "/placeholder.svg",
-    name: "Robert Anderson",
-    email: "robertanderson@gmail.com",
-    amount: "$200",
-    status: "Success",
-  },
-  {
-    id: "3",
-    photo: "/placeholder.svg",
-    name: "Chika Miscela",
-    email: "chikamiss@gmail.com",
-    amount: "$200",
-    status: "Success",
-  },
-  {
-    id: "4",
-    photo: "/placeholder.svg",
-    name: "Angela Saraswati",
-    email: "angelaSaraswati@gmail.com",
-    amount: "$200",
-    status: "Success",
-  },
-  {
-    id: "5",
-    photo: "/placeholder.svg",
-    name: "Robert Anderson",
-    email: "robertanderson@gmail.com",
-    amount: "$200",
-    status: "Success",
-  },
-  {
-    id: "6",
-    photo: "/placeholder.svg",
-    name: "Chika Miscela",
-    email: "chikamiss@gmail.com",
-    amount: "$200",
-    status: "Success",
-  },
-];
+import { MetricCard } from "@/components";
+import { paymentTransactions } from "@/constants";
 
 const Payments = () => {
   return (

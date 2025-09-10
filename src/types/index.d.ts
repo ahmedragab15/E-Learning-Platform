@@ -196,3 +196,17 @@ declare interface ICartItem {
   lectures: number;
   price: number;
 }
+
+declare interface Transaction {
+  id: string;
+  course: string;
+  category: string;
+  user: string;
+  date: string;
+  price: string;
+}
+
+declare interface TransactionTableProps {
+  transactions: Transaction[];
+  showActions?: boolean;
+}

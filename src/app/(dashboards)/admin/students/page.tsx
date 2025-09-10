@@ -7,9 +7,7 @@ const page = async() => {
 
   return (
     <div className="min-h-screen bg-background flex">
-
       <div className="flex-1">
-
         <main className="p-6">
           <div className="mb-6">
             <h1 className="text-2xl font-bold text-foreground">All Student</h1>

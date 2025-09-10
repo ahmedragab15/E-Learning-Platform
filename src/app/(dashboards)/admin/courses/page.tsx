@@ -7,6 +7,7 @@ import Image from "next/image";
 import { getCoursesAction } from "@/actions/courseActions";
 import CourseDropMenuActions from "./CourseDropMenuActions";
 import Link from "next/link";
+
 const AllCourse = async () => {
   const courses = await getCoursesAction();
   return (

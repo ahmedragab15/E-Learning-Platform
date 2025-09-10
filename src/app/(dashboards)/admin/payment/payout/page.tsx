@@ -1,24 +1,10 @@
-import { MetricCard } from "@/components/admin-dashboard/MetricCard";
+import { MetricCard } from "@/components";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { DollarSign, Trophy, Wallet, Search, Eye } from "lucide-react";
-
-const searchResults = [
-  {
-    id: "1",
-    photo: "/placeholder.svg",
-    name: "Angela Saraswati",
-    email: "angelaSaraswati@gmail.com",
-  },
-  {
-    id: "2",
-    photo: "/placeholder.svg",
-    name: "Robert Anderson",
-    email: "robertanderson@gmail.com",
-  },
-];
+import { searchResults } from "@/constants";
 
 const Payout = () => {
   return (

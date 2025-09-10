@@ -1,9 +1,7 @@
-import { StatsCard } from "@/components/instructor-dashboard/StatsCard";
-import { EarningChart } from "@/components/instructor-dashboard/EarningChart";
-import { TransactionTable } from "@/components/instructor-dashboard/TransactionTable";
 import { Users, UserPlus, BookOpen, DollarSign } from "lucide-react";
 import { getAllUsersAction, getNewStudentsAction } from "@/actions/userActions";
 import { getCoursesAction } from "@/actions/courseActions";
+import { StatsCard, EarningChart, TransactionTable } from "@/components";
 
 const page = async () => {
   const students = await getAllUsersAction();

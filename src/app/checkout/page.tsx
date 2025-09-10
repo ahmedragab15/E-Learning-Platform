@@ -1,4 +1,3 @@
-import React from 'react'
 import PaymentForm from './PaymentForm'
 import OrderSummary from './OrderSummary'
 import { Container } from '@/components'

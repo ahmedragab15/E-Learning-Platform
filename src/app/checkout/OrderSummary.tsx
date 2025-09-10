@@ -2,14 +2,14 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
-import { VAT_RATE } from "@/dummyData";
 import { useAppSelector } from "@/redux/hooks";
+import { VAT_RATE } from "@/constants";
 
-const OrderSummary =  () => {
-    const cart = useAppSelector((state) => state.cart);
-  
-    const TotalAmount = () => cart.reduce((total, course) => total + course.price, 0);
-    const VatAmount = () => VAT_RATE * TotalAmount();
+const OrderSummary = () => {
+  const cart = useAppSelector((state) => state.cart);
+
+  const TotalAmount = () => cart.reduce((total, course) => total + course.price, 0);
+  const VatAmount = () => VAT_RATE * TotalAmount();
 
   return (
     <Card className="sticky top-8">

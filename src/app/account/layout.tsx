@@ -1,5 +1,4 @@
 import { Container } from "@/components";
-import React from "react";
 import AccountAside from "./AccountAside";
 
 const AccountLayout = ({ children }: { children: React.ReactNode }) => {

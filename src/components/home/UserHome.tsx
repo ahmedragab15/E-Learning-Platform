@@ -46,7 +46,7 @@ const UserHome = async () => {
       <Container background="bg-white dark:bg-slate-800">
         <Courses
           id="popular"
-          courses={allCourses.slice(10, 18)}
+          courses={allCourses.slice(2, 10)}
           heading={
             <Heading title="Popular Course" description="You can find recommendation courses from all course categories and quickly learn more" />
           }

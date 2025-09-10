@@ -3,19 +3,19 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Progress } from "@/components/ui/progress";
 
-export const StudentMonitoring = () => {
+const StudentMonitoring = () => {
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
         <CardTitle className="text-lg font-semibold">Student Monitoring</CardTitle>
-        <Select defaultValue="lastweek">
+        <Select defaultValue="lastWeek">
           <SelectTrigger className="w-32">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="lastweek">Last Week</SelectItem>
-            <SelectItem value="thisweek">This Week</SelectItem>
-            <SelectItem value="lastmonth">Last Month</SelectItem>
+            <SelectItem value="lastWeek">Last Week</SelectItem>
+            <SelectItem value="thisWeek">This Week</SelectItem>
+            <SelectItem value="lastMonth">Last Month</SelectItem>
           </SelectContent>
         </Select>
       </CardHeader>
@@ -62,3 +62,5 @@ export const StudentMonitoring = () => {
     </Card>
   );
 };
+
+export default StudentMonitoring;

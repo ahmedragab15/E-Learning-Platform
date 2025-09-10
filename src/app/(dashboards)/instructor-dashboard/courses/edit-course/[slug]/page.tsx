@@ -1,4 +1,3 @@
-import React from "react";
 import EditCourseForm from "./EditCourseForm";
 import { getCourseBySlugAction } from "@/actions/courseActions";
 import { notFound } from "next/navigation";

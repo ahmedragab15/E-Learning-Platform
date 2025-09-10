@@ -4,7 +4,6 @@ import { images } from "@/components/shared/Images";
 import { Button } from "@/components/ui/button";
 import { getUserFromToken } from "@/lib/verifyJWT";
 import Image from "next/image";
-import React from "react";
 
 const AllInstructors = async () => {
   const instructors = await getAllInstructorsAction();
@@ -17,7 +16,6 @@ const AllInstructors = async () => {
             <div className="space-y-4">
               <h1 className="text-6xl max-w-96 font-semibold">Come teach with us</h1>
               <p className="text-muted-foreground max-w-72 ">Become an instructor and change lives — including your own</p>
-              {/* //todo: Instructor Form */}
               <Button className="text-white">Get Started</Button>
             </div>
             <div>

@@ -1,9 +1,9 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { VAT_RATE } from "@/dummyData";
 import Link from "next/link";
 import { useAppSelector } from "@/redux/hooks";
 import CartItem from "./CartItem";
+import { VAT_RATE } from "@/constants";
 
 const CartItems = () => {
   const cart = useAppSelector((state) => state.cart);

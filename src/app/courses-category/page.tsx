@@ -6,16 +6,14 @@ import Heading from "@/components/shared/Heading";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-interface Props {
-  searchParams: { category?: string };
-}
-const CoursesCategory = async ({ searchParams }: Props) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const CoursesCategory = async (Props: any) => {
   const allCourses = await getCoursesAction();
   return (
     <>
-      <section className="bg-white px-6 md:px-16 py-10">
+      <section className="bg-white dark:bg-slate-800 px-6 md:px-16 py-10">
         <div className="container mx-auto space-y-6 my-6">
-          <span className="text-gray-600">Find the course category you want</span>
+          <span className="text-muted-foreground">Find the course category you want</span>
           <CoursesCategories
             heading={
               <Heading
@@ -27,7 +25,7 @@ const CoursesCategory = async ({ searchParams }: Props) => {
                 }
               />
             }
-            searchParams={searchParams}
+            searchParams={Props.searchParams}
           />
         </div>
       </section>

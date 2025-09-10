@@ -1,46 +1,9 @@
 "use client";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { transactions } from "@/constants";
 
-const transactions = [
-  {
-    course: "User Experience Designer",
-    category: "Design",
-    user: "Afif Hanifudin",
-    date: "Wed, 26 May 2021",
-    price: "$299",
-  },
-  {
-    course: "User Experience Designer",
-    category: "Design",
-    user: "Afif Hanifudin",
-    date: "Wed, 26 May 2021",
-    price: "$299",
-  },
-  {
-    course: "User Experience Designer",
-    category: "Design",
-    user: "Afif Hanifudin",
-    date: "Wed, 26 May 2021",
-    price: "$299",
-  },
-  {
-    course: "User Experience Designer",
-    category: "Design",
-    user: "Afif Hanifudin",
-    date: "Wed, 26 May 2021",
-    price: "$299",
-  },
-  {
-    course: "User Experience Designer",
-    category: "Design",
-    user: "Afif Hanifudin",
-    date: "Wed, 26 May 2021",
-    price: "$299",
-  },
-];
-
-export function TransactionTable() {
+const TransactionTable = () => {
   return (
     <Card className="col-span-2">
       <CardHeader>
@@ -76,4 +39,6 @@ export function TransactionTable() {
       </CardContent>
     </Card>
   );
-}
+};
+
+export default TransactionTable;

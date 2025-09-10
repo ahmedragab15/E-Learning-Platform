@@ -1,39 +1,16 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@radix-ui/react-accordion";
-import { LayoutDashboard, Users,  CreditCard,  BookOpen, ChevronDownIcon, MessageCircle } from "lucide-react";
+import { Users, BookOpen, ChevronDownIcon, MessageCircle } from "lucide-react";
 import ActiveLink from "../shared/ActiveLink";
+import { communicationSubItems, courseSubItems, instructorsSubItems, menuItems, paymentsSubItems, studentSubItems } from "@/constants";
 
-const menuItems = [{ id: "dashboard", label: "Dashboard", icon: LayoutDashboard, path: "/admin" }];
-
-const courseSubItems = [
-  { id: "all-course", label: "All Course", path: "/admin/courses" },
-  { id: "add-course", label: "Add Course", path: "/admin/courses/add-course" },
-];
-
-const instructorsSubItems = [
-  { id: "all-instructors", label: "All Instructors", path: "/admin/instructors" },
-];
-
-const studentSubItems = [{ id: "all-student", label: "All Student", path: "/admin/students", icon: Users }];
-
-const communicationSubItems = [
-  { id: "discussion", label: "Discussion", path: "/admin/communication" },
-  { id: "review-course", label: "Review Course", path: "/admin/communication/reviews" },
-];
-
-const paymentsSubItems = [
-  { id: "all-payment", label: "All Payments", path: "/admin/payment", icon: CreditCard },
-  { id: "all-payment/payout", label: "Payout", path: "/admin/payment/payout", icon: CreditCard },
-];
-
-export const Sidebar = () => {
+const Sidebar = () => {
   return (
     <div className="w-64 bg-card shadow-md h-screen p-6 rounded-md">
       <nav className="px-3">
         {menuItems.map((item) => {
           const Icon = item.icon;
-
           return (
             <ActiveLink href={item.path} exact activeClassName="text-primary" key={item.id}>
               <h4 className="flex flex-col sm:flex-row items-center gap-4 p-4 hover:bg-gray-100 hover:text-primary font-medium rounded-md">
@@ -179,3 +156,5 @@ export const Sidebar = () => {
     </div>
   );
 };
+
+export default Sidebar;

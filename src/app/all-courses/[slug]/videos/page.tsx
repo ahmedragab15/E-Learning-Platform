@@ -1,6 +1,5 @@
 import { getCourseBySlugAction } from "@/actions/courseActions";
 import { notFound } from "next/navigation";
-import React from "react";
 import { Sidebar } from "./Sidebar";
 import { ContentArea } from "./ContentArea";
 import { Container } from "@/components";

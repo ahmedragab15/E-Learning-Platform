@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import ReviewCard from "./cards/ReviewCard";
 import SwiperSlider from "@/swiper/SwiperSlider";
 import { SwiperSlide } from "swiper/react";

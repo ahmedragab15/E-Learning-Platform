@@ -1,5 +1,4 @@
 import { ChevronLeft, ChevronRight, MoveLeft, MoveRight } from "lucide-react";
-import React from "react";
 import { Button } from "../ui/button";
 
 export const ArrowNavigation = ({ id = "" }: { id?: string }) => {

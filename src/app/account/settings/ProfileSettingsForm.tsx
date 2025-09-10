@@ -43,7 +43,6 @@ const ProfileSettingsForm = () => {
               <AvatarImage src="/placeholder-avatar.jpg" alt="Profile" />
               <AvatarFallback>JD</AvatarFallback>
             </Avatar>
-            {/* //todo : add edit button for avatar */}
             <Button size="icon" variant="secondary" className="absolute -bottom-2 -right-2 h-8 w-8 rounded-full">
               <Edit className="h-4 w-4" />
             </Button>

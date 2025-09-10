@@ -12,7 +12,7 @@ interface MetricCardProps {
   className?: string;
 }
 
-export const MetricCard = ({ title, value, change, changeType = "increase", icon, className }: MetricCardProps) => {
+const MetricCard = ({ title, value, change, changeType = "increase", icon, className }: MetricCardProps) => {
   return (
     <Card className={cn("relative overflow-hidden", className)}>
       <CardContent className="p-6">
@@ -33,3 +33,5 @@ export const MetricCard = ({ title, value, change, changeType = "increase", icon
     </Card>
   );
 };
+
+export default MetricCard;

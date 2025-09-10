@@ -1,54 +1,11 @@
-import { MetricCard } from "@/components/admin-dashboard/MetricCard";
-import { EarningsChart } from "@/components/admin-dashboard/EarningsChart";
-import { StudentMonitoring } from "@/components/admin-dashboard/StudentMonitoring";
-import { TransactionTable } from "@/components/admin-dashboard/TransactionTable";
+
 import { Users, BookOpen, UserPlus, GraduationCap, DollarSign, Wallet } from "lucide-react";
 import { getAllInstructorsAction } from "@/actions/instructorActions";
 import { getAllUsersAction, getNewStudentsAction } from "@/actions/userActions";
 import { getCoursesAction } from "@/actions/courseActions";
+import { EarningsChart, MetricCard, StudentMonitoring, AdminTransactionTable } from "@/components";
+import { recentTransactions } from "@/constants";
 
-const recentTransactions = [
-  {
-    id: "1",
-    course: "User Experience Designer",
-    category: "Design",
-    user: "Afif Hanifudin",
-    date: "Wed, 26 May 2025",
-    price: "$99",
-  },
-  {
-    id: "2",
-    course: "How to be Front End Developer",
-    category: "Programming",
-    user: "John Doe",
-    date: "Sun, 02 April 2025",
-    price: "$150",
-  },
-  {
-    id: "3",
-    course: "User Experience Designer",
-    category: "Health",
-    user: "George Washington",
-    date: "Sat, 20 March 2025",
-    price: "$159",
-  },
-  {
-    id: "4",
-    course: "How to be UIUX Designer",
-    category: "Technology",
-    user: "Sarah Smith",
-    date: "Thu, 11 July 2025",
-    price: "$119",
-  },
-  {
-    id: "5",
-    course: "User Experience Designer",
-    category: "Business",
-    user: "Ahmed Adnan",
-    date: "Fri, 26 June 2025",
-    price: "$80",
-  },
-];
 const Dashboard = async () => {
   const instructors = await getAllInstructorsAction();
   const students = await getAllUsersAction();
@@ -101,7 +58,7 @@ const Dashboard = async () => {
 
         <div className="space-y-4">
           <h2 className="text-xl font-semibold">Recent Transaction</h2>
-          <TransactionTable transactions={recentTransactions} showActions={false} />
+          <AdminTransactionTable transactions={recentTransactions} showActions={false} />
         </div>
       </div>
     </>

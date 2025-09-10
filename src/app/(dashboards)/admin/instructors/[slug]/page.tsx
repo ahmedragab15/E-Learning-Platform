@@ -1,54 +1,12 @@
-import { TransactionTable } from "@/components/admin-dashboard/TransactionTable";
-import { MetricCard } from "@/components/admin-dashboard/MetricCard";
+import { MetricCard, AdminTransactionTable } from "@/components";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { getInstructorBySlugAction } from "@/actions/instructorActions";
 import Link from "next/link";
 import { Courses } from "@/components";
+import { mentorTransactions } from "@/constants";
 
-const mentorTransactions = [
-  {
-    id: "1",
-    course: "How to be UIUX Designer ...",
-    category: "Design",
-    user: "Afif Hanifudin",
-    date: "Wed, 26 May 2021",
-    price: "$299",
-  },
-  {
-    id: "2",
-    course: "How to be Front End Dev ...",
-    category: "Design",
-    user: "Afif Hanifudin",
-    date: "Wed, 26 May 2021",
-    price: "$299",
-  },
-  {
-    id: "3",
-    course: "User Experience Designer",
-    category: "Design",
-    user: "Afif Hanifudin",
-    date: "Wed, 26 May 2021",
-    price: "$299",
-  },
-  {
-    id: "4",
-    course: "User Experience Designer",
-    category: "Design",
-    user: "Afif Hanifudin",
-    date: "Wed, 26 May 2021",
-    price: "$299",
-  },
-  {
-    id: "5",
-    course: "User Experience Designer",
-    category: "Design",
-    user: "Afif Hanifudin",
-    date: "Wed, 26 May 2021",
-    price: "$299",
-  },
-];
 
 const EditMentor = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
@@ -101,7 +59,7 @@ const EditMentor = async ({ params }: { params: Promise<{ slug: string }> }) => 
             {/* Recent Transaction */}
             <div className="space-y-4">
               <h2 className="text-xl font-semibold">Recent Transaction</h2>
-              <TransactionTable transactions={mentorTransactions} />
+              <AdminTransactionTable transactions={mentorTransactions} />
             </div>
 
             {/* View All Button */}

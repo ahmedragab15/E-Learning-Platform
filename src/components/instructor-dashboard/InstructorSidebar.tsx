@@ -1,30 +1,16 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { LayoutDashboard, BookOpen, Users, MessageCircle, ChevronDownIcon } from "lucide-react";
+import { BookOpen, Users, MessageCircle, ChevronDownIcon } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import ActiveLink from "../shared/ActiveLink";
+import { instructorCommunicationSubItems, instructorCourseSubItems, instructorMenuItems, instructorStudentSubItems } from "@/constants";
 
-export function Sidebar() {
-  const menuItems = [{ id: "dashboard", label: "Dashboard", icon: LayoutDashboard, path: "/instructor-dashboard" }];
-
-  const courseSubItems = [
-    { id: "all-course", label: "All Course", path: "/instructor-dashboard/courses" },
-    { id: "add-course", label: "Add Course", path: "/instructor-dashboard/courses/add-course" },
-  ];
-
-  const studentSubItems = [{ id: "all-student", label: "All Student", path: "/instructor-dashboard/students" }];
-
-  const communicationSubItems = [
-    { id: "discussion", label: "Discussion", path: "/instructor-dashboard/communication" },
-    { id: "review-course", label: "Review Course", path: "/instructor-dashboard/communication/reviews" },
-  ];
-
+const InstructorSidebar =()=> {
   return (
     <div className="w-64 bg-card shadow-md h-screen p-6 rounded-md">
       <nav className="px-3">
-        {menuItems.map((item) => {
+        {instructorMenuItems.map((item) => {
           const Icon = item.icon;
-
           return (
             <ActiveLink href={item.path} exact activeClassName="text-primary" key={item.id}>
               <h4 className="flex flex-col sm:flex-row items-center gap-4 p-4 hover:bg-gray-100 hover:text-primary font-medium rounded-md">
@@ -51,7 +37,7 @@ export function Sidebar() {
             </AccordionTrigger>
             <AccordionContent className="pb-0">
               <div className="ml-6 mt-1">
-                {courseSubItems.map((subItem) => (
+                {instructorCourseSubItems.map((subItem) => (
                   <ActiveLink href={subItem.path} exact activeClassName="text-primary" key={subItem.id}>
                     <h4 className="flex flex-col sm:flex-row items-center gap-4 p-4 hover:bg-gray-100 hover:text-primary font-medium rounded-md">
                       <span>{subItem.label}</span>
@@ -77,7 +63,7 @@ export function Sidebar() {
             </AccordionTrigger>
             <AccordionContent className="pb-0">
               <div className="ml-6 mt-1">
-                {studentSubItems.map((subItem) => (
+                {instructorStudentSubItems.map((subItem) => (
                   <ActiveLink href={subItem.path} exact activeClassName="text-primary" key={subItem.id}>
                     <h4 className="flex flex-col sm:flex-row items-center gap-4 p-4 hover:bg-gray-100 hover:text-primary font-medium rounded-md">
                       <span>{subItem.label}</span>
@@ -103,7 +89,7 @@ export function Sidebar() {
             </AccordionTrigger>
             <AccordionContent className="pb-0">
               <div className="ml-6 mt-1">
-                {communicationSubItems.map((subItem) => (
+                {instructorCommunicationSubItems.map((subItem) => (
                   <ActiveLink href={subItem.path} exact activeClassName="text-primary" key={subItem.id}>
                     <h4 className="flex flex-col sm:flex-row items-center gap-4 p-4 hover:bg-gray-100 hover:text-primary font-medium rounded-md">
                       <span>{subItem.label}</span>
@@ -118,3 +104,5 @@ export function Sidebar() {
     </div>
   );
 }
+
+export default InstructorSidebar;

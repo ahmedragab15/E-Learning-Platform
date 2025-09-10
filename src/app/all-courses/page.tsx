@@ -5,7 +5,7 @@ import PaginationComponent from "@/components/shared/PaginationComponent";
 
 export default async function AllCourses(Props: { searchParams: { category?: string; page?: string; search?: string } }) {
   const selectedCategory = (await Props.searchParams).category || "All";
-  const searchQuery = Props.searchParams.search || "";
+  const searchQuery = (await Props.searchParams).search || "";
   const allCourses = await getCoursesAction();
   const allCategories = ["All", ...new Set(allCourses.map((course) => course.category.title))];
 

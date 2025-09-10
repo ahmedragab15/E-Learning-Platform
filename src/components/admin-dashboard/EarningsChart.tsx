@@ -1,17 +1,10 @@
 "use client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { earningInstChartData } from "@/constants";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip } from "recharts";
 
-const data = [
-  { name: "01 May", value: 400 },
-  { name: "4 May", value: 800 },
-  { name: "8 May", value: 1000 },
-  { name: "12 May", value: 700 },
-  { name: "16 May", value: 1200 },
-];
-
-export const EarningsChart = () => {
+const EarningsChart = () => {
   return (
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
@@ -30,7 +23,7 @@ export const EarningsChart = () => {
       <CardContent>
         <div className="h-80">
           <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={data}>
+            <AreaChart data={earningInstChartData}>
               <defs>
                 <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopOpacity={0.3} />
@@ -56,3 +49,5 @@ export const EarningsChart = () => {
     </Card>
   );
 };
+
+export default EarningsChart;
