@@ -10,6 +10,7 @@ export default function CoursesFilter({ selected, options }: { selected: string;
   const handleSelect = (category: string) => {
     const params = new URLSearchParams(searchParams.toString());
     params.set("category", category);
+    params.set("page", "1");
     router.push(`?${params.toString()}`);
   };
 

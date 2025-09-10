@@ -4,9 +4,11 @@ import { Prisma } from "@/generated/prisma";
 import { generateSlug } from "@/lib/slugify";
 import { revalidatePath } from "next/cache";
 
-export async function getCoursesAction() {
+export async function getCoursesAction(skip: number = 0, take: number = 1000) {
   try {
     return await prisma.course.findMany({
+      skip,
+      take,
       include: {
         enrollments: {
           include: {
@@ -20,7 +22,7 @@ export async function getCoursesAction() {
           include: {
             user: true,
             course: true,
-          }
+          },
         },
         learnings: {
           include: {

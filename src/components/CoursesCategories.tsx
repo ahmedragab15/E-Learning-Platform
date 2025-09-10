@@ -14,8 +14,8 @@ const CoursesCategories = async ({ heading, navigation, searchParams }: Props) =
   const categories = await getCategoriesAction();
   const allCourses = await getCoursesAction();
 
-  const headersList =  headers();
-  const pathname =  (await headersList).get("x-pathname");
+  const headersList = headers();
+  const pathname = (await headersList).get("x-pathname");
   const categoryParams = (await searchParams)?.category || categories[2].title;
   const selectedCategory = pathname === "/courses-category" ? categoryParams : "All";
 
@@ -33,6 +33,7 @@ const CoursesCategories = async ({ heading, navigation, searchParams }: Props) =
           <div className="flex justify-evenly flex-wrap gap-6 my-6">
             {allCourses
               .filter((course) => course.category.title === selectedCategory)
+              .slice(0, 5)
               .map((course) => (
                 <CourseCard key={course.id} course={course} />
               ))}
