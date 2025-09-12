@@ -31,11 +31,9 @@ async function main() {
   });
   await prisma.category.createMany({
     data: [
-      { title: "Business", slug: await generateSlug("Category", "Business"), iconName: "ChartPie" },
-      { title: "Design", slug: await generateSlug("Category", "Design"), iconName: "Palette" },
-      { title: "Programming", slug: await generateSlug("Category", "Programming"), iconName: "CodeXml" },
-      { title: "Health", slug: await generateSlug("Category", "Health"), iconName: "BriefcaseMedical" },
-      { title: "Technology", slug: await generateSlug("Category", "Technology"), iconName: "Cpu" },
+      { title: "Development", slug: await generateSlug("Category", "Development"), iconName: "BookPlus" },
+      { title: "Marketing", slug: await generateSlug("Category", "Marketing"), iconName: "ChartCandlestick" },
+      { title: "Music", slug: await generateSlug("Category", "Music"), iconName: "Music" },
     ],
     skipDuplicates: true,
   });

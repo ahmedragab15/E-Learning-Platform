@@ -1,4 +1,4 @@
-import { ChartPie, Palette, CodeXml, BriefcaseMedical, Cpu } from "lucide-react";
+import { ChartPie, Palette, CodeXml, BriefcaseMedical, Cpu, Music, ChartCandlestick, BookPlus } from "lucide-react";
 
 export const IconsMap = {
   ChartPie: ChartPie,
@@ -6,4 +6,7 @@ export const IconsMap = {
   CodeXml: CodeXml,
   BriefcaseMedical: BriefcaseMedical,
   Cpu: Cpu,
+  BookPlus: BookPlus,
+  ChartCandlestick: ChartCandlestick,
+  Music: Music,
 };

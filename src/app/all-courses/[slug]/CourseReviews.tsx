@@ -14,7 +14,11 @@ const CourseReviews = ({ user, courseId }: { user: JwtPayload; courseId: number 
   const [isPending, startTransition] = useTransition();
 
   const handleSubmit = () => {
-    if (!reviewText.trim() || !user || !rating) return;
+    if (!reviewText.trim() || !rating) return;
+    if (!user) {
+      toast.error("Please login to add a review");
+      return;
+    }
 
     setIsSubmitting(true);
     startTransition(async () => {

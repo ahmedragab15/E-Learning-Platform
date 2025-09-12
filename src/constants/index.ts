@@ -226,6 +226,17 @@ export const SocialSettingsFormInputs: ISocialSettingsInputs[] = [
   },
 ];
 
+export const categoryBadgeColors = {
+  Business: "bg-indigo-600",
+  Design: "bg-rose-500",
+  Programming: "bg-emerald-600",
+  Health: "bg-cyan-500",
+  Technology: "bg-blue-500",
+  Development: "bg-fuchsia-600",
+  Marketing: "bg-orange-500",
+  Music: "bg-pink-600",
+};
+
 export const VAT_RATE: number = 0.05;
 
 // Admin Dashboard

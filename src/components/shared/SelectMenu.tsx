@@ -17,7 +17,7 @@ const SelectMenu = ({ label, options = [], selected, setSelected }: IProps) => {
         <SelectGroup>
           <SelectLabel>{label}</SelectLabel>
           {options.map((option) => (
-            <SelectItem key={option} value={option} onClick={() => setSelected(option)}>
+            <SelectItem key={option} value={option} onClick={() => setSelected(option)} className="cursor-pointer">
               {option[0].toUpperCase() + option.slice(1)}
             </SelectItem>
           ))}

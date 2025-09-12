@@ -23,9 +23,11 @@ const CoursesCategories = async ({ heading, navigation, searchParams }: Props) =
     <>
       {heading}
       <div className="flex justify-evenly flex-wrap gap-6">
-        {categories.map((category) => (
+        {categories && categories.length > 0 ? categories.slice(0, 5).map((category) => (
           <CategoryCard key={category.id} category={category} selectedCategory={selectedCategory} />
-        ))}
+        )) : (
+          <p className="text-center text-muted-foreground">No categories yet</p>
+        )}
       </div>
 
       {pathname === "/courses-category" && (

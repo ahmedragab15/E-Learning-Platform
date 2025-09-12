@@ -4,6 +4,7 @@ import { Star } from "lucide-react";
 import Link from "next/link";
 import { Prisma } from "@/generated/prisma/client";
 import AddToCartButton from "../shared/AddToCartButton";
+import { categoryBadgeColors } from "@/constants";
 
 type CourseWithCategory = Prisma.CourseGetPayload<{
   include: { category: true };
@@ -20,7 +21,9 @@ const CourseCard = ({ course }: CourseCardProps) => {
         <Image src={course?.imageUrl} alt="course image" width={400} height={400} className="object-cover max-w-full rounded-md" />
       </Link>
       <div className="px-4 space-y-2">
-        <Badge className={` text-white bg-blue-500`}>{`${course.category.title}`}</Badge>
+        <Badge
+          className={`text-white ${categoryBadgeColors[course.category.title as keyof typeof categoryBadgeColors] || "bg-blue-500"}`}
+        >{`${course.category.title}`}</Badge>
 
         <h3 className="font-medium line-clamp-1">
           <Link href={`/all-courses/${course.slug}`}>{course.title} </Link>
