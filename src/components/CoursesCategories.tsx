@@ -1,48 +1,44 @@
-import { getCoursesAction } from "@/actions/courseActions";
+"use client";
+import SwiperSlider from "@/swiper/SwiperSlider";
 import CategoryCard from "./cards/CategoryCard";
-import CourseCard from "./cards/CourseCard";
-import { headers } from "next/headers";
-import { getCategoriesAction } from "@/actions/categoryActions";
+import { Prisma } from "@/generated/prisma/client";
+import { SwiperSlide } from "swiper/react";
+
+type CategoryWithCourses = Prisma.CategoryGetPayload<{
+  include: { courses: true };
+}>;
 
 interface Props {
   searchParams?: { category?: string };
   heading: React.ReactNode;
   navigation?: React.ReactNode;
+  categories: CategoryWithCourses[];
+  swiper?: boolean;
+  id?: string;
 }
 
-const CoursesCategories = async ({ heading, navigation, searchParams }: Props) => {
-  const categories = await getCategoriesAction();
-  const allCourses = await getCoursesAction();
-
-  const headersList = headers();
-  const pathname = (await headersList).get("x-pathname");
-  const categoryParams = (await searchParams)?.category || categories[2]?.title;
-  const selectedCategory = pathname === "/courses-category" ? categoryParams : "All";
-
+const CoursesCategories = ({ heading, navigation, categories, swiper = false, id = "" }: Props) => {
   return (
     <>
       {heading}
       <div className="flex justify-evenly flex-wrap gap-6">
-        {categories && categories.length > 0 ? categories.slice(0, 5).map((category) => (
-          <CategoryCard key={category.id} category={category} selectedCategory={selectedCategory} />
-        )) : (
+        {categories && categories.length > 0 ? (
+          categories && swiper ? (
+            <SwiperSlider id={id}>
+              {categories.map((category) => (
+                <SwiperSlide key={category.slug}>
+                  <CategoryCard key={category.id} category={category} />
+                </SwiperSlide>
+              ))}
+            </SwiperSlider>
+          ) : (
+            categories && !swiper && categories.slice(0, 5).map((category) => <CategoryCard key={category.id} category={category} />)
+          )
+        ) : (
           <p className="text-center text-muted-foreground">No categories yet</p>
         )}
       </div>
-
-      {pathname === "/courses-category" && (
-        <>
-          <div className="flex justify-evenly flex-wrap gap-6 my-6">
-            {allCourses
-              .filter((course) => course.category.title === selectedCategory)
-              .slice(0, 5)
-              .map((course) => (
-                <CourseCard key={course.id} course={course} />
-              ))}
-          </div>
-          {navigation}
-        </>
-      )}
+      {navigation && navigation}
     </>
   );
 };

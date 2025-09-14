@@ -3,9 +3,12 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ChevronNavigation } from "../shared/ArrowNavigation";
 import { getCoursesAction } from "@/actions/courseActions";
+import { getCategoriesAction } from "@/actions/categoryActions";
 
 const UserHome = async () => {
   const allCourses = await getCoursesAction();
+    const categories = await getCategoriesAction();
+
   return (
     <>
       <section className="userHome-Hero-image relative max-w-full h-[731px] px-6 md:px-16 pb-8 ">
@@ -24,7 +27,10 @@ const UserHome = async () => {
               }
             />
           }
-          navigation={<ChevronNavigation />}
+          categories={categories}
+          id="category"
+          navigation={<ChevronNavigation id="category" />}
+          swiper
         />
       </Container>
 

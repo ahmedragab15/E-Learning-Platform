@@ -1,4 +1,5 @@
 export const dynamic = "force-dynamic";
+import { getCategoriesAction } from "@/actions/categoryActions";
 import { getCoursesAction } from "@/actions/courseActions";
 import { Courses, CoursesCategories } from "@/components";
 import { ChevronNavigation } from "@/components/shared/ArrowNavigation";
@@ -6,9 +7,10 @@ import Heading from "@/components/shared/Heading";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const CoursesCategory = async (Props: any) => {
+const CoursesCategory = async () => {
   const allCourses = await getCoursesAction();
+  const categories = await getCategoriesAction();
+
   return (
     <>
       <section className="bg-white dark:bg-slate-800 px-6 md:px-16 py-10">
@@ -25,7 +27,10 @@ const CoursesCategory = async (Props: any) => {
                 }
               />
             }
-            searchParams={Props.searchParams}
+            categories={categories}
+            navigation={<ChevronNavigation id="category" />}
+            id="category"
+            swiper
           />
         </div>
       </section>

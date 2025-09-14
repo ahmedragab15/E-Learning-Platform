@@ -3,9 +3,12 @@ import { HeroVisitor, CoursesCategories, Courses, WhyUs, Reviews, AllNews, Banne
 import { ArrowNavigation } from "@/components/shared/ArrowNavigation";
 import { getAllReviewsAction } from "@/actions/reviewsActions";
 import { getAllNewsAction } from "@/actions/newsActions";
+import { getCategoriesAction } from "@/actions/categoryActions";
 
 const VisitorHome = async () => {
   const allCourses = await getCoursesAction();
+    const categories = await getCategoriesAction();
+
   const reviews = await getAllReviewsAction();
   const news = await getAllNewsAction();
 
@@ -17,7 +20,7 @@ const VisitorHome = async () => {
         </div>
       </Container>
       <Container background="bg-white dark:bg-slate-800">
-        <CoursesCategories heading={<Heading title="Courses Category" />} />
+        <CoursesCategories heading={<Heading title="Courses Category" />} categories={categories} navigation={<ArrowNavigation id="category" />} id="category" swiper />
       </Container>
 
       <Container>
