@@ -7,7 +7,6 @@ import Link from "next/link";
 import { Courses } from "@/components";
 import { mentorTransactions } from "@/constants";
 
-
 const EditMentor = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
   const instructor = await getInstructorBySlugAction(slug);
@@ -29,7 +28,7 @@ const EditMentor = async ({ params }: { params: Promise<{ slug: string }> }) => 
                 <div className="flex items-start space-x-4">
                   <Avatar className="w-16 h-16">
                     <AvatarImage
-                      src={(instructor?.avatarUrl as string) || "http://dergipark.org.tr/assets/app/images/buddy_sample.png"}
+                      src={(instructor?.avatarUrl as string) || "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"}
                       alt="Robert Anderson"
                     />
                     <AvatarFallback>{instructor?.name[0]}</AvatarFallback>
@@ -70,7 +69,7 @@ const EditMentor = async ({ params }: { params: Promise<{ slug: string }> }) => 
             {/* My Course */}
             <div className="space-y-4">
               <h2 className="text-xl font-semibold">My Course</h2>
-                <Courses courses={instructor?.courses} />
+              <Courses courses={instructor?.courses} />
             </div>
           </div>
 

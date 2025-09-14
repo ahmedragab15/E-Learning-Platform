@@ -20,10 +20,13 @@ const InstructorCard = ({ instructor, className = "" }: InstructorCardProps) => 
       <div className="flex justify-between flex-col lg:flex-row gap-2">
         <div className="flex items-center gap-4">
           <Avatar>
-            <AvatarImage src={(instructor.avatarUrl as string) || "http://dergipark.org.tr/assets/app/images/buddy_sample.png"} alt="user avatar" />
+            <AvatarImage
+              src={(instructor.avatarUrl as string) || "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"}
+              alt="user avatar"
+            />
             <AvatarFallback>
               <Image
-                src={(instructor.avatarUrl as string) || "http://dergipark.org.tr/assets/app/images/buddy_sample.png"}
+                src={(instructor.avatarUrl as string) || "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"}
                 alt="user avatar"
                 width={400}
                 height={400}

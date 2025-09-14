@@ -9,7 +9,7 @@ const AccountAside = async () => {
     <div className="flex flex-col lg:space-y-8">
       <div className="mx-auto space-y-2">
         <Image
-          src={(user?.avatar as string) || "http://dergipark.org.tr/assets/app/images/buddy_sample.png"}
+          src={(user?.avatar as string) || "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"}
           alt="user avatar"
           width={200}
           height={200}

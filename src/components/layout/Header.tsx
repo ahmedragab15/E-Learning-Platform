@@ -143,7 +143,7 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Image
-                  src={(user?.avatar as string) || "http://dergipark.org.tr/assets/app/images/buddy_sample.png"}
+                  src={(user?.avatar as string) || "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"}
                   alt="user avatar"
                   width={200}
                   height={200}

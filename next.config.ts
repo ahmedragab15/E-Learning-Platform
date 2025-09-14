@@ -29,8 +29,8 @@ const nextConfig: NextConfig = {
         hostname: "cdn.jsdelivr.net",
       },
       {
-        protocol: "http",
-        hostname: "dergipark.org.tr",
+        protocol: "https",
+        hostname: "cdn.pixabay.com",
       },
       {
         protocol: "https",

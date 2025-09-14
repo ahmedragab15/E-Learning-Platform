@@ -71,7 +71,7 @@ const CourseComments = ({ comments: initialComments, user, courseId }: { comment
           <div key={index} className="flex space-x-3">
             <Avatar className="h-10 w-10">
               <AvatarImage
-                src={(comment.user.avatarUrl as string) || "http://dergipark.org.tr/assets/app/images/buddy_sample.png"}
+                src={(comment.user.avatarUrl as string) || "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"}
                 alt="Profile Image"
               />
               <AvatarFallback className="bg-muted">
@@ -104,7 +104,7 @@ const CourseComments = ({ comments: initialComments, user, courseId }: { comment
       </div>
       <div className="flex space-x-3">
         <Avatar className="h-8 w-8 cursor-pointer">
-          <AvatarImage src={(user?.avatar as string) || "http://dergipark.org.tr/assets/app/images/buddy_sample.png"} alt="Profile Image" />
+          <AvatarImage src={(user?.avatar as string) || "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"} alt="Profile Image" />
           <AvatarFallback className="bg-primary text-white">{user?.fullName?.charAt(0)}</AvatarFallback>
         </Avatar>
         <div className="flex-1 space-y-3">

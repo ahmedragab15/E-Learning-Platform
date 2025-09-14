@@ -31,7 +31,7 @@ const page = async () => {
                 <div>
                   <Avatar className="w-8 h-8">
                     <AvatarImage
-                      src={(instructor.avatarUrl as string) || "http://dergipark.org.tr/assets/app/images/buddy_sample.png"}
+                      src={(instructor.avatarUrl as string) || "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"}
                       alt={instructor.name}
                     />
                     <AvatarFallback>{instructor.name.slice(0, 2)}</AvatarFallback>
@@ -47,7 +47,7 @@ const page = async () => {
                     href={`/admin/instructors/${instructor.slug}`}
                     className="flex items-center justify-center bg-primary/10 group text-primary hover:bg-primary hover:text-white rounded-md px-2 py-3"
                   >
-                      <Eye />
+                    <Eye />
                     <span className="ml-2 text-sm text-primary cursor-pointer group-hover:text-white ">View</span>
                   </Link>
                 </div>
