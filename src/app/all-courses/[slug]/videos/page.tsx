@@ -12,7 +12,7 @@ const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   }
   return (
     <Container>
-      <div className="flex">
+      <div className="flex flex-col md:flex-row">
         <Sidebar slug={slug} />
         <main className="flex-1 p-6">
           <div className="max-w-4xl">

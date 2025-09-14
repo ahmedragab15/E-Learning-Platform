@@ -7,7 +7,7 @@ import { instructorCommunicationSubItems, instructorCourseSubItems, instructorMe
 
 const InstructorSidebar =()=> {
   return (
-    <div className="w-64 bg-card shadow-md h-screen p-6 rounded-md">
+    <div className="w-full bg-card shadow-md lg:h-screen p-6 rounded-md">
       <nav className="px-3">
         {instructorMenuItems.map((item) => {
           const Icon = item.icon;

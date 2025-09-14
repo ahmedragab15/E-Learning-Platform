@@ -7,7 +7,7 @@ import { communicationSubItems, courseSubItems, instructorsSubItems, menuItems, 
 
 const Sidebar = () => {
   return (
-    <div className="w-64 bg-card shadow-md h-screen p-6 rounded-md">
+    <div className="w-full bg-card lg:h-screen p-6 rounded-md">
       <nav className="px-3">
         {menuItems.map((item) => {
           const Icon = item.icon;
