@@ -20,8 +20,7 @@ A feature-rich online courses platform built with **Next.js**, **ShadCN UI**, **
 - **Charts & Visualization:** recharts
 - **Animations & Motion:** GSAP
 - **SEO + Accessibility:** Structured metadata, semantic components, responsive design
-- **Internationalization:** i18next
-- **UX Enhancements:** Confetti, Toasts, Spinners, SEO
+- **UX Enhancements:** Toasts, Spinners, SEO
 - **Extra UI/UX Libraries:**
   - SwiperJS (carousel for courses)
   - React Toastify
@@ -50,8 +49,6 @@ A feature-rich online courses platform built with **Next.js**, **ShadCN UI**, **
 - Add/remove courses from cart
 - Dynamic checkout page
 - Billing info form with validation
-- Stripe payment simulation
-- Confetti effect on successful checkout
 
 ### 🧠 User Experience
 - Responsive and accessible UI with **ShadCN** components
@@ -77,7 +74,6 @@ A feature-rich online courses platform built with **Next.js**, **ShadCN UI**, **
 - Google Cloud or ImageKit/Cloudinary for image and video storage
 - Email integration for contact page (`emailjs`)
 - SEO-friendly metadata and fallback support
-- Internationalization with `i18next`
 
 ---
 
@@ -116,7 +112,7 @@ npm run dev
 ```
 
 ## 🌍 Live Demo
-🚧 Coming Soon...
+[🔗 View Live Demo](https://ahmed-academy.vercel.app)
 
 ## 📸 Screenshots
 🚧 Coming Soon...
