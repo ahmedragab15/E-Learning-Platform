@@ -72,8 +72,11 @@ export async function getCourseBySlugAction(slug: string) {
           },
         },
         Chapters: {
+          orderBy: { createdAt: "asc" },
           include: {
-            details: true,
+            details: {
+              orderBy: { createdAt: "asc" },
+            },
           },
         },
         courseRating: true,

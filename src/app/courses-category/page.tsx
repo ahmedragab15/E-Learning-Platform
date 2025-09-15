@@ -1,4 +1,3 @@
-export const dynamic = "force-dynamic";
 import { getCategoriesAction } from "@/actions/categoryActions";
 import { getCoursesAction } from "@/actions/courseActions";
 import { Courses, CoursesCategories } from "@/components";

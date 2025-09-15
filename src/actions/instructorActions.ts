@@ -6,6 +6,9 @@ import prisma from "@/lib/db";
 export async function getAllInstructorsAction() {
   try {
     return await prisma.instructor.findMany({
+      orderBy: {
+        id: "asc",
+      },
       include: {
         courses: {
           include: {
