@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 import { getCourseBySlugAction } from "@/actions/courseActions";
 import { notFound } from "next/navigation";
-import { getUserFromToken } from "@/lib/verifyJWT";
+import { getUserFromToken } from "@/lib/JWT";
 import CourseComments from "./CourseComments";
 
 export async function ContentArea({ slug }: { slug: string }) {

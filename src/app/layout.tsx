@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/components/themeProvider";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { ToastContainer } from "react-toastify";
-import { getUserFromToken } from "@/lib/verifyJWT";
+import { getUserFromToken } from "@/lib/JWT";
 import StoreProvider from "./StoreProvider";
 import ScrollToTop from "@/components/ScrollToTop";
 

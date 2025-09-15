@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/db";
-import { generateJWT } from "@/lib/generateJWT";
+import { generateJWT } from "@/lib/JWT";
 import crypto from "crypto";
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID!;

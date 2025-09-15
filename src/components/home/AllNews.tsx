@@ -1,5 +1,5 @@
 "use client";
-import NewsCard from "./cards/NewsCard";
+import NewsCard from "../cards/NewsCard";
 import { Prisma } from "@/generated/prisma/client";
 import SwiperSlider from "@/swiper/SwiperSlider";
 import { SwiperSlide } from "swiper/react";
@@ -19,7 +19,7 @@ interface IProps {
 const AllNews = ({ news, heading, navigation = "", swiper = false, id = "" }: IProps) => {
   return (
     <>
-    {heading}
+      {heading}
       <div className="flex justify-evenly flex-wrap gap-6 my-6">
         {swiper ? (
           <SwiperSlider id={id}>

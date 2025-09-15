@@ -10,7 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import CourseReviews from "./CourseReviews";
-import { getUserFromToken } from "@/lib/verifyJWT";
+import { getUserFromToken } from "@/lib/JWT";
 import AddToCartButton from "@/components/shared/AddToCartButton";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {

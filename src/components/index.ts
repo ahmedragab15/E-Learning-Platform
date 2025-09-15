@@ -24,7 +24,7 @@ export { default as ProgressCourseCard } from "@/components/cards/ProgressCourse
 export { default as ReviewCard } from "@/components/cards/ReviewCard";
 export { default as SocialCard } from "@/components/cards/SocialCard";
 
-export { default as AllNews } from "@/components/AllNews";
+export { default as AllNews } from "@/components/home/AllNews";
 export { default as Banner } from "@/components/Banner";
 export { default as Courses } from "@/components/Courses";
 export { default as CoursesCategories } from "@/components/CoursesCategories";

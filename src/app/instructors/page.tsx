@@ -2,7 +2,7 @@ import { getAllInstructorsAction } from "@/actions/instructorActions";
 import { Container, InstructorCard, Heading } from "@/components";
 import { images } from "@/components/shared/Images";
 import { Button } from "@/components/ui/button";
-import { getUserFromToken } from "@/lib/verifyJWT";
+import { getUserFromToken } from "@/lib/JWT";
 import Image from "next/image";
 
 const AllInstructors = async () => {

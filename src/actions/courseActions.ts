@@ -3,7 +3,7 @@ import prisma from "@/lib/db";
 import { Prisma } from "@/generated/prisma";
 import { generateSlug } from "@/lib/slugify";
 import { revalidatePath } from "next/cache";
-import { getUserFromToken } from "@/lib/verifyJWT";
+import { getUserFromToken } from "@/lib/JWT";
 
 export async function getCoursesAction(skip: number = 0, take: number = 1000) {
   try {

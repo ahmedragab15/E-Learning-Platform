@@ -1,4 +1,4 @@
-import { getUserFromToken } from "@/lib/verifyJWT"; 
+import { getUserFromToken } from "@/lib/JWT";
 import { NextResponse } from "next/server";
 
 export async function GET() {

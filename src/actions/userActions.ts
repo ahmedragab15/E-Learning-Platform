@@ -1,11 +1,10 @@
 "use server";
 import { Prisma } from "@/generated/prisma";
 import prisma from "@/lib/db";
-import { generateJWT } from "@/lib/generateJWT";
+import { generateJWT, getUserFromToken } from "@/lib/JWT";
 import { loginSchema } from "@/schema/loginSchema";
 import { serverRegisterSchema } from "@/schema/registerSchema";
 import bcrypt from "bcrypt";
-import { getUserFromToken } from "@/lib/verifyJWT";
 import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
 

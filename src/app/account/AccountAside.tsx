@@ -1,7 +1,7 @@
 import ActiveLink from "@/components/shared/ActiveLink";
 import { NotepadText, Settings } from "lucide-react";
 import Image from "next/image";
-import { getUserFromToken } from "@/lib/verifyJWT";
+import { getUserFromToken } from "@/lib/JWT";
 
 const AccountAside = async () => {
   const user = await getUserFromToken();
