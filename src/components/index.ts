@@ -15,6 +15,11 @@ export { default as HeroVisitor } from "@/components/home/HeroVisitor";
 export { default as UserHome } from "@/components/home/UserHome";
 export { default as VisitorHome } from "@/components/home/VisitorHome";
 export { default as WhyUs } from "@/components/home/WhyUs";
+export { default as CoursesCategoriesSection } from "@/components/home/CoursesCategoriesSection";
+export { default as CoursesSection } from "@/components/home/CoursesSection";
+export { default as NewsSection } from "@/components/home/NewsSection";
+export { default as ReviewsSection } from "@/components/home/ReviewsSection";
+
 // Cards Components
 export { default as CategoryCard } from "@/components/cards/CategoryCard";
 export { default as CourseCard } from "@/components/cards/CourseCard";
@@ -35,3 +40,8 @@ export { default as RatingProgress } from "@/components/shared/RatingProgress";
 export { default as Heading } from "@/components/shared/Heading";
 export { default as SelectMenu } from "@/components/shared/SelectMenu";
 export { default as Container } from "@/components/shared/Container";
+
+export { default as CoursesCategoriesSkeleton } from "@/components/skeletons/CoursesCategoriesSkeleton";
+export { default as CoursesSkeleton } from "@/components/skeletons/CoursesSkeleton";
+export { default as NewsSkeleton } from "@/components/skeletons/NewsSkeleton";
+export { default as ReviewsSkeleton } from "@/components/skeletons/ReviewsSkeleton";

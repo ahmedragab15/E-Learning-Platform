@@ -1,17 +1,8 @@
-import { getCoursesAction } from "@/actions/courseActions";
-import { HeroVisitor, CoursesCategories, Courses, WhyUs, Reviews, AllNews, Banner, Heading, Container } from "@/components/index";
-import { ArrowNavigation } from "@/components/shared/ArrowNavigation";
-import { getAllReviewsAction } from "@/actions/reviewsActions";
-import { getAllNewsAction } from "@/actions/newsActions";
-import { getCategoriesAction } from "@/actions/categoryActions";
+import { HeroVisitor, WhyUs, Banner, Container, Heading, CoursesCategoriesSkeleton, CoursesSkeleton, NewsSkeleton, ReviewsSkeleton, CoursesCategoriesSection, CoursesSection, NewsSection, ReviewsSection } from "@/components/index";
+import { Suspense } from "react";
+import { ArrowNavigation } from "../shared/ArrowNavigation";
 
 const VisitorHome = async () => {
-  const allCourses = await getCoursesAction();
-    const categories = await getCategoriesAction();
-
-  const reviews = await getAllReviewsAction();
-  const news = await getAllNewsAction();
-
   return (
     <>
       <Container>
@@ -20,44 +11,55 @@ const VisitorHome = async () => {
         </div>
       </Container>
       <Container background="bg-white dark:bg-slate-800">
-        <CoursesCategories heading={<Heading title="Courses Category" />} categories={categories} navigation={<ArrowNavigation id="category" />} id="category" swiper />
+        <Suspense fallback={<CoursesCategoriesSkeleton heading={<Heading title="Courses Category" />} />}>
+          <CoursesCategoriesSection />
+        </Suspense>
       </Container>
-
       <Container>
-        <Courses
-          courses={allCourses.slice(0, 7)}
-          heading={
-            <Heading
-              title="Recommendation Courses"
-              description="You can find recommendation courses from all course categories and quickly learn more"
+        <Suspense
+          fallback={
+            <CoursesSkeleton
+              heading={
+                <Heading
+                  title="Recommendation Courses"
+                  description="You can find recommendation courses from all course categories and quickly learn more"
+                />
+              }
             />
           }
-          navigation={<ArrowNavigation id="recommendation" />}
-          id="recommendation"
-          swiper
-        />
+        >
+          <CoursesSection
+            heading={
+              <Heading
+                title="Recommendation Courses"
+                description="You can find recommendation courses from all course categories and quickly learn more"
+              />
+            }
+            navigation={<ArrowNavigation />}
+          />
+        </Suspense>
       </Container>
-
       <Container background="bg-white dark:bg-slate-800">
         <WhyUs />
       </Container>
-
       <Container>
-        <Reviews
-          reviews={reviews.slice(0, 8)}
-          heading={
-            <Heading title="What our students say" description="Find out what experiences and what they have to say about the course with us" />
+        <Suspense
+          fallback={
+            <ReviewsSkeleton
+              heading={
+                <Heading title="What our students say" description="Find out what experiences and what they have to say about the course with us" />
+              }
+            />
           }
-          navigation={<ArrowNavigation id="reviews" />}
-          swiper
-          id="reviews"
-        />
+        >
+          <ReviewsSection />
+        </Suspense>
       </Container>
-
       <Container background="bg-white dark:bg-slate-800">
-        <AllNews news={news.slice(0, 8)} heading={<Heading title="News for you" />} navigation={<ArrowNavigation id="news" />} swiper id="news" />
+        <Suspense fallback={<NewsSkeleton heading={<Heading title="News for you" />} />}>
+          <NewsSection />
+        </Suspense>
       </Container>
-
       <Container background="bg-white dark:bg-slate-800">
         <Banner
           image="home-banner-image"
