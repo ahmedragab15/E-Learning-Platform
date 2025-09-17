@@ -1,5 +1,5 @@
 {
-  "name": "e-learning-platform",
+  "name": "ahmed-academy",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -41,6 +41,7 @@
     "ldrs": "^1.1.7",
     "lucide-react": "^0.525.0",
     "next": "15.3.4",
+    "next-pwa": "^5.6.0",
     "next-themes": "^0.4.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -60,6 +61,7 @@
     "@faker-js/faker": "^9.9.0",
     "@tailwindcss/postcss": "^4",
     "@types/jsonwebtoken": "^9.0.10",
+    "@types/next-pwa": "^5.6.9",
     "@types/node": "^20.19.9",
     "@types/react": "^19",
     "@types/react-dom": "^19",

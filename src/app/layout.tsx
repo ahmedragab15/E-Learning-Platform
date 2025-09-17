@@ -25,18 +25,22 @@ const manrope = Manrope({
   subsets: ["latin"],
 });
 
+const defaultUrl =  process.env.FRONTEND_URL!
+
 export const metadata: Metadata = {
+  metadataBase: new URL(defaultUrl),
+  manifest: "/manifest.json",
   title: "Ahmed Academy | Learn from the Best Instructors",
   description: "Discover high-quality online courses across various categories. Learn at your own pace from industry-leading instructors.",
   keywords: ["online courses", "e-learning", "best instructors", "learn online", "programming courses", "design courses", "Ahmed Academy"],
   openGraph: {
     title: "Ahmed Academy | Online Learning Made Easy",
     description: "Join thousands of learners and access top-rated online courses from expert instructors.",
-    url: "https://Ahmed Academy.com",
+    url: "https://ahmed-academy.vercel.app",
     siteName: "Ahmed Academy",
     images: [
       {
-        url: "https://Ahmed Academy.com/og-image.jpg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
       },
@@ -48,7 +52,20 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ahmed Academy | Learn Anything, Anytime",
     description: "Access high-quality courses with expert instructors and flexible learning.",
-    images: ["https://Ahmed Academy.com/og-image.jpg"],
+    images: ["/og-image.png"],
+  },
+  icons: {
+    icon: [{ url: "/icon512_rounded.png", sizes: "196x196", type: "image/png" }],
+    apple: [{ url: "/icon512_rounded.png" }],
+  },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    startupImage: [
+      {
+        url: "/icon512_maskable.png",
+      },
+    ],
   },
 };
 
