@@ -2,8 +2,6 @@
 
 A feature-rich online courses platform built with **Next.js**, **ShadCN UI**, **Prisma**, **PostgreSQL**, and powerful modern tools. This project enables users to register, browse courses, watch content, and purchase courses securely, while instructors can manage their content and interact with students. It includes authentication, course videos, reviews, comments, categories, cart functionality, responsive UI, and much more. — with a clean UI, advanced animations, and full authentication.
 
-> 🚧 **Note:** This project is still a **Work in Progress**. I'm actively developing new features and refining the UI.
-
 ---
 
 ## 🚀 Tech Stack
@@ -84,8 +82,6 @@ A feature-rich online courses platform built with **Next.js**, **ShadCN UI**, **
 - **Secure Cookies** for token storage
 - **Edge-compatible Middleware** with `jose` to authorize protected routes
 
-📌 _Note: We use `jose` instead of `jsonwebtoken` in `middleware.ts` because the Edge Runtime doesn’t support Node-specific modules like `crypto`. `jose` works perfectly with Web APIs._
-
 ---
 
 ## 🛠 Development Setup
@@ -115,12 +111,85 @@ npm run dev
 [🔗 View Live Demo](https://ahmed-academy.vercel.app)
 
 ## 📸 Screenshots
-🚧 Coming Soon...
 
-## 📬 Contact
-Feel free to connect or contribute!
+  #### Visitor Home Page
+   <img src="./public/preview/1.webp" >
+  <br /> 
 
-- Ahmed Ragab
-- Frontend Developer
-- ragabahmed154@gmail.com
-- https://ahmedragab.netlify.app/
+   <img src="./public/preview/2.webp" >
+  <br /> 
+
+  #### Categories
+   <img src="./public/preview/3.webp" >
+  <br /> 
+
+  #### Courses
+   <img src="./public/preview/4.webp" >
+  <br /> 
+
+  #### Instructors
+   <img src="./public/preview/5.webp" >
+  <br /> 
+
+  #### Instructor Profile
+   <img src="./public/preview/6.webp" >
+  <br /> 
+
+  #### Course Details
+   <img src="./public/preview/7.webp" >
+  <br /> 
+
+  #### Course & Instructor Reviews
+   <img src="./public/preview/8.webp" >
+  <br /> 
+
+  #### Cart
+   <img src="./public/preview/9.webp" >
+  <br /> 
+
+  #### Checkout
+   <img src="./public/preview/10.webp" >
+  <br /> 
+
+  #### Sign Up
+   <img src="./public/preview/11.webp" >
+  <br /> 
+
+  #### About us Stats 
+   <img src="./public/preview/12.webp" >
+  <br /> 
+
+  #### Course Videos
+   <img src="./public/preview/13.webp" >
+  <br /> 
+
+  #### Course Comments
+   <img src="./public/preview/14.webp" >
+  <br /> 
+
+  #### Home Page after Login
+   <img src="./public/preview/15.webp" >
+  <br /> 
+
+  #### User Profile
+   <img src="./public/preview/16.webp" >
+  <br /> 
+
+  #### Admin Dashboard
+   <img src="./public/preview/17.webp" >
+  <br /> 
+
+  #### Admin Courses Control
+   <img src="./public/preview/18.webp" >
+  <br /> 
+
+  #### Instructors Info
+   <img src="./public/preview/19.webp" >
+  <br /> 
+
+  #### Manage All Reviews & Comments 
+   <img src="./public/preview/20.webp" >
+  <br /> 
+
+  #### Instructor Dashboard
+   <img src="./public/preview/21.webp" >
