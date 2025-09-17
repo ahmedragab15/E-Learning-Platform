@@ -86,7 +86,7 @@ const Header = ({ user }: { user: JwtPayload | null }) => {
         className={`mobileSidebar md:hidden fixed ${mobileSidebarOpen ? "inset-0" : "-left-96"} z-50 backdrop-blur-xs duration-300`}
         onClick={() => setMobileSidebarOpen(false)}
       >
-        <nav className="bg-white pl-4 pr-8 py-8 w-fit duration-200 relative h-screen shadow-lg">
+        <nav className="bg-white/60 dark:bg-black/60 pl-4 pr-8 py-8 w-fit duration-200 relative h-screen shadow-lg">
           <Button
             size={"icon"}
             variant={"ghost"}
