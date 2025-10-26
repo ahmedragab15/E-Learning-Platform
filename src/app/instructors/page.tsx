@@ -3,7 +3,13 @@ import { Container, InstructorCard, Heading } from "@/components";
 import { images } from "@/components/shared/Images";
 import { Button } from "@/components/ui/button";
 import { getUserFromToken } from "@/lib/JWT";
+import type { Metadata } from "next";
 import Image from "next/image";
+
+export const metadata: Metadata = {
+  title: "Instructors",
+  description: "All Instructors",
+};
 
 const AllInstructors = async () => {
   const instructors = await getAllInstructorsAction();

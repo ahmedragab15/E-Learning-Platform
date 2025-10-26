@@ -53,7 +53,7 @@ const HeroVisitor = () => {
         </div>
       </div>
       <div>
-        <Image src={images.HeroImage} alt="hero image" className="md:w-[600px] max-w-full test3" width={400} height={400} />
+        <Image priority loading="eager" src={images.HeroImage} alt="hero image" className="md:w-[600px] max-w-full test3" width={400} height={400} />
       </div>
     </>
   );

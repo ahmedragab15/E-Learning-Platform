@@ -3,6 +3,12 @@ import withPWA from "next-pwa";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "10mb",
+    },
+  },
+  staticPageGenerationTimeout: 120,
   images: {
     remotePatterns: [
       {
