@@ -35,6 +35,7 @@ export const metadata: Metadata = {
     template: "%s | Ahmed Academy",
   },
   description: "Discover high-quality online courses across various categories. Learn at your own pace from industry-leading instructors.",
+  themeColor:"#000000",
   keywords: ["online courses", "e-learning", "best instructors", "learn online", "programming courses", "design courses", "Ahmed Academy"],
   openGraph: {
     title: "Ahmed Academy | Online Learning Made Easy",
