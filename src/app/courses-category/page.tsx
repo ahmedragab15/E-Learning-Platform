@@ -4,7 +4,17 @@ import { Courses, CoursesCategories } from "@/components";
 import { ChevronNavigation } from "@/components/shared/ArrowNavigation";
 import Heading from "@/components/shared/Heading";
 import { Button } from "@/components/ui/button";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata={
+  title:"Courses Category",
+  description:"Discover high-quality online courses across various categories. Learn at your own pace from industry-leading instructors.",
+  keywords:["online courses", "e-learning", "best instructors", "learn online", "programming courses", "design courses", "Ahmed Academy"],
+  alternates: {
+    canonical: "https://ahmed-academy.vercel.app/courses-category",
+  },
+}
 
 const CoursesCategory = async () => {
   const allCourses = await getCoursesAction();

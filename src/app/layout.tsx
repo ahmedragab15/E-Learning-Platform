@@ -215,9 +215,6 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  alternates: {
-    canonical: "https://ahmed-academy.vercel.app/",
-  },
 };
 
 export const viewport: Viewport = {

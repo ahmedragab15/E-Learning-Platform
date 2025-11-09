@@ -8,7 +8,11 @@ import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Instructors",
-  description: "All Instructors",
+  description: "Meet our expert instructors at Ahmed Academy. Learn from industry professionals and enhance your skills with their guidance.",
+  keywords: ["instructors", "expert teachers", "online learning", "Ahmed Academy instructors", "learn from experts"],
+  alternates: {
+    canonical: "https://ahmed-academy.vercel.app/instructors",
+  },
 };
 
 const AllInstructors = async () => {

@@ -2,6 +2,17 @@ import { getCoursesAction } from "@/actions/courseActions";
 import { Courses, Heading, Container } from "@/components";
 import CoursesFilter from "./CoursesFilter";
 import PaginationComponent from "@/components/shared/PaginationComponent";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "All Courses",
+  description:
+    "Explore a wide range of courses across various categories at Ahmed Academy. Enhance your skills and knowledge with our expert-led courses.",
+  keywords: ["online courses", "e-learning", "best instructors", "learn online", "programming courses", "design courses", "Ahmed Academy"],
+  alternates: {
+    canonical: "https://ahmed-academy.vercel.app/all-courses",
+  },
+};
 
 export default async function AllCourses(Props: { searchParams: Promise<{ category?: string; page?: string; search?: string }> }) {
   const searchParams = await Props.searchParams;

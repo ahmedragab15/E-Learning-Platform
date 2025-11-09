@@ -16,14 +16,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!chosen) return {};
 
   return {
-    title: `${chosen?.name} Courses - ${chosen?.headline}`,
+    title: `${chosen?.name} Courses`,
     description: chosen?.bio?.slice(0, 150),
     keywords: ["instructor", chosen?.name, "courses", "learning", "e-learning"],
-    openGraph: {
-      title: chosen?.name,
-      description: chosen?.bio?.slice(0, 150),
-      images: [chosen?.avatarUrl],
-    },
   };
 }
 
