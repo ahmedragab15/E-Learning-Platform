@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     template: "%s | Ahmed Academy",
   },
   description: "Discover high-quality online courses across various categories. Learn at your own pace from industry-leading instructors.",
-  themeColor:"#000000",
+  themeColor: "#000000",
   keywords: ["online courses", "e-learning", "best instructors", "learn online", "programming courses", "design courses", "Ahmed Academy"],
   openGraph: {
     title: "Ahmed Academy | Online Learning Made Easy",
@@ -203,6 +203,20 @@ export const metadata: Metadata = {
         media: "(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)",
       },
     ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://ahmed-academy.vercel.app/",
   },
 };
 
