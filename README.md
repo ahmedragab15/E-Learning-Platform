@@ -6,7 +6,7 @@ A feature-rich online courses platform built with **Next.js**, **ShadCN UI**, **
 
 ## 🚀 Tech Stack
 
-- **Frontend:** Next.js (App Router), TypeScript, Tailwind CSS, ShadCN UI, 
+- **Frontend:** Next.js (App Router), TypeScript, Tailwind CSS, ShadCN UI,
 - **Backend:** Prisma ORM, PostgreSQL
 - **Forms & Validation:** React Hook Form, Zod
 - **Authentication:**
@@ -29,6 +29,7 @@ A feature-rich online courses platform built with **Next.js**, **ShadCN UI**, **
 ## 🧩 Key Features
 
 ### 🔐 Authentication
+
 - Register, login with form validation (`React Hook Form` + `Zod`)
 - Password hashing using `bcrypt`
 - JWT token-based auth (persisted in cookies)
@@ -36,6 +37,7 @@ A feature-rich online courses platform built with **Next.js**, **ShadCN UI**, **
 - Protected routes via Edge Middleware using `jose`
 
 ### 📚 Courses
+
 - Course categories and filtering
 - Dynamic course listings with real data from PostgreSQL
 - Course details page with video content and metadata
@@ -44,11 +46,13 @@ A feature-rich online courses platform built with **Next.js**, **ShadCN UI**, **
 - Instructor dashboard for managing courses
 
 ### 🛒 Cart & Checkout
+
 - Add/remove courses from cart
 - Dynamic checkout page
 - Billing info form with validation
 
 ### 🧠 User Experience
+
 - Responsive and accessible UI with **ShadCN** components
 - Reusable `Container` layout component
 - Scroll effects & parallax animations (`GSAP`)
@@ -58,6 +62,7 @@ A feature-rich online courses platform built with **Next.js**, **ShadCN UI**, **
 - Toast notifications with `react-toastify`
 
 ### 👨‍🏫 Instructor Features
+
 - Role-based routing (user vs instructor)
 - Account settings page
 - Ability to become an instructor
@@ -65,6 +70,7 @@ A feature-rich online courses platform built with **Next.js**, **ShadCN UI**, **
 - Comment moderation panel
 
 ### ⚙️ Dev & Infrastructure
+
 - PostgreSQL + Prisma for DB and schema
 - Seed data generation using `faker`
 - Slugified URLs for course details
@@ -108,10 +114,10 @@ npm run dev
 ```
 
 ## 🌍 Live Demo
+
 🔗 https://ahmed-academy.vercel.app
 
 ## 📁 Folder Structure
-
 
     ├── prisma/                           # Database schema and migrations
       ├── migrations/               # Auto-generated database migrations
@@ -170,7 +176,7 @@ npm run dev
                   ├── layout.tsx    # Admin dashboard layout
                   └── page.tsx      # Admin dashboard home
               └── instructor-dashboard/ # Instructor dashboard
-                  ├── communication/ 
+                  ├── communication/
                       ├── reviews/
                           ├── page.tsx
                           └── ReviewsClient.tsx
@@ -210,7 +216,7 @@ npm run dev
           ├── all-courses/          # All courses listing
               ├── [slug]/           # Course details
                   ├── videos/       # Lessons/videos of the course
-                      ├── [lessonSlug]/ 
+                      ├── [lessonSlug]/
                           └── page.tsx
                       ├── ContentArea.tsx
                       ├── CourseComments.tsx
@@ -349,87 +355,106 @@ npm run dev
           └── next-pwa.d.ts
       └── middleware.ts             # Next.js middleware (auth, Protect Routes, etc.)
 
-
 ## 📸 Screenshots
 
-  #### Visitor Home Page
+#### Visitor Home Page
+
    <img src="./public/preview/1.webp" >
-  <br /> 
+  <br />
 
    <img src="./public/preview/2.webp" >
-  <br /> 
+  <br />
 
-  #### Categories
+#### Categories
+
    <img src="./public/preview/3.webp" >
-  <br /> 
+  <br />
 
-  #### Courses
+#### Courses
+
    <img src="./public/preview/4.webp" >
-  <br /> 
+  <br />
 
-  #### Instructors
+#### Instructors
+
    <img src="./public/preview/5.webp" >
-  <br /> 
+  <br />
 
-  #### Instructor Profile
+#### Instructor Profile
+
    <img src="./public/preview/6.webp" >
-  <br /> 
+  <br />
 
-  #### Course Details
+#### Course Details
+
    <img src="./public/preview/7.webp" >
-  <br /> 
+  <br />
 
-  #### Course & Instructor Reviews
+#### Course & Instructor Reviews
+
    <img src="./public/preview/8.webp" >
-  <br /> 
+  <br />
 
-  #### Cart
+#### Cart
+
    <img src="./public/preview/9.webp" >
-  <br /> 
+  <br />
 
-  #### Checkout
+#### Checkout
+
    <img src="./public/preview/10.webp" >
-  <br /> 
+  <br />
 
-  #### Sign Up
+#### Sign Up
+
    <img src="./public/preview/11.webp" >
-  <br /> 
+  <br />
 
-  #### About us Stats 
+#### About us Stats
+
    <img src="./public/preview/12.webp" >
-  <br /> 
+  <br />
 
-  #### Course Videos
+#### Course Videos
+
    <img src="./public/preview/13.webp" >
-  <br /> 
+  <br />
 
-  #### Course Comments
+#### Course Comments
+
    <img src="./public/preview/14.webp" >
-  <br /> 
+  <br />
 
-  #### Home Page after Login
+#### Home Page after Login
+
    <img src="./public/preview/15.webp" >
-  <br /> 
+  <br />
 
-  #### User Profile
+#### User Profile
+
    <img src="./public/preview/16.webp" >
-  <br /> 
+  <br />
 
-  #### Admin Dashboard
+#### Admin Dashboard
+
    <img src="./public/preview/17.webp" >
-  <br /> 
+  <br />
 
-  #### Admin Courses Control
+#### Admin Courses Control
+
    <img src="./public/preview/18.webp" >
-  <br /> 
+  <br />
 
-  #### Instructors Info
+#### Instructors Info
+
    <img src="./public/preview/19.webp" >
-  <br /> 
+  <br />
 
-  #### Manage All Reviews & Comments 
+#### Manage All Reviews & Comments
+
    <img src="./public/preview/20.webp" >
-  <br /> 
+  <br />
 
-  #### Instructor Dashboard
+#### Instructor Dashboard
+
    <img src="./public/preview/21.webp" >
